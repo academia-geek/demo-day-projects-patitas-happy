@@ -1,12 +1,19 @@
-import React from "react";
-import Login from "../components/Login";
 
+import React from "react";
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Register from '../components/Register';
+import Login from "../components/Login";
 const AppRoutes = () => {
-  return (
-    <div>
-      <Login />
-    </div>
-  );
+    return (
+        <BrowserRouter>
+        <Routes>
+            <Route path="/register" element={<Register/>}/>
+            <Route path="/login" element={<Login/>}/>
+        </Routes>
+        </BrowserRouter>
+    );
+
 };
 
 export default AppRoutes;
