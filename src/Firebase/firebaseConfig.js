@@ -4,12 +4,12 @@ import { getFirestore } from "firebase/firestore";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA68pgQtMCMnAnpfoV-9UyO3GQ0tn8PclQ",
-  authDomain: "patitas-happy.firebaseapp.com",
-  projectId: "patitas-happy",
-  storageBucket: "patitas-happy.appspot.com",
-  messagingSenderId: "656274254735",
-  appId: "1:656274254735:web:3116bd406292f32f86f9fa"
+  apiKey: "AIzaSyBgf-5RI_Svnat6tSnbO-b2tw4aG6Te4ek",
+  authDomain: "pokedex-prueba-tecnica.firebaseapp.com",
+  projectId: "pokedex-prueba-tecnica",
+  storageBucket: "pokedex-prueba-tecnica.appspot.com",
+  messagingSenderId: "493964953829",
+  appId: "1:493964953829:web:2f283c7f46b2409e96ac0c"
 };
 
 

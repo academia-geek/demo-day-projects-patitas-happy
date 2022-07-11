@@ -4,5 +4,6 @@ export const typesUser = {
 
 export const typesLogin = {
     login: 'login',
+    authenticated: '[login] authenticated',
     logout: 'logout'
 }
