@@ -1,12 +1,12 @@
 // import { TextField } from '@mui/material';
 import React from 'react';
-import { Button, Div1, Div2, TitleR } from '../Styles/Styles';
+import {  Div1, Div2, TitleR } from '../Styles/Styles';
 import fb from "../img/fb.png"
 import go from "../img/go.png"
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup'
 import { useDispatch } from 'react-redux';
-import { registerUserSync } from '../Redux/actions/actionsUser';
+import { registerUserAsync } from '../Redux/actions/actionsUser';
 
 
 const SignupSchema = Yup.object().shape({
@@ -41,7 +41,7 @@ const Register = () => {
                     validationSchema={SignupSchema}
                     onSubmit={values => {
                         console.log(values.nombre, values.email, values.fecha, values.telefono, values.pass1)
-                        dispatch(registerUserSync(values.nombre, values.email, values.fecha, values.telefono, values.pass1))
+                        dispatch(registerUserAsync(values.nombre, values.email, values.fecha, values.telefono, values.pass1))
                     }}
                 >
                     {({ errors, touched }) => (
