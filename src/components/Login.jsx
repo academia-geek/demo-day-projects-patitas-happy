@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import "../Styles/Style.css";
+import "../Styles/LoginStyle.css";
 import facebookIcon from "../assets/fb.png";
 import googleIcon from "../assets/go.png";
 
