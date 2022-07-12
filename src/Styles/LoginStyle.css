@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Rubik:wght@400;500&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
+
 body {
   margin: 0;
   padding: 0;
@@ -5,9 +8,8 @@ body {
   overflow: hidden;
 }
 .backg {
-  background-image: url("../assets/backg.jpg");
+  background-image: url("../img/img22.png");
   background-color: #ffffff;
-  opacity: 0.69;
   display: flex;
   height: 100vh;
   background-repeat: no-repeat;
