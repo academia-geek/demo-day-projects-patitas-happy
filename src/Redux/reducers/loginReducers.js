@@ -2,7 +2,7 @@ import { typesLogin } from "../types/types";
 
 export const loginReducers = (state = {}, action) => {
     switch (action.type) {
-        case typesLogin:
+        case typesLogin.login:
             return {
                 email: action.payload.email,
                 password: action.payload.password,
@@ -17,6 +17,10 @@ export const loginReducers = (state = {}, action) => {
                 ...state,
                 error: undefined,
                 authenticated: true
+            }
+        case typesLogin.logout:
+            return {
+                authenticated: false
             }
 
         default:

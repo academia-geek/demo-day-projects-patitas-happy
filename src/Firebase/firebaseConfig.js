@@ -4,12 +4,12 @@ import { getFirestore } from "firebase/firestore";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyA68pgQtMCMnAnpfoV-9UyO3GQ0tn8PclQ",
-  authDomain: "patitas-happy.firebaseapp.com",
-  projectId: "patitas-happy",
-  storageBucket: "patitas-happy.appspot.com",
-  messagingSenderId: "656274254735",
-  appId: "1:656274254735:web:3116bd406292f32f86f9fa"
+  apiKey: "AIzaSyCvePqO3Vl93l6__iEgoj7foHocKLr3EWo",
+  authDomain: "proyecto-patitas-happy.firebaseapp.com",
+  projectId: "proyecto-patitas-happy",
+  storageBucket: "proyecto-patitas-happy.appspot.com",
+  messagingSenderId: "828065303415",
+  appId: "1:828065303415:web:af2b806c70f697612a6f72"
 };
 
 

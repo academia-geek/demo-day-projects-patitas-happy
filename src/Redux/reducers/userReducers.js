@@ -1,16 +1,22 @@
-import { typesUser } from "../types/types"
+import { typesRegister } from "../types/types"
 
 export const userReducers = (state = {}, action) => {
     switch (action.type) {
-        case typesUser.register:
+        case typesRegister.register:
             return {
-                nombre: action.payload.nombre,
+                id: action.payload.id,
+                fullname: action.payload.fullname,
                 email: action.payload.email,
                 fecha: action.payload.fecha,
-                telefono: action.payload.telefono,
-                pass: action.payload.pass
+                password: action.payload.password,
+                phoneNumber: action.payload.phoneNumber,
+                error: action.payload.error
             }
-    
+
+        case typesRegister.clear:
+            return {
+
+            }
         default:
             return state
     }

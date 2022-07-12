@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { authentication } from "../../Firebase/firebaseConfig";
 import { typesLogin } from "../types/types"
 
@@ -35,5 +35,23 @@ export const actionLoginSync = ({ email, password, displayName, accessToken, pho
     return {
         type: typesLogin.login,
         payload: { email, password, displayName, accessToken, photoURL, phoneNumber, error }
+    }
+}
+
+//-----2. Logout asíncrono
+export const actionLogoutAsyn = () => {
+    return (dispatch) => {
+        signOut(authentication)
+            .then(() => {
+                dispatch(actionLogoutSyn())
+            })
+            .catch((error) => { console.warn(error, '') });
+    }
+}
+
+//-----2.1 Logout síncrono
+export const actionLogoutSyn = () => {
+    return {
+        type: typesLogin.logout
     }
 }

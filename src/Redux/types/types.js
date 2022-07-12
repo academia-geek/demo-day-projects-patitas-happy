@@ -1,5 +1,6 @@
-export const typesUser = {
-    register: 'registro usuario'
+export const typesRegister = {
+    register: '[Register-Usuario] register',
+    clear: '[Register-Clear] clear'
 }
 
 export const typesLogin = {

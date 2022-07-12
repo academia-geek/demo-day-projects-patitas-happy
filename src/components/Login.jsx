@@ -26,20 +26,19 @@ const Login = () => {
 
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const { error: loginError } = useSelector(store => store.loginStore);
 
   const onSubmit = (values) => {
     const { email, password } = values;
     dispatch(actionLoginAsync(email, password));
-    console.log(values)
   };
 
   if (loginError) {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: "Datos de login incorrectos"
+      text: "Por favor verifique sus datos!"
     }).then(() => {
       dispatch(actionLoginSync({ error: undefined }));
     });
@@ -48,10 +47,10 @@ const Login = () => {
       Swal.fire({
         icon: 'success',
         title: 'Congratulations.',
-        text: "Welcome to Pokedex App"
+        text: "Bienvenido a Patitas Happy!"
       }).then(() => {
         dispatch(actionAuthenticatedSync());
-        // navigate('/home');
+        navigate('/home');
       });
     }
   }
