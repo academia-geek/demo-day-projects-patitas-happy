@@ -1,11 +1,8 @@
-import React from 'react';
+import React from 'react'
+import { Navigate } from 'react-router-dom'
 
-const PublicRoutes = () => {
-    return (
-        <div>
-            
-        </div>
-    );
-};
+const PublicRouters = ({ isAutentication, children }) => {
+    return !isAutentication ? children : <Navigate to="/home" />
+}
 
-export default PublicRoutes;
+export default PublicRouters

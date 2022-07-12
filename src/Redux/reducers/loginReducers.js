@@ -22,6 +22,14 @@ export const loginReducers = (state = {}, action) => {
             return {
                 authenticated: false
             }
+        case typesLogin.loginGoogleAndFacebook:
+            return {
+                email: action.payload.email,
+                displayName: action.payload.displayName,
+                accessToken: action.payload.accessToken,
+                photoURL: action.payload.photoURL,
+                phoneNumber: action.payload.phoneNumber
+            }
 
         default:
             return state

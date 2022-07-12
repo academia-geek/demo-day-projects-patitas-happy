@@ -6,5 +6,6 @@ export const typesRegister = {
 export const typesLogin = {
     login: 'login',
     authenticated: '[login] authenticated',
-    logout: 'logout'
+    logout: 'logout',
+    loginGoogleAndFacebook: '[Login] loginGoogleAndFacebook'
 }
