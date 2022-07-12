@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import "../Styles/LoginStyle.css";
 import facebookIcon from "../assets/fb.png";
 import googleIcon from "../assets/go.png";
-import { actionAuthenticatedSync, actionLoginAsync, actionLoginSync } from "../Redux/actions/actionsLogin";
+import { actionAuthenticatedSync, actionLoginAsync, loginGoogle, loginFacebook, actionLoginSync } from "../Redux/actions/actionsLogin";
 import { useNavigate } from "react-router-dom";
 import { authentication } from "../Firebase/firebaseConfig";
 import Swal from "sweetalert2";
@@ -82,8 +82,8 @@ const Login = () => {
               <button type="submit">Login</button>
               <span>¿No tienes cuenta? Registrate aquí.</span>
               <div>
-                <img src={facebookIcon} alt="fbicon" id="fb" />
-                <img src={googleIcon} alt="goicon" id="go" />
+                <img src={facebookIcon} onClick={() => dispatch(loginFacebook())} alt="fbicon" id="fb" />
+                <img src={googleIcon} onClick={() => dispatch(loginGoogle())} alt="goicon" id="go" />
               </div>
             </Form>
           )}

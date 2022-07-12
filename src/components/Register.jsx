@@ -7,6 +7,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUserAsync } from '../Redux/actions/actionsRegister';
+import { loginGoogle, loginFacebook } from "../Redux/actions/actionsLogin";
 import Swal from "sweetalert2";
 import { useNavigate } from 'react-router-dom';
 
@@ -136,8 +137,8 @@ const Register = () => {
                 </Form> */}
                 <p>Ya tienes cuenta? Inicia sesión aquí.</p>
                 <div style={{ display: 'flex', justifyContent: 'center', margin: '10px 0' }}>
-                    <img width={90} height={50} src={fb} alt="" />
-                    <img width={50} height={50} src={go} alt="" />
+                    <img width={90} height={50} src={fb} onClick={() => dispatch(loginFacebook())} alt="" />
+                    <img width={50} height={50} src={go} onClick={() => dispatch(loginGoogle())} alt="" />
 
                 </div>
             </Div2>
