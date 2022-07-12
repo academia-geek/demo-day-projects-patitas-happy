@@ -6,13 +6,8 @@ import "../Styles/LoginStyle.css";
 import facebookIcon from "../assets/fb.png";
 import googleIcon from "../assets/go.png";
 
-import {
-  actionAuthenticatedSync,
-  actionLoginAsync,
-  actionLoginSync,
-  loginFacebook,
-  loginGoogle,
-} from "../Redux/actions/actionsLogin";
+import { actionAuthenticatedSync, actionLoginAsync, loginGoogle, loginFacebook, actionLoginSync } from "../Redux/actions/actionsLogin";
+
 import { Link, useNavigate } from "react-router-dom";
 
 import { authentication } from "../Firebase/firebaseConfig";
