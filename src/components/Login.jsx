@@ -5,8 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import "../Styles/LoginStyle.css";
 import facebookIcon from "../assets/fb.png";
 import googleIcon from "../assets/go.png";
+
 import { actionAuthenticatedSync, actionLoginAsync, actionLoginSync } from "../Redux/actions/actionsLogin";
 import { Link, useNavigate } from "react-router-dom";
+
+
 import { authentication } from "../Firebase/firebaseConfig";
 import Swal from "sweetalert2";
 
@@ -26,20 +29,19 @@ const Login = () => {
 
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const { error: loginError } = useSelector(store => store.loginStore);
 
   const onSubmit = (values) => {
     const { email, password } = values;
     dispatch(actionLoginAsync(email, password));
-    console.log(values)
   };
 
   if (loginError) {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: "Datos de login incorrectos"
+      text: "Por favor verifique sus datos!"
     }).then(() => {
       dispatch(actionLoginSync({ error: undefined }));
     });
@@ -48,10 +50,10 @@ const Login = () => {
       Swal.fire({
         icon: 'success',
         title: 'Congratulations.',
-        text: "Welcome to Pokedex App"
+        text: "Bienvenido a Patitas Happy!"
       }).then(() => {
         dispatch(actionAuthenticatedSync());
-        // navigate('/home');
+        navigate('/home');
       });
     }
   }
@@ -83,8 +85,8 @@ const Login = () => {
               <button type="submit">Login</button>
               <span>¿No tienes cuenta? <Link to="/register">Registrate aquí.</Link></span>
               <div>
-                <img src={facebookIcon} alt="fbicon" id="fb" />
-                <img src={googleIcon} alt="goicon" id="go" />
+                <img src={facebookIcon} onClick={() => dispatch(loginFacebook())} alt="fbicon" id="fb" />
+                <img src={googleIcon} onClick={() => dispatch(loginGoogle())} alt="goicon" id="go" />
               </div>
             </Form>
           )}
