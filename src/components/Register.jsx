@@ -5,6 +5,7 @@ import fb from "../img/fb.png"
 import go from "../img/go.png"
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup'
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUserAsync } from '../Redux/actions/actionsRegister';
 import { loginGoogle, loginFacebook } from "../Redux/actions/actionsLogin";
@@ -128,14 +129,8 @@ const Register = () => {
 
                 </Formik>
 
-                {/* <Form>
-                    <TextField style={{ margin: '10px 20px' }} id="outlined-basic1" label="Name" variant="outlined" />
-                    <TextField style={{ margin: '10px 20px' }} id="outlined-basic2" label="Age" variant="outlined" />
-                    <TextField style={{ margin: '10px 20px' }} id="outlined-basic3" label="Email" variant="outlined" />
-                    <TextField style={{ margin: '10px 20px' }} id="outlined-basic4" label="Password" variant="outlined" />
-                    <Button>Registrar</Button>
-                </Form> */}
-                <p>Ya tienes cuenta? Inicia sesión aquí.</p>
+               
+                <span>¿Ya tienes cuenta? <Link to="/">Ingresa aquí.</Link></span>
                 <div style={{ display: 'flex', justifyContent: 'center', margin: '10px 0' }}>
                     <img width={90} height={50} src={fb} onClick={() => dispatch(loginFacebook())} alt="" />
                     <img width={50} height={50} src={go} onClick={() => dispatch(loginGoogle())} alt="" />
