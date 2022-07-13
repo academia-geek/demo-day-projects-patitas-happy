@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { authentication } from "../Firebase/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 import Spinner from "../components/Spinner";
+import Landing from "../components/LandingPage";
 
 const AppRoutes = () => {
   const [cheking, setCheking] = useState(true);
@@ -38,10 +39,18 @@ const AppRoutes = () => {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
+          path="/login"
           element={
             <PublicRouters isAutentication={isLoggedIn}>
               <Login />
+            </PublicRouters>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <PublicRouters isAutentication={isLoggedIn}>
+              <Landing />
             </PublicRouters>
           }
         />
