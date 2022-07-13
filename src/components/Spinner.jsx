@@ -1,7 +1,7 @@
 import React from "react";
 import spinExt from "../assets/spin.png";
 import spinInt from "../assets/spin.png";
-import spincent from "../assets/spinletter.png";
+import spincent from "../assets/logo.png";
 import "../Styles/SpinnerStyle.css";
 
 const Spinner = () => {

@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Rubik:wght@400;500&display=swap'); 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Rubik:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap");
 
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow: auto;
 }
 .backg {
   background-image: url("../img/img22.png");
