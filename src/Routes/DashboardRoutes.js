@@ -1,12 +1,16 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from '../components/Home';
+import NavBars from '../components/NavBars';
+import Profile from '../components/Profile';
 
 const DashboardRoutes = () => {
     return (
-        <div>
+        <div> <NavBars/>
             <Routes>
+               
                 <Route path="/home" element={<Home />} />
+                <Route path="/profile" element={<Profile />} />
             </Routes>
             
         </div>

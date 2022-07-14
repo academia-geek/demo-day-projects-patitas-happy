@@ -4,7 +4,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { authentication, dataBase } from "../../Firebase/firebaseConfig"
 
 
-export const registerUserAsync = (fullname, email, fecha, password, phoneNumber) => {
+export const registerUserAsync = (fullname, email, fecha, password, phoneNumber ,img) => {
     return (dispatch) => {
         
         createUserWithEmailAndPassword(authentication, email, password)
