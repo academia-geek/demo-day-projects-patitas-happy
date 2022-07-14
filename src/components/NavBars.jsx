@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
-import logo from '../assets/spinletter.png'
+import logo from '../assets/logo.png'
 import { ButtonLogout, ImgProfile } from '../Styles/StyleNav';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionLogoutAsync } from '../Redux/actions/actionsRegister';
@@ -15,7 +15,7 @@ const NavBars = () => {
     console.log(user)
     return (
         <div>
-            <Navbar expand="lg">
+            <Navbar className='m-0' expand="lg">
                 <Container>
                     <Navbar.Brand href="#home">
                         <img

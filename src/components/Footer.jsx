@@ -9,26 +9,26 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="containers">
+    <div className="containers" style={{padding:'150px 0'}}>
       <div className="footer">
-        <span>Home</span>
-        <span>About</span>
-        <span>Features</span>
-        <span>Pricing</span>
-        <span>Contact us</span>
+        <span style={{margin:'7px 0'}}>Home</span>
+        <span style={{margin:'7px 0'}}>About</span>
+        <span style={{margin:'7px 0'}}>Features</span>
+        <span style={{margin:'7px 0'}}>Pricing</span>
+        <span style={{margin:'7px 0'}}>Contact us</span>
       </div>
 
       <div className="footer">
-        <span>Blog</span>
-        <span>Search</span>
-        <span>T & Cs</span>
-        <span>Privacy</span>
-        <span>Community</span>
+        <span style={{margin:'7px 0'}}>Blog</span>
+        <span style={{margin:'7px 0'}}>Search</span>
+        <span style={{margin:'7px 0'}}>T & Cs</span>
+        <span style={{margin:'7px 0'}}>Privacy</span>
+        <span style={{margin:'7px 0'}}>Community</span>
       </div>
 
       <div className="footer">
-        <h3>¡SIGUENOS!</h3>
-        <div>
+        <h3 style={{fontWeight:'regular'}}>¡SIGUENOS!</h3>
+        <div style={{display:'flex', flexDirection:'row', justifyContent:'space-around'}}>
           <FacebookFilled />
           <InstagramFilled />
           <TwitterCircleFilled />

@@ -154,7 +154,7 @@ nav button:hover {
   height: 201px;
   width: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   align-content: space-between;
   background-color: #aed6f1;
 }
