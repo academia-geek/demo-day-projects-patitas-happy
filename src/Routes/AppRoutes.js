@@ -9,24 +9,28 @@ import { useSelector } from "react-redux";
 import { authentication } from "../Firebase/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 import Spinner from "../components/Spinner";
+import '../Styles/stylesAntdD.css';
 import Landing from "../components/LandingPage";
+
 
 const AppRoutes = () => {
   const [cheking, setCheking] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
   const { authenticated } = useSelector(store => store.loginStore);
 
+  const auth = localStorage.getItem("auth") ? JSON.parse(localStorage.getItem("auth")) : false;
+
   useEffect(() => {
     onAuthStateChanged(authentication, user => {
-      if (user?.uid && authenticated) {
+      if (user?.uid && (authenticated || auth)) {
         setIsLoggedIn(true);
 
-        user.getIdToken().then(token => {});
+        user.getIdToken().then(token => { });
       } else {
         setIsLoggedIn(false);
       }
     });
-  }, [authenticated, setIsLoggedIn, setCheking]);
+  }, [authenticated, auth, setIsLoggedIn, setCheking]);
 
   if (cheking) {
     setTimeout(() => {

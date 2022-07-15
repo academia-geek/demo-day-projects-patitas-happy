@@ -1,23 +1,36 @@
-# Getting Started with Create React App
+# Patitas Happy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Es un proyecto pensado en los peluditos que se encuentran sin hogar.
 
-## Available Scripts
+## Este proyecto fue desarrollado con:
+JavaScript -
+ReactJs - 
+Ant-Design
+MaterialUI
+React Bootstrap- 
+Firebase - 
+Formik y Yup -
+styled-components
+sweetalert2
+React Router Dom
+React-Redux
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `Instalacion`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Clonar repositorio:
 
-### `npm test`
+git clone https://github.com/academia-geek/demo-day-projects-patitas-happy
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+instala las dependencias
+
+npm install
+
+inicia el proyecto con
+npm start ó npm run start
+
+-----------------------
 
 ### `npm run build`
 

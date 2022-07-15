@@ -50,6 +50,7 @@ const Login = () => {
         title: "Congratulations.",
         text: "Bienvenido a Patitas Happy!",
       }).then(() => {
+        localStorage.setItem("auth", JSON.stringify('true'));
         dispatch(actionAuthenticatedSync());
         navigate("/home");
       });
@@ -87,13 +88,19 @@ const Login = () => {
               <div>
                 <img
                   src={facebookIcon}
-                  onClick={() => dispatch(loginFacebook())}
+                  onClick={() => {
+                    dispatch(loginFacebook());
+                    localStorage.setItem("auth", JSON.stringify('true'));
+                  }}
                   alt="fbicon"
                   id="fb"
                 />
                 <img
                   src={googleIcon}
-                  onClick={() => dispatch(loginGoogle())}
+                  onClick={() =>{
+                    dispatch(loginGoogle());
+                    localStorage.setItem("auth", JSON.stringify('true'));
+                  }} 
                   alt="goicon"
                   id="go"
                 />

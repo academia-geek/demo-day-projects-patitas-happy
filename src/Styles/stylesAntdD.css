@@ -1,0 +1,50 @@
+@import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+.ant-radio-button-checked {
+    color: white !important;
+    background-color: #F95F62 !important;
+    border-color: #F95F62 !important;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-wrapper-disabled) {
+    color: white !important;
+    background-color: #F95F62 !important;
+    border-color: #F95F62 !important;
+}
+
+.ant-radio-button-wrapper-checked:not(.ant-radio-wrapper-disabled):hover::before {
+    color: white !important;
+    background-color: #F95F62 !important;
+    border-color: #F95F62 !important;
+}
+
+.ant-radio-button-wrapper-checked::selection {
+    color: white !important;
+    background-color: #F95F62 !important;
+    border-color: #F95F62 !important;
+}
+
+
+.ant-btn-primary {
+    color: white !important;
+    background-color: #F95F62 !important;
+    border-color: #F95F62 !important;
+}
+
+h1,
+label,
+span,
+input {
+    font-family: 'Lato', sans-serif;
+}
+
+input::placeholder {
+    font-family: 'Lato', sans-serif;
+}
+
+label{
+    color: #8190A5 !important;
+    font-size: 16px !important;
+}
+
