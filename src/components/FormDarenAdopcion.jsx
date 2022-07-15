@@ -46,7 +46,6 @@ const FormDarenAdopcion = () => {
   return (
     <div className="form-container">
       <Form onSubmit={handleSubmit}>
-        {" "}
         <h3>¿No puedes cuidar de tu mascota?</h3>
         <p>
           Aquí te ayudamos a encontrarle un nuevo hogar a tu mejor amigo. Es
