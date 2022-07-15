@@ -5,15 +5,18 @@ import '../Styles/Style.css'
 import { Acordion, ButtonRosa, Grid1, ImgDog, ParrafoH, TitleH } from '../Styles/StyleHome';
 import Footer from "./Footer";
 import { Grid } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
+
+    const navigate = useNavigate();
 
     return (
         <div >
             <Grid container columns={{ xs: 4, sm: 8, md: 12 }}
                 justifyContent="center"
-                
+
             >
                 <Grid1>
                     <TitleH>
@@ -21,7 +24,7 @@ const Home = () => {
                     </TitleH>
                     <ParrafoH>Conoce los detalles de los animales que tenemos en nuestra fundación para que elijas al mejor compañero para ti.
                     </ParrafoH>
-                    <ButtonRosa>VER MASCOTAS</ButtonRosa>
+                    <ButtonRosa onClick={() =>navigate('/mascotas')}>VER MASCOTAS</ButtonRosa>
                 </Grid1>
                 <Grid>
                     <ImgDog src={dog} alt="" />
