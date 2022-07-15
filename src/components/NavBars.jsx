@@ -14,6 +14,7 @@ const NavBars = () => {
     const onClick =()=>{
         dispatch(actionLogoutAsync())
         localStorage.clear();
+        document.location.reload(true);
     }
 
 
