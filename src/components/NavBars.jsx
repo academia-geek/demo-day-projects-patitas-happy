@@ -5,7 +5,6 @@ import { ButtonLogout, ImgProfile } from "../Styles/StyleNav";
 import { useDispatch, useSelector } from "react-redux";
 import { actionLogoutAsync } from "../Redux/actions/actionsRegister";
 import { Link } from "react-router-dom";
-import { authentication } from "../Firebase/firebaseConfig";
 
 const NavBars = () => {
   const dispatch = useDispatch();
@@ -50,7 +49,6 @@ const NavBars = () => {
               <Nav.Link className="mx-3 my-auto" href="#link">
                 ADOPCIÓN
               </Nav.Link>
-
               <NavDropdown
                 className="mx-3 my-auto"
                 title="INFORMACIÓN"
@@ -61,14 +59,15 @@ const NavBars = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">ALIADOS</NavDropdown.Item>
               </NavDropdown>
-              <Link to="/contactanos">CONTACTANOS</Link>
+              <Nav className="mx-3 my-auto">
+                <Link to="/contactanos">CONTACTANOS</Link>
+              </Nav>
               {
                 // console.log(user.photoURL)
                 <Link to="/profile">
                   <ImgProfile onClick={ver()} src={user.photoURL} alt="" />
                 </Link>
               }
-
               <Nav.Link className=" my-auto" href="#link">
                 {" "}
                 <ButtonLogout onClick={onClick}>LOGOUT</ButtonLogout>

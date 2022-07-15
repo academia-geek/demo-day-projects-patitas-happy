@@ -10,13 +10,14 @@ const Contactanos = () => {
   const handleShow = e => {
     if (e.target.id === "Perdida") {
       setShowAdopcion(true);
+      setShowPerdida(false);
     } else {
       if (e.target.id === "Adopcion") {
         setShowPerdida(true);
+        setShowAdopcion(false);
       }
     }
   };
-
   return (
     <div>
       <div className="portada">
