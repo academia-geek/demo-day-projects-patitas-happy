@@ -14,3 +14,9 @@ export const typesMascotas = {
     addMascota: '[mascotas] addMascota',
     fillMascotas: '[mascotas] fillMascotas'
 }
+
+export const typesUser = {
+    list: '[user] list',
+    edit: '[user] edit',
+    delete: '[user] delete'
+}
