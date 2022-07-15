@@ -9,3 +9,8 @@ export const typesLogin = {
     logout: 'logout',
     loginGoogleAndFacebook: '[Login] loginGoogleAndFacebook'
 }
+
+export const typesMascotas = {
+    addMascota: '[mascotas] addMascota',
+    fillMascotas: '[mascotas] fillMascotas'
+}

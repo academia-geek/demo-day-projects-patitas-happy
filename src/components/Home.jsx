@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Accordion } from 'react-bootstrap';
 import dog from '../img/dog-sinfondo.png'
 import '../Styles/Style.css'
