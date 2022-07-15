@@ -1,4 +1,4 @@
-import { typesRegister } from "../types/types"
+import { typesRegister, typesUser } from "../types/types"
 
 export const userReducers = (state = {}, action) => {
     switch (action.type) {
@@ -16,6 +16,10 @@ export const userReducers = (state = {}, action) => {
         case typesRegister.clear:
             return {
 
+            }
+        case typesUser.list:
+            return {
+                ...action.payload
             }
         default:
             return state

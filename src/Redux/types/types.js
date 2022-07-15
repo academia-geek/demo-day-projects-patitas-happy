@@ -9,3 +9,9 @@ export const typesLogin = {
     logout: 'logout',
     loginGoogleAndFacebook: '[Login] loginGoogleAndFacebook'
 }
+
+export const typesUser = {
+    list: '[user] list',
+    edit: '[user] edit',
+    delete: '[user] delete'
+}

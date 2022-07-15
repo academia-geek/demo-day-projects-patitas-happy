@@ -36,7 +36,7 @@ export const Form = styled.form`
 export const TitleR = styled.h1`
     font-size: 48px;
     color: #47525E;
-    
+    font-family: 'Fira mono';
 `
 export const Button = styled.button`
     background-color: #F5CEC7;
