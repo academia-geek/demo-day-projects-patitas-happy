@@ -8,7 +8,12 @@ import {Link} from 'react-router-dom'
 
 const NavBars = () => {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+
+    const onClick =()=>{
+        dispatch(actionLogoutAsync())
+        localStorage.clear();
+    }
 
 
     const user = useSelector(store => store.loginStore)
@@ -30,7 +35,7 @@ const NavBars = () => {
                     <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end" >
                         <Nav className="justify-content-end">
                             <Nav.Link className='mx-3 my-auto' href="#home">HOME</Nav.Link>
-                            <Nav.Link className='mx-3 my-auto' href="#link">MASCOTAS</Nav.Link>
+                            <Nav.Link className='mx-3 my-auto' href="/mascotas">MASCOTAS</Nav.Link>
                             <Nav.Link className='mx-3 my-auto' href="#link">ADOPCIÓN</Nav.Link>
 
                             <NavDropdown className='mx-3 my-auto' title="INFORMACIÓN" id="basic-nav-dropdown">
@@ -44,7 +49,7 @@ const NavBars = () => {
                                     
                                 
                             }
-                            <Nav.Link className=' my-auto' href="#link"> <ButtonLogout onClick={()=> dispatch(actionLogoutAsync())}>LOGOUT</ButtonLogout></Nav.Link>
+                            <Nav.Link className=' my-auto' href="#link"> <ButtonLogout onClick={onClick}>LOGOUT</ButtonLogout></Nav.Link>
 
                             
                            

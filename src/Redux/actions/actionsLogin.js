@@ -43,7 +43,8 @@ export const actionLogoutAsyn = () => {
     return (dispatch) => {
         signOut(authentication)
             .then(() => {
-                dispatch(actionLogoutSyn())
+                dispatch(actionLogoutSyn());
+                
             })
             .catch((error) => { console.warn(error, '') });
     }

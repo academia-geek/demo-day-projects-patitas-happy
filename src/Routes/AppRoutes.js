@@ -18,17 +18,19 @@ const AppRoutes = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
   const { authenticated } = useSelector(store => store.loginStore);
 
+  const auth = localStorage.getItem("auth") ? JSON.parse(localStorage.getItem("auth")) : false;
+
   useEffect(() => {
     onAuthStateChanged(authentication, user => {
-      if (user?.uid && authenticated) {
+      if (user?.uid && (authenticated || auth)) {
         setIsLoggedIn(true);
 
-        user.getIdToken().then(token => {});
+        user.getIdToken().then(token => { });
       } else {
         setIsLoggedIn(false);
       }
     });
-  }, [authenticated, setIsLoggedIn, setCheking]);
+  }, [authenticated, auth, setIsLoggedIn, setCheking]);
 
   if (cheking) {
     setTimeout(() => {
