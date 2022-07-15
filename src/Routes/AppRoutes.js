@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { authentication } from "../Firebase/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 import Spinner from "../components/Spinner";
+import '../Styles/stylesAntdD.css'
 
 const AppRoutes = () => {
   const [cheking, setCheking] = useState(true);
