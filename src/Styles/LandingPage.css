@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap");
+
+.logo {
+  width: 80px;
+  height: 80px;
+}
+
+nav {
+  background-color: white !important;
+  margin: 5% 0;
+  box-shadow: none !important;
+  position: initial !important;
+}
+
+nav button {
+  background-color: #f5b7b1 !important;
+  margin: 0 15px !important;
+}
+nav button:hover {
+  background-color: #f5b7b19c !important;
+}
+
+.content-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 3% auto;
+  width: 75%;
+}
+
+.content-top button {
+  background-color: #f5b7b1;
+  border-radius: 20px;
+  border: none;
+  font-size: 18px;
+  line-height: 62px;
+  width: 193px;
+  text-align: center;
+  color: #343f4b;
+  margin: 35px 0;
+}
+.content-top button:hover {
+  background-color: #f5b7b19c;
+  cursor: pointer;
+}
+
+.content-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 3% auto;
+  width: 90%;
+}
+
+.section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: space-between;
+  width: 100%;
+  min-height: min-content;
+  font-family: Lato;
+  font-weight: 400;
+}
+
+.cover1 {
+  margin: 15px 0;
+  border-radius: 150px;
+  height: 250px;
+  width: 250px;
+  background-image: url(../assets/resena1.jpg);
+  background-size: cover;
+}
+.cover2 {
+  margin: 15px 0;
+  border-radius: 150px;
+  height: 250px;
+  width: 250px;
+  background-image: url(../assets/resena2.jpg);
+  background-size: cover;
+}
+.cover3 {
+  margin: 15px 0;
+  border-radius: 150px;
+  height: 250px;
+  width: 250px;
+  background-image: url(../assets/resena3.jpg);
+  background-size: cover;
+}
+
+.ant-card {
+  margin: 0 70px;
+}
+
+.info {
+  width: 100%;
+  height: 250px;
+  font-family: "Lato", sans-serif;
+  font-size: 24px;
+  line-height: 62px;
+  opacity: 0.69;
+}
+
+.details div {
+  background-color: rgba(174, 214, 241, 0.121);
+  padding: 10px;
+  text-align: center;
+}
+
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  margin: 10% 0;
+  text-align: center;
+}
+
+.formikform {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+}
+.formikform input {
+  border-radius: 10px;
+  padding: 0 15px;
+  display: inline-block;
+  inline-size: 390px;
+  block-size: 40px;
+  margin: 0 10px;
+}
+.formikform button {
+  background-color: #f5b7b1;
+  block-size: 30px;
+  inline-size: 120px;
+  border-radius: 5px;
+  border: none;
+  width: 164px;
+  height: 40px;
+  margin: 0 10px;
+}
+.formikform button:hover {
+  background-color: #f5b7b19c;
+}
+
+.containers {
+  display: flex;
+  height: 201px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  align-content: space-between;
+  background-color: #aed6f1;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+}

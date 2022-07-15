@@ -4,15 +4,18 @@ import AddMascotas from '../components/AddMascotas';
 import DetailsMascotas from '../components/DetailsMascotas';
 import Home from '../components/Home';
 import ListMascotas from '../components/ListMascotas';
+import NavBars from '../components/NavBars';
+import Profile from '../components/Profile';
 
 const DashboardRoutes = () => {
     return (
-        <div>
-            <Routes>
+        <div> <NavBars/>
+            <Routes>               
                 <Route path="/home" element={<Home />} />
                 <Route path="/mascotas" element={<ListMascotas/>} />
                 <Route path="/addMascotas" element={<AddMascotas />} />
                 <Route path="/detailsMascotas/:firestoreId" element={<DetailsMascotas />} />
+                <Route path="/profile" element={<Profile />} />
             </Routes>
             
         </div>
