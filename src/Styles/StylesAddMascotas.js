@@ -3,7 +3,7 @@ export const titleForm = {
     color: '#47525E',
     fontSize: '40px',
     alignSelf: 'center',
-    marginTop: '100px',
+    marginTop: '10px',
     marginBottom: '40px',
 };
 
