@@ -23,6 +23,7 @@ export const addMascotaSync = (mascota, error) => {
             tipo: mascota.tipo,
             nombre: mascota.nombre,
             edad: mascota.edad,
+            fechaRescate: mascota.fechaRescate,
             fechaNacimiento: mascota.fechaNacimiento,
             genero: mascota.genero,
             vacunas: mascota.vacunas,

@@ -28,6 +28,7 @@ const AddMascotas = () => {
             tipo: values.mascota,
             nombre: values.nombre,
             edad: values.edad,
+            fechaRescate: values.rescate.format(dateFormat),
             fechaNacimiento: values.nacimiento.format(dateFormat),
             genero: values.genero,
             vacunas: values.vacunas,
@@ -65,10 +66,10 @@ const AddMascotas = () => {
             <Form
                 name="Add"
                 labelCol={{
-                    span: 11,
+                    span: 14,
                 }}
                 wrapperCol={{
-                    span: 12,
+                    span: 20,
                 }}
                 layout="horizontal"
                 initialValues={{}}
@@ -85,7 +86,7 @@ const AddMascotas = () => {
                         },
                     ]}
                 >
-                    <Radio.Group style={radioButtons} optionType="button" buttonStyle="solid">
+                    <Radio.Group style={radioButtons} optionType="button" buttonStyle="solid" danger size='large'>
                         {
                             optionsMascotas.map((item, index) => (
                                 <Radio.Button key={index} value={item.value}><img style={{ width: '35px', height: 'auto', margin: 'auto' }} src={item.src} alt={item.label} />{item.label}</Radio.Button>
@@ -118,12 +119,25 @@ const AddMascotas = () => {
                 >
                     <InputNumber />
                 </Form.Item>
+                <Form.Item 
+                label="Fecha de rescate" 
+                name="rescate"
+                rules={[
+                    {
+                        required: true,
+                        message: 'Por favor indique la fecha de rescate',
+                    },
+                ]}
+                tooltip='Indique la fecha en que fue ingresada al albergue la mascota o rescatada'
+                >
+                    <DatePicker format={dateFormat} />
+                </Form.Item>
                 <Form.Item label="Fecha de nacimiento" name="nacimiento">
                     <DatePicker format={dateFormat} />
                 </Form.Item>
                 <Form.Item
                     label="Género"
-                    name="genero"
+                    name="genero"                    
                     rules={[
                         {
                             required: true,
@@ -131,7 +145,7 @@ const AddMascotas = () => {
                         },
                     ]}
                 >
-                    <Select>
+                    <Select placeholder="Por favor seleccione">
                         <Select.Option value="masculino">Masculino</Select.Option>
                         <Select.Option value="femenino">Femenino</Select.Option>
                     </Select>
@@ -152,7 +166,7 @@ const AddMascotas = () => {
                         style={{
                             width: '100%',
                         }}
-                        placeholder="Please select"
+                        placeholder="Por favor seleccione"
                     >{children.map((item) => (<Option key={item}>{item}</Option>))}
                     </Select>
                 </Form.Item>
@@ -181,7 +195,7 @@ const AddMascotas = () => {
                         },
                     ]}
                 >
-                    <Input.TextArea showCount maxLength={2000} placeholder='Ingrese aquí la enfermedad o enfermedades que padece la mascota' />
+                    <Input.TextArea showCount maxLength={2000} placeholder='Ingrese enfermedad o enfermedades' />
                 </Form.Item>
                 <Form.Item
                     label="Condiciones de la mascota"
@@ -199,7 +213,7 @@ const AddMascotas = () => {
                         style={{
                             width: '100%',
                         }}
-                        placeholder="Please select"
+                        placeholder="Por favor seleccione"
                         onChange={handleConditions}
                     >{condiciones.map((item) => (<Option key={item}>{item}</Option>))}
                     </Select>
@@ -218,11 +232,14 @@ const AddMascotas = () => {
                     </Form.Item>
                 )}
                 {/* Cargar imágenes */}
-                <Form.Item label='Comparte una foto' name="foto">
+                <Form.Item 
+                label='Comparte una foto' 
+                name="foto"
+                >
                     <UploadImage onUpload={onUpload} />
                 </Form.Item>
                 <Form.Item style={submitButton}>
-                    <Button type="primary" htmlType="submit">
+                    <Button type="primary"  htmlType="submit" size='large'>
                         Publicar!
                     </Button>
                 </Form.Item>

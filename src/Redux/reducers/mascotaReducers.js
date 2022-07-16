@@ -12,6 +12,7 @@ export const mascotasReducers = (state = initialState, action) => {
                     tipo: action.payload.tipo,
                     nombre: action.payload.nombre,
                     edad: action.payload.edad,
+                    fechaRescate: action.payload.fechaRescate,
                     fechaNacimiento: action.payload.fechaNacimiento,
                     genero: action.payload.genero,
                     vacunas: action.payload.vacunas,
