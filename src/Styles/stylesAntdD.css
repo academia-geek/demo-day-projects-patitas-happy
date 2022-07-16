@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 .ant-radio-button-checked {
-    color: white !important;
     background-color: #F95F62 !important;
     border-color: #F95F62 !important;
+    box-shadow: rgba(249, 95, 98, 0.24) 0px 3px 8px !important;
 }
 
 .ant-radio-button-wrapper-checked:not(.ant-radio-wrapper-disabled) {
@@ -13,26 +13,27 @@
     border-color: #F95F62 !important;
 }
 
-.ant-radio-button-wrapper-checked:not(.ant-radio-wrapper-disabled):hover::before {
-    color: white !important;
-    background-color: #F95F62 !important;
-    border-color: #F95F62 !important;
+.ant-radio-button-wrapper-checked {
+    border: none !important;
+    box-shadow: none !important;
 }
 
-.ant-radio-button-wrapper-checked::selection {
-    color: white !important;
-    background-color: #F95F62 !important;
-    border-color: #F95F62 !important;
+.ant-radio-button-wrapper:hover {
+    border-color: #f5cec7 !important;
+    box-shadow: #f5cec7 0px 2px 8px 0px !important;
 }
-
 
 .ant-btn-primary {
-    color: white !important;
     background-color: #F95F62 !important;
     border-color: #F95F62 !important;
 }
 
-h1,
+.ant-btn-primary:hover {
+    background-color: #f5cec7 !important;
+    border-color: #f5cec7 !important;
+    color: #47525e !important;
+}
+
 label,
 span,
 input {
@@ -43,8 +44,7 @@ input::placeholder {
     font-family: 'Lato', sans-serif;
 }
 
-label{
+label {
     color: #8190A5 !important;
     font-size: 16px !important;
 }
-

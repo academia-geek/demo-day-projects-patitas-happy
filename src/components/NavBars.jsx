@@ -12,11 +12,11 @@ const NavBars = () => {
   const onClick = () => {
     dispatch(actionLogoutAsync());
     localStorage.clear();
-    document.location.reload(true);
   };
 
   const user = useSelector(store => store.loginStore);
   console.log(user);
+
 
   const ver = e => {};
   return (
