@@ -14,6 +14,7 @@ export const actionLoginAsync = (email, password) => {
             .then(({ user }) => {
                 const { displayName, accessToken, photoURL, phoneNumber } = user;
                 dispatch(actionLoginSync({ email, password, displayName, accessToken, photoURL, phoneNumber, error: false }));
+                
             })
             .catch(error => {
                 console.log(error);
