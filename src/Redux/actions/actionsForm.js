@@ -15,3 +15,17 @@ export const AddAdopcionSync = form => {
     payload: form,
   };
 };
+
+export const AddEcontradoAsync = form => {
+  return async dispatch => {
+    addDoc(collection(dataBase, "formEncontrado"), form)
+      .then(resp => dispatch(AddEcontradoSync(form)))
+      .catch(error => console.warn(error));
+  };
+};
+export const AddEcontradoSync = form => {
+  return {
+    type: typesForm.encontrado,
+    payload: form,
+  };
+};

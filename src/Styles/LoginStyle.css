@@ -81,8 +81,6 @@ body {
 
 .errors {
   display: flex;
-
   width: 270px;
   margin: 0 auto !important;
-  background-color: violet;
 }
