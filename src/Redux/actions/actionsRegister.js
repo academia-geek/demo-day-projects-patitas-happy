@@ -91,7 +91,7 @@ export const registerUserSync = ({ id, fullname, email, fecha, phoneNumber, pass
 }
 
 //--------------logout----------------//
-export const actionLogoutAsync = () => {
+export const actionClearRegisterAsync = () => {
     return (dispatch) => {
         signOut(authentication)
             .then(() => {
