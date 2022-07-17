@@ -33,38 +33,36 @@ const Landing = () => (
     <Layout>
       <Row>
         <Col span={24}>
-          <Header>
-            <AppBar component="nav">
-              <Toolbar>
-                <Typography
-                  variant="h6"
-                  component="div"
-                  sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-                >
-                  <img src={logo} alt="logo" className="logo" />
-                </Typography>
-                <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                  <Button sx={{ color: "#000000" }}>
-                    <Link
-                      to="/login"
-                      style={{ textDecoration: "none", color: "#343f4b" }}
-                    >
-                      LOGIN IN{" "}
-                    </Link>
-                  </Button>
-                  <Button sx={{ color: "#000000" }}>
-                    <Link
-                      to="/register"
-                      style={{ textDecoration: "none", color: "#343f4b" }}
-                    >
-                      {" "}
-                      REGISTER
-                    </Link>
-                  </Button>
-                </Box>
-              </Toolbar>
-            </AppBar>
-          </Header>
+          <AppBar component="nav">
+            <Toolbar>
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+              >
+                <img src={logo} alt="logo" className="logo" />
+              </Typography>
+              <Box sx={{ display: { xs: "none", sm: "block" } }}>
+                <Button sx={{ color: "#000000" }}>
+                  <Link
+                    to="/login"
+                    style={{ textDecoration: "none", color: "#343f4b" }}
+                  >
+                    LOGIN IN{" "}
+                  </Link>
+                </Button>
+                <Button sx={{ color: "#000000" }}>
+                  <Link
+                    to="/register"
+                    style={{ textDecoration: "none", color: "#343f4b" }}
+                  >
+                    {" "}
+                    REGISTER
+                  </Link>
+                </Button>
+              </Box>
+            </Toolbar>
+          </AppBar>
         </Col>
       </Row>
 
