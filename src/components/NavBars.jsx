@@ -11,12 +11,13 @@ const NavBars = () => {
 
   const onClick = () => {
     dispatch(actionLogoutAsync());
-    // localStorage.clear();
-    // document.location.reload(true);
+    localStorage.clear();
+
   };
 
   const user = useSelector(store => store.loginStore);
   console.log(user);
+
 
   const [datos, setDatos] = useState([])
 
@@ -24,6 +25,9 @@ const NavBars = () => {
     setDatos(us)
 
   };
+
+  const ver = e => {};
+
   return (
     <div>
       <Navbar className="m-0" expand="lg">
