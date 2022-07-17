@@ -1,5 +1,6 @@
 import { signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { authentication, google, facebook } from "../../Firebase/firebaseConfig";
+import { getUserFromDatabase } from "../../helpers/GetDoc";
 import { typesLogin } from "../types/types"
 
 
@@ -9,17 +10,14 @@ import { typesLogin } from "../types/types"
 
 //----1.1 Acción asícrona
 export const actionLoginAsync = (email, password) => {
-    return (dispatch) => {
-        signInWithEmailAndPassword(authentication, email, password)
-            .then(({ user }) => {
-                const { displayName, accessToken, photoURL, phoneNumber } = user;
-                dispatch(actionLoginSync({ email, password, displayName, accessToken, photoURL, phoneNumber, error: false }));
-                
-            })
-            .catch(error => {
-                console.log(error);
-                dispatch(actionLoginSync({ error: true, authenticated: undefined }));
-            });
+    return async (dispatch) => {
+        const user = await signInWithEmailAndPassword(authentication, email, password);
+        const { displayName, accessToken } = user;
+        
+        const userData = await getUserFromDatabase(email);
+        const { id, phoneNumber, photoURL, admin } = userData;
+
+        dispatch(actionLoginSync({ id, email, password, displayName, accessToken, photoURL, phoneNumber, admin, error: false }));
     }
 }
 
@@ -32,10 +30,10 @@ export const actionAuthenticatedSync = (item) => {
 }
 
 
-export const actionLoginSync = ({ email, password, displayName, accessToken, photoURL, phoneNumber, error }) => {
+export const actionLoginSync = ({ id, email, password, displayName, accessToken, photoURL, phoneNumber, admin, error }) => {
     return {
         type: typesLogin.login,
-        payload: { email, password, displayName, accessToken, photoURL, phoneNumber, error }
+        payload: { id, email, password, displayName, accessToken, photoURL, phoneNumber, admin, error }
     }
 }
 
@@ -45,7 +43,7 @@ export const actionLogoutAsyn = () => {
         signOut(authentication)
             .then(() => {
                 dispatch(actionLogoutSyn());
-                
+
             })
             .catch((error) => { console.warn(error, '') });
     }

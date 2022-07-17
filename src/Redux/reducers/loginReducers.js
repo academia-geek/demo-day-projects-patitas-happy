@@ -4,12 +4,14 @@ export const loginReducers = (state = {}, action) => {
     switch (action.type) {
         case typesLogin.login:
             return {
+                id: action.payload.id,
                 email: action.payload.email,
                 password: action.payload.password,
                 displayName: action.payload.displayName,
                 accessToken: action.payload.accessToken,
                 photoURL: action.payload.photoURL,
                 phoneNumber: action.payload.phoneNumber,
+                admin: action.payload.admin,
                 error: action.payload.error
             }
         case typesLogin.authenticated:

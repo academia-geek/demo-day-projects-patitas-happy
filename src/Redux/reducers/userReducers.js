@@ -10,7 +10,8 @@ export const userReducers = (state = {}, action) => {
                 fecha: action.payload.fecha,
                 password: action.payload.password,
                 phoneNumber: action.payload.phoneNumber,
-                error: action.payload.error
+                error: action.payload.error,
+                admin: action.payload.admin
             }
 
         case typesRegister.clear:
