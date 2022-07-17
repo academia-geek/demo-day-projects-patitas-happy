@@ -14,10 +14,10 @@ export const actionLoginAsync = (email, password) => {
     return async (dispatch) => {
         const user = await signInWithEmailAndPassword(authentication, email, password);
         const userData = await getUserFromDatabase(email);
-        const { displayName, accessToken } = user.user;
-        const { id, phoneNumber, photoURL, admin, fecha } = userData;
+        const { displayName, accessToken, photoURL } = user.user;
+        const { id, phoneNumber, admin, fecha } = userData;
 
-        dispatch(actionLoginSync({ id, email, password, displayName, accessToken, photoURL, phoneNumber, admin, fecha, error: false }));
+        dispatch(actionLoginSync({ id, email, password, displayName, accessToken, phoneNumber, admin, fecha, error: false, photoURL }));
     }
 }
 
@@ -30,10 +30,10 @@ export const actionAuthenticatedSync = (item) => {
 }
 
 
-export const actionLoginSync = ({ id, email, password, displayName, accessToken, photoURL, phoneNumber, admin, fecha, error }) => {
+export const actionLoginSync = ({ id, email, password, displayName, accessToken,  phoneNumber, admin, fecha, error, photoURL }) => {
     return {
         type: typesLogin.login,
-        payload: { id, email, password, displayName, accessToken, photoURL, phoneNumber, admin, fecha, error }
+        payload: { id, email, password, displayName, accessToken,  phoneNumber, admin, fecha, error, photoURL }
     }
 }
 

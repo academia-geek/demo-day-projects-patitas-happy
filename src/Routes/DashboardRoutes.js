@@ -7,6 +7,7 @@ import ListMascotas from '../components/ListMascotas';
 import Contactanos from "../components/Contactanos";
 import NavBars from '../components/NavBars';
 import Profile from '../components/Profile';
+import InfoMascotas from '../components/InfoMascotas';
 
 const DashboardRoutes = () => {
     return (
@@ -18,6 +19,7 @@ const DashboardRoutes = () => {
                 <Route path="/detailsMascotas/:firestoreId" element={<DetailsMascotas />} />
                 <Route path="/contactanos" element={<Contactanos />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/info" element={<InfoMascotas/>}/>
             </Routes>
             
         </div>

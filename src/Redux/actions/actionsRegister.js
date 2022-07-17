@@ -5,25 +5,29 @@ import { authentication, dataBase } from "../../Firebase/firebaseConfig"
 import Swal from "sweetalert2";
 
 
-export const editUserAsync = (displayName, email, phoneNumber) => {
+export const editUserAsync = (displayName, email, phoneNumber, photoURL) => {
     return (dispatch) => {
         updateProfile(authentication.currentUser, {
-            displayName: displayName, email: email, phoneNumber: phoneNumber
 
+            displayName: displayName, email: email, phoneNumber: phoneNumber, photoURL: photoURL
+            
         })
-            .then(() => {
-                dispatch(editUserSync(displayName, email, phoneNumber))
-                console.log('yeeeh, perfil actualizado')
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Congratulations!',
-                    text: 'Se ha actualizado correctamente la información'
-                })
+       
+        
+        .then(() => {
+            dispatch(editUserSync(displayName, email, phoneNumber, photoURL))
+            console.log('yeeeh, perfil actualizado')
+            Swal.fire({
+                icon: 'success',
+                title: 'Congratulations!',
+                text: 'Se ha actualizado correctamente la información'
+            })
+            
+            window.location.reload(true);
+          }).catch((error) => {
+            console.log(error, 'perfil no fue actualizado')
+          });
 
-                window.location.reload(true);
-            }).catch((error) => {
-                console.log(error, 'perfil no fue actualizado')
-            });
     }
 
 }
