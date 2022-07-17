@@ -1,5 +1,5 @@
 import { typesMascotas } from "../types/types";
-import { collection, addDoc, query, getDocs } from "firebase/firestore";
+import { collection, addDoc, query, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { dataBase } from "../../Firebase/firebaseConfig"
 
 const collectionName = "mascotas";
@@ -8,10 +8,11 @@ export const addMascotaAsync = (mascota) => {
     return async (dispatch) => {
         try {
             const docRef = await addDoc(collection(dataBase, collectionName), mascota);
-            dispatch(addMascotaSync({ id: docRef.id, ...mascota }, false));
+            dispatch(addMascotaSync({ id: docRef.id, ...mascota }));
+            dispatch(errorSync({ error: false }));
         } catch (error) {
             console.log(error);
-            dispatch(addMascotaSync({}, true));
+            dispatch(errorSync({ error: true }));
         }
     }
 }
@@ -32,8 +33,16 @@ export const addMascotaSync = (mascota, error) => {
             enfermedad: mascota.enfermedad,
             condiciones: mascota.condiciones,
             otrasCondiciones: mascota.otrasCondiciones,
-            imagen: mascota.imagen,
-            error
+            imagen: mascota.imagen
+        }
+    }
+}
+
+export const errorSync = (params) => {
+    return {
+        type: typesMascotas.throwError,
+        payload: {
+            error: params.error
         }
     }
 }
@@ -70,6 +79,27 @@ export const fillMascotasSync = (params) => {
         type: typesMascotas.fillMascotas,
         payload: {
             mascotas: params.mascotas
+        }
+    }
+}
+
+export const deleteMascotaAsync = (params) => {
+    return (dispatch) => {
+        deleteDoc(doc(dataBase, collectionName, params.id))
+            .then(() => {
+                dispatch(deleteMascotaSync({ id: params.id }));
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+}
+
+export const deleteMascotaSync = (params) => {
+    return {
+        type: typesMascotas.deleteMascota,
+        payload: {
+            id: params.id
         }
     }
 }

@@ -9,16 +9,14 @@ import { actionClearRegisterAsync } from "../Redux/actions/actionsRegister";
 
 const NavBars = () => {
   const dispatch = useDispatch();
+  const user = useSelector(store => store.loginStore);
+  const [datos, setDatos] = useState([]);
 
   const onClick = () => {
     dispatch(actionLogoutAsyn());
     dispatch(actionClearRegisterAsync());
     localStorage.clear();
   };
-
-  const user = useSelector(store => store.loginStore);
-
-  const [datos, setDatos] = useState([]);
 
   const handleEdit = us => {
     setDatos(us);

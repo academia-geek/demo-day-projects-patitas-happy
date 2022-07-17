@@ -127,7 +127,6 @@ export const actionUserDataLoadAsync = (email) => {
         getUserFromDatabase(email).then(dataUser => {
             const { id, email, password, displayName, accessToken, photoURL, phoneNumber, admin } = dataUser;
 
-            console.log(dataUser);
             dispatch(actionUserDataLoadSync({ id, email, password, displayName, accessToken, photoURL, phoneNumber, admin }))
         }).catch(error => {
             console.log(error);

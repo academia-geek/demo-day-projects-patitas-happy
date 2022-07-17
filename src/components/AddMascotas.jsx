@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Form, Radio, Input, InputNumber, DatePicker, Select, Button } from 'antd';
 import { vacunasPerro, condiciones, optionsMascotas, vacunasGatos } from '../assets/DatosMascotas';
 import UploadImage from './UploadImage';
-import { addMascotaAsync, fillMascotasAsync } from "../Redux/actions/actionsMascota";
+import { addMascotaAsync, errorSync, fillMascotasAsync } from "../Redux/actions/actionsMascota";
 import { divForm, radioButtons, submitButton, titleForm } from '../Styles/StylesAddMascotas';
+import Swal from 'sweetalert2';
 
 const { Option } = Select;
 
 const AddMascotas = () => {
+    const [form] = Form.useForm();
     const dispatch = useDispatch();
+    const { error } = useSelector(store => store.mascotasStore);
     const dateFormat = "MM-DD-YYYY";
     const [url, setUrl] = useState("");
     const [children, setChildren] = useState([]);
@@ -52,7 +55,6 @@ const AddMascotas = () => {
     }
 
     const handleConditions = (values) => {
-        console.log(values);
         if (values.some(value => value === "otros")) {
             setShowMoreConditions(true);
         } else {
@@ -60,10 +62,32 @@ const AddMascotas = () => {
         }
     }
 
+    if (error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Por favor verifique sus datos!",
+        }).then(() => {
+            dispatch(errorSync({ error: undefined }));
+        });
+    } else {
+        if (error === false) {
+            Swal.fire({
+                icon: "success",
+                title: "Excelente.",
+                text: "Has agregado una nueva mascota!",
+            }).then(() => {
+                form.resetFields();
+                dispatch(errorSync({ error: undefined }));
+            });
+        }
+    }
+
     return (
         <div style={divForm}>
             <h1 style={titleForm}>Agregue una nueva mascota</h1>
             <Form
+                form={form}
                 name="Add"
                 labelCol={{
                     span: 14,
@@ -119,16 +143,16 @@ const AddMascotas = () => {
                 >
                     <InputNumber />
                 </Form.Item>
-                <Form.Item 
-                label="Fecha de rescate" 
-                name="rescate"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Por favor indique la fecha de rescate',
-                    },
-                ]}
-                tooltip='Indique la fecha en que fue ingresada al albergue la mascota o rescatada'
+                <Form.Item
+                    label="Fecha de rescate"
+                    name="rescate"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Por favor indique la fecha de rescate',
+                        },
+                    ]}
+                    tooltip='Indique la fecha en que fue ingresada al albergue la mascota o rescatada'
                 >
                     <DatePicker format={dateFormat} />
                 </Form.Item>
@@ -137,7 +161,7 @@ const AddMascotas = () => {
                 </Form.Item>
                 <Form.Item
                     label="Género"
-                    name="genero"                    
+                    name="genero"
                     rules={[
                         {
                             required: true,
@@ -232,14 +256,20 @@ const AddMascotas = () => {
                     </Form.Item>
                 )}
                 {/* Cargar imágenes */}
-                <Form.Item 
-                label='Comparte una foto' 
-                name="foto"
+                <Form.Item
+                    label='Comparte una foto'
+                    name="foto"
+                    rules={!url ? [
+                        {
+                            required: true,
+                            message: 'Por favor cargue una foto',
+                        },
+                    ] : []}
                 >
                     <UploadImage onUpload={onUpload} />
                 </Form.Item>
                 <Form.Item style={submitButton}>
-                    <Button type="primary"  htmlType="submit" size='large'>
+                    <Button type="primary" htmlType="submit" size='large'>
                         Publicar!
                     </Button>
                 </Form.Item>
