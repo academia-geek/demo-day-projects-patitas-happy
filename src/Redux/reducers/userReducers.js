@@ -21,6 +21,11 @@ export const userReducers = (state = {}, action) => {
             return {
                 ...action.payload
             }
+        case typesUser.edit:
+            return {
+                ...state
+            }
+
         default:
             return state
     }
