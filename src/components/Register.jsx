@@ -67,7 +67,7 @@ const Register = () => {
                 title: 'Congratulations!',
                 text: 'Se ha creado exitosamente su cuenta!'
             }).then(() => {
-                navigate("/");
+                navigate("/login");
             });
         }
     }

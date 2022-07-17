@@ -26,6 +26,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const Login = () => {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { error: loginError } = useSelector(store => store.loginStore);
@@ -97,10 +98,10 @@ const Login = () => {
                 />
                 <img
                   src={googleIcon}
-                  onClick={() =>{
+                  onClick={() => {
                     dispatch(loginGoogle());
                     localStorage.setItem("auth", JSON.stringify('true'));
-                  }} 
+                  }}
                   alt="goicon"
                   id="go"
                 />
