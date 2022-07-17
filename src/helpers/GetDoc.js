@@ -7,15 +7,19 @@ export const getUserFromDatabase = (email) => {
         try {
             const collectionUsers = collection(dataBase, "users");
             const querySnapshot = query(collectionUsers, where("email", "==", email));
-            getDocs(querySnapshot).then(documents => {
-                documents.forEach((document) => {
-                    return resolve({
-                        id: document.id,
-                        ...document.data()
+            getDocs(querySnapshot)
+                .then(documents => {
+                    documents.forEach((document) => {
+                        return resolve({
+                            id: document.id,
+                            ...document.data()
+                        });
                     });
+
+                    return resolve({});
                 });
-            })
         } catch (error) {
+            console.log(error);
             return reject(error);
         }
     })

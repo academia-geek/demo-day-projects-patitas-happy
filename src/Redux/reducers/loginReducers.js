@@ -19,6 +19,7 @@ export const loginReducers = (state = {}, action) => {
             return {
                 ...state,
                 error: undefined,
+                errorGaF: undefined,
                 authenticated: true
             }
         case typesLogin.logout:
@@ -31,9 +32,22 @@ export const loginReducers = (state = {}, action) => {
                 displayName: action.payload.displayName,
                 accessToken: action.payload.accessToken,
                 photoURL: action.payload.photoURL,
-                phoneNumber: action.payload.phoneNumber
+                phoneNumber: action.payload.phoneNumber,
+                errorGoF: action.payload.error
             }
-
+        case typesLogin.load:
+            return {
+                id: action.payload.id,
+                email: action.payload.email,
+                password: action.payload.password,
+                displayName: action.payload.displayName,
+                accessToken: action.payload.accessToken,
+                photoURL: action.payload.photoURL,
+                phoneNumber: action.payload.phoneNumber,
+                admin: action.payload.admin,
+                fecha: action.payload.fecha,
+                error: action.payload.error
+            }
         default:
             return state
     }
