@@ -18,7 +18,6 @@ export const actionLoginAsync = (email, password) => {
         const { id, phoneNumber, photoURL, admin } = userData;
 
         dispatch(actionLoginSync({ id, email, password, displayName, accessToken, photoURL, phoneNumber, admin, error: false }));
-
     }
 }
 

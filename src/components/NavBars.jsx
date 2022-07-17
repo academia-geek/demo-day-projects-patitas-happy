@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import { ButtonLogout, ImgProfile } from "../Styles/StyleNav";
@@ -12,13 +12,22 @@ const NavBars = () => {
   const onClick = () => {
     dispatch(actionLogoutAsync());
     localStorage.clear();
+
   };
 
   const user = useSelector(store => store.loginStore);
   console.log(user);
 
 
+  const [datos, setDatos] = useState([])
+
+  const handleEdit = (us) => {
+    setDatos(us)
+
+  };
+
   const ver = e => {};
+
   return (
     <div>
       <Navbar className="m-0" expand="lg">
@@ -64,8 +73,8 @@ const NavBars = () => {
               </Nav>
               {
                 // console.log(user.photoURL)
-                <Link to="/profile">
-                  <ImgProfile onClick={ver()} src={user.photoURL} alt="" />
+                <Link to="/profile" >
+                  <ImgProfile onClick={()=> handleEdit(user)} src={user.photoURL} alt="" />
                 </Link>
               }
               <Nav.Link className=" my-auto" href="#link">

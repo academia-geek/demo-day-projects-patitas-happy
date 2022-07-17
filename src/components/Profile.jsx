@@ -1,24 +1,56 @@
 import React, { useEffect } from 'react';
 import Footer from './Footer';
 import fb from '../img/profile.jpg'
-import { listUserAsync, listUserSync } from '../Redux/actions/actionsRegister';
+// import { listUserAsync, listUserSync } from '../Redux/actions/actionsRegister';
 import { useDispatch, useSelector } from 'react-redux';
 import { authentication } from '../Firebase/firebaseConfig';
-import { indexedDBLocalPersistence } from 'firebase/auth';
+import { indexedDBLocalPersistence, updateProfile } from 'firebase/auth';
+import useForm from '../hooks/useForm';
+import { editUserAsync, editUserSync } from '../Redux/actions/actionsRegister';
 
 const Profile = () => {
 
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        dispatch(listUserAsync())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(listUserAsync())
+    // }, [dispatch])
 
    const user = useSelector(store => store.loginStore)
        
     console.log(user)
-    
+// const user = useSelector(store => store.regisUserStore)
+       
+// console.log(user)
 
+    
+    const [formValue, handleInputChange] = useForm({
+        displayName: user.displayName,
+        email: user.email,
+        photoURL : user.photoURL
+    })
+
+    const {displayName, email, photoURL} = formValue
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(displayName, email,  photoURL)
+
+        dispatch(editUserAsync(displayName, email, photoURL))
+     
+    }
+
+    const handleFileChange =(e)=>{
+        // const file= e.target.files[0]
+        // //llamar a la configuracion de Cloudinary
+        // FileUpload(file)
+        // .then((resp)=>{
+        //     formValue.imagen = resp
+        //     console.log(resp)
+        // })
+        // .catch((error)=>{console.warn(error)});
+ 
+     }
     
     return (
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
@@ -28,22 +60,19 @@ const Profile = () => {
             </div>
             {
               
-                    <form  style={{ justifyContent: 'center' }}>
+                    <form onSubmit={handleSubmit} style={{ justifyContent: 'center' }}>
                                         <img width={70} src={user.photoURL} alt="" style={{ borderRadius: '100%' }} />
-                                        <input type="file"/>
+                                        <input type="file" name="photoURL" onChange={handleFileChange}/>
 
                     <h5>Your name</h5>
-                    <h5>{user.displayName}</h5>
-                    <input type="text" />
+                   
+                    <input type="text" name="displayName" value={formValue.displayName} onChange={handleInputChange} />
+                    
                     <h5>Your Email</h5>
-                    <h5>{user.email}</h5>
-                    <input type="text" />
-                    <h5>Fecha de Nacimiento</h5>
-                    <h5>{user.phoneNumber}</h5>
-
-                    <input type="text" /> <br />
-                    <h5>Telefono</h5>
-                    <input type="text" /> <br />
+                   
+                    <input type="text" name="email" value={formValue.email} onChange={handleInputChange}/>
+                   <br />
+                   
     
                     <button>Aceptar</button>
                 </form>
