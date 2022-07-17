@@ -3,16 +3,17 @@ import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import { ButtonLogout, ImgProfile } from "../Styles/StyleNav";
 import { useDispatch, useSelector } from "react-redux";
-import { actionLogoutAsync } from "../Redux/actions/actionsRegister";
+import { actionLogoutAsyn } from "../Redux/actions/actionsLogin";
 import { Link } from "react-router-dom";
+import { actionClearRegisterAsync } from "../Redux/actions/actionsRegister";
 
 const NavBars = () => {
   const dispatch = useDispatch();
 
   const onClick = () => {
-    dispatch(actionLogoutAsync());
+    dispatch(actionLogoutAsyn());
+    dispatch (actionClearRegisterAsync())
     localStorage.clear();
-
   };
 
   const user = useSelector(store => store.loginStore);

@@ -12,12 +12,11 @@ import { typesLogin } from "../types/types"
 export const actionLoginAsync = (email, password) => {
     return async (dispatch) => {
         const user = await signInWithEmailAndPassword(authentication, email, password);
-        const { displayName, accessToken } = user;
-        
         const userData = await getUserFromDatabase(email);
-        const { id, phoneNumber, photoURL, admin } = userData;
+        const { displayName, accessToken } = user.user;
+        const { id, phoneNumber, photoURL, admin, fecha } = userData;
 
-        dispatch(actionLoginSync({ id, email, password, displayName, accessToken, photoURL, phoneNumber, admin, error: false }));
+        dispatch(actionLoginSync({ id, email, password, displayName, accessToken, photoURL, phoneNumber, admin, fecha, error: false }));
     }
 }
 
