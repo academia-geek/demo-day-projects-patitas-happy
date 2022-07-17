@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 export const editUserAsync = (displayName, email, phoneNumber, photoURL) => {
     return (dispatch) => {
         updateProfile(authentication.currentUser, {
+
             displayName: displayName, email: email, phoneNumber: phoneNumber, photoURL: photoURL
             
         })
@@ -26,14 +27,15 @@ export const editUserAsync = (displayName, email, phoneNumber, photoURL) => {
           }).catch((error) => {
             console.log(error, 'perfil no fue actualizado')
           });
+
     }
-    
+
 }
 
-export const editUserSync = (displayName, email,  phoneNumber, photoURL) => {
+export const editUserSync = (displayName, email, phoneNumber, photoURL) => {
     return {
         type: typesUser.edit,
-        payload: {displayName, email, phoneNumber, photoURL}
+        payload: { displayName, email, phoneNumber, photoURL }
     }
 }
 
@@ -71,24 +73,27 @@ export const registerUserAsync = (fullname, email, fecha, password, phoneNumber)
 
         createUserWithEmailAndPassword(authentication, email, password)
             .then(async ({ user }) => {
-                await updateProfile(authentication.currentUser, { displayName: fullname })
+                await updateProfile(authentication.currentUser, { displayName: fullname });
 
-                const docRef = await addDoc(collection(dataBase, "users"), { fullname, email, fecha, password, phoneNumber, admin: false });
-                dispatch(registerUserSync({ id: docRef.id, fullname, email, fecha, password, phoneNumber, error: false, admin: false }))
+                const { accessToken } = user;
+
+                const docRef = await addDoc(collection(dataBase, "users"), { fullname, email, fecha, password, phoneNumber, accessToken, admin: false });
+                dispatch(registerUserSync({ id: docRef.id, fullname, email, fecha, password, phoneNumber, accessToken, error: false, admin: false }))
                 console.log(user, 'Usuario Registrado')
             })
             .catch(error => console.warn(error))
     }
 }
 
-export const registerUserSync = ({ id, fullname, email, fecha, phoneNumber, password, error, admin }) => {
+export const registerUserSync = ({ id, fullname, email, fecha, phoneNumber, password, accessToken, error, admin }) => {
     return {
         type: typesRegister.register,
         payload: {
-            id, fullname, email, fecha, phoneNumber, password, error, admin
+            id, fullname, email, fecha, phoneNumber, password, accessToken, error, admin
         }
     }
 }
+
 
 //--------------logout----------------//
 export const actionClearRegisterAsync = () => {

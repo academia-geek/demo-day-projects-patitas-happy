@@ -8,6 +8,7 @@ export const typesLogin = {
   authenticated: "[login] authenticated",
   logout: "logout",
   loginGoogleAndFacebook: "[Login] loginGoogleAndFacebook",
+  load: "[login] load",
 };
 export const typesForm = {
   adopcion: "Dar en adopcion",
@@ -16,7 +17,9 @@ export const typesForm = {
 
 export const typesMascotas = {
     addMascota: '[mascotas] addMascota',
-    fillMascotas: '[mascotas] fillMascotas'
+    fillMascotas: '[mascotas] fillMascotas',
+    deleteMascota: '[mascotas] deleteMascota',
+    throwError: '[mascotas] throwError'
 }
 
 export const typesUser = {

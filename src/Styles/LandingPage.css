@@ -6,7 +6,7 @@
 }
 
 nav {
-  background-color: white !important;
+  background-color: #f0f2f5 !important;
   margin: 5% 0;
   box-shadow: none !important;
   position: initial !important;
@@ -53,7 +53,7 @@ nav button:hover {
   align-items: center;
   text-align: center;
   margin: 3% auto;
-  width: 90%;
+  width: 95%;
 }
 
 .section {
@@ -71,30 +71,32 @@ nav button:hover {
 .cover1 {
   margin: 15px 0;
   border-radius: 150px;
-  height: 250px;
-  width: 250px;
+  height: 230px;
+  width: 230px;
   background-image: url(../assets/resena1.jpg);
   background-size: cover;
 }
 .cover2 {
   margin: 15px 0;
   border-radius: 150px;
-  height: 250px;
-  width: 250px;
+  height: 230px;
+  width: 230px;
   background-image: url(../assets/resena2.jpg);
   background-size: cover;
 }
 .cover3 {
   margin: 15px 0;
   border-radius: 150px;
-  height: 250px;
-  width: 250px;
+  height: 230px;
+  width: 230px;
   background-image: url(../assets/resena3.jpg);
   background-size: cover;
 }
 
 .ant-card {
-  margin: 0 70px;
+  background-color: #f0f2f5 !important;
+  margin: 5px 15px !important;
+  padding: 0 5px !important;
 }
 
 .info {
