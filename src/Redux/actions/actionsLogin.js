@@ -29,10 +29,10 @@ export const actionAuthenticatedSync = (item) => {
 }
 
 
-export const actionLoginSync = ({ id, email, password, displayName, accessToken, photoURL, phoneNumber, admin, error }) => {
+export const actionLoginSync = ({ id, email, password, displayName, accessToken, photoURL, phoneNumber, admin, fecha, error }) => {
     return {
         type: typesLogin.login,
-        payload: { id, email, password, displayName, accessToken, photoURL, phoneNumber, admin, error }
+        payload: { id, email, password, displayName, accessToken, photoURL, phoneNumber, admin, fecha, error }
     }
 }
 

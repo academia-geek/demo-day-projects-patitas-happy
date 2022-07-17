@@ -12,6 +12,7 @@ export const loginReducers = (state = {}, action) => {
                 photoURL: action.payload.photoURL,
                 phoneNumber: action.payload.phoneNumber,
                 admin: action.payload.admin,
+                fecha: action.payload.fecha,
                 error: action.payload.error
             }
         case typesLogin.authenticated:
