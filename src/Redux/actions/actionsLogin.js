@@ -1,5 +1,6 @@
 import { signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
-import { authentication, google, facebook } from "../../Firebase/firebaseConfig";
+import { authentication, google, facebook, dataBase } from "../../Firebase/firebaseConfig";
+import { collection, addDoc } from "firebase/firestore";
 import { getUserFromDatabase } from "../../helpers/GetDoc";
 import { typesLogin } from "../types/types"
 
@@ -61,13 +62,25 @@ export const loginGoogle = () => {
     return (dispatch) => {
         console.log('dentro de google')
         signInWithPopup(authentication, google)
-            .then(({ user }) => {
-                dispatch(actionLoginGoogleAndFacebookSync(user.email, user.displayName, user.accessToken, user.photoURL, user.phoneNumber));
-                dispatch(actionAuthenticatedSync());
-                console.log(user, 'Usuario Autorizado, Bienvenido')
+            .then(async ({ user }) => {
+                const { email, displayName, accessToken, photoURL, phoneNumber } = user;
+                const userFound = await getUserFromDatabase(email);
+
+                if (Object.keys(userFound).length) {
+                    dispatch(actionLoginGoogleAndFacebookSync({ id: userFound.id, email: userFound.email, displayName, accessToken, photoURL, phoneNumber, admin: userFound.admin }, false));
+                    
+                    console.log(user, 'Usuario Autorizado, Bienvenido')
+                } else {
+                    const docRef = await addDoc(collection(dataBase, "users"), { email, displayName, accessToken, photoURL, phoneNumber, admin: false });
+                    dispatch(actionLoginGoogleAndFacebookSync({ id: docRef.id, email, displayName, accessToken, photoURL, phoneNumber, admin: false }, false));
+                    
+                    console.log(user, 'Usuario Autorizado, Bienvenido')
+                }
+
             })
             .catch(error => {
-                console.warn(error, 'Usuario NO Autorizado')
+                console.warn(error, 'Usuario NO Autorizado');
+                dispatch(actionLoginGoogleAndFacebookSync({}, true));
             })
     }
 }
@@ -77,20 +90,54 @@ export const loginFacebook = () => {
     return (dispatch) => {
         console.log("dentro de facebook");
         signInWithPopup(authentication, facebook)
-            .then((result) => {
-                const user = result.user;
-                dispatch(actionLoginGoogleAndFacebookSync(user.email, user.displayName, user.accessToken, user.photoURL, user.phoneNumber));
-                dispatch(actionAuthenticatedSync());
+            .then(async ({ user }) => {
+                const { email, displayName, accessToken, photoURL, phoneNumber } = user;
+                const userFound = await getUserFromDatabase(email);
+
+                if (Object.keys(userFound).length) {
+                    dispatch(actionLoginGoogleAndFacebookSync({ id: userFound.id, email: userFound.email, displayName, accessToken, photoURL, phoneNumber, admin: userFound.admin }, false));
+                    
+                    console.log(user, 'Usuario Autorizado, Bienvenido')
+                } else {
+                    const docRef = await addDoc(collection(dataBase, "users"), { email, displayName, accessToken, photoURL, phoneNumber, admin: false });
+                    dispatch(actionLoginGoogleAndFacebookSync({ id: docRef.id, email, displayName, accessToken, photoURL, phoneNumber, admin: false }, false));
+                    
+                    console.log(user, 'Usuario Autorizado, Bienvenido')
+                }
+
             })
-            .catch((error) => {
-                console.log(error);
-            });
+            .catch(error => {
+                console.warn(error, 'Usuario NO Autorizado');
+                dispatch(actionLoginGoogleAndFacebookSync({}, true));
+            })
     }
 }
 
-export const actionLoginGoogleAndFacebookSync = (email, displayName, accessToken, photoURL, phoneNumber) => {
+export const actionLoginGoogleAndFacebookSync = ({ id, email, displayName, accessToken, photoURL, phoneNumber, admin }, error) => {
     return {
         type: typesLogin.loginGoogleAndFacebook,
-        payload: { email, displayName, accessToken, photoURL, phoneNumber }
+        payload: { id, email, displayName, accessToken, photoURL, phoneNumber, admin, error }
     }
 }
+
+//-----Persistencia de los datos de usuario al recargar la aplicación
+
+export const actionUserDataLoadAsync = (email) => {
+    return (dispatch) => {
+        getUserFromDatabase(email).then(dataUser => {
+            const { id, email, password, displayName, accessToken, photoURL, phoneNumber, admin } = dataUser;
+
+            console.log(dataUser);
+            dispatch(actionUserDataLoadSync({ id, email, password, displayName, accessToken, photoURL, phoneNumber, admin }))
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+};
+
+export const actionUserDataLoadSync = ({ id, email, password, displayName, accessToken, photoURL, phoneNumber, admin }) => {
+    return {
+        type: typesLogin.load,
+        payload: { id, email, password, displayName, accessToken, photoURL, phoneNumber, admin }
+    }
+};

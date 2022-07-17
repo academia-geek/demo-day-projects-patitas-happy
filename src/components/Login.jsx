@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import "../Styles/LoginStyle.css";
 import facebookIcon from "../assets/fb.png";
 import googleIcon from "../assets/go.png";
-
 import { actionAuthenticatedSync, actionLoginAsync, loginGoogle, loginFacebook, actionLoginSync } from "../Redux/actions/actionsLogin";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -30,6 +29,7 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { error: loginError } = useSelector(store => store.loginStore);
+  const { errorGoF } = useSelector(store => store.loginStore);
 
   const onSubmit = values => {
     const { email, password } = values;
@@ -57,6 +57,27 @@ const Login = () => {
       });
     }
   }
+
+  if (errorGoF) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Ha ocurrido un error, por favor intente más tardes.'
+    });
+  } else {
+    if (errorGoF === false) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Bienvenido!',
+        text: 'Ha iniciado sesión correctamente!'
+      }).then(() => {
+        dispatch(actionAuthenticatedSync());
+        localStorage.setItem("auth", JSON.stringify('true'));
+        navigate("/home");
+      });
+    }
+  }
+
 
   return (
     <div className="backg">
@@ -91,7 +112,6 @@ const Login = () => {
                   src={facebookIcon}
                   onClick={() => {
                     dispatch(loginFacebook());
-                    localStorage.setItem("auth", JSON.stringify('true'));
                   }}
                   alt="fbicon"
                   id="fb"
@@ -100,7 +120,6 @@ const Login = () => {
                   src={googleIcon}
                   onClick={() => {
                     dispatch(loginGoogle());
-                    localStorage.setItem("auth", JSON.stringify('true'));
                   }}
                   alt="goicon"
                   id="go"

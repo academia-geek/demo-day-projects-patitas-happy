@@ -5,15 +5,19 @@ import Login from "../components/Login";
 import PublicRouters from "../Routes/PublicRoutes";
 import PrivateRouters from "../Routes/PrivateRoute";
 import DashboardRouters from "../Routes/DashboardRoutes";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authentication } from "../Firebase/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 import Spinner from "../components/Spinner";
 import '../Styles/stylesAntdD.css';
 import Landing from "../components/LandingPage";
+import { actionUserDataLoadAsync } from "../Redux/actions/actionsLogin";
 
 
 const AppRoutes = () => {
+
+  const dispatch = useDispatch();
+
   const [cheking, setCheking] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
   const { authenticated } = useSelector(store => store.loginStore);
@@ -22,22 +26,29 @@ const AppRoutes = () => {
 
   useEffect(() => {
     onAuthStateChanged(authentication, user => {
-      if (user?.uid && (authenticated || auth)) {
+      if (user?.uid && (auth)) {
         setIsLoggedIn(true);
+
+        if (!authenticated) {
+          dispatch(actionUserDataLoadAsync(user.email));
+        }
 
         user.getIdToken().then(token => { });
       } else {
         setIsLoggedIn(false);
       }
     });
-  }, [authenticated, auth, setIsLoggedIn, setCheking]);
 
-  if (cheking) {
     setTimeout(() => {
       setCheking(false);
     }, 1500);
+
+  }, [authenticated, auth, setIsLoggedIn, setCheking]);
+
+  if (cheking) {
     return <Spinner />;
   }
+
 
   return (
     <BrowserRouter>

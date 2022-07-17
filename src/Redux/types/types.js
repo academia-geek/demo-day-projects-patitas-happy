@@ -8,6 +8,7 @@ export const typesLogin = {
   authenticated: "[login] authenticated",
   logout: "logout",
   loginGoogleAndFacebook: "[Login] loginGoogleAndFacebook",
+  load: "[login] load",
 };
 export const typesForm = {
   adopcion: "Dar en adopcion",
