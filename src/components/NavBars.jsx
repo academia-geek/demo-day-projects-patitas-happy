@@ -12,19 +12,16 @@ const NavBars = () => {
 
   const onClick = () => {
     dispatch(actionLogoutAsyn());
-    dispatch (actionClearRegisterAsync())
+    dispatch(actionClearRegisterAsync());
     localStorage.clear();
   };
 
   const user = useSelector(store => store.loginStore);
-  console.log(user);
 
+  const [datos, setDatos] = useState([]);
 
-  const [datos, setDatos] = useState([])
-
-  const handleEdit = (us) => {
-    setDatos(us)
-
+  const handleEdit = us => {
+    setDatos(us);
   };
 
   const ver = e => {};
@@ -74,8 +71,12 @@ const NavBars = () => {
               </Nav>
               {
                 // console.log(user.photoURL)
-                <Link to="/profile" >
-                  <ImgProfile onClick={()=> handleEdit(user)} src={user.photoURL} alt="" />
+                <Link to="/profile">
+                  <ImgProfile
+                    onClick={() => handleEdit(user)}
+                    src={user.photoURL}
+                    alt=""
+                  />
                 </Link>
               }
               <Nav.Link className=" my-auto" href="#link">
