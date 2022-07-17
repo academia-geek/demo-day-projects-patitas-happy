@@ -22,12 +22,23 @@ export const mascotasReducers = (state = initialState, action) => {
                     condiciones: action.payload.condiciones,
                     otrasCondiciones: action.payload.otrasCondiciones,
                     imagen: action.payload.imagen,
-                }],
-                error: action.payload.error
+                }]
             }
         case typesMascotas.fillMascotas:
             return {
                 mascotas: action.payload.mascotas
+            }
+        case typesMascotas.deleteMascota:
+            return {
+                ...state,
+                mascotas: state.mascotas.filter(
+                    (mascota) => mascota.firestoreId !== action.payload.id
+                ),
+            };
+        case typesMascotas.throwError:
+            return {
+                ...state,
+                error: action.payload.error
             }
         default:
             return state;

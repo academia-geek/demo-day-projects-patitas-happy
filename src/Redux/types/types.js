@@ -17,7 +17,9 @@ export const typesForm = {
 
 export const typesMascotas = {
     addMascota: '[mascotas] addMascota',
-    fillMascotas: '[mascotas] fillMascotas'
+    fillMascotas: '[mascotas] fillMascotas',
+    deleteMascota: '[mascotas] deleteMascota',
+    throwError: '[mascotas] throwError'
 }
 
 export const typesUser = {
