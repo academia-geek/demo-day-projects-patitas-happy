@@ -27,10 +27,10 @@ const onSubmit = values => {
   });
 };
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 const Landing = () => (
   <>
-    <Layout>
+    <Layout style={{ background: "white" }}>
       <Row>
         <Col span={24}>
           <AppBar component="nav">
