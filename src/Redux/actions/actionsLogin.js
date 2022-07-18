@@ -14,7 +14,7 @@ export const actionLoginAsync = (email, password) => {
     return async (dispatch) => {
         const user = await signInWithEmailAndPassword(authentication, email, password);
         const userData = await getUserFromDatabase(email);
-        const { displayName, accessToken, photoURL } = user.user;
+        const {photoURL, displayName, accessToken } = user.user;
         const { id, phoneNumber, admin, fecha } = userData;
 
         dispatch(actionLoginSync({ id, email, password, displayName, accessToken, phoneNumber, admin, fecha, error: false, photoURL }));

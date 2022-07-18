@@ -26,23 +26,22 @@ const Profile = () => {
 
 
     const [formValue, handleInputChange] = useForm({
-        photoURL: user.photoURL,
+        
         displayName: user.displayName,
         email: user.email,
-        
         phoneNumber: user.phoneNumber,
         fecha: user.fecha,
-        password: user.password
-
+        password: user.password,
+        photoURL: user.photoURL,
     })
 
-    const { displayName, email, photoURL, phoneNumber, password } = formValue
+    const {  displayName,  email, photoURL, phoneNumber, password } = formValue
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(displayName, email, photoURL, phoneNumber, password)
+        console.log(displayName,  email, photoURL, phoneNumber, password)
 
-        dispatch(editUserAsync(displayName, email, phoneNumber, password, photoURL))
+        dispatch(editUserAsync(displayName,  email, photoURL, phoneNumber, password))
 
     }
 
