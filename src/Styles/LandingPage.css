@@ -6,7 +6,7 @@
 }
 
 nav {
-  background-color: #f0f2f5 !important;
+  background-color: #ffffff !important;
   margin: 5% 0;
   box-shadow: none !important;
   position: initial !important;
@@ -94,7 +94,6 @@ nav button:hover {
 }
 
 .ant-card {
-  background-color: #f0f2f5 !important;
   margin: 5px 15px !important;
   padding: 0 5px !important;
 }
