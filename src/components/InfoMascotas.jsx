@@ -12,6 +12,9 @@ import {GiSittingDog} from "react-icons/gi"
 import {GiComb} from "react-icons/gi"
 import {IoIosRibbon} from "react-icons/io"
 import {GiJumpingDog} from "react-icons/gi"
+import Footer from "./Footer";
+
+
 
 const InfoMascotas = () => {
     return (
@@ -35,12 +38,12 @@ const InfoMascotas = () => {
             <Grid container columns={{ xs: 4, sm: 8, md: 12 }}
             >
 
-                <Grid xs={6}>
+                <Grid item xs={6}>
                     <p>Adoptar una mascota es un acto de amor y responsabilidad. Por eso, antes de tomar esta decisión debes preguntarte si deseas asumir este compromiso por más de 12 o 15 años que es el tiempo de vida de una mascota, si tienes el presupuesto suficiente para asumir los gastos de cuidar a una mascota, si tienes tiempo suficiente para dedicarle y si estas dispuesto a cuidar de sus achaques cuando llegue a la tercera edad. Recuerda que una mascota es un ser vivo y merece toda Si tu respuesta a estas preguntas fueron todas positivas, te invitamos a darle click al siguiente botón.
                     </p>
                     <button>¡Quiero Adoptar!</button>
                 </Grid>
-                <Grid xs={6}>
+                <Grid item xs={6}>
                     <h1>aca ba una imagen</h1>
                     <img src="" alt="" />
                 </Grid>
@@ -51,11 +54,11 @@ const InfoMascotas = () => {
             </Grid>
             <Grid container columns={{ xs: 4, sm: 8, md: 12 }}
             >
-                <Grid xs={6}>
+                <Grid item xs={6}>
                     <h1>aca ba una imagen</h1>
                     <img src="" alt="" />
                 </Grid>
-                <Grid xs={6}>
+                <Grid item xs={6}>
                     <p>El apadrinamiento es un apoyo que puedes hacer de forma económica o en especie (comida, guacales, medicamentos, etc) para todos nuestros rescatados o para uno en particular. Esta donación ayuda a la manutención de nuestras mascotas en el transcurso de su proceso de adopción por una familia. Si quieres tener una mascota y no puedes, esta es tu oportunidad ¡Anímate!.
                     </p>
                     <button>¡Quiero Apadrinar!</button>
@@ -67,17 +70,17 @@ const InfoMascotas = () => {
             </Grid>
             <Grid container columns={{ xs: 4, sm: 8, md: 12 }}
             >
-                <Grid xs={6}>
+                <Grid item xs={6}>
                     <p>Puedes donar insumos desde alimentos y medicinas hasta cobijas o tejas para la adecuación del espacio de la fundación. También puedes compartir tiempo con los peluditos y ayudarnos en la fundación o hacer donaciones en dinero.
                     </p>
                     <button>¡Quiero Donar!</button>
                 </Grid>
-                <Grid xs={6}>
+                <Grid item xs={6}>
                     <h1>aca ba una imagen</h1>
                     <img src="" alt="" />
                 </Grid>
             </Grid>
-            <Grid xs={12}
+            <Grid item xs={12}
            
             >
                 <h1>Todo lo que debo saber sobre mi mascota</h1>
@@ -183,6 +186,7 @@ const InfoMascotas = () => {
             </Grid>
 
             <DondeEncontrar/>
+            <Footer/>
         </Grid>
     );
 };

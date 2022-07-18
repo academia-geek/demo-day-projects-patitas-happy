@@ -53,7 +53,7 @@ const NavBars = () => {
                 
               </Nav>
               <Nav.Link className="mx-3 my-auto" >
-                ADOPCIÓN
+                DONAR
               </Nav.Link>
               <Nav className="mx-3 my-auto" >
                 <Link to="/info">INFORMACIÓN</Link>
