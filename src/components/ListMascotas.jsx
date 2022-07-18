@@ -60,7 +60,7 @@ const ListMascotas = () => {
                                     description={
                                         <div style={stylesDivDescriptions}>
                                             <span><img src={pastel} style={stytlesiconos} alt="edad" />{`${item.edad} años`}</span>
-                                            <span><img src={ubicacion} style={stytlesiconos} alt="ubicacion" />{item.ubicacion}</span>
+                                            <span><img src={ubicacion} style={stytlesiconos} alt="ubicacion" />{item.ciudad}</span>
                                         </div>}
                                 />
                                 <Button
