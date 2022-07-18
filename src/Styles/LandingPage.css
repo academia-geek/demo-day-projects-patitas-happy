@@ -93,11 +93,11 @@ nav button:hover {
   background-size: cover;
 }
 
-.ant-card {
+/* .ant-card {
   background-color: #f0f2f5 !important;
   margin: 5px 15px !important;
   padding: 0 5px !important;
-}
+} */
 
 .info {
   width: 100%;

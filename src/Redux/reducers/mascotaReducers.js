@@ -17,6 +17,7 @@ export const mascotasReducers = (state = initialState, action) => {
                     genero: action.payload.genero,
                     vacunas: action.payload.vacunas,
                     ultimaDesparasitacion: action.payload.ultimaDesparasitacion,
+                    ciudad: action.payload.ciudad,
                     ubicacion: action.payload.ubicacion,
                     enfermedad: action.payload.enfermedad,
                     condiciones: action.payload.condiciones,
@@ -38,6 +39,7 @@ export const mascotasReducers = (state = initialState, action) => {
                         originalItem.genero = action.payload.genero;
                         originalItem.vacunas = action.payload.vacunas;
                         originalItem.ultimaDesparasitacion = action.payload.ultimaDesparasitacion;
+                        originalItem.ciudad = action.payload.ciudad;
                         originalItem.ubicacion = action.payload.ubicacion;
                         originalItem.enfermedad = action.payload.enfermedad;
                         originalItem.condiciones = action.payload.condiciones;
