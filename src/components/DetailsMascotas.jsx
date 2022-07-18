@@ -26,7 +26,7 @@ const DetailsMascotas = () => {
         padding='30px'
       >
         <div style={{ width: '540px', height: '580px', background: 'red' }}>
-          <img style={{ width: '100%', height: '100%' }} src={mascota.imagen} alt={mascota.nombre} />
+          <img style={{ width: '100%', height: '100%', objectFit: 'cover' }} src={mascota.imagen} alt={mascota.nombre} />
         </div>
       </Grid>
       <Grid
