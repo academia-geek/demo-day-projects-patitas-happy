@@ -8,13 +8,15 @@ Patitas Happy es un proyecto que consiste en una página web que tiene el objeti
 
 
 ## Este proyecto fue desarrollado con:
-* JavaScript 
-* ReactJs  
-* Ant-Design
+* JavaScript: 
+* ReactJs:  
+* Ant-Design: 
 * MaterialUI
 * React Bootstrap 
-* Firebase 
-* Formik y Yup 
+* Firebase: Provedor de Autenticación con correo y contraseña, Google y Facebook
+* Firestore: Se utilizó para almacenar diferentes formularios y datos.
+* Formik y Yup:
+* Moment: Se utilizó para manejar las fechas
 * Styled Components
 * sweetalert2
 * React Router Dom
