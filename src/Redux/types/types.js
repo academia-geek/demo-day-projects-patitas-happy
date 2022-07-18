@@ -19,6 +19,7 @@ export const typesMascotas = {
     addMascota: '[mascotas] addMascota',
     fillMascotas: '[mascotas] fillMascotas',
     deleteMascota: '[mascotas] deleteMascota',
+    updateMascota: '[mascotas] updateMascota',
     throwError: '[mascotas] throwError'
 }
 

@@ -1,14 +1,20 @@
 import { PlusOutlined } from '@ant-design/icons';
 import { Modal, Upload } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const UploadImage = ({ onUpload }) => {
+const UploadImage = ({ onUpload, initialValue }) => {
     const cloudName = "dspyfujx0";
     const uploadPreset = "demo-day-project";
     const [previewVisible, setPreviewVisible] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
     const [previewTitle, setPreviewTitle] = useState('');
     const [fileList, setFileList] = useState([]);
+
+    useEffect(() => {
+        if(initialValue && Object.keys(initialValue).length) {
+            setFileList([initialValue]);
+        }
+    }, [initialValue]);
 
     const getBase64 = (file) =>
         new Promise((resolve, reject) => {

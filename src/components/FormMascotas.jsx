@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Radio, Input, InputNumber, DatePicker, Select, Button } from 'antd';
 import { vacunasPerro, condiciones, optionsMascotas, vacunasGatos } from '../assets/DatosMascotas';
 import UploadImage from './UploadImage';
-import { addMascotaAsync, errorSync, fillMascotasAsync } from "../Redux/actions/actionsMascota";
+import { addMascotaAsync, errorSync, fillMascotasAsync, updateMascotaAsync } from "../Redux/actions/actionsMascota";
 import { divForm, radioButtons, submitButton, titleForm } from '../Styles/StylesAddMascotas';
 import Swal from 'sweetalert2';
+import moment from 'moment';
 
 const { Option } = Select;
 
-const AddMascotas = () => {
+const FormMascotas = () => {
     const [form] = Form.useForm();
+    const { firestoreId } = useParams();
     const dispatch = useDispatch();
-    const { error } = useSelector(store => store.mascotasStore);
+    const { error, mascotas } = useSelector(store => store.mascotasStore);
     const dateFormat = "MM-DD-YYYY";
     const [url, setUrl] = useState("");
+    const [imageInitialValue, setImageInitialValue] = useState({});
     const [children, setChildren] = useState([]);
     const [showMoreConditions, setShowMoreConditions] = useState(false);
 
@@ -22,12 +26,56 @@ const AddMascotas = () => {
         dispatch(fillMascotasAsync());
     }, [dispatch]);
 
+    useEffect(() => {
+        if (firestoreId) {
+            const mascota = mascotas.find(mascota => mascota.firestoreId === firestoreId);
+            if (mascota) {
+                form.setFieldsValue({
+                    mascota: mascota.tipo,
+                    nombre: mascota.nombre,
+                    edad: mascota.edad,
+                    rescate: moment(mascota.fechaRescate, dateFormat),
+                    nacimiento: moment(mascota.fechaNacimiento, dateFormat),
+                    genero: mascota.genero,
+                    vacunas: mascota.vacunas,
+                    desparasitacion: moment(mascota.ultimaDesparasitacion, dateFormat),
+                    ubicacion: mascota.ubicacion,
+                    enfermedad: mascota.enfermedad,
+                    condiciones: mascota.condiciones,
+                    otrasCondiciones: mascota.otrasCondiciones,
+                });
+
+                if (mascota.tipo === "Gato") {
+                    setChildren(vacunasGatos);
+                }
+
+                if (mascota.tipo === "Perro") {
+                    setChildren(vacunasPerro);
+                }
+
+                setUrl(mascota.imagen);
+                setImageInitialValue({
+                    uid: '-1',
+                    name: mascota.nombre,
+                    status: 'done',
+                    url: mascota.imagen
+                });
+            }
+        } else {
+            form.setFieldsValue({
+                mascota: "Perro"
+            });
+
+            setChildren(vacunasPerro);
+        }
+    }, [form, firestoreId, mascotas]);
+
     const onUpload = (url) => {
         setUrl(url);
     }
 
     const onFinish = (values) => {
-        dispatch(addMascotaAsync({
+        const mascota = {
             tipo: values.mascota,
             nombre: values.nombre,
             edad: values.edad,
@@ -41,7 +89,13 @@ const AddMascotas = () => {
             condiciones: values.condiciones,
             otrasCondiciones: values.otrasCondiciones ? values.otrasCondiciones : "",
             imagen: url,
-        }));
+        }
+
+        if (firestoreId) {
+            dispatch(updateMascotaAsync({ firestoreId, ...mascota }));
+        } else {
+            dispatch(addMascotaAsync(mascota));
+        }
     }
 
     const onChange = (event) => {
@@ -72,16 +126,20 @@ const AddMascotas = () => {
         });
     } else {
         if (error === false) {
+            const message = firestoreId ? "Has actualizado esta mascota!" : "Has agregado una nueva mascota!"
             Swal.fire({
                 icon: "success",
                 title: "Excelente.",
-                text: "Has agregado una nueva mascota!",
+                text: message,
             }).then(() => {
-                form.resetFields();
+                if (!firestoreId) {
+                    form.resetFields();
+                }
                 dispatch(errorSync({ error: undefined }));
             });
         }
     }
+
 
     return (
         <div style={divForm}>
@@ -266,7 +324,7 @@ const AddMascotas = () => {
                         },
                     ] : []}
                 >
-                    <UploadImage onUpload={onUpload} />
+                    <UploadImage onUpload={onUpload} initialValue={imageInitialValue} />
                 </Form.Item>
                 <Form.Item style={submitButton}>
                     <Button type="primary" htmlType="submit" size='large'>
@@ -279,4 +337,4 @@ const AddMascotas = () => {
     )
 }
 
-export default AddMascotas
+export default FormMascotas

@@ -1,5 +1,5 @@
 import { typesMascotas } from "../types/types";
-import { collection, addDoc, query, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { collection, addDoc, query, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { dataBase } from "../../Firebase/firebaseConfig"
 
 const collectionName = "mascotas";
@@ -17,10 +17,54 @@ export const addMascotaAsync = (mascota) => {
     }
 }
 
-export const addMascotaSync = (mascota, error) => {
+export const addMascotaSync = (mascota) => {
     return {
         type: typesMascotas.addMascota,
         payload: {
+            tipo: mascota.tipo,
+            nombre: mascota.nombre,
+            edad: mascota.edad,
+            fechaRescate: mascota.fechaRescate,
+            fechaNacimiento: mascota.fechaNacimiento,
+            genero: mascota.genero,
+            vacunas: mascota.vacunas,
+            ultimaDesparasitacion: mascota.ultimaDesparasitacion,
+            ubicacion: mascota.ubicacion,
+            enfermedad: mascota.enfermedad,
+            condiciones: mascota.condiciones,
+            otrasCondiciones: mascota.otrasCondiciones,
+            imagen: mascota.imagen
+        }
+    }
+}
+
+
+export const updateMascotaAsync = (mascota) => {
+    return async (dispatch) => {
+        try {
+            const docRef = doc(dataBase, collectionName, mascota.firestoreId);
+            updateDoc(docRef, mascota)
+              .then(() => {
+                dispatch(updateMascotaSync({ firestoreId: docRef.id, ...mascota }));
+                dispatch(errorSync({ error: false }));
+              })
+              .catch(error => {
+                console.log(error);
+                dispatch(errorSync({ error: true }));
+              });
+           
+        } catch (error) {
+            console.log(error);
+            dispatch(errorSync({ error: true }));
+        }
+    }
+}
+
+export const updateMascotaSync = (mascota) => {
+    return {
+        type: typesMascotas.updateMascota,
+        payload: {
+            firestoreId: mascota.firestoreId,
             tipo: mascota.tipo,
             nombre: mascota.nombre,
             edad: mascota.edad,

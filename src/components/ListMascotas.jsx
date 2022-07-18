@@ -34,7 +34,7 @@ const ListMascotas = () => {
                                 }}
                                 cover={<img alt="example" src={item.imagen} style={stylesImgesCards} />}
                                 actions={!admin ? []: [
-                                    <EditOutlined key={'edit'} onClick={() => { }} />,
+                                    <EditOutlined key={'edit'} onClick={() => navigate(`/mascotas/${item.firestoreId}/edit`)} />,
                                     <DeleteOutlined
                                         onClick={() => {
                                             Swal.fire({
@@ -66,7 +66,7 @@ const ListMascotas = () => {
                                 <Button
                                     type="primary"
                                     style={stylesBtnCards}
-                                    onClick={() => navigate(`/detailsMascotas/${item.firestoreId}`)}
+                                    onClick={() => navigate(`/mascotas/${item.firestoreId}`)}
                                     danger>Conóceme!</Button>
                             </Card>
                         ))
@@ -80,7 +80,7 @@ const ListMascotas = () => {
             {admin && (
                 <Affix offsetBottom={50} onChange={affixed => console.log(affixed)}>
                     <Tooltip title="Agrega nueva mascota">
-                        <Button shape="circle" icon={<PlusCircleOutlined />} size="large" style={{ border: 'none', boxShadow: 'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px', marginLeft: '55px' }} onClick={() => navigate("/addMascotas")} />
+                        <Button shape="circle" icon={<PlusCircleOutlined />} size="large" style={{ border: 'none', boxShadow: 'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px', marginLeft: '55px' }} onClick={() => navigate("/mascotas/add")} />
                     </Tooltip>
                 </Affix>
             )}

@@ -24,6 +24,30 @@ export const mascotasReducers = (state = initialState, action) => {
                     imagen: action.payload.imagen,
                 }]
             }
+        case typesMascotas.updateMascota:
+            return {
+                ...state,
+                mascotas: state.mascotas.map(mascota => {
+                    const originalItem = mascota;
+                    if (mascota.firestoreId === action.payload.firestoreId) {
+                        originalItem.tipo = action.payload.tipo;
+                        originalItem.nombre = action.payload.nombre;
+                        originalItem.edad = action.payload.edad;
+                        originalItem.fechaRescate = action.payload.fechaRescate;
+                        originalItem.fechaNacimiento = action.payload.fechaNacimiento;
+                        originalItem.genero = action.payload.genero;
+                        originalItem.vacunas = action.payload.vacunas;
+                        originalItem.ultimaDesparasitacion = action.payload.ultimaDesparasitacion;
+                        originalItem.ubicacion = action.payload.ubicacion;
+                        originalItem.enfermedad = action.payload.enfermedad;
+                        originalItem.condiciones = action.payload.condiciones;
+                        originalItem.otrasCondiciones = action.payload.otrasCondiciones;
+                        originalItem.imagen = action.payload.imagen;
+                    }
+
+                    return originalItem
+                })
+            }
         case typesMascotas.fillMascotas:
             return {
                 mascotas: action.payload.mascotas

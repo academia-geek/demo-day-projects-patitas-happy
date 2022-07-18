@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import AddMascotas from '../components/AddMascotas';
+import FormMascotas from '../components/FormMascotas';
 import DetailsMascotas from '../components/DetailsMascotas';
 import Home from '../components/Home';
 import ListMascotas from '../components/ListMascotas';
@@ -14,8 +14,9 @@ const DashboardRoutes = () => {
             <Routes>               
                 <Route path="/home" element={<Home />} />
                 <Route path="/mascotas" element={<ListMascotas/>} />
-                <Route path="/addMascotas" element={<AddMascotas />} />
-                <Route path="/detailsMascotas/:firestoreId" element={<DetailsMascotas />} />
+                <Route path="/mascotas/add" element={<FormMascotas />} />
+                <Route path="/mascotas/:firestoreId/edit" element={<FormMascotas />} />
+                <Route path="/mascotas/:firestoreId" element={<DetailsMascotas />} />
                 <Route path="/contactanos" element={<Contactanos />} />
                 <Route path="/profile" element={<Profile />} />
             </Routes>
