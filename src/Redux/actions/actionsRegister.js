@@ -5,25 +5,30 @@ import { authentication, dataBase } from "../../Firebase/firebaseConfig"
 import Swal from "sweetalert2";
 
 
-export const editUserAsync = (displayName, email, phoneNumber) => {
+export const editUserAsync = (displayName, email, photoURL) => {
     return (dispatch) => {
         updateProfile(authentication.currentUser, {
-            displayName: displayName, email: email, phoneNumber: phoneNumber
 
+            displayName: displayName, photoURL: photoURL, email: email, 
+            
         })
-            .then(() => {
-                dispatch(editUserSync(displayName, email, phoneNumber))
-                console.log('yeeeh, perfil actualizado')
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Congratulations!',
-                    text: 'Se ha actualizado correctamente la información'
-                })
+       
+        
+        .then(() => {
+            dispatch(editUserSync(displayName,photoURL, email ))
+            console.log('yeeeh, perfil actualizado')
+            console.log(displayName,photoURL, email)
+            Swal.fire({
+                icon: 'success',
+                title: 'Congratulations!',
+                text: 'Se ha actualizado correctamente la información'
+            })
+            
+            
+          }).catch((error) => {
+            console.log(error, 'perfil no fue actualizado')
+          });
 
-                window.location.reload(true);
-            }).catch((error) => {
-                console.log(error, 'perfil no fue actualizado')
-            });
     }
 
 }
@@ -34,34 +39,6 @@ export const editUserSync = (displayName, email, phoneNumber, photoURL) => {
         payload: { displayName, email, phoneNumber, photoURL }
     }
 }
-
-//----------listar usuario-----------------//
-// export const listUserAsync = () => {
-//     return async (dispatch) => {
-//         const user = authentication.currentUser;
-//         // const collectionListar = await getDocs(collection(dataBase, "users"))
-//         // console.log(collectionListar)
-//         const array1 = await [{ displayName: user.displayName, email: user.email, phoneNumber: user.photoURL }]
-
-//         const listUser = []
-//         array1.forEach(listar => {
-//             listUser.push(
-//                 {
-//                     ...listar
-//                 }
-//             )
-//             console.log(listUser)
-//         })
-//         dispatch(listUserSync(listUser))
-//     }
-// }
-
-// export const listUserSync = (user) => {
-//     return {
-//         type: typesUser.list,
-//         payload: user
-//     }
-// }
 
 //-------------registrar usuario---------------//
 export const registerUserAsync = (fullname, email, fecha, password, phoneNumber) => {

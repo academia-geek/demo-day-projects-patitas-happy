@@ -48,13 +48,18 @@ const NavBars = () => {
               <Nav className="mx-3 my-auto">
                 <Link to="/home">HOME</Link>
               </Nav>
-              <Nav.Link className="mx-3 my-auto" href="/mascotas">
-                MASCOTAS
+              <Nav className="mx-3 my-auto" >
+                <Link to="/mascotas">MASCOTAS</Link>
+                
+              </Nav>
+              <Nav.Link className="mx-3 my-auto" >
+                DONAR
               </Nav.Link>
-              <Nav.Link className="mx-3 my-auto" href="#link">
-                ADOPCIÓN
-              </Nav.Link>
-              <NavDropdown
+              <Nav className="mx-3 my-auto" >
+                <Link to="/info">INFORMACIÓN</Link>
+                
+              </Nav>
+              {/* <NavDropdown
                 className="mx-3 my-auto"
                 title="INFORMACIÓN"
                 id="basic-nav-dropdown"
@@ -63,7 +68,7 @@ const NavBars = () => {
                   DONACIONES
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">ALIADOS</NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
               <Nav className="mx-3 my-auto">
                 <Link to="/contactanos">CONTACTANOS</Link>
               </Nav>

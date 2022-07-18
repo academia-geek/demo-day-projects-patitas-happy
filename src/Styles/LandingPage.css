@@ -6,7 +6,7 @@
 }
 
 nav {
-  background-color: #f0f2f5 !important;
+  background-color: #ffffff !important;
   margin: 5% 0;
   box-shadow: none !important;
   position: initial !important;
@@ -92,12 +92,6 @@ nav button:hover {
   background-image: url(../assets/resena3.jpg);
   background-size: cover;
 }
-
-/* .ant-card {
-  background-color: #f0f2f5 !important;
-  margin: 5px 15px !important;
-  padding: 0 5px !important;
-} */
 
 .info {
   width: 100%;
