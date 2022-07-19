@@ -28,3 +28,8 @@ export const typesUser = {
     edit: '[user] edit',
     delete: '[user] delete'
 }
+
+export const typesRequest ={
+  addRequest: '[Request] addRequest',
+  throwErrorRequest: '[Request] throwErrorRequest'
+}
