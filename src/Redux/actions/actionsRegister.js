@@ -6,14 +6,12 @@ import Swal from "sweetalert2";
 
 
 export const editUserAsync = (displayName, email, photoURL) => {
-    return (dispatch) => {
-        updateProfile(authentication.currentUser, {
-
+    return async(dispatch) => {
+        await updateProfile(authentication.currentUser, {
             displayName: displayName, photoURL: photoURL, email: email, 
             
         })
        
-        
         .then(() => {
             dispatch(editUserSync(displayName,photoURL, email ))
             console.log('yeeeh, perfil actualizado')
