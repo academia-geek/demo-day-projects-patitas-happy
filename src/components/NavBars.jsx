@@ -22,7 +22,7 @@ const NavBars = () => {
     setDatos(us);
   };
 
-  const ver = e => {};
+  const ver = e => { };
 
   return (
     <div>
@@ -50,14 +50,14 @@ const NavBars = () => {
               </Nav>
               <Nav className="mx-3 my-auto" >
                 <Link to="/mascotas">MASCOTAS</Link>
-                
+
               </Nav>
               <Nav.Link className="mx-3 my-auto" >
                 DONAR
               </Nav.Link>
               <Nav className="mx-3 my-auto" >
                 <Link to="/info">INFORMACIÓN</Link>
-                
+
               </Nav>
               {/* <NavDropdown
                 className="mx-3 my-auto"
@@ -69,6 +69,9 @@ const NavBars = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">ALIADOS</NavDropdown.Item>
               </NavDropdown> */}
+              <Nav className="mx-3 my-auto">
+                <Link to="/solicitudes">SOLICITUDES</Link>
+              </Nav>
               <Nav className="mx-3 my-auto">
                 <Link to="/contactanos">CONTACTANOS</Link>
               </Nav>

@@ -8,6 +8,7 @@ import Contactanos from "../components/Contactanos";
 import NavBars from '../components/NavBars';
 import Profile from '../components/Profile';
 import InfoMascotas from '../components/InfoMascotas';
+import ListRequest from '../components/ListRequest';
 
 const DashboardRoutes = () => {
     return (
@@ -21,6 +22,7 @@ const DashboardRoutes = () => {
                 <Route path="/contactanos" element={<Contactanos />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/info" element={<InfoMascotas/>}/>
+                <Route path="/solicitudes" element={<ListRequest/>}/>
             </Routes>
             
         </div>

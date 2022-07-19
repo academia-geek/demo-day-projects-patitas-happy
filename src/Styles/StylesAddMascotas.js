@@ -34,6 +34,7 @@ export const divCards = {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-evenly',
+    gap: '20px',
     margin: '10px',
 };
 

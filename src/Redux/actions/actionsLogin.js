@@ -15,9 +15,9 @@ export const actionLoginAsync = (email, password) => {
         const user = await signInWithEmailAndPassword(authentication, email, password);
         const userData = await getUserFromDatabase(email);
         const {photoURL, displayName, accessToken } = user.user;
-        const { id, phoneNumber, admin, fecha } = userData;
+        const { id, phoneNumber, fullname, admin, fecha } = userData;
 
-        dispatch(actionLoginSync({ id, email, password, displayName, accessToken, phoneNumber, admin, fecha, error: false, photoURL }));
+        dispatch(actionLoginSync({ id, email, password, displayName, accessToken, phoneNumber, fullname, admin, fecha, error: false, photoURL }));
     }
 }
 
@@ -30,10 +30,10 @@ export const actionAuthenticatedSync = (item) => {
 }
 
 
-export const actionLoginSync = ({ id, email, password, displayName, accessToken,  phoneNumber, admin, fecha, error, photoURL }) => {
+export const actionLoginSync = ({ id, email, password, displayName, accessToken,  phoneNumber, fullname, admin, fecha, error, photoURL }) => {
     return {
         type: typesLogin.login,
-        payload: { id, email, password, displayName, accessToken,  phoneNumber, admin, fecha, error, photoURL }
+        payload: { id, email, password, displayName, accessToken,  phoneNumber, fullname, admin, fecha, error, photoURL }
     }
 }
 
@@ -125,18 +125,18 @@ export const actionLoginGoogleAndFacebookSync = ({ id, email, displayName, acces
 export const actionUserDataLoadAsync = (email) => {
     return (dispatch) => {
         getUserFromDatabase(email).then(dataUser => {
-            const { id, email, password, displayName, accessToken, photoURL, phoneNumber, admin } = dataUser;
+            const { id, email, password, fullName, accessToken, photoURL, phoneNumber, admin } = dataUser;
 
-            dispatch(actionUserDataLoadSync({ id, email, password, displayName, accessToken, photoURL, phoneNumber, admin }))
+            dispatch(actionUserDataLoadSync({ id, email, password, fullName, accessToken, photoURL, phoneNumber, admin }))
         }).catch(error => {
             console.log(error);
         });
     }
 };
 
-export const actionUserDataLoadSync = ({ id, email, password, displayName, accessToken, photoURL, phoneNumber, admin }) => {
+export const actionUserDataLoadSync = ({ id, email, password, fullName, accessToken, photoURL, phoneNumber, admin }) => {
     return {
         type: typesLogin.load,
-        payload: { id, email, password, displayName, accessToken, photoURL, phoneNumber, admin }
+        payload: { id, email, password, fullName, accessToken, photoURL, phoneNumber, admin }
     }
 };
