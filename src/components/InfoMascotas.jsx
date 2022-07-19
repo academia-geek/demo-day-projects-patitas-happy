@@ -1,105 +1,94 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import dog from '../img/info/image.png'
-import { DivN, GridInfo, H1 } from '../Styles/StyleInfo';
+import { ButtonNegro, DivN, GridInfo, H1, Paff, TitleC } from '../Styles/StyleInfo';
 import { Accordion } from 'react-bootstrap';
 import DondeEncontrar from './DondeEncontrar';
 import { FaDog } from "react-icons/fa";
-import {FaCalendarAlt} from "react-icons/fa"
-import {GiDogBowl} from "react-icons/gi"
-import {MdHealthAndSafety} from "react-icons/md";
-import {GiSittingDog} from "react-icons/gi"
-import {GiComb} from "react-icons/gi"
-import {IoIosRibbon} from "react-icons/io"
-import {GiJumpingDog} from "react-icons/gi"
+import { FaCalendarAlt } from "react-icons/fa"
+import { GiDogBowl } from "react-icons/gi"
+import { MdHealthAndSafety } from "react-icons/md";
+import { GiSittingDog } from "react-icons/gi"
+import { GiComb } from "react-icons/gi"
+import { IoIosRibbon } from "react-icons/io"
+import { GiJumpingDog } from "react-icons/gi"
 import Footer from "./Footer";
+import { Acordion } from '../Styles/StyleHome';
 
 
 
 const InfoMascotas = () => {
     return (
         <Grid container columns={{ xs: 4, sm: 8, md: 12 }}
-            justifyContent="center"
-        >
-
-            <GridInfo
-            
-            >
-
+            justifyContent="center">
+            <GridInfo>
                 <DivN>
                     <H1 >Todo lo que necesitas saber...</H1>
                 </DivN>
-                {/* <img style={{width:'100%', height:'600px'}} src={dog} /> */}
-
             </GridInfo>
-            <Grid>
-                <h1>¿Como adoptar una mascota?</h1>
-            </Grid>
-            <Grid container columns={{ xs: 4, sm: 8, md: 12 }}
-            >
 
+            <Grid margin='50px 0'>
+                <TitleC>¿Como adoptar una mascota?</TitleC>
+            </Grid>
+            <Grid container columns={{ xs: 4, sm: 8, md: 12 }} justifyContent='center' textAlign='center'>
                 <Grid item xs={6}>
-                    <p>Adoptar una mascota es un acto de amor y responsabilidad. Por eso, antes de tomar esta decisión debes preguntarte si deseas asumir este compromiso por más de 12 o 15 años que es el tiempo de vida de una mascota, si tienes el presupuesto suficiente para asumir los gastos de cuidar a una mascota, si tienes tiempo suficiente para dedicarle y si estas dispuesto a cuidar de sus achaques cuando llegue a la tercera edad. Recuerda que una mascota es un ser vivo y merece toda Si tu respuesta a estas preguntas fueron todas positivas, te invitamos a darle click al siguiente botón.
-                    </p>
-                    <button>¡Quiero Adoptar!</button>
+                    <Paff>Adoptar una mascota es un acto de amor y responsabilidad. Por eso, antes de tomar esta decisión debes preguntarte si deseas asumir este compromiso por más de 12 o 15 años que es el tiempo de vida de una mascota, si tienes el presupuesto suficiente para asumir los gastos de cuidar a una mascota, si tienes tiempo suficiente para dedicarle y si estas dispuesto a cuidar de sus achaques cuando llegue a la tercera edad. Recuerda que una mascota es un ser vivo y merece toda Si tu respuesta a estas preguntas fueron todas positivas, te invitamos a darle click al siguiente botón.
+                    </Paff>
+                    <ButtonNegro>¡Quiero Adoptar!</ButtonNegro>
                 </Grid>
-                <Grid item xs={6}>
-                    <h1>aca ba una imagen</h1>
-                    <img src="" alt="" />
+                <Grid item xs={5} textAlign='center'>
+                    <img src="https://res.cloudinary.com/kellycamayo/image/upload/v1658183336/imagenesDemoday/image_em0g68.png" alt="" />
                 </Grid>
             </Grid>
 
-            <Grid>
-                <h1>¿Como apadrinar una mascota?</h1>
+            <Grid margin='50px 0'>
+                <TitleC>¿Como apadrinar una mascota?</TitleC>
             </Grid>
-            <Grid container columns={{ xs: 4, sm: 8, md: 12 }}
-            >
-                <Grid item xs={6}>
-                    <h1>aca ba una imagen</h1>
-                    <img src="" alt="" />
+            <Grid container columns={{ xs: 4, sm: 8, md: 12 }} justifyContent='center' textAlign='center'>
+                <Grid item xs={6} paddingLeft='20px'>
+                    <img width={600} src="https://res.cloudinary.com/kellycamayo/image/upload/v1658240174/imagenesDemoday/image_1_m9ekei.png" alt="" />
                 </Grid>
                 <Grid item xs={6}>
-                    <p>El apadrinamiento es un apoyo que puedes hacer de forma económica o en especie (comida, guacales, medicamentos, etc) para todos nuestros rescatados o para uno en particular. Esta donación ayuda a la manutención de nuestras mascotas en el transcurso de su proceso de adopción por una familia. Si quieres tener una mascota y no puedes, esta es tu oportunidad ¡Anímate!.
-                    </p>
-                    <button>¡Quiero Apadrinar!</button>
+                    <Paff >El apadrinamiento es un apoyo que puedes hacer de forma económica o en especie (comida, guacales, medicamentos, etc) para todos nuestros rescatados o para uno en particular. Esta donación ayuda a la manutención de nuestras mascotas en el transcurso de su proceso de adopción por una familia. Si quieres tener una mascota y no puedes, esta es tu oportunidad ¡Anímate!.
+                    </Paff>
+                    <ButtonNegro>¡Quiero Apadrinar!</ButtonNegro>
                 </Grid>
             </Grid>
 
-            <Grid>
-                <h1>¿Como realizar una donación?</h1>
+            <Grid margin='50px 0'>
+                <TitleC>¿Como realizar una donación?</TitleC>
             </Grid>
-            <Grid container columns={{ xs: 4, sm: 8, md: 12 }}
-            >
-                <Grid item xs={6}>
-                    <p>Puedes donar insumos desde alimentos y medicinas hasta cobijas o tejas para la adecuación del espacio de la fundación. También puedes compartir tiempo con los peluditos y ayudarnos en la fundación o hacer donaciones en dinero.
-                    </p>
-                    <button>¡Quiero Donar!</button>
+            <Grid container columns={{ xs: 4, sm: 8, md: 12 }} justifyContent='center' textAlign='center'>
+                <Grid item xs={6} >
+                    <Paff>Puedes donar insumos desde alimentos y medicinas hasta cobijas o tejas para la adecuación del espacio de la fundación. También puedes compartir tiempo con los peluditos y ayudarnos en la fundación o hacer donaciones en dinero.
+                    </Paff>
+                    <ButtonNegro>¡Quiero Donar!</ButtonNegro>
                 </Grid>
-                <Grid item xs={6}>
-                    <h1>aca ba una imagen</h1>
-                    <img src="" alt="" />
+                <Grid item xs={5} textAlign='center' >
+                    <img src="https://res.cloudinary.com/kellycamayo/image/upload/v1658242356/imagenesDemoday/image_2_dhiflt.png" alt="" />
                 </Grid>
             </Grid>
-            <Grid item xs={12}
-           
-            >
-                <h1>Todo lo que debo saber sobre mi mascota</h1>
+            <Grid item xs={12} textAlign='center' justifyContent='center'
 
-                <Accordion className='w-75 m-5 justify-content-center'>
+            >
+                <TitleC style={{ margin: '50px 0' }}>Todo lo que debo saber sobre mi mascota</TitleC>
+                <Grid >
+                    <Acordion className='w-50' style={{ margin: '0 auto' }}>
                         <Accordion.Item eventKey="0">
-                            <Accordion.Header> <FaDog style={{marginRight:'10px'}}/> Preparandote para la llegada de tu mascota</Accordion.Header>
-                            <Accordion.Body>
-                                La visita al veterinario es fundamental. Este especialista no solo te ayudará a controlar la salud de tu mascota, sino que puede responderte todas las dudas que tengas. Así, si acabas de adoptar a una mascota, encontrarás una atención apropiada cada vez que visites a este experto en animales.
+                            <Accordion.Header> <FaDog style={{ marginRight: '10px' }} /> Preparandote para la llegada de tu mascota</Accordion.Header>
+                            <Accordion.Body style={{textAlign:'justify'}}>
+                                La llegada de un perrito a casa es un importante acontecimiento que marcará una serie de cambios en el hogar. Ahora deberás compartirla y adecuarla a tu nuevo mejor amigo. 
+                                Collares y correas: Una vez que tu perrito entre a tu vida, una de las principales actividades que deberás hacer con él es pasear. Los collares y correas son de gran ayuda para hacerlo, pues así aprenderán a caminar contigo sin separarse demasiado.
+                                Debes definir el espacio donde tu mascota dormirá: Selecciona un lugar cálido donde pueda estar cómodo y relajado. Después comienza a acondicionar el lugar. Cómprale una cama para perro donde pueda recostarse. 
+                                Comedero y bebedero: Tu perrito llegará hambriento, así que prepárate con algunos platos y bebederos donde pueda comer. Procura que estén hechos de acero inoxidable o cerámica, pues los de plástico pueden terminar convirtiéndose en un juguete para morder.
+                                Necesidades de tu mascota: Es muy importante que tu perro sepa desde su llegada el espacio en el que podrá hacer sus necesidades. Regularmente tu mascota necesitará ir al baño en momentos determinados como después de comer, antes de dormir o al levantarse. 
+                                Juguetes: Algunas mascotas son muy juguetones, por lo que no hay mejor forma de recibirlo en su nuevo hogar que con sus propios juguetes. 
+                                Por ultimo ¡juega con él! Esta actividad es parte fundamental para fomentar en él una buena actitud.
 
-                                Muchas mascotas requieren una pronta vacunación o desparasitación en los primeros meses de vida. Podrás llevar al día estas atenciones gracias a una cartilla que suele entregarte el veterinario.
 
-                                Las vacunas garantizan una buena defensa en el organismo de tu mejor amigo, protegiéndole de posibles infecciones que podrían ser fatales si no se protege. En este sentido, es necesario que lleves una correcta vacunación.
-
-                                Existen determinadas razas, como algunas de perro, que requieren cuidados especiales, ya que nacen con problemas congénitos. Infórmate antes de adoptar y mantén una estrecha relación con el veterinario para garantizar el bienestar animal de tu mascota.
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">
-                            <Accordion.Header> <FaCalendarAlt style={{marginRight:'10px'}} /> Primeras semanas con tu mascota</Accordion.Header>
+                            <Accordion.Header> <FaCalendarAlt style={{ marginRight: '10px' }} /> Primeras semanas con tu mascota</Accordion.Header>
                             <Accordion.Body>
                                 Este apartado está dedicado exclusivamente a aquellos animales que tienen pelaje. Si tu mascota no tiene pelo, tampoco debes descuidar su piel, ya que algunas especies requieren de una atención especial.
 
@@ -111,7 +100,7 @@ const InfoMascotas = () => {
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="2">
-                            <Accordion.Header> <GiDogBowl style={{marginRight:'10px'}}/> Alimentacion de tu mascota</Accordion.Header>
+                            <Accordion.Header> <GiDogBowl style={{ marginRight: '10px' }} /> Alimentacion de tu mascota</Accordion.Header>
                             <Accordion.Body>
                                 Saca a pasear a tu mascota. El ejercicio físico es fundamental para su bienestar animal. Con él consigue aminorar su estrés, que puede incrementarse ante la falta de movimiento. Una prueba de esto es ese instinto destructor que algunas mascotas suelen mostrar en casa. Para evitarnos un disgusto, debemos comprender esta necesidad de ejercicio.
 
@@ -123,7 +112,7 @@ const InfoMascotas = () => {
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="3">
-                            <Accordion.Header> <MdHealthAndSafety style={{marginRight:'10px'}}/> Salud de tu mascota</Accordion.Header>
+                            <Accordion.Header> <MdHealthAndSafety style={{ marginRight: '10px' }} /> Salud de tu mascota</Accordion.Header>
                             <Accordion.Body>
                                 En cada etapa de su vida cada mascota necesita una dieta específica. Los cachorros, por ejemplo, necesitan un alimento alto en grasas, aunque tomas pequeñas, que pueden variar entre 1 a 2 diarias.
 
@@ -135,7 +124,7 @@ const InfoMascotas = () => {
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="4">
-                            <Accordion.Header><GiSittingDog/><GiSittingDog style={{marginRight:'10px'}}/>Socialización</Accordion.Header>
+                            <Accordion.Header><GiSittingDog /><GiSittingDog style={{ marginRight: '10px' }} />Socialización</Accordion.Header>
                             <Accordion.Body>
                                 Es cierto que puede ser complicado mostrar cariño a tus peces. En el caso de los perros, es fundamental, ya que pueden percibir tu estado de ánimo, repercutiendo sobre ellos directamente.
 
@@ -147,7 +136,7 @@ const InfoMascotas = () => {
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="5">
-                            <Accordion.Header> <GiJumpingDog style={{marginRight:'10px'}}/> Entrenamientos y juegos</Accordion.Header>
+                            <Accordion.Header> <GiJumpingDog style={{ marginRight: '10px' }} /> Entrenamientos y juegos</Accordion.Header>
                             <Accordion.Body>
                                 Es cierto que puede ser complicado mostrar cariño a tus peces. En el caso de los perros, es fundamental, ya que pueden percibir tu estado de ánimo, repercutiendo sobre ellos directamente.
 
@@ -159,7 +148,7 @@ const InfoMascotas = () => {
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="6">
-                            <Accordion.Header><GiComb style={{marginRight:'10px'}}/> Aseo de tu mascota</Accordion.Header>
+                            <Accordion.Header><GiComb style={{ marginRight: '10px' }} /> Aseo de tu mascota</Accordion.Header>
                             <Accordion.Body>
                                 Es cierto que puede ser complicado mostrar cariño a tus peces. En el caso de los perros, es fundamental, ya que pueden percibir tu estado de ánimo, repercutiendo sobre ellos directamente.
 
@@ -171,7 +160,7 @@ const InfoMascotas = () => {
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="7">
-                            <Accordion.Header> <IoIosRibbon style={{marginRight:'10px'}}/> Conducta de tu mascota</Accordion.Header>
+                            <Accordion.Header> <IoIosRibbon style={{ marginRight: '10px' }} /> Conducta de tu mascota</Accordion.Header>
                             <Accordion.Body>
                                 Es cierto que puede ser complicado mostrar cariño a tus peces. En el caso de los perros, es fundamental, ya que pueden percibir tu estado de ánimo, repercutiendo sobre ellos directamente.
 
@@ -182,11 +171,12 @@ const InfoMascotas = () => {
                                 Sigue estos consejos para el bienestar animal de tu mascota. No descuides su salud y juega con ellos para que sean felices. Una dieta equilibrada y el ejercicio diario harán que tenga una buena vida, pero no olvides darle tu amor.
                             </Accordion.Body>
                         </Accordion.Item>
-                    </Accordion>
+                    </Acordion>
+                </Grid>
             </Grid>
 
-            <DondeEncontrar/>
-            <Footer/>
+            <DondeEncontrar />
+            <Footer />
         </Grid>
     );
 };
