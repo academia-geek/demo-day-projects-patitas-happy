@@ -13,7 +13,7 @@ const DondeEncontrar = () => {
         >
 
             <Grid paddingBottom='50px' textAlign='center'>
-                <TitleC>Donde encontrar...</TitleC>
+                <TitleC>Donde Encontrar...</TitleC>
             </Grid>
             <Grid container columns={{ xs: 4, sm: 8, md: 12 }}
             >

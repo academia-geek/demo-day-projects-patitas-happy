@@ -28,12 +28,12 @@ const DetailsMascotas = () => {
   const others = mascota.condiciones ? mascota.condiciones.some(condition => condition === "otros") : null;
   const condiciones = others ? mascota.condiciones.filter(c => c !== "otros") : mascota.condiciones;
 
+
   const handleAdopcion = () => {
     navigate('/adopcion')
   }
   const handleApadrinar = () => {
     navigate('/apadrinar')
-
 
 
   const onFinish = (fieldsValue, idMascota, idUser) => {
