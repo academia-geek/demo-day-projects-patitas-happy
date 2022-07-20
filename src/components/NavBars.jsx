@@ -20,8 +20,6 @@ const NavBars = () => {
 
   
 
-
-
   return (
     <div>
       <Navbar className="m-0" expand="lg">
@@ -73,6 +71,7 @@ const NavBars = () => {
                 >
                 CONTACTANOS
               </NavLink>
+
 
               {
                 // console.log(user.photoURL)

@@ -1,26 +1,75 @@
-import React from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react'
+import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import { Button, ButtonGroup, Grid } from '@mui/material'
 import { Tag } from 'antd';
 import Footer from "./Footer";
-import { Item, TitleAgendarV, TitleDog, TitleHyF } from '../Styles/StylesDetalle';
+import { Item, TitleDog } from '../Styles/StylesDetalle';
+import SchedulingForm from './SchedulingForm';
+import { addRequestAsync, errorSync } from '../Redux/actions/actionsRequest';
+import Swal from 'sweetalert2';
+import BtnFloat from './BtnFloat';
+import { ClockCircleOutlined } from '@ant-design/icons';
 
 
 const DetailsMascotas = () => {
+
   const { firestoreId } = useParams();
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { mascotas } = useSelector(store => store.mascotasStore);
+  const { id } = useSelector(store => store.loginStore);
+  const { error } = useSelector(store => store.solicitudesStore);
+
+  const [showTimeForm, setShowTimeForm] = useState(true);
 
   const mascota = mascotas.find(m => m.firestoreId === firestoreId);
-  const others = mascota.condiciones.some(condition => condition === "otros");
+  const others = mascota.condiciones ? mascota.condiciones.some(condition => condition === "otros") : null;
   const condiciones = others ? mascota.condiciones.filter(c => c !== "otros") : mascota.condiciones;
+
 
   const handleAdopcion = () => {
     navigate('/adopcion')
   }
   const handleApadrinar = () => {
     navigate('/apadrinar')
+
+
+  const onFinish = (fieldsValue, idMascota, idUser) => {
+    // Should format date value before submit.
+
+    const solicitud = {
+      idUser: idUser,
+      idMascota: idMascota,
+      fecha: fieldsValue['fecha'].format('YYYY-MM-DD'),
+      hora: fieldsValue['hora'].format('HH:mm:ss'),
+      tipoSolicitud: 'visita',
+      status: 'pendienteRevision'
+    };
+    console.log('Received values of form: ', solicitud);
+    dispatch(addRequestAsync(solicitud));
+
+  };
+
+  if (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Por favor verifique los datos!",
+    }).then(() => {
+      dispatch(errorSync({ error: undefined }));
+    });
+  } else {
+    if (error === false) {
+      Swal.fire({
+        icon: "success",
+        title: "Excelente.",
+        text: "¡Has agendado una visita exitosamente!",
+      }).then(() => {
+        dispatch(errorSync({ error: undefined }));
+        setShowTimeForm(false);
+      });
+    }
+
   }
 
   return (
@@ -47,16 +96,16 @@ const DetailsMascotas = () => {
                 <Item>Edad:</Item>
                 <Item>Enfermedades:</Item>
                 {
-                  mascota.fechaNacimiento ? (
-                  <Item>Fecha de nacimiento:</Item>
+                  mascota.fechaNacimiento && mascota.fechaNacimiento !== "Invalid date" ? (
+                    <Item>Fecha de nacimiento:</Item>
                   ) : ""
                 }
                 {
-                  mascota.ultimaDesparasitacion ? (
-                  <Item>Última desparasitación:</Item>
+                  mascota.ultimaDesparasitacion && mascota.ultimaDesparasitacion !== "Invalid date" ? (
+                    <Item>Última desparasitación:</Item>
                   ) : ""
                 }
-                
+
                 <Item>Ciudad:</Item>
                 <Item>Dirección:</Item>
                 <Item>Vacunas</Item>
@@ -77,15 +126,15 @@ const DetailsMascotas = () => {
                 <Item>{mascota.edad} años</Item>
                 <Item>{mascota.enfermedad}</Item>
                 {
-                  mascota.fechaNacimiento ? (
-                  <Item>{mascota.fechaNacimiento}</Item>
+                  mascota.fechaNacimiento && mascota.fechaNacimiento !== "Invalid date" ? (
+                    <Item>{mascota.fechaNacimiento}</Item>
                   ) : ""
                 }
                 {
-                  mascota.ultimaDesparasitacion ? (
-                  <Item>{mascota.ultimaDesparasitacion}</Item>
+                  mascota.ultimaDesparasitacion && mascota.ultimaDesparasitacion !== "Invalid date" ? (
+                    <Item>{mascota.ultimaDesparasitacion}</Item>
                   ) : ""
-                }                
+                }
                 <Item>{mascota.ciudad}</Item>
                 <Item>{mascota.ubicacion}</Item>
                 <Item>{mascota.vacunas.map((item, index) => (
@@ -123,11 +172,24 @@ const DetailsMascotas = () => {
             </ButtonGroup>
           </div>
           <div>
-            <TitleAgendarV>Agendar Visita</TitleAgendarV>
+            {/* <TitleAgendarV>Agendar Visita</TitleAgendarV>
             <TitleHyF>Hora</TitleHyF>
             <input type="text" />
             <TitleHyF>Fecha</TitleHyF>
-            <input type="text" />
+            <input type="text" /> */}
+            {
+              showTimeForm ? (<SchedulingForm onFinish={(fieldsValue) => {
+                onFinish(fieldsValue, firestoreId, id)
+              }} />) : (<BtnFloat 
+                screenHeight= {200}
+                iconBtn = {<ClockCircleOutlined />}
+                onClick={()=>{}}
+                titletooltip= 'Visita agendada'
+                btnStyle={{borderColor: '#1ed0d0', color: '#25a2a2', backgroundColor: '#ceffff'}}
+                affixStyle={{marginLeft:'100'}}
+                />)
+            }
+
           </div>
         </Grid>
         <Footer />
