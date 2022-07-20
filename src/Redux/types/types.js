@@ -36,3 +36,7 @@ export const typesAdopcion = {
 export const typesApadrinar = {
   add : '[apadrinar] add'
 }
+export const typesRequest ={
+  addRequest: '[Request] addRequest',
+  throwErrorRequest: '[Request] throwErrorRequest'
+}

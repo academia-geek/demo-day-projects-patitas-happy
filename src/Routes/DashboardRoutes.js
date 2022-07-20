@@ -11,6 +11,7 @@ import InfoMascotas from '../components/InfoMascotas';
 import Donar from '../components/Donar';
 import SolicitudAdopcion from '../components/SolicitudAdopcion';
 import SolicitudApadrinamiento from '../components/SolicitudApadrinamiento';
+import ListRequest from '../components/ListRequest';
 
 const DashboardRoutes = () => {
     return (
@@ -29,6 +30,7 @@ const DashboardRoutes = () => {
                 <Route path='/apadrinar' element={<SolicitudApadrinamiento/>}/>
 
 
+                <Route path="/solicitudes" element={<ListRequest/>}/>
             </Routes>
             
         </div>
