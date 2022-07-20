@@ -29,7 +29,17 @@ export const typesUser = {
     delete: '[user] delete'
 }
 
+
+export const typesAdopcion = {
+  add : '[adopcion] add'
+}
+
+export const typesApadrinar = {
+  add : '[apadrinar] add'
+}
+
 export const typesRequest ={
   addRequest: '[Request] addRequest',
   throwErrorRequest: '[Request] throwErrorRequest'
 }
+

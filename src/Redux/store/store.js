@@ -4,7 +4,12 @@ import { formReducers } from "../reducers/formReducer";
 import { loginReducers } from "../reducers/loginReducers";
 import { userReducers } from "../reducers/userReducers";
 import { mascotasReducers } from "../reducers/mascotaReducers";
+
+import { solicitudesReducers } from "../reducers/solicitudesReducer";
+import { apadrinarReducers } from "../reducers/apadrinarReducers";
+
 import { requestReducer } from "../reducers/requestReducer";
+
 
 const composeEnhancers =
   (typeof window !== "undefined" &&
@@ -17,6 +22,8 @@ const reducers = combineReducers({
   mascotasStore: mascotasReducers,
   solicitudesStore: requestReducer,
   formStore: formReducers,
+  solicitudAdopStore: solicitudesReducers,
+  apadrinarStore: apadrinarReducers
 });
 
 export const store = createStore(

@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Footer from './Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import useForm from '../hooks/useForm';
-import { editUserAsync, editUserSync } from '../Redux/actions/actionsRegister';
+import { editUserAsync } from '../Redux/actions/actionsRegister';
 import { FileUpload } from '../helpers/FileUpload';
 import { IconButton } from '@mui/material';
 import { PhotoCamera } from '@mui/icons-material';

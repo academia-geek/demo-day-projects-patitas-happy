@@ -8,7 +8,13 @@ import Contactanos from "../components/Contactanos";
 import NavBars from '../components/NavBars';
 import Profile from '../components/Profile';
 import InfoMascotas from '../components/InfoMascotas';
+
+import Donar from '../components/Donar';
+import SolicitudAdopcion from '../components/SolicitudAdopcion';
+import SolicitudApadrinamiento from '../components/SolicitudApadrinamiento';
+
 import ListRequest from '../components/ListRequest';
+
 
 const DashboardRoutes = () => {
     return (
@@ -22,7 +28,13 @@ const DashboardRoutes = () => {
                 <Route path="/contactanos" element={<Contactanos />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/info" element={<InfoMascotas/>}/>
+
+                <Route path="/donar" element={<Donar/>}/>
+                <Route path='/adopcion' element={<SolicitudAdopcion/>}/>
+                <Route path='/apadrinar' element={<SolicitudApadrinamiento/>}/>
+
                 <Route path="/solicitudes" element={<ListRequest/>}/>
+
             </Routes>
             
         </div>

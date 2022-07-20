@@ -27,6 +27,11 @@ const DetailsMascotas = () => {
   const condiciones = others ? mascota.condiciones.filter(c => c !== "otros") : mascota.condiciones;
 
 
+  const handleAdopcion = () => {
+    navigate('/adopcion')
+  }
+  const handleApadrinar = () => {
+    navigate('/apadrinar')
 
 
   const onFinish = (fieldsValue, idMascota, idUser) => {
@@ -64,6 +69,7 @@ const DetailsMascotas = () => {
         setShowTimeForm(false);
       });
     }
+
   }
 
   return (
@@ -157,8 +163,12 @@ const DetailsMascotas = () => {
 
               }
             >
-              <Button sx={{ background: '#F5CEC7', border: '2px solid #47525E', borderRadius: '5px', color: '#47525E' }}>ADOPTAR</Button>
-              <Button sx={{ background: '#F5CEC7', border: '2px solid #47525E', borderRadius: '5px', color: '#47525E' }}>APADRINAR</Button>
+              <Button sx={{ background: '#F5CEC7', border: '2px solid #47525E', borderRadius: '5px', color: '#47525E' }} 
+              onClick={handleAdopcion}
+              >ADOPTAR</Button>
+              <Button sx={{ background: '#F5CEC7', border: '2px solid #47525E', borderRadius: '5px', color: '#47525E' }}
+              onClick={handleApadrinar}
+              >APADRINAR</Button>
             </ButtonGroup>
           </div>
           <div>
