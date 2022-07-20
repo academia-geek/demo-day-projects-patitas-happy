@@ -16,6 +16,7 @@ import SolicitudApadrinamiento from '../components/SolicitudApadrinamiento';
 import ListRequest from '../components/ListRequest';
 
 
+
 const DashboardRoutes = () => {
     return (
         <div> <NavBars/>
@@ -28,7 +29,6 @@ const DashboardRoutes = () => {
                 <Route path="/contactanos" element={<Contactanos />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/info" element={<InfoMascotas/>}/>
-
                 <Route path="/donar" element={<Donar/>}/>
                 <Route path='/adopcion' element={<SolicitudAdopcion/>}/>
                 <Route path='/apadrinar' element={<SolicitudApadrinamiento/>}/>

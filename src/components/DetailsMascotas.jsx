@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, ButtonGroup, Grid } from '@mui/material'
 import { Tag } from 'antd';
@@ -13,6 +13,8 @@ import { ClockCircleOutlined } from '@ant-design/icons';
 
 
 const DetailsMascotas = () => {
+
+  const navigate = useNavigate()
 
   const { firestoreId } = useParams();
   const dispatch = useDispatch();
@@ -69,7 +71,6 @@ const DetailsMascotas = () => {
         setShowTimeForm(false);
       });
     }
-
   }
 
   return (
@@ -196,6 +197,7 @@ const DetailsMascotas = () => {
       </Grid>
     </>
   )
+}
 }
 
 export default DetailsMascotas
