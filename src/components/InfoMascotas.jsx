@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import { ButtonNegro, DivN, GridInfo, H1, Paff, TitleC } from '../Styles/StyleInfo';
+import { ButtonNegro, DivN, GridInfo, H1, Img1, Img2, Img3, Paff, TitleC } from '../Styles/StyleInfo';
 import { Accordion } from 'react-bootstrap';
 import DondeEncontrar from './DondeEncontrar';
 import { FaDog } from "react-icons/fa";
@@ -36,7 +36,7 @@ const InfoMascotas = () => {
                     <ButtonNegro>¡Quiero Adoptar!</ButtonNegro>
                 </Grid>
                 <Grid item xs={5} textAlign='center'>
-                    <img src="https://res.cloudinary.com/kellycamayo/image/upload/v1658183336/imagenesDemoday/image_em0g68.png" alt="" />
+                    <Img1 src="https://res.cloudinary.com/kellycamayo/image/upload/v1658183336/imagenesDemoday/image_em0g68.png" alt="" />
                 </Grid>
             </Grid>
 
@@ -45,7 +45,7 @@ const InfoMascotas = () => {
             </Grid>
             <Grid container columns={{ xs: 4, sm: 8, md: 12 }} justifyContent='center' textAlign='center'>
                 <Grid item xs={6} paddingLeft='20px'>
-                    <img width={600} src="https://res.cloudinary.com/kellycamayo/image/upload/v1658240174/imagenesDemoday/image_1_m9ekei.png" alt="" />
+                    <Img2 width={600} src="https://res.cloudinary.com/kellycamayo/image/upload/v1658240174/imagenesDemoday/image_1_m9ekei.png" alt="" />
                 </Grid>
                 <Grid item xs={6}>
                     <Paff >El apadrinamiento es un apoyo que puedes hacer de forma económica o en especie (comida, guacales, medicamentos, etc) para todos nuestros rescatados o para uno en particular. Esta donación ayuda a la manutención de nuestras mascotas en el transcurso de su proceso de adopción por una familia. Si quieres tener una mascota y no puedes, esta es tu oportunidad ¡Anímate!.
@@ -64,7 +64,7 @@ const InfoMascotas = () => {
                     <ButtonNegro>¡Quiero Donar!</ButtonNegro>
                 </Grid>
                 <Grid item xs={5} textAlign='center' >
-                    <img src="https://res.cloudinary.com/kellycamayo/image/upload/v1658242356/imagenesDemoday/image_2_dhiflt.png" alt="" />
+                    <Img3 src="https://res.cloudinary.com/kellycamayo/image/upload/v1658242356/imagenesDemoday/image_2_dhiflt.png" alt="" />
                 </Grid>
             </Grid>
             <Grid item xs={12} textAlign='center' justifyContent='center'

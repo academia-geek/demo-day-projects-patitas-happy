@@ -3,9 +3,7 @@ import { Button, Grid } from '@mui/material';
 import { MapContainer, Marker, Popup, TileLayer, } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import '../Styles/StyleMap.css'
-import IconLocation from './IconLocation';
 import { TitleC } from '../Styles/StyleInfo';
-import SendIcon from '@mui/icons-material/Send';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const DondeEncontrar = () => {

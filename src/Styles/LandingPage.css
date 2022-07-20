@@ -62,6 +62,7 @@ nav button:hover {
   flex-wrap: wrap;
   justify-content: center;
   align-content: space-between;
+  
   width: 100%;
   min-height: min-content;
   font-family: Lato;

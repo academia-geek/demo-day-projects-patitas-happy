@@ -16,53 +16,44 @@ export const GridInfo = styled(Grid)`
 export const DivN = styled.div`
     text-align: center;
     background-color: #969FAA;
-    width: 441px;
-    height: 171px;
+    width: 33%;
+    height: 25%;
     padding: 30px;
     opacity: 85%;
-    position: absolute;
-    left: 950px;
-    top: 430px;
+    float:right;
+    margin-right:40px;
+    margin-top: 300px;
     
-    @media screen and (max-width: 430px){
-        position: relative;
-        left: 190px;
-        width: 170px;
-        padding: 15px;
-        height: 70px;
-        top:150px;
+    @media (max-width: 375px){
+        margin-top:150px;
+        margin-right:20px;
+        padding:10px;
     }
-    @media screen and (min-width: 768px){
-        position: relative;
-        left: 490px;
-        top: 280px;
-        width: 250px;
+    @media (max-width: 425px){
+        margin-top:150px;
+        margin-right:20px;
+        padding:10px;
+
     }
-    @media screen and (min-width: 1024px){
-        position: relative;
-        left: 630px;
-        top: 260px;
-        width: 370px;
+    @media (max-width: 768px){
+        padding-top: 13px;
     }
-    @media screen and (min-width: 1330px){
-        position: relative;
-        left: 890px;
-        top: 280px;
-    }
-    @media screen and (min-width: 1440px){
-        position: relative;
-        left: 950px;
-        top: 280px;
-    }
+   
 `
 export const H1 = styled.h1`
     color:white;
     font-size: 40px ;
-    @media screen and (max-width:430px){
-        font-size:15px;
+    @media screen and (max-width:375px){
+        font-size: 15px !important  ;
+    }
+    @media screen and (max-width:425px){
+        font-size: 15px !important;
     }
     @media screen and (max-width: 768px){
-       font-size: 30px ;
+        font-size: 30px  ;
+    }
+    @media screen and (max-width: 1024px){
+        font-size: 34px ;
     }
 
 `
@@ -75,6 +66,11 @@ export const TitleC = styled.h1`
     color: #47525E;
     font-size: 53px;
     font-weight: bold;
+    text-align: center;
+    @media screen and (max-width:430px){
+        font-size: 35px;
+       
+    }
 `
 export const Paff = styled.p`
     color: #47525E;
@@ -85,6 +81,11 @@ export const Paff = styled.p`
     align-items: center;
     @media screen and (max-width:430px){
         width: 350px;
+        font-size: 20px;
+        padding: 30px;
+    }
+    @media screen and (max-width:1030px){
+        width: 100%;
        
     }
 `
@@ -97,5 +98,33 @@ export const ButtonNegro = styled.button`
     border: none;
     font-size: 34px;
     text-align: center;
-    
+    @media screen and (max-width: 425px){
+        width:230px;
+        font-size: 25px;
+        height: 70px;
+    }
+`
+export const Img1 = styled.img`
+    @media screen and (max-width: 1024px){
+        width:300px;
+    }
+`
+export const Img2 = styled.img`
+    @media screen and (max-width: 425px){
+        width:290px;
+    }
+    @media screen and (width: 1024px){
+       
+       width: 450px;
+    }
+`
+export const Img3 = styled.img`
+
+    @media screen and (max-width: 425px){
+        width:300px;
+    }
+    @media screen and (width: 1024px){
+       
+       width: 400px;
+    }
 `

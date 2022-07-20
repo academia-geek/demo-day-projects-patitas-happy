@@ -28,3 +28,11 @@ export const typesUser = {
     edit: '[user] edit',
     delete: '[user] delete'
 }
+
+export const typesAdopcion = {
+  add : '[adopcion] add'
+}
+
+export const typesApadrinar = {
+  add : '[apadrinar] add'
+}

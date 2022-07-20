@@ -16,6 +16,13 @@ const DetailsMascotas = () => {
   const others = mascota.condiciones.some(condition => condition === "otros");
   const condiciones = others ? mascota.condiciones.filter(c => c !== "otros") : mascota.condiciones;
 
+  const handleAdopcion = () => {
+    navigate('/adopcion')
+  }
+  const handleApadrinar = () => {
+    navigate('/apadrinar')
+  }
+
   return (
     <>
       <Grid container columns={{ xs: 4, sm: 8, md: 12 }}
@@ -107,8 +114,12 @@ const DetailsMascotas = () => {
 
               }
             >
-              <Button sx={{ background: '#F5CEC7', border: '2px solid #47525E', borderRadius: '5px', color: '#47525E' }}>ADOPTAR</Button>
-              <Button sx={{ background: '#F5CEC7', border: '2px solid #47525E', borderRadius: '5px', color: '#47525E' }}>APADRINAR</Button>
+              <Button sx={{ background: '#F5CEC7', border: '2px solid #47525E', borderRadius: '5px', color: '#47525E' }} 
+              onClick={handleAdopcion}
+              >ADOPTAR</Button>
+              <Button sx={{ background: '#F5CEC7', border: '2px solid #47525E', borderRadius: '5px', color: '#47525E' }}
+              onClick={handleApadrinar}
+              >APADRINAR</Button>
             </ButtonGroup>
           </div>
           <div>

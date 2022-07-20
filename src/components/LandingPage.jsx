@@ -90,6 +90,7 @@ const Landing = () => (
             hoverable
             style={{
               width: "240px",
+              margin: '0 30px'
             }}
             cover={<div className="cover1" />}
           >
@@ -103,6 +104,7 @@ const Landing = () => (
             hoverable
             style={{
               width: "240px",
+              margin: '0 30px'
             }}
             cover={<div className="cover2" />}
           >
@@ -117,6 +119,7 @@ const Landing = () => (
             hoverable
             style={{
               width: "240px",
+              margin: '0 30px'
             }}
             cover={<div className="cover3" />}
           >
