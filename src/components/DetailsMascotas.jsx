@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, ButtonGroup, Grid } from '@mui/material'
@@ -10,6 +10,7 @@ import { addRequestAsync, errorSync } from '../Redux/actions/actionsRequest';
 import Swal from 'sweetalert2';
 import BtnFloat from './BtnFloat';
 import { ClockCircleOutlined } from '@ant-design/icons';
+import { fillMascotasAsync } from '../Redux/actions/actionsMascota';
 
 
 const DetailsMascotas = () => {
@@ -28,6 +29,10 @@ const DetailsMascotas = () => {
   const others = mascota.condiciones ? mascota.condiciones.some(condition => condition === "otros") : null;
   const condiciones = others ? mascota.condiciones.filter(c => c !== "otros") : mascota.condiciones;
 
+  useEffect(() => {
+    dispatch(fillMascotasAsync());
+    
+  }, [dispatch]);
 
   const handleAdopcion = () => {
     navigate('/adopcion')
@@ -35,7 +40,7 @@ const DetailsMascotas = () => {
   const handleApadrinar = () => {
     navigate('/apadrinar')
 
-
+  }
   const onFinish = (fieldsValue, idMascota, idUser) => {
     // Should format date value before submit.
 
@@ -50,7 +55,7 @@ const DetailsMascotas = () => {
     console.log('Received values of form: ', solicitud);
     dispatch(addRequestAsync(solicitud));
 
-  };
+  }
 
   if (error) {
     Swal.fire({
@@ -198,6 +203,6 @@ const DetailsMascotas = () => {
     </>
   )
 }
-}
+
 
 export default DetailsMascotas
