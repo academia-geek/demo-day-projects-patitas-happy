@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/logo.png";
@@ -11,16 +10,12 @@ import { actionClearRegisterAsync } from "../Redux/actions/actionsRegister";
 const NavBars = () => {
   const dispatch = useDispatch();
   const user = useSelector(store => store.loginStore);
-  
 
   const onClick = () => {
     dispatch(actionLogoutAsyn());
     dispatch(actionClearRegisterAsync());
     localStorage.clear();
   };
-
-  
-
 
 
   return (
@@ -54,16 +49,6 @@ const NavBars = () => {
               <Nav className="mx-3 my-auto">
                 <Link to="/info">INFORMACIÓN</Link>
               </Nav>
-              {/* <NavDropdown
-                className="mx-3 my-auto"
-                title="INFORMACIÓN"
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item href="#action/3.1">
-                  DONACIONES
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">ALIADOS</NavDropdown.Item>
-              </NavDropdown> */}
               <Nav className="mx-3 my-auto">
                 <Link to="/contactanos">CONTACTANOS</Link>
               </Nav>
@@ -102,7 +87,6 @@ const NavBars = () => {
                 // console.log(user.photoURL)
                 <Link to="/profile">
                   <ImgProfile
-                   
                     src={user.photoURL}
                     alt=""
                   />

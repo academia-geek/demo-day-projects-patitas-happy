@@ -2,21 +2,22 @@ import React from 'react';
 import Footer from './Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import useForm from '../hooks/useForm';
-import { editUserAsync } from '../Redux/actions/actionsRegister';
+import { editUserAsync, editUserProviderAsync } from '../Redux/actions/actionsRegister';
 import { FileUpload } from '../helpers/FileUpload';
 import { IconButton } from '@mui/material';
 import { PhotoCamera } from '@mui/icons-material';
 
 const Profile = () => {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-    const user = useSelector(store => store.loginStore)
-    console.log(user)
-   
+    const user = useSelector(store => store.loginStore);
+
+
     const [formValue, handleInputChange] = useForm({
-        photoURL: user.photoURL,
-        displayName: user.displayName,
+
+        displayName: user.displayName ? user.displayName : user.fullname,
+        fullname: user.displayName ? user.displayName : user.fullname,
         email: user.email,
         phoneNumber: user.phoneNumber,
         fecha: user.fecha,
@@ -24,12 +25,30 @@ const Profile = () => {
 
     })
 
-    const { displayName, email, photoURL, phoneNumber } = formValue
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(displayName, email, photoURL, phoneNumber)
-        dispatch(editUserAsync(displayName, email, photoURL, phoneNumber))
+
+    const handleSubmit = (e, id, accessToken, admin, provider ='', formValue) => {
+        e.preventDefault();
+
+        const usuario = {
+            id: id,
+            email: formValue.email,
+            password: formValue.password,
+            displayName: formValue.displayName,
+            accessToken: accessToken,
+            photoURL: formValue.photoURL,
+            phoneNumber: formValue.phoneNumber,
+            fullname: formValue.displayName,
+            admin: admin,
+            fecha: formValue.fecha,
+            provider: provider
+        }
+
+        if (provider === 'emailPassword'){
+            dispatch(editUserAsync(usuario))
+        }else {
+            dispatch(editUserProviderAsync(usuario))
+        }
 
     }
 
@@ -53,32 +72,41 @@ const Profile = () => {
             </div>
             {
 
-                <form onSubmit={handleSubmit} style={{ justifyContent: 'center' }}>
+                <form onSubmit={(e) => { handleSubmit(e, user.id, user.accessToken, user.admin, user.provider, formValue) }} style={{ justifyContent: 'center' }}>
 
-                    <img width={120} height={120} src={user.photoURL} alt="" style={{ borderRadius: '100%' }} />
-                    <IconButton color="primary" aria-label="upload picture" component="label" style={{marginTop:'80px'}}>
-                        <input hidden accept="image/*" type="file" name="photoURL" onChange={handleFileChange}/>
-                        <PhotoCamera />
-                    </IconButton>
-                    {/* <input type="file" name="photoURL" onChange={handleFileChange} /> */}
+                    <img width={70} height={70} src={user.photoURL} alt="" style={{ borderRadius: '100%', objectFit: 'cover' }} />
+                    <input type="file" name="photoURL" onChange={handleFileChange} />
 
-                    <h5>Your name</h5>
+                    <h5>Your fullname</h5>
 
                     <input type="text" name="displayName" value={formValue.displayName} onChange={handleInputChange} />
 
-                    <h5>Your Email</h5>
+                    <h5>Your email</h5>
 
                     <input type="text" name="email" value={formValue.email} onChange={handleInputChange} disabled />
                     <br />
-                    <h5>Your telfono</h5>
+                    <h5>Your numberphone</h5>
 
                     <input type="text" name="phoneNumber" value={formValue.phoneNumber} onChange={handleInputChange} />
                     <br />
 
-                    <h5>Your date</h5>
+                    <h5>Your birthday</h5>
 
                     <input type="date" name="fecha" value={formValue.fecha} onChange={handleInputChange} />
                     <br />
+
+                    {
+                        user.provider === 'emailPassword' && (
+
+                            <>
+                                <h5>Your password</h5>
+
+                                <input type="password" name="password" value={formValue.password} onChange={handleInputChange} />
+                                <br />
+                            </>
+
+                        )
+                    }
 
 
 

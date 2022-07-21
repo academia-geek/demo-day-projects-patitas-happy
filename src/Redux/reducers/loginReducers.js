@@ -11,10 +11,11 @@ export const loginReducers = (state = {}, action) => {
                 accessToken: action.payload.accessToken,
                 photoURL: action.payload.photoURL,
                 phoneNumber: action.payload.phoneNumber,
-                fullName: action.payload.fullName,
+                fullname: action.payload.fullname,
                 admin: action.payload.admin,
                 fecha: action.payload.fecha,
-                error: action.payload.error
+                error: action.payload.error,
+                provider: action.payload.provider
             }
         case typesLogin.authenticated:
             return {
@@ -34,6 +35,7 @@ export const loginReducers = (state = {}, action) => {
                 accessToken: action.payload.accessToken,
                 photoURL: action.payload.photoURL,
                 phoneNumber: action.payload.phoneNumber,
+                provider: action.payload.provider,
                 errorGoF: action.payload.error
             }
         case typesLogin.load:
@@ -45,9 +47,10 @@ export const loginReducers = (state = {}, action) => {
                 accessToken: action.payload.accessToken,
                 photoURL: action.payload.photoURL,
                 phoneNumber: action.payload.phoneNumber,
-                fullName: action.payload.fullName,
+                fullname: action.payload.fullname,
                 admin: action.payload.admin,
                 fecha: action.payload.fecha,
+                provider: action.payload.provider,
                 error: action.payload.error
             }
         default:

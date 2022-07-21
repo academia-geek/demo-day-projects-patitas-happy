@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, ButtonGroup, Grid } from '@mui/material'
-import { Tag } from 'antd';
+import { Tag, Spin } from 'antd';
 import Footer from "./Footer";
 import { Item, TitleDog } from '../Styles/StylesDetalle';
 import SchedulingForm from './SchedulingForm';
-import { addRequestAsync, errorSync } from '../Redux/actions/actionsRequest';
+import { addRequestAsync, errorSync, fillSolicitudesUsuarioAsync } from '../Redux/actions/actionsRequest';
 import Swal from 'sweetalert2';
 import BtnFloat from './BtnFloat';
 import { ClockCircleOutlined } from '@ant-design/icons';
-import { fillMascotasAsync } from '../Redux/actions/actionsMascota';
+import { fillMascotaAsync } from '../Redux/actions/actionsMascota';
 
 
 const DetailsMascotas = () => {
@@ -19,28 +19,19 @@ const DetailsMascotas = () => {
 
   const { firestoreId } = useParams();
   const dispatch = useDispatch();
-  const { mascotas } = useSelector(store => store.mascotasStore);
+  const { mascota } = useSelector(store => store.mascotasStore);
   const { id } = useSelector(store => store.loginStore);
-  const { error } = useSelector(store => store.solicitudesStore);
-
-  const [showTimeForm, setShowTimeForm] = useState(true);
-
-  const mascota = mascotas.find(m => m.firestoreId === firestoreId);
-  const others = mascota.condiciones ? mascota.condiciones.some(condition => condition === "otros") : null;
-  const condiciones = others ? mascota.condiciones.filter(c => c !== "otros") : mascota.condiciones;
+  const { error, solicitudesUsuario } = useSelector(store => store.solicitudesStore);
 
   useEffect(() => {
-    dispatch(fillMascotasAsync());
-    
-  }, [dispatch]);
+    if (firestoreId) {
+      dispatch(fillMascotaAsync(firestoreId));
+      if (id) {
+        dispatch(fillSolicitudesUsuarioAsync(firestoreId, id));
+      }
+    }
+  }, [firestoreId, id]);
 
-  const handleAdopcion = () => {
-    navigate('/adopcion')
-  }
-  const handleApadrinar = () => {
-    navigate('/apadrinar')
-
-  }
   const onFinish = (fieldsValue, idMascota, idUser) => {
     // Should format date value before submit.
 
@@ -55,6 +46,13 @@ const DetailsMascotas = () => {
     console.log('Received values of form: ', solicitud);
     dispatch(addRequestAsync(solicitud));
 
+  }
+
+  const handleAdopcion = () => {
+    navigate('/adopcion')
+  }
+  const handleApadrinar = () => {
+    navigate('/apadrinar')
   }
 
   if (error) {
@@ -73,10 +71,14 @@ const DetailsMascotas = () => {
         text: "¡Has agendado una visita exitosamente!",
       }).then(() => {
         dispatch(errorSync({ error: undefined }));
-        setShowTimeForm(false);
       });
     }
   }
+
+  const others = mascota && mascota.condiciones ? mascota.condiciones.some(condition => condition === "otros") : [];
+  const condiciones = others && mascota ? mascota.condiciones.filter(c => c !== "otros") : [];
+
+  if (!mascota) return <><Spin /></>;
 
   return (
     <>
@@ -91,10 +93,11 @@ const DetailsMascotas = () => {
           </div>
         </Grid>
         <Grid
+          textTransform='capitalize'
           padding='30px'
         >
           <TitleDog>{mascota.nombre}</TitleDog>
-          <div style={{ display: 'flex', textTransform: 'capitalize' }}>
+          <div style={{ display: 'flex' }}>
             <div>
               <ul style={{ listStyle: 'none', fontWeight: 'bolder' }}>
                 <Item>Mascota:</Item>
@@ -120,7 +123,7 @@ const DetailsMascotas = () => {
                     <Item>Condiciones físicas</Item>
                   ) : null
                 }
-                {others && (
+                {mascota.otrasCondiciones && (
                   <Item>Otras condiciones</Item>
                 )}
               </ul>
@@ -143,19 +146,23 @@ const DetailsMascotas = () => {
                 }
                 <Item>{mascota.ciudad}</Item>
                 <Item>{mascota.ubicacion}</Item>
-                <Item>{mascota.vacunas.map((item, index) => (
+                <Item>{mascota && Object.keys(mascota).length && mascota.vacunas.map((item, index) => (
                   <Tag color="cyan" key={index}>{item}</Tag>
                 ))}
                 </Item>
                 {
-                  condiciones.length ? (
-                    <Item>{mascota.condiciones.filter(c => c !== "otros").map((item, index) => (
+                  condiciones && condiciones.length ? (
+                    <Item>{condiciones.map((item, index) => (
                       <Tag color="gold" key={index}>{item}</Tag>
                     ))}
                     </Item>
                   ) : null
                 }
-                <Item>{mascota.otrasCondiciones}</Item>
+                {
+                  mascota.otrasCondiciones && (
+                    <Item>{mascota.otrasCondiciones}</Item>
+                  )
+                }
               </ul>
             </div>
           </div>
@@ -169,31 +176,31 @@ const DetailsMascotas = () => {
 
               }
             >
-              <Button sx={{ background: '#F5CEC7', border: '2px solid #47525E', borderRadius: '5px', color: '#47525E' }} 
-              onClick={handleAdopcion}
+              <Button sx={{ background: '#F5CEC7', border: '2px solid #47525E', borderRadius: '5px', color: '#47525E' }}
+                onClick={handleAdopcion}
               >ADOPTAR</Button>
               <Button sx={{ background: '#F5CEC7', border: '2px solid #47525E', borderRadius: '5px', color: '#47525E' }}
-              onClick={handleApadrinar}
+                onClick={handleApadrinar}
               >APADRINAR</Button>
             </ButtonGroup>
           </div>
           <div>
-            {/* <TitleAgendarV>Agendar Visita</TitleAgendarV>
-            <TitleHyF>Hora</TitleHyF>
-            <input type="text" />
-            <TitleHyF>Fecha</TitleHyF>
-            <input type="text" /> */}
+
             {
-              showTimeForm ? (<SchedulingForm onFinish={(fieldsValue) => {
-                onFinish(fieldsValue, firestoreId, id)
-              }} />) : (<BtnFloat 
-                screenHeight= {200}
-                iconBtn = {<ClockCircleOutlined />}
-                onClick={()=>{}}
-                titletooltip= 'Visita agendada'
-                btnStyle={{borderColor: '#1ed0d0', color: '#25a2a2', backgroundColor: '#ceffff'}}
-                affixStyle={{marginLeft:'100'}}
-                />)
+              !solicitudesUsuario || solicitudesUsuario.length === 0 ? (
+                <SchedulingForm onFinish={(fieldsValue) => {
+                  onFinish(fieldsValue, firestoreId, id)
+                }} />
+              ) : (
+                <BtnFloat
+                  screenHeight={200}
+                  iconBtn={<ClockCircleOutlined />}
+                  onClick={() => { }}
+                  titletooltip={`Visita agendada para ${solicitudesUsuario[0].fecha} ${solicitudesUsuario[0].hora}`}
+                  btnStyle={{ borderColor: '#1ed0d0', color: '#25a2a2', backgroundColor: '#ceffff' }}
+                  affixStyle={{ marginLeft: '100%' }}
+                />
+              )
             }
 
           </div>

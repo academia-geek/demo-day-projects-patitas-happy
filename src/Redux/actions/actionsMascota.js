@@ -1,6 +1,7 @@
 import { typesMascotas } from "../types/types";
 import { collection, addDoc, query, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { dataBase } from "../../Firebase/firebaseConfig"
+import { getDocFromDatabase } from "../../helpers/GetDoc";
 
 const collectionName = "mascotas";
 
@@ -45,15 +46,15 @@ export const updateMascotaAsync = (mascota) => {
         try {
             const docRef = doc(dataBase, collectionName, mascota.firestoreId);
             updateDoc(docRef, mascota)
-              .then(() => {
-                dispatch(updateMascotaSync({ firestoreId: docRef.id, ...mascota }));
-                dispatch(errorSync({ error: false }));
-              })
-              .catch(error => {
-                console.log(error);
-                dispatch(errorSync({ error: true }));
-              });
-           
+                .then(() => {
+                    dispatch(updateMascotaSync({ firestoreId: docRef.id, ...mascota }));
+                    dispatch(errorSync({ error: false }));
+                })
+                .catch(error => {
+                    console.log(error);
+                    dispatch(errorSync({ error: true }));
+                });
+
         } catch (error) {
             console.log(error);
             dispatch(errorSync({ error: true }));
@@ -146,6 +147,31 @@ export const deleteMascotaSync = (params) => {
         type: typesMascotas.deleteMascota,
         payload: {
             id: params.id
+        }
+    }
+}
+
+export const fillMascotaAsync = (firestoreId) => {
+    return (dispatch) => {
+        getDocFromDatabase({
+            label: "firestoreId",
+            value: firestoreId
+        }, collectionName)
+            .then((mascota) => {
+                dispatch(fillMascotaSync({ ...mascota }, false));
+            }).catch(error => {
+                console.log(error)
+                dispatch(fillMascotaSync({}, false));
+            });
+    }
+}
+
+export const fillMascotaSync = (mascota, error) => {
+    return {
+        type: typesMascotas.fillMascota,
+        payload: {
+            mascota,
+            error: error
         }
     }
 }

@@ -2,7 +2,7 @@ import { typesRequest } from "../types/types";
 
 
 const initialState = {
-    solicitudes: []
+    solicitudesUsuario: []
 }
 
 export const requestReducer = (state = initialState, action) => {
@@ -10,7 +10,7 @@ export const requestReducer = (state = initialState, action) => {
         case typesRequest.addRequest:
 
             return {
-                solicitudes: [...state.solicitudes, {
+                solicitudesUsuario: [...state.solicitudesUsuario, {
                     ...action.payload
                 }]
             };
@@ -18,6 +18,10 @@ export const requestReducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: action.payload.error
+            }
+        case typesRequest.fillUserRequests:
+            return {
+                solicitudesUsuario: action.payload.solicitudesUsuario
             }
 
         default:

@@ -52,7 +52,11 @@ export const mascotasReducers = (state = initialState, action) => {
             }
         case typesMascotas.fillMascotas:
             return {
-                mascotas: action.payload.mascotas
+                mascotas: [...action.payload.mascotas]
+            }
+        case typesMascotas.fillMascota:
+            return {
+                mascota: action.payload.mascota
             }
         case typesMascotas.deleteMascota:
             return {
