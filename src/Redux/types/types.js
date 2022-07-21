@@ -20,6 +20,7 @@ export const typesMascotas = {
     fillMascotas: '[mascotas] fillMascotas',
     deleteMascota: '[mascotas] deleteMascota',
     updateMascota: '[mascotas] updateMascota',
+    fillMascota: '[mascotas] fillMascota',
     throwError: '[mascotas] throwError'
 }
 
@@ -31,5 +32,6 @@ export const typesUser = {
 
 export const typesRequest ={
   addRequest: '[Request] addRequest',
-  throwErrorRequest: '[Request] throwErrorRequest'
+  throwErrorRequest: '[Request] throwErrorRequest',
+  fillUserRequests: '[Request] fillUserRequests',
 }

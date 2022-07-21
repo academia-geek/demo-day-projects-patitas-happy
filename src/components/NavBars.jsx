@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import React from "react";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import { ButtonLogout, ImgProfile } from "../Styles/StyleNav";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +10,7 @@ import { actionClearRegisterAsync } from "../Redux/actions/actionsRegister";
 const NavBars = () => {
   const dispatch = useDispatch();
   const user = useSelector(store => store.loginStore);
-  const [datos, setDatos] = useState([]);
+
 
   const onClick = () => {
     dispatch(actionLogoutAsyn());
@@ -18,11 +18,6 @@ const NavBars = () => {
     localStorage.clear();
   };
 
-  const handleEdit = us => {
-    setDatos(us);
-  };
-
-  const ver = e => { };
 
   return (
     <div>
@@ -59,16 +54,6 @@ const NavBars = () => {
                 <Link to="/info">INFORMACIÓN</Link>
 
               </Nav>
-              {/* <NavDropdown
-                className="mx-3 my-auto"
-                title="INFORMACIÓN"
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item href="#action/3.1">
-                  DONACIONES
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">ALIADOS</NavDropdown.Item>
-              </NavDropdown> */}
               <Nav className="mx-3 my-auto">
                 <Link to="/solicitudes">SOLICITUDES</Link>
               </Nav>
@@ -79,7 +64,6 @@ const NavBars = () => {
                 // console.log(user.photoURL)
                 <Link to="/profile">
                   <ImgProfile
-                    onClick={() => handleEdit(user)}
                     src={user.photoURL}
                     alt=""
                   />

@@ -11,6 +11,7 @@ export const ButtonLogout = styled.button`
 export const ImgProfile = styled.img`
     width: 46px;
     height: 46px;
+    object-fit: 'cover';
     border-radius: 100%;
     margin-left: 20px;
 `

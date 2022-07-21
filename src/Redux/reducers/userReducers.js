@@ -12,7 +12,8 @@ export const userReducers = (state = {}, action) => {
                 phoneNumber: action.payload.phoneNumber,
                 accessToken: action.payload.accessToken,
                 error: action.payload.error,
-                admin: action.payload.admin
+                admin: action.payload.admin,
+                provider: action.payload.provider
             }
         case typesRegister.clear:
             return {
@@ -24,7 +25,7 @@ export const userReducers = (state = {}, action) => {
             }
         case typesUser.edit:
             return {
-                ...state
+                ...action.payload
             }
 
         default:

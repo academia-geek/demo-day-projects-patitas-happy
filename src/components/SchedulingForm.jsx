@@ -34,17 +34,6 @@ const SchedulingForm = ({onFinish}) => {
         ],
     };
 
-    // const onFinish = (fieldsValue) => {
-    //     // Should format date value before submit.
-        
-    //     const values = {
-            
-    //         'fecha': fieldsValue['fecha'].format('YYYY-MM-DD'),
-    //         'hora': fieldsValue['hora'].format('HH:mm:ss'),
-    //     };
-    //     console.log('Received values of form: ', values);
-    // };
-
     return (
         <div>
             <TitleAgendarV>Agendar visita</TitleAgendarV>
