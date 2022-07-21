@@ -1,14 +1,24 @@
+
 import React from 'react';
 import { Button, Grid } from '@mui/material';
-import { MapContainer, Marker, Popup, TileLayer, } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
-import '../Styles/StyleMap.css'
-import { TitleC } from '../Styles/StyleInfo';
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import Markers from "./MapView/PlaceMarkers";
+import "../Styles/StyleMap.css";
+import L from "leaflet";
+import icon from "../assets/place_icon.svg";
+import useGeoLocation from "../hooks/useGeoLocation";
+import "leaflet/dist/leaflet.css";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 const DondeEncontrar = () => {
-    return (
-        <Grid
+  const location = useGeoLocation();
+  const PlaceLocationIcon = L.icon({
+    iconUrl: icon,
+    iconSize: [35, 35],
+    className: "leaflet-venue-icon",
+  });
+  return (
+       <Grid
             margin='80px 0'
         >
 
@@ -38,22 +48,27 @@ const DondeEncontrar = () => {
                 <Grid
 
                 >
+        <Grid sx={6}>
+          aca ba el mapa
+          {location.loaded ? (
+            <MapContainer center={location.coordinates} zoom={14}>
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              />
+              <Marker position={location.coordinates} icon={PlaceLocationIcon}>
+                <Popup>You're here</Popup>
+              </Marker>
+            </MapContainer>
+          ) : (
+            "Location data not available yet."
+          )}
 
-                    <MapContainer center={{ lat: '3.9897551538255724', lng: '-73.75832465129854' }} zoom={13}>
-                        <TileLayer
-                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                        />
-                        <Marker position={{ lat: '3.9897551538255724', lng: '-73.75832465129854' }} >
-                            <Popup>
-
-                            </Popup>
-                        </Marker>
-                    </MapContainer>
-                </Grid>
-            </Grid>
+           </Grid>
         </Grid>
-    );
+      </Grid>
+    </Grid>
+  );
 };
 
 export default DondeEncontrar;

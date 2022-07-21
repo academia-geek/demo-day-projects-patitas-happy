@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/logo.png";
@@ -43,6 +44,29 @@ const NavBars = () => {
             className="justify-content-end">
 
             <Nav className="justify-content-end">
+              <Nav className="mx-3 my-auto">
+                <Link to="/home">HOME</Link>
+              </Nav>
+              <Nav className="mx-3 my-auto">
+                <Link to="/mascotas">MASCOTAS</Link>
+              </Nav>
+              <Nav.Link className="mx-3 my-auto">ADOPCIÓN</Nav.Link>
+              <Nav className="mx-3 my-auto">
+                <Link to="/info">INFORMACIÓN</Link>
+              </Nav>
+              {/* <NavDropdown
+                className="mx-3 my-auto"
+                title="INFORMACIÓN"
+                id="basic-nav-dropdown"
+              >
+                <NavDropdown.Item href="#action/3.1">
+                  DONACIONES
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">ALIADOS</NavDropdown.Item>
+              </NavDropdown> */}
+              <Nav className="mx-3 my-auto">
+                <Link to="/contactanos">CONTACTANOS</Link>
+              </Nav>
 
               <NavLink to="/home" className="mx-3 my-auto nav-item nav-link"
                 activeclassname='active'
