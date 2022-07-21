@@ -18,6 +18,7 @@ const FormMascotas = () => {
     const { error, mascotas } = useSelector(store => store.mascotasStore);
     const dateFormat = "MM-DD-YYYY";
     const [url, setUrl] = useState("");
+    const [titleFor, setTitleFor] = useState("Agregue una nueva mascota");
     const [imageInitialValue, setImageInitialValue] = useState({});
     const [children, setChildren] = useState([]);
     const [showMoreConditions, setShowMoreConditions] = useState(false);
@@ -39,6 +40,7 @@ const FormMascotas = () => {
                     genero: mascota.genero,
                     vacunas: mascota.vacunas,
                     desparasitacion: moment(mascota.ultimaDesparasitacion, dateFormat),
+                    ciudad: mascota.ciudad,
                     ubicacion: mascota.ubicacion,
                     enfermedad: mascota.enfermedad,
                     condiciones: mascota.condiciones,
@@ -52,6 +54,8 @@ const FormMascotas = () => {
                 if (mascota.tipo === "Perro") {
                     setChildren(vacunasPerro);
                 }
+
+                setTitleFor(`Puede editar los datos de ${mascota.nombre}`)
 
                 setUrl(mascota.imagen);
                 setImageInitialValue({
@@ -80,10 +84,11 @@ const FormMascotas = () => {
             nombre: values.nombre,
             edad: values.edad,
             fechaRescate: values.rescate.format(dateFormat),
-            fechaNacimiento: values.nacimiento.format(dateFormat),
+            fechaNacimiento: values.nacimiento ? values.nacimiento.format(dateFormat) : null,
             genero: values.genero,
             vacunas: values.vacunas,
-            ultimaDesparasitacion: values.desparasitacion.format(dateFormat),
+            ultimaDesparasitacion: values.desparasitacion ? values.desparasitacion.format(dateFormat) : null,
+            ciudad: values.ciudad,
             ubicacion: values.ubicacion,
             enfermedad: values.enfermedad,
             condiciones: values.condiciones,
@@ -120,7 +125,7 @@ const FormMascotas = () => {
         Swal.fire({
             icon: "error",
             title: "Oops...",
-            text: "Por favor verifique sus datos!",
+            text: "Por favor verifique los datos!",
         }).then(() => {
             dispatch(errorSync({ error: undefined }));
         });
@@ -141,9 +146,10 @@ const FormMascotas = () => {
     }
 
 
+
     return (
         <div style={divForm}>
-            <h1 style={titleForm}>Agregue una nueva mascota</h1>
+            <h1 style={titleForm}>{titleFor}</h1>
             <Form
                 form={form}
                 name="Add"
@@ -256,6 +262,17 @@ const FormMascotas = () => {
                     <DatePicker format={dateFormat} />
                 </Form.Item>
                 <Form.Item
+                    label="Ciudad"
+                    name="ciudad"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Por favor indique la ciudad',
+                        },
+                    ]}>
+                    <Input placeholder='Ingrese ciudad' />
+                </Form.Item>
+                <Form.Item
                     label="Ubicación"
                     name="ubicacion"
                     rules={[
@@ -264,7 +281,7 @@ const FormMascotas = () => {
                             message: 'Por favor indique la ubicación exacta de la mascota',
                         },
                     ]}>
-                    <Input placeholder='Ingrese dirección, barrio, ciudad' />
+                    <Input placeholder='Ingrese dirección completa' />
                 </Form.Item>
                 <Form.Item
                     label="¿Presenta alguna enfermedad?"

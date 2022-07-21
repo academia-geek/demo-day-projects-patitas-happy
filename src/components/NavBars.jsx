@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+
+import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import { ButtonLogout, ImgProfile } from "../Styles/StyleNav";
 import { useDispatch, useSelector } from "react-redux";
 import { actionLogoutAsyn } from "../Redux/actions/actionsLogin";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { actionClearRegisterAsync } from "../Redux/actions/actionsRegister";
 
 const NavBars = () => {
   const dispatch = useDispatch();
   const user = useSelector(store => store.loginStore);
-  const [datos, setDatos] = useState([]);
+  
 
   const onClick = () => {
     dispatch(actionLogoutAsyn());
@@ -18,11 +19,9 @@ const NavBars = () => {
     localStorage.clear();
   };
 
-  const handleEdit = us => {
-    setDatos(us);
-  };
+  
 
-  const ver = e => {};
+
 
   return (
     <div>
@@ -42,8 +41,8 @@ const NavBars = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse
             id="basic-navbar-nav"
-            className="justify-content-end"
-          >
+            className="justify-content-end">
+
             <Nav className="justify-content-end">
               <Nav className="mx-3 my-auto">
                 <Link to="/home">HOME</Link>
@@ -68,11 +67,42 @@ const NavBars = () => {
               <Nav className="mx-3 my-auto">
                 <Link to="/contactanos">CONTACTANOS</Link>
               </Nav>
+
+              <NavLink to="/home" className="mx-3 my-auto nav-item nav-link"
+                activeclassname='active'
+                >
+                HOME
+              </NavLink>
+
+              <NavLink to="/mascotas" className="mx-3 my-auto nav-item nav-link"
+                activeclassname='active'
+                >
+                MASCOTAS
+              </NavLink>
+
+              <NavLink to="/donar" className="mx-3 my-auto nav-item nav-link"
+                activeclassname='active'
+                >
+                DONAR
+              </NavLink>
+
+              <NavLink to="/info" className="mx-3 my-auto nav-item nav-link"
+                activeclassname='active'
+                >
+                INFORMACIÓN
+              </NavLink>
+
+              <NavLink to="/contactanos" className="mx-3 my-auto nav-item nav-link"
+                activeclassname='active'
+                >
+                CONTACTANOS
+              </NavLink>
+
               {
                 // console.log(user.photoURL)
                 <Link to="/profile">
                   <ImgProfile
-                    onClick={() => handleEdit(user)}
+                   
                     src={user.photoURL}
                     alt=""
                   />

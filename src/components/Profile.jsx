@@ -1,48 +1,35 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Footer from './Footer';
-import fb from '../img/profile.jpg'
-// import { listUserAsync, listUserSync } from '../Redux/actions/actionsRegister';
 import { useDispatch, useSelector } from 'react-redux';
-import { authentication } from '../Firebase/firebaseConfig';
-import { indexedDBLocalPersistence, updateProfile } from 'firebase/auth';
 import useForm from '../hooks/useForm';
-import { editUserAsync, editUserSync } from '../Redux/actions/actionsRegister';
+import { editUserAsync } from '../Redux/actions/actionsRegister';
 import { FileUpload } from '../helpers/FileUpload';
+import { IconButton } from '@mui/material';
+import { PhotoCamera } from '@mui/icons-material';
 
 const Profile = () => {
 
     const dispatch = useDispatch()
 
-    // useEffect(() => {
-    //     dispatch(listUserAsync())
-    // }, [dispatch])
-
     const user = useSelector(store => store.loginStore)
-
     console.log(user)
-    // const user = useSelector(store => store.regisUserStore)
-
-    // console.log(user)
-
-
+   
     const [formValue, handleInputChange] = useForm({
         photoURL: user.photoURL,
         displayName: user.displayName,
         email: user.email,
-        
         phoneNumber: user.phoneNumber,
         fecha: user.fecha,
-        password: user.password
+        
 
     })
 
-    const { displayName, email, photoURL, phoneNumber, password } = formValue
+    const { displayName, email, photoURL, phoneNumber } = formValue
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(displayName, email, photoURL, phoneNumber, password)
-
-        dispatch(editUserAsync(displayName, email, phoneNumber, password, photoURL))
+        console.log(displayName, email, photoURL, phoneNumber)
+        dispatch(editUserAsync(displayName, email, photoURL, phoneNumber))
 
     }
 
@@ -67,9 +54,13 @@ const Profile = () => {
             {
 
                 <form onSubmit={handleSubmit} style={{ justifyContent: 'center' }}>
-                    
-                    <img width={70} src={user.photoURL} alt="" style={{ borderRadius: '100%' }} />
-                    <input type="file" name="photoURL" onChange={handleFileChange} />
+
+                    <img width={120} height={120} src={user.photoURL} alt="" style={{ borderRadius: '100%' }} />
+                    <IconButton color="primary" aria-label="upload picture" component="label" style={{marginTop:'80px'}}>
+                        <input hidden accept="image/*" type="file" name="photoURL" onChange={handleFileChange}/>
+                        <PhotoCamera />
+                    </IconButton>
+                    {/* <input type="file" name="photoURL" onChange={handleFileChange} /> */}
 
                     <h5>Your name</h5>
 
@@ -89,10 +80,6 @@ const Profile = () => {
                     <input type="date" name="fecha" value={formValue.fecha} onChange={handleInputChange} />
                     <br />
 
-                    <h5>Your pass</h5>
-
-                    <input type="password" name="password" value={formValue.password} onChange={handleInputChange} />
-                    <br />
 
 
                     <button>Aceptar</button>

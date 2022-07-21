@@ -11,6 +11,7 @@ export const loginReducers = (state = {}, action) => {
                 accessToken: action.payload.accessToken,
                 photoURL: action.payload.photoURL,
                 phoneNumber: action.payload.phoneNumber,
+                fullName: action.payload.fullName,
                 admin: action.payload.admin,
                 fecha: action.payload.fecha,
                 error: action.payload.error
@@ -44,6 +45,7 @@ export const loginReducers = (state = {}, action) => {
                 accessToken: action.payload.accessToken,
                 photoURL: action.payload.photoURL,
                 phoneNumber: action.payload.phoneNumber,
+                fullName: action.payload.fullName,
                 admin: action.payload.admin,
                 fecha: action.payload.fecha,
                 error: action.payload.error

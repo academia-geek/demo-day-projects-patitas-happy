@@ -60,7 +60,7 @@ const ListMascotas = () => {
                                     description={
                                         <div style={stylesDivDescriptions}>
                                             <span><img src={pastel} style={stytlesiconos} alt="edad" />{`${item.edad} años`}</span>
-                                            <span><img src={ubicacion} style={stytlesiconos} alt="ubicacion" />{item.ubicacion}</span>
+                                            <span><img src={ubicacion} style={stytlesiconos} alt="ubicacion" />{item.ciudad}</span>
                                         </div>}
                                 />
                                 <Button
@@ -78,7 +78,9 @@ const ListMascotas = () => {
 
             </div>
             {admin && (
-                <Affix offsetBottom={50} onChange={affixed => console.log(affixed)}>
+                <Affix offsetBottom={50} 
+                // onChange={affixed => console.log(affixed)}
+                >
                     <Tooltip title="Agrega nueva mascota">
                         <Button shape="circle" icon={<PlusCircleOutlined />} size="large" style={{ border: 'none', boxShadow: 'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px', marginLeft: '55px' }} onClick={() => navigate("/mascotas/add")} />
                     </Tooltip>

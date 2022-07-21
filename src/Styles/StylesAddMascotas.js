@@ -33,34 +33,35 @@ export const submitButton = {
 export const divCards = {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent:'space-evenly',
+    justifyContent: 'space-evenly',
+    gap: '20px',
     margin: '10px',
 };
 
-export const divListMascotas ={
+export const divListMascotas = {
     margin: '20px',
 };
 
-export const stylesImgesCards ={
-    width: '100%', 
-    height: '180px', 
-    objectFit: 'cover' 
+export const stylesImgesCards = {
+    width: '100%',
+    height: '180px',
+    objectFit: 'cover'
 };
 
-export const styleNombreMascota ={
+export const styleNombreMascota = {
     fontFamily: 'Lato',
     textTransform: 'Capitalize',
     fontSize: '22px',
     color: '#47525E'
 };
 
-export const stytlesiconos={
-    width:'20px',
-    marginRight:'6px',
+export const stytlesiconos = {
+    width: '20px',
+    marginRight: '6px',
     transform: 'translateY(-5px)'
 };
 
-export const stylesDivDescriptions ={
+export const stylesDivDescriptions = {
     display: 'flex',
     flexDirection: 'column',
     gap: '7px',
