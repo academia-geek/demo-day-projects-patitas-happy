@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import { ButtonLogout, ImgProfile } from "../Styles/StyleNav";
 import { useDispatch, useSelector } from "react-redux";
@@ -48,16 +48,12 @@ const NavBars = () => {
               <Nav className="mx-3 my-auto">
                 <Link to="/home">HOME</Link>
               </Nav>
-              <Nav className="mx-3 my-auto" >
+              <Nav className="mx-3 my-auto">
                 <Link to="/mascotas">MASCOTAS</Link>
-                
               </Nav>
-              <Nav.Link className="mx-3 my-auto" >
-                ADOPCIÓN
-              </Nav.Link>
-              <Nav className="mx-3 my-auto" >
+              <Nav.Link className="mx-3 my-auto">ADOPCIÓN</Nav.Link>
+              <Nav className="mx-3 my-auto">
                 <Link to="/info">INFORMACIÓN</Link>
-                
               </Nav>
               {/* <NavDropdown
                 className="mx-3 my-auto"
