@@ -5,7 +5,7 @@ import { ButtonLogout, ImgProfile } from "../Styles/StyleNav";
 import { useDispatch, useSelector } from "react-redux";
 import { actionLogoutAsyn } from "../Redux/actions/actionsLogin";
 import { Link, NavLink } from "react-router-dom";
-import { actionClearRegisterAsync } from "../Redux/actions/actionsRegister";
+import { actionClearRegisterAsync } from "../Redux/actions/actionsUser";
 
 const NavBars = () => {
   const dispatch = useDispatch();

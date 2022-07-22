@@ -18,7 +18,7 @@ const composeEnhancers =
 
 const reducers = combineReducers({
   loginStore: loginReducers,
-  regisUserStore: userReducers,
+  userStore: userReducers,
   mascotasStore: mascotasReducers,
   solicitudesStore: requestReducer,
   formStore: formReducers,

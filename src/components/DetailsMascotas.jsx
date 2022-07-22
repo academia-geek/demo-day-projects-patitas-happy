@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 import BtnFloat from './BtnFloat';
 import { ClockCircleOutlined } from '@ant-design/icons';
 import { fillMascotaAsync } from '../Redux/actions/actionsMascota';
+import moment from 'moment';
 
 
 const DetailsMascotas = () => {
@@ -30,7 +31,7 @@ const DetailsMascotas = () => {
         dispatch(fillSolicitudesUsuarioAsync(firestoreId, id));
       }
     }
-  }, [firestoreId, id]);
+  }, [dispatch, firestoreId, id]);
 
   const onFinish = (fieldsValue, idMascota, idUser) => {
     // Should format date value before submit.
@@ -41,7 +42,8 @@ const DetailsMascotas = () => {
       fecha: fieldsValue['fecha'].format('YYYY-MM-DD'),
       hora: fieldsValue['hora'].format('HH:mm:ss'),
       tipoSolicitud: 'visita',
-      status: 'pendienteRevision'
+      status: 'pendienteRevision',
+      fechaCreacion: moment().format('YYYY-MM-DD')
     };
     console.log('Received values of form: ', solicitud);
     dispatch(addRequestAsync(solicitud));
@@ -88,7 +90,7 @@ const DetailsMascotas = () => {
         <Grid
           padding='30px'
         >
-          <div style={{ width: '540px', height: '580px', background: 'red' }}>
+          <div style={{ width: '540px', height: '580px'}}>
             <img style={{ width: '100%', height: '100%', objectFit: 'cover' }} src={mascota.imagen} alt={mascota.nombre} />
           </div>
         </Grid>

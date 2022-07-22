@@ -63,32 +63,38 @@ export const tipoSolicitudes = [
     {
         label: 'Adopción',
         value: 'adopcion',
-        color: 'lime'
+        color: 'lime',
+        accion: 'adoptar a'
     },
     {
         label: 'Apadrinamiento',
         value: 'apadrinamiento',
-        color: 'geekblue'
+        color: 'geekblue',
+        accion: 'apadrinar a'
     },
     {
         label: 'Visita',
         value: 'visita',
-        color: 'blue'
+        color: 'blue',
+        accion: 'visitar a'
     },
     {
         label: 'Dar en adopción',
         value: 'darAdopcion',
-        color: 'orange'
+        color: 'orange',
+        accion: 'dar en adopción a'
     },
     {
         label: 'Atención de hallazgo',
         value: 'atencionHallazgo',
-        color: 'red'
+        color: 'red',
+        accion: 'notificar el hallazgo de'
     },
     {
         label: 'Donación',
         value: 'donación',
-        color: 'purple'
+        color: 'purple',
+        accion: 'donar en'
     }
 ];
 
