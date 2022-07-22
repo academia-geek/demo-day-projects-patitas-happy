@@ -27,26 +27,38 @@ const Profile = () => {
 
 
 
-    const handleSubmit = (e, id, accessToken, admin, provider ='', formValue) => {
+    const handleSubmit = (e, id, accessToken, admin, provider = '', oldPasword = '', formValue) => {
         e.preventDefault();
 
-        const usuario = {
-            id: id,
-            email: formValue.email,
-            password: formValue.password,
-            displayName: formValue.displayName,
-            accessToken: accessToken,
-            photoURL: formValue.photoURL,
-            phoneNumber: formValue.phoneNumber,
-            fullname: formValue.displayName,
-            admin: admin,
-            fecha: formValue.fecha,
-            provider: provider
-        }
-
-        if (provider === 'emailPassword'){
+        if (provider === 'emailPassword') {
+            const usuario = {
+                id: id,
+                email: formValue.email,
+                password: formValue.password,
+                displayName: formValue.displayName,
+                accessToken: accessToken,
+                photoURL: formValue.photoURL,
+                phoneNumber: formValue.phoneNumber,
+                fullname: formValue.displayName,
+                admin: admin,
+                fecha: formValue.fecha,
+                provider: provider
+            }
             dispatch(editUserAsync(usuario))
-        }else {
+        } else {
+            const usuario = {
+                id: id,
+                email: formValue.email,
+                password: oldPasword,
+                displayName: formValue.displayName,
+                accessToken: accessToken,
+                photoURL: formValue.photoURL,
+                phoneNumber: formValue.phoneNumber,
+                fullname: formValue.displayName,
+                admin: admin,
+                fecha: formValue.fecha,
+                provider: provider
+            }
             dispatch(editUserProviderAsync(usuario))
         }
 
@@ -72,7 +84,7 @@ const Profile = () => {
             </div>
             {
 
-                <form onSubmit={(e) => { handleSubmit(e, user.id, user.accessToken, user.admin, user.provider, formValue) }} style={{ justifyContent: 'center' }}>
+                <form onSubmit={(e) => { handleSubmit(e, user.id, user.accessToken, user.admin, user.provider, user.password, formValue) }} style={{ justifyContent: 'center' }}>
 
                     <img width={70} height={70} src={user.photoURL} alt="" style={{ borderRadius: '100%', objectFit: 'cover' }} />
                     <input type="file" name="photoURL" onChange={handleFileChange} />
