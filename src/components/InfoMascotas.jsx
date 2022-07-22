@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid } from '@mui/material';
-import dog from '../img/info/image.png'
+// import dog from '../img/info/image.png'
 import { DivN, GridInfo, H1 } from '../Styles/StyleInfo';
 import { Accordion } from 'react-bootstrap';
 import DondeEncontrar from './DondeEncontrar';

@@ -1,8 +1,3 @@
-export const typesRegister = {
-  register: "[Register-Usuario] register",
-  clear: "[Register-Clear] clear",
-};
-
 export const typesLogin = {
   login: "login",
   authenticated: "[login] authenticated",
@@ -25,13 +20,18 @@ export const typesMascotas = {
 }
 
 export const typesUser = {
+    register: "[Register-Usuario] register",
+    clear: "[Register-Clear] clear",
     list: '[user] list',
     edit: '[user] edit',
-    delete: '[user] delete'
+    delete: '[user] delete',
+    fillUser: '[user] fillUser'
 }
 
 export const typesRequest ={
   addRequest: '[Request] addRequest',
   throwErrorRequest: '[Request] throwErrorRequest',
   fillUserRequests: '[Request] fillUserRequests',
+  fillRequests: '[Request] fillRequests',
+  fillRequest: '[Request] fillRequest'
 }

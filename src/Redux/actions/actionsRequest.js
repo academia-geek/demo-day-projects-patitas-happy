@@ -1,4 +1,4 @@
-import { addDoc, collection, getDocs, query, where } from "@firebase/firestore";
+import { addDoc, collection, doc, getDoc, getDocs, query, where } from "@firebase/firestore";
 import { dataBase } from "../../Firebase/firebaseConfig";
 import { typesRequest } from "../types/types";
 
@@ -10,7 +10,7 @@ export const addRequestAsync = (solicitud) => {
     return async (dispatch) => {
         try {
             const docRef = await addDoc(collection(dataBase, collectionName), solicitud);
-            dispatch(addRequestSync({ idSolicitud: docRef.id, ...solicitud }));
+            dispatch(addRequestSync({ solicitud: { idSolicitud: docRef.id, ...solicitud } }));
             dispatch(errorSync({ error: false }));
         } catch (error) {
             console.log(error);
@@ -20,10 +20,12 @@ export const addRequestAsync = (solicitud) => {
     }
 }
 
-export const addRequestSync = (solicitud) => {
+export const addRequestSync = (params) => {
     return {
         type: typesRequest.addRequest,
-        payload: { ...solicitud }
+        payload: {
+            solicitud: params.solicitud
+        }
     }
 }
 
@@ -77,5 +79,69 @@ export const fillSolicitudesUsuarioSync = (params) => {
             solicitudesUsuario: params.solicitudesUsuario
         }
 
+    }
+}
+
+export const fillRequestsAsync = () => {
+    return (dispatch) => {
+        const collectionSolicitudes = collection(dataBase, collectionName);
+        const querySnapshot = query(collectionSolicitudes);
+        getDocs(querySnapshot)
+            .then((documents) => {
+                const data = [];
+                documents.forEach((document) => {
+                    data.push({
+                        idSolicitud: document.id,
+                        ...document.data(),
+                    });
+                });
+
+                dispatch(
+                    fillRequestsSync({
+                        solicitudes: data
+                    })
+                );
+            })
+            .catch((error) => {
+                console.log(error);
+                dispatch(errorSync({ error: true }));
+            });
+    }
+}
+
+
+export const fillRequestsSync = (params) => {
+    return {
+        type: typesRequest.fillRequests,
+        payload: {
+            solicitudes: params.solicitudes
+        }
+    }
+}
+
+export const fillRequestAsync = (idSolicitud) => {
+    return (dispatch) => {
+        const docRef = doc(dataBase, collectionName, idSolicitud);
+        getDoc(docRef).then(docSnapshot => {
+            if (docSnapshot.exists()) {
+                // console.log("Document data:", docSnapshot.data());
+                dispatch(fillRequestSync({ solicitud: docSnapshot.data() }));
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+}
+
+
+export const fillRequestSync = (params) => {
+    return {
+        type: typesRequest.fillRequest,
+        payload: {
+            solicitud: params.solicitud
+        }
     }
 }

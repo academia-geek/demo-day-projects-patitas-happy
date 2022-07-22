@@ -4,7 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { registerUserAsync } from '../Redux/actions/actionsRegister';
+import { registerUserAsync } from '../Redux/actions/actionsUser';
 import Swal from "sweetalert2";
 import { useNavigate } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ const SignupSchema = Yup.object().shape({
 const Register = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { error: registerError } = useSelector(store => store.regisUserStore);
+    const { error: registerError } = useSelector(store => store.userStore);
 
 
     //--Función para cantidad de caracteres digitados para número celular

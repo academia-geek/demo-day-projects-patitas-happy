@@ -9,22 +9,24 @@ import NavBars from '../components/NavBars';
 import Profile from '../components/Profile';
 import InfoMascotas from '../components/InfoMascotas';
 import ListRequest from '../components/ListRequest';
+import DetailsRequest from '../components/DetailsRequest';
 
 const DashboardRoutes = () => {
     return (
-        <div> <NavBars/>
-            <Routes>               
+        <div> <NavBars />
+            <Routes>
                 <Route path="/home" element={<Home />} />
-                <Route path="/mascotas" element={<ListMascotas/>} />
+                <Route path="/mascotas" element={<ListMascotas />} />
                 <Route path="/mascotas/add" element={<FormMascotas />} />
                 <Route path="/mascotas/:firestoreId/edit" element={<FormMascotas />} />
                 <Route path="/mascotas/:firestoreId" element={<DetailsMascotas />} />
+                <Route path="/solicitudes/:id" element={<DetailsRequest />} />
                 <Route path="/contactanos" element={<Contactanos />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/info" element={<InfoMascotas/>}/>
-                <Route path="/solicitudes" element={<ListRequest/>}/>
+                <Route path="/info" element={<InfoMascotas />} />
+                <Route path="/solicitudes" element={<ListRequest />} />
             </Routes>
-            
+
         </div>
     );
 };

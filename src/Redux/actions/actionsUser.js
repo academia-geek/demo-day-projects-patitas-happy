@@ -1,10 +1,11 @@
-import { typesRegister, typesUser } from "../types/types"
+import { typesUser } from "../types/types"
 import { createUserWithEmailAndPassword, signOut, updatePassword, updateProfile } from "firebase/auth"
-import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
+import { collection, addDoc, updateDoc, doc, query, getDocs, getDoc } from "firebase/firestore";
 import { authentication, dataBase } from "../../Firebase/firebaseConfig"
 import Swal from "sweetalert2";
 import { actionLogoutSyn } from "./actionsLogin";
 
+const collectionName = "users";
 
 export const editUserAsync = (usuario) => {
     return (dispatch) => {
@@ -19,7 +20,7 @@ export const editUserAsync = (usuario) => {
                         console.log('La contraseña si se actualizó')
                         try {
 
-                            const user = doc(dataBase, "users", usuario.id);
+                            const user = doc(dataBase, collectionName, usuario.id);
                             updateDoc(user, usuario)
                                 .then(() => {
                                     dispatch(editUserSync({ id: user.id, ...usuario }, false))
@@ -73,7 +74,7 @@ export const editUserProviderAsync = (usuario) => {
             .then(async () => {
                 try {
 
-                    const user = doc(dataBase, "users", usuario.id);
+                    const user = doc(dataBase, collectionName, usuario.id);
                     updateDoc(user, usuario)
                         .then(() => {
                             dispatch(editUserSync({ id: user.id, ...usuario }, false))
@@ -119,7 +120,7 @@ export const registerUserAsync = (fullname, email, fecha, password, phoneNumber)
 
                 const { accessToken } = user;
 
-                const docRef = await addDoc(collection(dataBase, "users"), { fullname, email, fecha, password, phoneNumber, accessToken, admin: false, provider: 'emailPassword' });
+                const docRef = await addDoc(collection(dataBase, collectionName), { fullname, email, fecha, password, phoneNumber, accessToken, admin: false, provider: 'emailPassword' });
                 dispatch(registerUserSync({ id: docRef.id, fullname, email, fecha, password, phoneNumber, accessToken, error: false, admin: false, provider: 'emailPassword' }))
                 console.log(user, 'Usuario Registrado')
             })
@@ -129,7 +130,7 @@ export const registerUserAsync = (fullname, email, fecha, password, phoneNumber)
 
 export const registerUserSync = ({ id, fullname, email, fecha, phoneNumber, password, accessToken, error, admin, provider }) => {
     return {
-        type: typesRegister.register,
+        type: typesUser.register,
         payload: {
             id, fullname, email, fecha, phoneNumber, password, accessToken, error, admin, provider
         }
@@ -150,6 +151,72 @@ export const actionClearRegisterAsync = () => {
 
 export const actionClearSync = () => {
     return {
-        type: typesRegister.clear
+        type: typesUser.clear
+    }
+}
+
+
+export const fillUsersAsync = () => {
+    return (dispatch) => {
+        const collectionUsers = collection(dataBase, collectionName);
+        const querySnapshot = query(collectionUsers);
+        getDocs(querySnapshot)
+            .then((documents) => {
+                const data = [];
+                documents.forEach((document) => {
+                    data.push({
+                        idUser: document.id,
+                        ...document.data(),
+                    });
+                });
+
+                dispatch(
+                    fillUsersSync({
+                        users: data
+                    })
+                );
+            })
+            .catch((error) => {
+                console.log(error);
+                // dispatch(errorSync({ error: true }));
+            });
+    }
+}
+
+
+export const fillUsersSync = (params) => {
+    return {
+        type: typesUser.list,
+        payload: {
+            users: params.users
+        }
+    }
+}
+
+
+export const fillUserAsync = (idUser) => {
+    return (dispatch) => {
+        const docRef = doc(dataBase, collectionName, idUser);
+        getDoc(docRef).then(docSnapshot => {
+            if (docSnapshot.exists()) {
+                // console.log("Document data:", docSnapshot.data());
+                dispatch(fillUserSync({ user: docSnapshot.data() }));
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+}
+
+
+export const fillUserSync = (params) => {
+    return {
+        type: typesUser.fillUser,
+        payload: {
+            user: params.user
+        }
     }
 }

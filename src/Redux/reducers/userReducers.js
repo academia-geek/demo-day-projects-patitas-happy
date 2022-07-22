@@ -1,8 +1,12 @@
-import { typesRegister, typesUser } from "../types/types"
+import { typesUser } from "../types/types"
 
-export const userReducers = (state = {}, action) => {
+const initialState = {
+    users: []
+}
+
+export const userReducers = (state = initialState, action) => {
     switch (action.type) {
-        case typesRegister.register:
+        case typesUser.register:
             return {
                 id: action.payload.id,
                 fullname: action.payload.fullname,
@@ -15,19 +19,24 @@ export const userReducers = (state = {}, action) => {
                 admin: action.payload.admin,
                 provider: action.payload.provider
             }
-        case typesRegister.clear:
+        case typesUser.clear:
             return {
 
             }
         case typesUser.list:
             return {
-                ...action.payload
+                ...state,
+                users: action.payload.users
             }
         case typesUser.edit:
             return {
                 ...action.payload
             }
-
+        case typesUser.fillUser:
+            return {
+                ...state,
+                user: action.payload.user
+            }
         default:
             return state
     }
