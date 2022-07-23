@@ -13,7 +13,7 @@ const { Meta } = Card;
 const ListMascotas = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { admin } = useSelector(store => store.loginStore);
+    const { admin } = useSelector(store => store.UserStore);
     const { mascotas } = useSelector((store) => store.mascotasStore);
 
     useEffect(() => {

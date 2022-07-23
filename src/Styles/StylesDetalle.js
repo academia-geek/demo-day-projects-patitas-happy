@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import styled from "styled-components";
 
 export const TitleDog = styled.h1`
@@ -27,4 +28,15 @@ export const TitleAgendarV = styled.h1`
 export const TitleHyF = styled.h2`
     font-size: 18px;
     color:#8190A5;
+`
+
+export const ButtonMa = styled(Button)`
+    background-color: #F95F62 !important;
+    border: none !important;
+    border-radius: 5px;
+    color: white !important;
+    :hover{
+        background-color: #F5CEC7  !important;
+        color: #8190A5 !important;
+   }
 `

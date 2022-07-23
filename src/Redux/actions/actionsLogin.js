@@ -1,8 +1,11 @@
-import { signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, updateEmail, updatePassword, updateProfile } from "firebase/auth";
 import { authentication, google, facebook, dataBase } from "../../Firebase/firebaseConfig";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, query, where, getDocs, doc, updateDoc } from "firebase/firestore";
 import { getUserFromDatabase } from "../../helpers/GetDoc";
-import { typesLogin } from "../types/types"
+import { typesUser } from "../types/types"
+import Swal from "sweetalert2";
+
+// import { registerUserAsync } from "./actionsRegister";
 
 
 //---------Login---------------//
@@ -25,19 +28,37 @@ export const actionLoginAsync = (email, password) => {
 
 export const actionAuthenticatedSync = (item) => {
     return {
-        type: typesLogin.authenticated
+        type: typesUser.authenticated
     }
 }
 
 
 export const actionLoginSync = ({ id, email, password, displayName, accessToken,  phoneNumber, fullname, admin, fecha, error, photoURL }) => {
     return {
-        type: typesLogin.login,
+        type: typesUser.login,
         payload: { id, email, password, displayName, accessToken,  phoneNumber, fullname, admin, fecha, error, photoURL }
     }
 }
 
 //-----2. Logout asíncrono
+
+//--------------logout----------------//
+export const actionClearRegisterAsync = () => {
+    return (dispatch) => {
+        signOut(authentication)
+            .then(() => {
+                dispatch(actionClearSync())
+            })
+            .catch((error) => { console.warn(error, '') });
+    }
+}
+
+export const actionClearSync = () => {
+    return {
+        type: typesUser.clear
+    }
+}
+
 export const actionLogoutAsyn = () => {
     return (dispatch) => {
         signOut(authentication)
@@ -52,9 +73,11 @@ export const actionLogoutAsyn = () => {
 //-----2.1 Logout síncrono
 export const actionLogoutSyn = () => {
     return {
-        type: typesLogin.logout
+        type: typesUser.logout
     }
 }
+
+
 
 
 //---3. Inicialización con Google
@@ -115,7 +138,7 @@ export const loginFacebook = () => {
 
 export const actionLoginGoogleAndFacebookSync = ({ id, email, displayName, accessToken, photoURL, phoneNumber, admin }, error) => {
     return {
-        type: typesLogin.loginGoogleAndFacebook,
+        type: typesUser.loginGoogleAndFacebook,
         payload: { id, email, displayName, accessToken, photoURL, phoneNumber, admin, error }
     }
 }
@@ -136,7 +159,100 @@ export const actionUserDataLoadAsync = (email) => {
 
 export const actionUserDataLoadSync = ({ id, email, password, fullName, accessToken, photoURL, phoneNumber, admin }) => {
     return {
-        type: typesLogin.load,
+        type: typesUser.load,
         payload: { id, email, password, fullName, accessToken, photoURL, phoneNumber, admin }
     }
 };
+
+//-------------registrar usuario---------------//
+export const registerUserAsync = (fullname, email, fecha, password, phoneNumber) => {
+    return (dispatch) => {
+
+        createUserWithEmailAndPassword(authentication, email, password)
+            .then(async ({ user }) => {
+                await updateProfile(authentication.currentUser, { displayName: fullname });
+
+                const { accessToken } = user;
+
+                const docRef = await addDoc(collection(dataBase, "users"), { fullname, email, fecha, password, phoneNumber, accessToken, admin: false });
+                dispatch(registerUserSync({ id: docRef.id, fullname, email, fecha, password, phoneNumber, accessToken, error: false, admin: false }))
+                console.log(user, 'Usuario Registrado')
+            })
+            .catch(error => console.warn(error))
+    }
+}
+
+export const registerUserSync = ({ id, fullname, email, fecha, phoneNumber, password, accessToken, error, admin }) => {
+    return {
+        type: typesUser.register,
+        payload: {
+            id, fullname, email, fecha, phoneNumber, password, accessToken, error, admin
+        }
+    }
+}
+
+//--------editar usuario ---------------//
+
+export const editUserAsync = (displayName, email, photoURL, phoneNumber, fecha, password) => {
+    return async(dispatch) => {
+        // const user = authentication.currentUser;
+        // const newPassword = getASecureRandomPassword()
+        await updateProfile(authentication.currentUser, {
+            displayName: displayName, photoURL: photoURL, email: email
+            
+        })
+        await updateEmail(authentication.currentUser, email)
+
+        await updatePassword(authentication.currentUser, password)
+
+        const collectionU = collection(dataBase, "users")
+        const q = query(collectionU, where("email", "==", email))
+        const datosQ = await getDocs(q)
+        let id = ''
+
+        datosQ.forEach((user) => {
+            id=user.id
+        })
+
+        const docRef = doc(dataBase, "users", id)
+
+        await updateDoc(docRef, {
+            displayName, email, phoneNumber, fecha,  password
+        })
+
+
+           .then(() => {
+            dispatch(editUserSync(displayName,photoURL, email, phoneNumber, fecha, password ))
+            console.log('yeeeh, perfil actualizado')
+            console.log(displayName,photoURL, email, phoneNumber,fecha, password)
+            dispatch(listUserSync({displayName, email, phoneNumber,fecha, photoURL, password}))
+            Swal.fire({
+                icon: 'success',
+                title: 'Congratulations!',
+                text: 'Se ha actualizado correctamente la información'
+            })
+            
+            
+          }).catch((error) => {
+            console.log(error, 'perfil no fue actualizado')
+          });
+
+    }
+
+}
+
+export const editUserSync = (displayName, email, phoneNumber, photoURL, password) => {
+    return {
+        type: typesUser.edit,
+        payload:  {displayName, email, phoneNumber, photoURL, password }
+    }
+}
+
+//---------listar
+
+export const listUserSync = (displayName, email, phoneNumber,fecha, photoURL, password) => {
+    return {
+        type: typesUser.list,
+        payload: displayName, email, phoneNumber,fecha, photoURL, password
+    }
+}

@@ -2,7 +2,7 @@ import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
 import { formReducers } from "../reducers/formReducer";
 import { loginReducers } from "../reducers/loginReducers";
-import { userReducers } from "../reducers/userReducers";
+// import { userReducers } from "../reducers/userReducers";
 import { mascotasReducers } from "../reducers/mascotaReducers";
 
 import { solicitudesReducers } from "../reducers/solicitudesReducer";
@@ -17,8 +17,8 @@ const composeEnhancers =
   compose;
 
 const reducers = combineReducers({
-  loginStore: loginReducers,
-  regisUserStore: userReducers,
+  UserStore: loginReducers, 
+  // regisUserStore: userReducers,
   mascotasStore: mascotasReducers,
   solicitudesStore: requestReducer,
   formStore: formReducers,

@@ -2,34 +2,37 @@ import React from 'react';
 import Footer from './Footer';
 import { useDispatch, useSelector } from 'react-redux';
 import useForm from '../hooks/useForm';
-import { editUserAsync } from '../Redux/actions/actionsRegister';
 import { FileUpload } from '../helpers/FileUpload';
 import { IconButton } from '@mui/material';
 import { PhotoCamera } from '@mui/icons-material';
+import { Input, Space, Tooltip } from 'antd';
+import { EditOutlined, EyeTwoTone, EyeInvisibleOutlined } from '@ant-design/icons';
+import { BtnRosa, PafChange, SectionE, SectionImg, TitleProfile, TitleYour } from '../Styles/StyleProfile';
+import { editUserAsync } from '../Redux/actions/actionsLogin';
+
 
 const Profile = () => {
 
     const dispatch = useDispatch()
 
-    const user = useSelector(store => store.loginStore)
+    const user = useSelector(store => store.UserStore)
     console.log(user)
-   
+
     const [formValue, handleInputChange] = useForm({
         photoURL: user.photoURL,
         displayName: user.displayName,
         email: user.email,
         phoneNumber: user.phoneNumber,
         fecha: user.fecha,
-        
-
+        password: user.password
     })
 
-    const { displayName, email, photoURL, phoneNumber } = formValue
+    const { displayName, email, photoURL, phoneNumber, fecha, password } = formValue
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(displayName, email, photoURL, phoneNumber)
-        dispatch(editUserAsync(displayName, email, photoURL, phoneNumber))
+        console.log(displayName, email, photoURL, phoneNumber, fecha, password)
+        dispatch(editUserAsync(displayName, email, photoURL, phoneNumber, fecha, password))
 
     }
 
@@ -47,50 +50,100 @@ const Profile = () => {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-            <h1>Profile</h1>
-            <p>change or update your info user.</p>
-            <div style={{ borderRadius: '100%' }}>
-            </div>
+            <TitleProfile>Profile</TitleProfile>
+            <PafChange>change or update your info user.</PafChange>
+
             {
 
-                <form onSubmit={handleSubmit} style={{ justifyContent: 'center' }}>
+                <form onSubmit={handleSubmit} style={{ flexDirection: 'column' }}>
+                    <SectionImg>
+                        <img width={120} height={120} src={user.photoURL} alt="" style={{ borderRadius: '100%' }} />
+                        <IconButton color="primary" aria-label="upload picture" component="label">
+                            <input hidden accept="image/*" type="file" name="photoURL" onChange={handleFileChange} />
+                            <PhotoCamera />
+                        </IconButton>
+                    </SectionImg>
 
-                    <img width={120} height={120} src={user.photoURL} alt="" style={{ borderRadius: '100%' }} />
-                    <IconButton color="primary" aria-label="upload picture" component="label" style={{marginTop:'80px'}}>
-                        <input hidden accept="image/*" type="file" name="photoURL" onChange={handleFileChange}/>
-                        <PhotoCamera />
-                    </IconButton>
-                    {/* <input type="file" name="photoURL" onChange={handleFileChange} /> */}
+                    <SectionE>
+                        <TitleYour>Your Name</TitleYour>
+                        <Input
+                            style={{ width: '100%', fontSize: '18px', margin: '10px' }}
+                            type="text"
+                            name="displayName"
+                            value={formValue.displayName}
+                            onChange={handleInputChange}
+                            suffix={
+                                <Tooltip title="Extra information">
+                                    <EditOutlined style={{ color: 'rgba(0,0,0,.45)' }} />
+                                </Tooltip>
+                            }
+                        />
+                    </SectionE>
 
-                    <h5>Your name</h5>
+                    <SectionE>
+                        <TitleYour>Your Email</TitleYour>
+                        <Input
+                            style={{ width: '100%', fontSize: '18px', margin: '10px' }}
+                            type="text"
+                            name="email"
+                            value={formValue.email}
+                            onChange={handleInputChange}
+                            suffix={
+                                <Tooltip title="Extra information">
+                                    <EditOutlined style={{ color: 'rgba(0,0,0,.45)' }} />
+                                </Tooltip>
+                            }
+                        />
+                    </SectionE>
 
-                    <input type="text" name="displayName" value={formValue.displayName} onChange={handleInputChange} />
+                    <SectionE>
+                        <TitleYour>Your Telephone</TitleYour>
+                        <Input
+                            style={{ width: '100%', fontSize: '18px', margin: '10px' }}
+                            type="text"
+                            name="phoneNumber"
+                            value={formValue.phoneNumber}
+                            onChange={handleInputChange}
+                            suffix={
+                                <Tooltip title="Extra information">
+                                    <EditOutlined style={{ color: 'rgba(0,0,0,.45)' }} />
+                                </Tooltip>
+                            }
+                        />
+                    </SectionE>
 
-                    <h5>Your Email</h5>
+                    <SectionE style={{ display: 'flex' }}>
+                        <TitleYour style={{ width: '31%' }}>Your Date of Birth</TitleYour>
+                        <input
+                            style={{ width: '288px', fontSize: '15px', margin: '10px', height: '38px', border: '1px solid #d9d9d9', borderRadius: '2px', padding: '10px' }}
+                            type="date"
+                            name="fecha"
+                            value={formValue.fecha}
+                            onChange={handleInputChange} />
+                    </SectionE>
 
-                    <input type="text" name="email" value={formValue.email} onChange={handleInputChange} disabled />
-                    <br />
-                    <h5>Your telfono</h5>
-
-                    <input type="text" name="phoneNumber" value={formValue.phoneNumber} onChange={handleInputChange} />
-                    <br />
-
-                    <h5>Your date</h5>
-
-                    <input type="date" name="fecha" value={formValue.fecha} onChange={handleInputChange} />
-                    <br />
-
-
-
-                    <button>Aceptar</button>
+                    <SectionE>
+                        <TitleYour style={{ width: '33%' }}>Your  Password</TitleYour>
+                        <Space direction="vertical">
+                            <Input.Password
+                                style={{ width: '290px', fontSize: '18px' }}
+                                type="password"
+                                name="password"
+                                value={formValue.password}
+                                onChange={handleInputChange}
+                                placeholder="input password"
+                                iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
+                            />
+                        </Space>
+                    </SectionE>
+                    <div style={{ display: 'flex' }}>
+                        <BtnRosa>Update</BtnRosa>
+                    </div>
                 </form>
-
-
             }
 
             <div>
                 <span>Eliminar cuenta</span>
-
             </div>
             <Footer />
         </div>

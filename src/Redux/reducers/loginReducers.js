@@ -1,8 +1,8 @@
-import { typesLogin } from "../types/types";
+import { typesUser } from "../types/types";
 
 export const loginReducers = (state = {}, action) => {
     switch (action.type) {
-        case typesLogin.login:
+        case typesUser.login:
             return {
                 id: action.payload.id,
                 email: action.payload.email,
@@ -16,18 +16,18 @@ export const loginReducers = (state = {}, action) => {
                 fecha: action.payload.fecha,
                 error: action.payload.error
             }
-        case typesLogin.authenticated:
+        case typesUser.authenticated:
             return {
                 ...state,
                 error: undefined,
                 errorGaF: undefined,
                 authenticated: true
             }
-        case typesLogin.logout:
+        case typesUser.logout:
             return {
                 authenticated: false
             }
-        case typesLogin.loginGoogleAndFacebook:
+        case typesUser.loginGoogleAndFacebook:
             return {
                 email: action.payload.email,
                 displayName: action.payload.displayName,
@@ -36,7 +36,7 @@ export const loginReducers = (state = {}, action) => {
                 phoneNumber: action.payload.phoneNumber,
                 errorGoF: action.payload.error
             }
-        case typesLogin.load:
+        case typesUser.load:
             return {
                 id: action.payload.id,
                 email: action.payload.email,
@@ -49,6 +49,30 @@ export const loginReducers = (state = {}, action) => {
                 admin: action.payload.admin,
                 fecha: action.payload.fecha,
                 error: action.payload.error
+            }
+        case typesUser.register:
+            return {
+                id: action.payload.id,
+                fullname: action.payload.fullname,
+                email: action.payload.email,
+                fecha: action.payload.fecha,
+                password: action.payload.password,
+                phoneNumber: action.payload.phoneNumber,
+                accessToken: action.payload.accessToken,
+                error: action.payload.error,
+                admin: action.payload.admin
+            }
+        case typesUser.clear:
+            return {
+
+            }
+        case typesUser.list:
+            return {
+                ...action.payload
+            }
+        case typesUser.edit:
+            return {
+                ...state
             }
         default:
             return state

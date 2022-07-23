@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import { FormControl, Grid, InputLabel, MenuItem, Select, TextField } from '@mui/material';
+import React from 'react';
+import { FormControl, Grid, InputLabel, MenuItem } from '@mui/material';
 import { TitleC } from '../Styles/StyleInfo';
-import { FormAdop, ParrafoAdop } from '../Styles/StyleDonar';
+import { ParrafoAdop } from '../Styles/StyleDonar';
 import Footer from './Footer';
 import useForm from '../hooks/useForm';
 import { useDispatch } from 'react-redux';
 import { addAdopcionSync } from '../Redux/actions/actionsSolicitudes';
+import { Form, Input, Button, Select } from 'antd';
+import TextArea from 'antd/lib/input/TextArea';
 
-// import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-
+const { Option } = Select;
 
 const SolicitudAdopcion = () => {
 
@@ -23,8 +24,8 @@ const SolicitudAdopcion = () => {
         descripcion: ''
     })
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+    const handleSubmit = () => {
+
         console.log(formValue)
         dispatch(addAdopcionSync(formValue))
     }
@@ -39,52 +40,93 @@ const SolicitudAdopcion = () => {
                     Por favor llena todos los campos para comenzar la solicitud de adopción.
                 </ParrafoAdop>
 
-                <FormAdop onSubmit={handleSubmit}>
-
-                    <section style={{ display: 'flex' }}>
-                        <h3 style={{ width: '50%' }}>Ciudad</h3>
-                        <TextField
-                            id="outlined-basic"
-                            label="Outlined"
-                            variant="outlined"
+                <Form onFinish={handleSubmit}
+                    name="basic"
+                    labelCol={{
+                        span: 8,
+                    }}
+                    wrapperCol={{
+                        span: 16,
+                    }}
+                >
+                    <Form.Item
+                        label="Ciudad"
+                        name="ciudad"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your username!',
+                            },
+                        ]}
+                    >
+                        <Input
                             name="ciudad"
                             value={formValue.ciudad}
                             onChange={handleInputChange}
                         />
-                    </section>
+                    </Form.Item>
 
-                    <section style={{ display: 'flex' }}>
-                        <h3 style={{ width: '50%' }}>Dirección </h3>
-                        <TextField
-                            id="outlined-basic" 
-                            label="Outlined" 
-                            variant="outlined"
-                            name="direccion" 
-                            value={formValue.direccion} 
+                    <Form.Item
+                        label="Direccion"
+
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your username!',
+                            },
+                        ]}
+                    >
+                        <Input
+                            name="direccion"
+                            value={formValue.direccion}
                             onChange={handleInputChange}
                         />
-                    </section>
+                    </Form.Item>
 
-                    <section style={{ display: 'flex' }}>
-                        <h3 style={{ width: '50%' }}>Genero</h3>
-                        <FormControl sx={{ my: 1, minWidth: 120 }}>
-                            <InputLabel id="demo-simple-select-label">Selecciona Genero</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                name="genero"
-                                value={formValue.genero}
-                                label="Selecciona Genero"
-                                onChange={handleInputChange}
-                            >
-                                <MenuItem value='masculino'>Masculino</MenuItem>
-                                <MenuItem value='femenino'>Femenino</MenuItem>
+                    <Form.Item
+                        label="Genero"
+                        name="genero"
+                        value={formValue.genero}
+                        onChange={handleInputChange}
+                        rules={[
+                            {
+                                required: false,
+                                message: 'Please input your username!',
+                            },
+                        ]}
+                    >
+                        <Select placeholder="Por favor seleccione"
 
-                            </Select>
-                        </FormControl>
-                    </section>
+                            value={formValue.genero}
+                            onChange={handleInputChange}
+                        >
+                            <Option value='masculino'>Masculino</Option>
+                            <Option value='femenino'>Femenino</Option>
+                        </Select>
+                    </Form.Item>
 
-                    <section style={{ display: 'flex' }}>
+                    <Form.Item
+                        label="Estabilidad"
+                        name="estabilidad"
+
+                        rules={[
+                            {
+                                required: false,
+                                message: 'Please input your username!',
+                            },
+                        ]}
+                    >
+                        <Select placeholder="Por favor seleccione"
+
+                            value={formValue.estabilidad}
+                            onChange={handleInputChange}
+                        >
+                            <Option value='masculino'>Masculino</Option>
+                            <Option value='femenino'>Femenino</Option>
+                        </Select>
+                    </Form.Item>
+
+                    {/* <section style={{ display: 'flex' }}>
                         <h3 style={{ width: '50%' }}>¿Cuentas con estabilidad econimica?</h3>
                         <FormControl sx={{ my: 1, minWidth: 120 }}>
                             <InputLabel id="demo-simple-select-label">Selecciona</InputLabel>
@@ -101,22 +143,36 @@ const SolicitudAdopcion = () => {
 
                             </Select>
                         </FormControl>
-                    </section>
+                    </section> */}
 
-                    <section style={{ display: 'flex' }}>
-                        <h3 style={{ width: '50%' }}>¿Por qué quieres adoptar?</h3>
-                        <TextField
-                            id="outlined-multiline-static"
-                            label="Multiline"
-                            multiline
-                            rows={4}
-                            // defaultValue="Default Value"
-                            name="descripcion" value={formValue.descripcion} onChange={handleInputChange}
+                    <Form.Item
+                        label="¿Por qué quieres adoptar?"
+
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input your username!',
+                            },
+                        ]}
+                    >
+                        <TextArea rows={4} placeholder="Describelo aquí"
+                            name="descripcion"
+                            value={formValue.descripcion}
+                            onChange={handleInputChange}
                         />
-                    </section>
 
-                    <button>Solicitud de Adopción</button>
-                </FormAdop>
+                    </Form.Item>
+
+                    <Form.Item
+                    style={{width:'100%', alignItems:'center', textAlign:'center', justifyContent:'center', justifyItems:'center'}}
+                    >
+                        <Button type="primary" htmlType="submit" size='large'
+                        
+                        >
+                            Solicitar
+                        </Button>
+                    </Form.Item>
+                </Form>
 
             </Grid>
             <Footer />

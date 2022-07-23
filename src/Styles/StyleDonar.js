@@ -21,8 +21,18 @@ export const ParrafoAdop = styled.p`
 `
 
 export const FormAdop = styled.form`
-    margin: 0 50px;
+    margin: 35px 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+   
+`
+export const SectionAdop = styled.section`
+    display: flex;
+    flex-direction: row;
+    @media screen and (max-width: 768px) {
+       
+        flex-direction: column;
+       
+    }
 `
