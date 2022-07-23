@@ -1,7 +1,6 @@
 import { typesMascotas } from "../types/types";
-import { collection, addDoc, query, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { collection, addDoc, query, getDocs, deleteDoc, doc, updateDoc, getDoc } from "firebase/firestore";
 import { dataBase } from "../../Firebase/firebaseConfig"
-import { getDocFromDatabase } from "../../helpers/GetDoc";
 
 const collectionName = "mascotas";
 
@@ -153,16 +152,19 @@ export const deleteMascotaSync = (params) => {
 
 export const fillMascotaAsync = (firestoreId) => {
     return (dispatch) => {
-        getDocFromDatabase({
-            label: "firestoreId",
-            value: firestoreId
-        }, collectionName)
-            .then((mascota) => {
-                dispatch(fillMascotaSync({ ...mascota }, false));
-            }).catch(error => {
-                console.log(error)
-                dispatch(fillMascotaSync({}, false));
-            });
+        const docRef = doc(dataBase, collectionName, firestoreId);
+        getDoc(docRef).then(docSnapshot => {
+            if (docSnapshot.exists()) {
+                // console.log("Document data:", docSnapshot.data());
+                dispatch(fillMascotaSync(docSnapshot.data(), false));
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        }).catch(error => {
+            console.log(error);
+            dispatch(fillMascotaSync({}, false));
+        });
     }
 }
 
@@ -175,3 +177,23 @@ export const fillMascotaSync = (mascota, error) => {
         }
     }
 }
+
+export const selectedFilter = (params) => {
+    return {
+        type: typesMascotas.selectedFilter,
+        payload: {
+            category: params.category
+        }
+    }
+}
+
+export const appliedFilters = (params) => {
+    return {
+        type: typesMascotas.appliedFilters,
+        payload: {
+            category: params.category,
+            selectedValue: params.selectedValue
+        }
+    }
+}
+

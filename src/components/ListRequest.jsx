@@ -37,18 +37,23 @@ const ListRequest = () => {
           avatar: usuario.photoURL,
           pet: mascota.imagen,
           description: (
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span>{`Quiere ${tipoDeSolicitud.accion} ${mascota.nombre} en ${moment(new Date(`${solicitud.fecha} ${solicitud.hora}`)).format('LLL')}`}</span>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10 }}>
+              <span>{`Solicitud generada en ${moment(new Date(solicitud.fechaCreacion)).format('LLL')}`}</span>
+              <div>
                 <Tag color={tipoDeSolicitud.color}>{tipoDeSolicitud.label}</Tag>
                 <Tag icon={statusSolicitud.icon} color={statusSolicitud.color}>{statusSolicitud.label}</Tag>
-                <Button onClick={() => {
-                  navigate(`/solicitudes/${solicitud.idSolicitud}`)
-                }} style={{ marginTop: 15 }} type='primary'>Ver detalle</Button>
               </div>
             </div>
           ),
-          content: solicitud.fechaCreacion ? moment(new Date(`${solicitud.fechaCreacion}`)).format('LLL') : ''
+          content: (
+            <div style={{ display: 'flex', justifyContent: 'space-between',  marginTop: 50, flexWrap: 'wrap', gap: 10  }}>
+              <span>{`Quiere ${tipoDeSolicitud.accion} ${mascota.nombre} en ${moment(new Date(`${solicitud.fecha} ${solicitud.hora}`)).format('LLL')}`}</span>
+              <Button onClick={() => {
+                  navigate(`/solicitudes/${solicitud.idSolicitud}`)
+                }} type='primary'>Ver detalle</Button>
+            </div>
+          )
+          
         }
       });
 

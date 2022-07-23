@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, ButtonGroup, Grid } from '@mui/material'
@@ -105,6 +105,7 @@ const DetailsMascotas = () => {
                 <Item>Mascota:</Item>
                 <Item>Género:</Item>
                 <Item>Edad:</Item>
+                <Item>Tamaño:</Item>
                 <Item>Enfermedades:</Item>
                 {
                   mascota.fechaNacimiento && mascota.fechaNacimiento !== "Invalid date" ? (
@@ -119,6 +120,7 @@ const DetailsMascotas = () => {
 
                 <Item>Ciudad:</Item>
                 <Item>Dirección:</Item>
+                <Item>Personalidad:</Item>
                 <Item>Vacunas</Item>
                 {
                   condiciones.length ? (
@@ -135,6 +137,10 @@ const DetailsMascotas = () => {
                 <Item>{mascota.tipo}</Item>
                 <Item>{mascota.genero}</Item>
                 <Item>{mascota.edad} años</Item>
+                <Item>{mascota && Object.keys(mascota).length && (
+                  <Tag color="orange">{mascota.tamano}</Tag>
+                )}
+                </Item>
                 <Item>{mascota.enfermedad}</Item>
                 {
                   mascota.fechaNacimiento && mascota.fechaNacimiento !== "Invalid date" ? (
@@ -148,6 +154,10 @@ const DetailsMascotas = () => {
                 }
                 <Item>{mascota.ciudad}</Item>
                 <Item>{mascota.ubicacion}</Item>
+                <Item>{mascota && Object.keys(mascota).length && mascota.personalidad.map((item, index) => (
+                  <Tag color="lime" key={index}>{item}</Tag>
+                ))}
+                </Item>
                 <Item>{mascota && Object.keys(mascota).length && mascota.vacunas.map((item, index) => (
                   <Tag color="cyan" key={index}>{item}</Tag>
                 ))}

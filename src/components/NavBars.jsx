@@ -39,47 +39,39 @@ const NavBars = () => {
             className="justify-content-end">
 
             <Nav className="justify-content-end">
-              <Nav className="mx-3 my-auto">
-                <Link to="/home">HOME</Link>
-              </Nav>
-              <Nav className="mx-3 my-auto">
-                <Link to="/mascotas">MASCOTAS</Link>
-              </Nav>
-              <Nav.Link className="mx-3 my-auto">ADOPCIÓN</Nav.Link>
-              <Nav className="mx-3 my-auto">
-                <Link to="/info">INFORMACIÓN</Link>
-              </Nav>
-              <Nav className="mx-3 my-auto">
-                <Link to="/contactanos">CONTACTANOS</Link>
-              </Nav>
-
               <NavLink to="/home" className="mx-3 my-auto nav-item nav-link"
                 activeclassname='active'
-                >
+              >
                 HOME
               </NavLink>
 
               <NavLink to="/mascotas" className="mx-3 my-auto nav-item nav-link"
                 activeclassname='active'
-                >
+              >
                 MASCOTAS
               </NavLink>
 
               <NavLink to="/donar" className="mx-3 my-auto nav-item nav-link"
                 activeclassname='active'
-                >
+              >
                 DONAR
               </NavLink>
 
               <NavLink to="/info" className="mx-3 my-auto nav-item nav-link"
                 activeclassname='active'
-                >
+              >
                 INFORMACIÓN
+              </NavLink>
+
+              <NavLink to="/solicitudes" className="mx-3 my-auto nav-item nav-link"
+                activeclassname='active'
+              >
+                SOLICITUDES
               </NavLink>
 
               <NavLink to="/contactanos" className="mx-3 my-auto nav-item nav-link"
                 activeclassname='active'
-                >
+              >
                 CONTACTANOS
               </NavLink>
 
