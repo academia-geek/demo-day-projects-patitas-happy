@@ -1,54 +1,1497 @@
 {
-  "places": [
+  "veterinaries": [
     {
-      "description": "Schon seit längerem wollte Rummel sich sein kleines Paradies schaffen, hat tiefe stille Wasser betörnt und stürmischen Zeiten getrotzt und hat endlich geankert - in einer schönen kleinen Bucht nicht weit von Euch! In diese Bucht läd Rummel von Mai bis Mitte September zum Chillen und Grillen, zum Schunkeln, Munkeln und natürlich Trunkeln. Und wenn Rummel mal so richtig gut drauf ist, dann wird auch mal ordentlich gerummelt! So oder so, zu Wasser wie zur Bucht, auch der Rummel ist nichts ohne seine Crew. Also Leichtmatrosen und Matrösinnen - kommt rum und lasst es Euch gut gehn! Ahoi* Ach ja, geöffnet ist nur an sonnigen und regenfreien Tagen :) ________________ Reservierungsanfragen sind nur per Mail möglich bucht@rummels-welt.de (Reservierungsanfragen werden nur zwischen Di-Fr beantwortet) ",
-      "name": "Rummels Bucht",
-      "geometry": [52.500772, 13.472764]
+      "id": 368033410,
+      "geometry": { "lat": 4.4468759, "lon": -75.169919 },
+      "name": "Universidadcooperativadecolombia"
     },
     {
-      "description": "Das SEZ bietet ein großes Sport-, Freizeit- und Erholungsangebot. Ab sofort könnt ihr das SEZ für Events unter: sez@glut.berlin anmieten. Kommt vorbei und genießt den industriellen Charm einer in Vergessenheit geglaubten Location. ",
-      "name": "SEZ Berlin",
-      "geometry": [52.527025, 13.446139]
+      "id": 533747544,
+      "geometry": { "lat": 4.9213433, "lon": -75.064705 },
+      "name": "Veterinarialamascota"
+    },
+
+    {
+      "id": 601508355,
+      "geometry": { "lat": 5.0500141, "lon": -75.483114 },
+      "name": "SanBernardo"
     },
     {
-      "description": "Das Huxleys seit fast einem Jahrhundert ein Name in Berlin. Varietébühne, Sportpalast, Rollschuhbahn und Ausflugsziel am Rande des Volksparks Hasenheide. Das HUXLEYS hat eine lange Geschichte, und die ist verbunden mit Entertainment, Vergnügen und Livemusik.",
-      "name": "Huxley's Neue Welt",
-      "geometry": [52.486319, 13.421437]
+      "id": 611343648,
+      "geometry": { "lat": 4.6280871, "lon": -74.1450382 },
+      "name": "VeterinariaMandalay"
     },
     {
-      "description": "Wir sind ein Veranstaltungsort. Eine Plattform. Wir sind ein Kollektiv. Basisdemokratisch und solidarisch. Wir sind das Mensch Meier. Und ihr seid es auch, wenn ihr da seid. Wir wollen einen Raum erschaffen, in dem wir unsere Beziehungen selbstbestimmt formen. Das ist im Kapitalismus, im Patriarchat, leider kein erreichbares Ziel. Aber wir haben einfach schon mal angefangen, uns dieses Ziel als Weg formuliert. Für unsere Zukunft. In einem Raum für Inspiration, Intervention und Bewegung. KulturKunstPartyPolitik. Mit den Mitteln der Kritik und den Waffen der Kunst unordentlich Theater machen. Mensch Meier ",
-      "name": "Mensch Meier",
-      "geometry": [52.535069, 13.452312]
+      "id": 612012771,
+      "geometry": { "lat": 5.0532696, "lon": -75.4862489 },
+      "name": "AnimalHealth"
     },
     {
-      "description": "The club is located in a former underground gay cruising toilet under the Yorckstrasse in Kreuzberg.",
-      "name": "Zur Klappe",
-      "geometry": [52.493039, 13.387248]
+      "id": 643815394,
+      "geometry": { "lat": 4.6995103, "lon": -74.0397248 },
+      "name": "SAGEN"
     },
     {
-      "description": "Formerly Shift Bar in the Kraftwerk complex which also houses Tresor.",
-      "name": "OHM",
-      "geometry": [52.510507, 13.42022]
+      "id": 703563897,
+      "geometry": { "lat": 4.7312919, "lon": -74.0415251 },
+      "name": "RoyalCanino"
     },
     {
-      "description": "Club for electronic Music directly in the heart of Berlin! Between Hakescher Markt and 1 min. away from S Alexanderplatz. Stylish Crowd and many of Berlins most known artists.",
-      "name": "M-BIA",
-      "geometry": [52.522437, 13.409063]
+      "id": 932337949,
+      "geometry": { "lat": 5.830652, "lon": -73.0334325 },
+      "name": "CANYNOS"
     },
     {
-      "description": "Booze, Karaoke and Rock'n'Roll! Sparkles, disco lights, 14 private karaoke cabins and a big stage waiting for your performance! We have 10 cabins for walk-ins (for up to 10 guests) and 4 larger cabins for larger groups, which can be reserved in advance (for up to 18 guests). Mondays - MultiSEXual BOXhopping! Queer + Friends. Mix + Mingle! Box Sharing + Caring! 3,- Entry. Sing in the karaoke boxes all night long! Big stage opens at 22h. Tuesdays - The House of Presents’ Drag Show Doors at 9, pre-show at 10, main show at 11 Wednesdays - BOX HAPPY HOUR All cabins half-priced from 7pm - midnight Thursdays - Mixed Bag! Special Events, DJs, Live Musik, Queer Events, and more! Fridays / Saturday / Sunday: SING ON STAGE!",
-      "name": "Monster Ronson's Ichiban Karaoke",
-      "geometry": [52.505188, 13.448437]
+      "id": 1190039098,
+      "geometry": { "lat": 6.2192068, "lon": -75.5988282 },
+      "name": "MascotasyAmigos"
     },
     {
-      "description": "Ägyptisches & Arabisches Restaurant · Smoker's Lounge · Club · Café · Cocktail Bar · Der feine Orient in Berlin",
-      "name": "Marooush Restaurant - Lounge - Bar - Club",
-      "geometry": [52.500938, 13.321438]
+      "id": 1190039172,
+      "geometry": { "lat": 6.2545314, "lon": -75.5837478 },
+      "name": "SaludyBienestarAnimal"
     },
     {
-      "description": "Kater Blau gives you everything you need for a party: House, Techno, Konfetti. Chill next to the Spree. All this on the ex wood markt area.",
-      "name": "Kater Blau",
-      "geometry": [52.512187, 13.425563]
+      "id": 1197785603,
+      "geometry": { "lat": 6.2304924, "lon": -75.5961328 },
+      "name": "VeterinaríaAlfysur"
+    },
+    {
+      "id": 1426686964,
+      "geometry": { "lat": 3.2432728, "lon": -74.3542965 },
+
+      "name": "UMATA"
+    },
+    {
+      "id": 1669561035,
+      "geometry": { "lat": 5.0531396, "lon": -75.4843235 },
+
+      "name": "ComoPerrosyGatos"
+    },
+    {
+      "id": 1713649217,
+      "geometry": { "lat": 4.7467014, "lon": -74.0438464 },
+      "name": "Agronorte"
+    },
+    {
+      "id": 1859573765,
+      "geometry": { "lat": 4.676696, "lon": -74.1442719 },
+
+      "name": "LaPajarera"
+    },
+    {
+      "id": 1885466521,
+      "geometry": { "lat": 6.2467555, "lon": -75.6152707 },
+
+      "name": "CentroVeterinarioStaMónica"
+    },
+    {
+      "id": 1889320007,
+      "geometry": { "lat": 6.2711518, "lon": -75.5863964 },
+      "name": "PoliclínicoVeterianarioSociedadProtectoradeAnimales"
+    },
+    {
+      "id": 1940787227,
+      "geometry": { "lat": 4.6320514, "lon": -74.091304 },
+      "name": "Homeovet"
+    },
+    {
+      "id": 2052257184,
+      "geometry": { "lat": 4.9190894, "lon": -74.09229 },
+      "name": "ElHato"
+    },
+    {
+      "id": 2334454274,
+      "geometry": { "lat": 6.0137321, "lon": -73.6726949 },
+      "name": "LaHacienda"
+    },
+    {
+      "id": 2337284369,
+      "geometry": { "lat": 6.0134038, "lon": -73.6752292 },
+
+      "name": "AgroVetGan"
+    },
+    {
+      "id": 2478483055,
+      "geometry": { "lat": 3.5838131, "lon": -76.4921648 },
+
+      "name": "CentroClinicoVeterinario"
+    },
+    {
+      "id": 2585013962,
+      "geometry": { "lat": 6.0107839, "lon": -73.6763876 },
+
+      "addr:city": "Vélez",
+
+      "name": "TodoCampo"
+    },
+    {
+      "id": 2668483730,
+      "geometry": { "lat": 6.2572365, "lon": -75.5958471 },
+
+      "name": "CaninosyFelinos"
+    },
+    {
+      "id": 2672170801,
+      "geometry": { "lat": 6.2335477, "lon": -75.5867114 },
+
+      "name": "LaClínicadelGato"
+    },
+    {
+      "id": 2692985131,
+      "geometry": { "lat": 4.5819455, "lon": -74.0969925 },
+
+      "name": "MascotasSantaTeresita"
+    },
+    {
+      "id": 2738667076,
+      "geometry": { "lat": 4.6750023, "lon": -75.6586608 },
+
+      "name": "DiverMascotas"
+    },
+    {
+      "id": 2738667094,
+      "geometry": { "lat": 4.6755795, "lon": -75.658844 },
+
+      "name": "Lagranja"
+    },
+    {
+      "id": 2771029198,
+      "geometry": { "lat": 4.6212604, "lon": -75.6256345 },
+
+      "name": "GuarderíaCanina"
+    },
+    {
+      "id": 2873541532,
+      "geometry": { "lat": 3.5823503, "lon": -76.4891452 },
+
+      "name": "ConsultorioVeterinarioHuellitas"
+    },
+    {
+      "id": 3018700692,
+      "geometry": { "lat": 9.2904185, "lon": -75.3966273 },
+
+      "name": "ClínicaVeterinariaMascotas"
+    },
+    {
+      "id": 3077686600,
+      "geometry": { "lat": 7.8310129, "lon": -72.4719162 },
+
+      "name": "\"AnimalPlanet\""
+    },
+    {
+      "id": 3081083429,
+      "geometry": { "lat": 7.8365698, "lon": -72.4715332 },
+
+      "name": "CatsDogs"
+    },
+    {
+      "id": 3088517533,
+      "geometry": { "lat": 7.8956313, "lon": -72.4934743 },
+
+      "name": "MundoAnimalVIPET"
+    },
+    {
+      "id": 4827407867,
+      "geometry": { "lat": 6.2111091, "lon": -75.576217 },
+      "name": "ClínicaVeterinaria"
+    },
+    {
+      "id": 4835306021,
+      "geometry": { "lat": 5.7174813, "lon": -72.9243751 },
+      "name": "Mascott"
+    },
+    {
+      "id": 4892458101,
+      "geometry": { "lat": 4.6215968, "lon": -74.0906328 },
+      "name": "veterianariaypeluqueríacanina"
+    },
+    {
+      "id": 4929666722,
+      "geometry": { "lat": 4.4080248, "lon": -75.1564014 },
+      "name": "Socialcanino",
+      "name:es": "Socialcanino"
+    },
+    {
+      "id": 4929667621,
+      "geometry": { "lat": 4.5227717, "lon": -75.702675 },
+      "name": "AmigosyMascotas"
+    },
+    {
+      "id": 4929667622,
+      "geometry": { "lat": 5.9305663, "lon": -73.6171449 },
+      "name": "AnimalHouse"
+    },
+    {
+      "id": 5029868321,
+      "geometry": { "lat": 6.2352105, "lon": -75.5915636 },
+      "name": "RosalesSuescun"
+    },
+    {
+      "id": 5029868421,
+      "geometry": { "lat": 6.2371549, "lon": -75.5916204 },
+      "name": "Centroveterinariorosales"
+    },
+    {
+      "id": 5032366016,
+      "geometry": { "lat": 9.3288103, "lon": -75.2961126 },
+      "name": "EnfermeríaVeterinaria"
+    },
+    {
+      "id": 5040011941,
+      "geometry": { "lat": 6.5550604, "lon": -73.1349966 },
+      "name": "ElHato"
+    },
+    {
+      "id": 5059240426,
+      "geometry": { "lat": 1.9102648, "lon": -75.1579611 },
+      "name": "VeterinariaDoggy&Ron"
+    },
+    {
+      "id": 5090959524,
+      "geometry": { "lat": 6.2830857, "lon": -75.5816735 },
+      "name": "Feligencentroveterinario"
+    },
+    {
+      "id": 5108619231,
+      "geometry": { "lat": 4.52542, "lon": -75.6429477 },
+      "name": "SaludAnimal"
+    },
+    {
+      "id": 5118468575,
+      "geometry": { "lat": 4.7460791, "lon": -74.0571631 },
+      "name": "Veterinaria"
+    },
+    {
+      "id": 5122339520,
+      "geometry": { "lat": 4.7443091, "lon": -74.0569593 },
+      "name": "MediCat"
+    },
+    {
+      "id": 5122448469,
+      "geometry": { "lat": 4.7452826, "lon": -74.0631221 },
+      "name": "VetPet"
+    },
+    {
+      "id": 5122537085,
+      "geometry": { "lat": 4.7503303, "lon": -74.0614962 },
+      "name": "CiudadCaninaVeterinaría"
+    },
+    {
+      "id": 5122656768,
+      "geometry": { "lat": 4.7434226, "lon": -74.0296098 },
+      "name": "MBKTas"
+    },
+    {
+      "id": 5125683314,
+      "geometry": { "lat": 4.6333843, "lon": -74.0709311 },
+      "name": "ClínicaVeterinaria"
+    },
+    {
+      "id": 5128252207,
+      "geometry": { "lat": 4.7617019, "lon": -74.0375003 },
+      "name": "ClínicaVeterinariaPet'sHouse"
+    },
+    {
+      "id": 5423743278,
+      "geometry": { "lat": 10.4338159, "lon": -75.5298863 },
+      "name": "CentroVeterinarioTorices"
+    },
+    {
+      "id": 5429346880,
+      "geometry": { "lat": 6.2625637, "lon": -75.5448933 },
+      "name": "Veterinaria"
+    },
+    {
+      "id": 5443290804,
+      "geometry": { "lat": 3.4707486, "lon": -76.5242522 },
+      "name": "ZamudioClínicaVaterinaria"
+    },
+    {
+      "id": 5448950394,
+      "geometry": { "lat": 1.2191041, "lon": -77.2857913 },
+      "name": "CentrocaninoSanIgnacio"
+    },
+    {
+      "id": 5474382925,
+      "geometry": { "lat": 4.8700951, "lon": -74.0615835 },
+      "name": "escueladeesquitacion"
+    },
+    {
+      "id": 5479252890,
+      "geometry": { "lat": 3.3829122, "lon": -76.5330382 },
+      "name": "Vetcare"
+    },
+    {
+      "id": 5479252891,
+      "geometry": { "lat": 3.3830802, "lon": -76.5330382 },
+      "name": "MundoAnimal"
+    },
+    {
+      "id": 5481524520,
+      "geometry": { "lat": 3.4197155, "lon": -76.5093201 },
+      "name": "MedicanPet's"
+    },
+    {
+      "id": 5489624831,
+      "geometry": { "lat": 6.2723179, "lon": -75.5581377 },
+      "name": "AcuaticFercho"
+    },
+    {
+      "id": 5497881237,
+      "geometry": { "lat": 3.3818652, "lon": -76.5208013 },
+      "name": "Vet'sHouse"
+    },
+    {
+      "id": 5497881560,
+      "geometry": { "lat": 3.3836806, "lon": -76.52345 },
+      "name": "CentroMédicoVeterinario"
+    },
+    {
+      "id": 5497881565,
+      "geometry": { "lat": 3.3836853, "lon": -76.5241615 },
+      "name": "AquaneyVeterinaria"
+    },
+    {
+      "id": 5497881575,
+      "geometry": { "lat": 3.3824068, "lon": -76.5242694 },
+      "name": "MedVet"
+    },
+    {
+      "id": 5515371027,
+      "geometry": { "lat": 6.1911226, "lon": -75.5933672 },
+      "name": "Veteraneria24Horas"
+    },
+    {
+      "id": 5532355770,
+      "geometry": { "lat": 6.2106955, "lon": -75.568188 },
+      "name": "ClínicaVeterinariaElPoblado"
+    },
+    {
+      "id": 5583194923,
+      "geometry": { "lat": 4.5838548, "lon": -74.2189885 },
+      "name": "ElToreteysusAmigos"
+    },
+    {
+      "id": 5583194924,
+      "geometry": { "lat": 4.581005, "lon": -74.2176282 },
+      "name": "AlmacenVet.Ruffy"
+    },
+    {
+      "id": 5583219321,
+      "geometry": { "lat": 4.5840661, "lon": -74.2100212 },
+      "name": "VeterinariaSoacha"
+    },
+    {
+      "id": 5592126523,
+      "geometry": { "lat": 4.6236372, "lon": -74.1707463 },
+      "name": "UniversoAnimal"
+    },
+    {
+      "id": 5592165221,
+      "geometry": { "lat": 4.634877, "lon": -74.1499389 },
+      "name": "2Caninos"
+    },
+    {
+      "id": 5624622433,
+      "geometry": { "lat": 2.4835998, "lon": -76.5787957 },
+      "name": "Vetesalud"
+    },
+    {
+      "id": 5635677148,
+      "geometry": { "lat": 4.7238405, "lon": -74.091297 },
+      "name": "MundoCanino"
+    },
+    {
+      "id": 5638625625,
+      "geometry": { "lat": 4.8545813, "lon": -74.0535113 },
+      "name": "AnimalPoint"
+    },
+    {
+      "id": 5640591914,
+      "geometry": { "lat": 5.5610687, "lon": -73.2812881 },
+      "name": "Veterinaria"
+    },
+    {
+      "id": 5654532853,
+      "geometry": { "lat": 5.8017086, "lon": -72.8040107 },
+      "name": "LaGranja"
+    },
+    {
+      "id": 5654670249,
+      "geometry": { "lat": 5.9964255, "lon": -72.6927009 },
+      "name": "elpuente"
+    },
+    {
+      "id": 5655064151,
+      "geometry": { "lat": 5.8015537, "lon": -72.8044818 },
+      "name": "Medicampo"
+    },
+    {
+      "id": 5664423523,
+      "geometry": { "lat": 5.5852296, "lon": -73.5425996 },
+      "name": "DrogueriaVeterinaria"
+    },
+    {
+      "id": 5852027621,
+      "geometry": { "lat": 2.4570007, "lon": -76.5980916 },
+      "name": "Animalhouse"
+    },
+    {
+      "id": 5902942085,
+      "geometry": { "lat": 4.6549408, "lon": -74.3884836 },
+      "name": "AGROTENA"
+    },
+    {
+      "id": 5930350382,
+      "geometry": { "lat": 2.4500707, "lon": -76.6282908 },
+      "name": "VeterinariaGaviria"
+    },
+    {
+      "id": 6032137048,
+      "geometry": { "lat": 4.6192094, "lon": -74.0743688 },
+      "name": "VeterinariaSocialdela29"
+    },
+    {
+      "id": 6038276156,
+      "geometry": { "lat": 4.7182074, "lon": -74.2120761 },
+      "name": "PeludosV.I.P."
+    },
+    {
+      "id": 6040293988,
+      "geometry": { "lat": 4.6974894, "lon": -74.0924156 },
+      "name": "BoscoClínicaVeterinaria"
+    },
+    {
+      "id": 6042679839,
+      "geometry": { "lat": 4.6204731, "lon": -74.072682 },
+      "name": "ClínicaVeterinariaMonserrate"
+    },
+    {
+      "id": 6182096586,
+      "geometry": { "lat": 5.7546589, "lon": -73.4370574 },
+      "name": "VeterinariaElCorcel"
+    },
+    {
+      "id": 6182346585,
+      "geometry": { "lat": 5.7557357, "lon": -73.4361324 },
+      "name": "Ceagrosyngenta"
+    },
+    {
+      "id": 6211506853,
+      "geometry": { "lat": 3.4211661, "lon": -76.5273326 },
+      "name": "Molas"
+    },
+    {
+      "id": 6313651898,
+      "geometry": { "lat": 3.3666742, "lon": -76.5303802 },
+      "name": "ClínicaVeterinariaZamundio"
+    },
+    {
+      "id": 6327693588,
+      "geometry": { "lat": 7.1283527, "lon": -73.1258181 },
+      "name": "PequeñosanimalesDrs.Reyes"
+    },
+    {
+      "id": 6341729038,
+      "geometry": { "lat": 10.9397141, "lon": -74.7790761 },
+      "name": "Mascolandia"
+    },
+    {
+      "id": 6344040612,
+      "geometry": { "lat": 4.6306192, "lon": -74.0958444 },
+      "name": "VetsConsultorioMédico"
+    },
+    {
+      "id": 6371092713,
+      "geometry": { "lat": 2.4527419, "lon": -76.5977083 },
+      "name": "Dr.Lozano"
+    },
+    {
+      "id": 6371249348,
+      "geometry": { "lat": 6.220309, "lon": -73.8106975 },
+      "name": "VeterinariaAgropon"
+    },
+    {
+      "id": 6376316829,
+      "geometry": { "lat": 5.0076076, "lon": -73.4738647 },
+      "name": "vetsalud(centroveterinario)"
+    },
+    {
+      "id": 6381851719,
+      "geometry": { "lat": 6.4691345, "lon": -73.2616032 },
+      "name": "PERROYGATO"
+    },
+    {
+      "id": 6382161854,
+      "geometry": { "lat": 4.084581, "lon": -72.9566923 },
+      "name": "VeterinariapuertoLopez"
+    },
+    {
+      "id": 6384290498,
+      "geometry": { "lat": 6.4423059, "lon": -73.338002 },
+      "name": "AGROSIMACOTA"
+    },
+    {
+      "id": 6384404632,
+      "geometry": { "lat": 6.4692649, "lon": -73.262986 },
+      "name": "VETERINARIAELCHAPARRAL"
+    },
+    {
+      "id": 6384419015,
+      "geometry": { "lat": 6.4428908, "lon": -73.3366197 },
+      "name": "VETERINARIANUEVOZOOCAMPO"
+    },
+    {
+      "id": 6385917814,
+      "geometry": { "lat": 6.4678424, "lon": -73.2623695 },
+      "name": "MYLOVEPETSHOP"
+    },
+    {
+      "id": 6385917840,
+      "geometry": { "lat": 6.4682315, "lon": -73.2619832 },
+      "name": "SOLOMASCOTAS"
+    },
+    {
+      "id": 6387020035,
+      "geometry": { "lat": 4.6387913, "lon": -74.070268 },
+      "name": "Pecas"
+    },
+    {
+      "id": 6412854031,
+      "geometry": { "lat": 5.0823221, "lon": -73.3640002 },
+      "name": "AlmacenagropecuarioLares"
+    },
+    {
+      "id": 6418083400,
+      "geometry": { "lat": 2.6404848, "lon": -76.5287323 },
+      "name": "Veterinariagro"
+    },
+    {
+      "id": 6428575047,
+      "geometry": { "lat": 5.0798914, "lon": -73.3617875 },
+      "name": "Medicampo"
+    },
+    {
+      "id": 6428575050,
+      "geometry": { "lat": 5.0800681, "lon": -73.3617324 },
+      "name": "Elbotalon"
+    },
+    {
+      "id": 6436842186,
+      "geometry": { "lat": 11.0021785, "lon": -74.8177369 },
+      "name": "DogtorCat"
+    },
+    {
+      "id": 6446868321,
+      "geometry": { "lat": 4.7552978, "lon": -74.0259172 },
+      "name": "ClinicaVeterinariadeLaUniversidaddeLaSalle"
+    },
+    {
+      "id": 6450880735,
+      "geometry": { "lat": 5.0818783, "lon": -73.3649093 },
+      "name": "Agropecuarialaparcela"
+    },
+    {
+      "id": 6450880739,
+      "geometry": { "lat": 5.0822691, "lon": -73.364914 },
+      "name": "Tecniagricola"
+    },
+    {
+      "id": 6450880757,
+      "geometry": { "lat": 5.0835431, "lon": -73.3644982 },
+
+      "name": "Agroproteccion"
+    },
+    {
+      "id": 6450880760,
+      "geometry": { "lat": 5.0835818, "lon": -73.3644929 },
+
+      "name": "Casaagropecuaria"
+    },
+    {
+      "id": 6459724810,
+      "geometry": { "lat": 3.3716927, "lon": -73.8755426 },
+
+      "name": "mascotas"
+    },
+    {
+      "id": 6468824014,
+      "geometry": { "lat": 2.4556859, "lon": -76.592345 },
+
+      "name": "Bigotes"
+    },
+    {
+      "id": 6468825275,
+      "geometry": { "lat": 2.4566547, "lon": -76.5909757 },
+
+      "name": "Animall"
+    },
+    {
+      "id": 6476855081,
+      "geometry": { "lat": 2.7713119, "lon": -77.6658529 },
+
+      "name": "Sufinca"
+    },
+    {
+      "id": 6476855679,
+      "geometry": { "lat": 2.56923, "lon": -77.8817558 },
+
+      "name": "DrogasveterinariasKarol"
+    },
+    {
+      "id": 6476855680,
+      "geometry": { "lat": 2.5727452, "lon": -77.8847981 },
+
+      "name": "LaGranja"
+    },
+    {
+      "id": 6518260947,
+      "geometry": { "lat": 4.637636, "lon": -74.0618538 },
+
+      "name": "CityVet"
+    },
+
+    {
+      "id": 6565959778,
+      "geometry": { "lat": 11.0233529, "lon": -74.8619391 },
+      "name": "MiCorral"
+    },
+    {
+      "id": 6568915283,
+      "geometry": { "lat": 4.7035433, "lon": -74.1179561 },
+      "name": "Mascotiando"
+    },
+    {
+      "id": 6568915284,
+      "geometry": { "lat": 4.7024137, "lon": -74.1146389 },
+      "name": "Clinicaguadog"
+    },
+    {
+      "id": 6568933985,
+      "geometry": { "lat": 4.705615, "lon": -74.118803 },
+      "name": "ClinicaSerpets"
+    },
+    {
+      "id": 6568933986,
+      "geometry": { "lat": 4.7050444, "lon": -74.1086736 },
+      "name": "ClinicaMateo's"
+    },
+    {
+      "id": 6568933987,
+      "geometry": { "lat": 4.711877, "lon": -74.1147309 },
+      "name": "Biomevet"
+    },
+    {
+      "id": 6568933988,
+      "geometry": { "lat": 4.7062055, "lon": -74.1146796 },
+      "name": "VeterinariaCPVet"
+    },
+    {
+      "id": 6568933990,
+      "geometry": { "lat": 4.7052657, "lon": -74.1127408 },
+      "name": "ClinicaMotasyMascotas"
+    },
+    {
+      "id": 6568933991,
+      "geometry": { "lat": 4.6986699, "lon": -74.1167403 },
+      "name": "ClinicaLeonardoSanchez"
+    },
+    {
+      "id": 6587095397,
+      "geometry": { "lat": 4.3265768, "lon": -74.4138893 },
+      "name": "Comogatosyperros"
+    },
+    {
+      "id": 6744766218,
+      "geometry": { "lat": 3.4904967, "lon": -76.4972322 },
+      "name": "Lanitas"
+    },
+    {
+      "id": 6793755488,
+      "geometry": { "lat": 6.500865, "lon": -72.7390102 },
+      "name": "normandia"
+    },
+    {
+      "id": 6831534826,
+      "geometry": { "lat": 4.6042051, "lon": -74.078821 },
+      "name": "LaRes"
+    },
+    {
+      "id": 6878903299,
+      "geometry": { "lat": 5.7376439, "lon": -73.0098031 },
+      "name": "ClinicadeAnimales"
+    },
+    {
+      "id": 6896411251,
+      "geometry": { "lat": 4.6717051, "lon": -74.0534471 },
+      "name": "PetPlus"
+    },
+    {
+      "id": 6918346019,
+      "geometry": { "lat": 6.312789, "lon": -73.9483756 },
+      "name": "AlmacenVeterinarioElGanadero"
+    },
+    {
+      "id": 6944362485,
+      "geometry": { "lat": 7.1150277, "lon": -73.1241083 },
+      "name": "CentroVeterinarioFauna"
+    },
+    {
+      "id": 7037202849,
+      "geometry": { "lat": 4.7483834, "lon": -74.0498245 },
+      "name": "VeterinariaZooMedical"
+    },
+    {
+      "id": 7087085405,
+      "geometry": { "lat": 4.7471248, "lon": -74.0980138 },
+      "name": "animalesfelices"
+    },
+    {
+      "id": 7150942072,
+      "geometry": { "lat": 4.6721269, "lon": -74.0536023 },
+      "name": "Veterinariaelvirrey"
+    },
+    {
+      "id": 7160396792,
+      "geometry": { "lat": 6.0249394, "lon": -73.5739462 },
+      "name": "VeterinariaSagrosuarez"
+    },
+    {
+      "id": 7160688946,
+      "geometry": { "lat": 6.2644933, "lon": -73.3007962 },
+      "name": "VeterinariaElHato"
+    },
+    {
+      "id": 7177824686,
+      "geometry": { "lat": 4.6101411, "lon": -76.0799539 },
+      "name": "Zoomed"
+    },
+    {
+      "id": 7180103874,
+      "geometry": { "lat": 1.5712493, "lon": -75.3256072 },
+      "name": "Agrofinca"
+    },
+    {
+      "id": 7188728185,
+      "geometry": { "lat": 5.5993056, "lon": -75.822168 },
+      "name": "MundoAnimal"
+    },
+    {
+      "id": 7193936085,
+      "geometry": { "lat": 5.597536, "lon": -75.8175256 },
+      "name": "LosReyes"
+    },
+    {
+      "id": 7234357372,
+      "geometry": { "lat": 6.1570234, "lon": -75.6055091 },
+      "name": "CentroVeterinario"
+    },
+    {
+      "id": 7285615646,
+      "geometry": { "lat": 4.7414862, "lon": -74.0312895 },
+      "name": "VeterinariaAmigooZooMASCOTASHOME"
+    },
+    {
+      "id": 7309446086,
+      "geometry": { "lat": 3.4271675, "lon": -76.4794892 },
+      "name": "VeterinariaDonCan"
+    },
+    {
+      "id": 7330694430,
+      "geometry": { "lat": 6.2833452, "lon": -75.5596167 },
+      "name": "CentroMedicoveterinariola92"
+    },
+    {
+      "id": 7337374704,
+      "geometry": { "lat": 6.2370168, "lon": -75.5964727 },
+      "name": "ClinicaVeterinariaSanaVet"
+    },
+    {
+      "id": 7685507187,
+      "geometry": { "lat": 4.5294757, "lon": -75.6398409 },
+      "name": "AnimalHome"
+    },
+    {
+      "id": 8132348197,
+      "geometry": { "lat": 2.4815314, "lon": -76.5660645 },
+      "name": "Casaveterinariadelcauca"
+    },
+    {
+      "id": 8301755047,
+      "geometry": { "lat": 4.9189728, "lon": -74.0296058 },
+      "name": "VeterianariaNacer"
+    },
+    {
+      "id": 8439997679,
+      "geometry": { "lat": 2.4423422, "lon": -76.6115828 },
+      "name": "Seprovez"
+    },
+    {
+      "id": 8495337021,
+      "geometry": { "lat": 4.668507, "lon": -74.1148987 },
+      "name": "ClínicaVeterinariaOccidente"
+    },
+    {
+      "id": 8671932717,
+      "geometry": { "lat": 1.2278697, "lon": -77.2844933 },
+      "name": "Sanasanaurgencias"
+    },
+    {
+      "id": 8712329123,
+      "geometry": { "lat": 4.6433355, "lon": -74.1358566 },
+      "name": "PETCLINICAL"
+    },
+    {
+      "id": 8750560111,
+      "geometry": { "lat": 7.0613027, "lon": -73.1026921 },
+      "name": "VETGOLD"
+    },
+    {
+      "id": 8866906265,
+      "geometry": { "lat": 5.0954264, "lon": -75.5283344 },
+      "name": "UnidaddeProtecciónAnimal"
+    },
+    {
+      "id": 9080864217,
+      "geometry": { "lat": 4.7271814, "lon": -74.0451113 },
+      "name": "DingoCentroClínicoVeterinario"
+    },
+    {
+      "id": 9118982949,
+      "geometry": { "lat": 6.2689217, "lon": -75.5933755 },
+      "name": "Patitas"
+    },
+    {
+      "id": 9133559775,
+      "geometry": { "lat": 6.2365516, "lon": -75.6069342 },
+      "name": "PeluqueriaYTiendaDeMascotas"
+    },
+    {
+      "id": 9262459495,
+      "geometry": { "lat": 5.4016133, "lon": -73.3345221 },
+      "name": "MundoVet"
+    },
+    {
+      "id": 9276008723,
+      "geometry": { "lat": 4.6054192, "lon": -74.222546 },
+      "name": "Step&PetsElJardín"
+    },
+    {
+      "id": 9288215168,
+      "geometry": { "lat": 2.4878185, "lon": -76.5684009 },
+      "name": "Tumascota"
+    },
+    {
+      "id": 9307427672,
+      "geometry": { "lat": 4.6727955, "lon": -74.0824792 },
+      "name": "Vetmarket"
+    },
+    {
+      "id": 9330607984,
+      "geometry": { "lat": 4.5362927, "lon": -75.6706888 },
+      "name": "veterinariamihacienda"
+    },
+    {
+      "id": 9411321496,
+      "geometry": { "lat": 5.3140319, "lon": -72.40284 },
+      "name": "Mascotizados"
+    },
+    {
+      "id": 9411321497,
+      "geometry": { "lat": 5.338334, "lon": -72.3941919 },
+      "name": "AgroinsumoLaEscuadra"
+    },
+    {
+      "id": 9411321499,
+      "geometry": { "lat": 5.3465459, "lon": -72.4018791 },
+      "name": "Veterinariaranchodeles"
+    },
+    {
+      "id": 9411321500,
+      "geometry": { "lat": 5.3342141, "lon": -72.3911223 },
+      "name": "Centromedicoveretinarioplanetaanimal"
+    },
+    {
+      "id": 9411321501,
+      "geometry": { "lat": 5.3313424, "lon": -72.4077773 },
+      "name": "AgrocentroElPortal"
+    },
+    {
+      "id": 9411321502,
+      "geometry": { "lat": 5.3460572, "lon": -72.401914 },
+      "name": "MascotasMilu"
+    },
+    {
+      "id": 9411321503,
+      "geometry": { "lat": 5.3461187, "lon": -72.4019502 },
+      "name": "AgroveterinariaelPastisalLTDA"
+    },
+    {
+      "id": 9411321504,
+      "geometry": { "lat": 5.3493126, "lon": -72.3958106 },
+      "name": "Canilandia.dog"
+    },
+    {
+      "id": 9411420676,
+      "geometry": { "lat": 5.3429594, "lon": -72.3957463 },
+      "name": "CentromedicoVeterinariodelCasanare"
+    },
+    {
+      "id": 9411420679,
+      "geometry": { "lat": 5.3407549, "lon": -72.3967521 },
+      "name": "Agroveterinarialacorraleja"
+    },
+    {
+      "id": 9411506618,
+      "geometry": { "lat": 5.3483769, "lon": -72.3947927 },
+      "name": "CentrodediagnosticoVeterinario-Medivet"
+    },
+    {
+      "id": 9411506619,
+      "geometry": { "lat": 5.3453869, "lon": -72.4026436 },
+      "name": "VeterinariaAgromas"
+    },
+    {
+      "id": 9411506620,
+      "geometry": { "lat": 5.3452227, "lon": -72.4007801 },
+      "name": "AgroveterinariaElpastisalcalle11"
+    },
+    {
+      "id": 9411506621,
+      "geometry": { "lat": 5.3441358, "lon": -72.3925638 },
+      "name": "Mascotilandia"
+    },
+    {
+      "id": 9411534811,
+      "geometry": { "lat": 5.337681, "lon": -72.3971906 },
+      "name": "Dra.Pet`s"
+    },
+    {
+      "id": 9411534812,
+      "geometry": { "lat": 5.3463256, "lon": -72.4023432 },
+      "name": "VeterinariaelRanchodelesS.A.S."
+    },
+    {
+      "id": 9411534813,
+      "geometry": { "lat": 5.3302541, "lon": -72.3991433 },
+      "name": "AnimalKingdomServiciosVeterinariosS.A.S"
+    },
+    {
+      "id": 9411534814,
+      "geometry": { "lat": 5.3469786, "lon": -72.399099 },
+      "name": "AgropecuariaTierrasyGanado"
+    },
+    {
+      "id": 9411534815,
+      "geometry": { "lat": 5.3410019, "lon": -72.3990199 },
+      "name": "ElMercadoAgropecuarioS.A.S."
+    },
+    {
+      "id": 9411534816,
+      "geometry": { "lat": 5.3406714, "lon": -72.3975889 },
+      "name": "Todohules"
+    },
+    {
+      "id": 9411544517,
+      "geometry": { "lat": 5.3449223, "lon": -72.3885351 },
+      "name": "Hatovet"
+    },
+    {
+      "id": 9412778776,
+      "geometry": { "lat": 5.3459264, "lon": -72.4011858 },
+      "name": "DrogueriaVeterinariaElTorete"
+    },
+    {
+      "id": 9412778779,
+      "geometry": { "lat": 5.3465199, "lon": -72.4023492 },
+      "name": "AgroveterinariaAkuarius"
+    },
+    {
+      "id": 9412778780,
+      "geometry": { "lat": 5.3477677, "lon": -72.4024411 },
+      "name": "AgroserviciosdelllanoAlarpo"
+    },
+    {
+      "id": 9412778781,
+      "geometry": { "lat": 5.347717, "lon": -72.4024384 },
+      "name": "Agroquintana"
+    },
+    {
+      "id": 9412778782,
+      "geometry": { "lat": 5.3462388, "lon": -72.4017155 },
+      "name": "AgroveterinariaelPastisal"
+    },
+    {
+      "id": 9412778783,
+      "geometry": { "lat": 5.3181815, "lon": -72.3974803 },
+      "name": "ClinicaVeterinariaAnimalCenterdelLlano"
+    },
+    {
+      "id": 9412778784,
+      "geometry": { "lat": 5.3361254, "lon": -72.3833679 },
+      "name": "AgroveterinariaArenamad"
+    },
+    {
+      "id": 9412778785,
+      "geometry": { "lat": 5.3459558, "lon": -72.4011093 },
+      "name": "TiendaAgroinsumosyVeterinariaMundoAnimal"
+    },
+    {
+      "id": 9412778787,
+      "geometry": { "lat": 5.3442714, "lon": -72.3886157 },
+      "name": "Tiendamimascoticapaisa"
+    },
+    {
+      "id": 9412778789,
+      "geometry": { "lat": 5.3353643, "lon": -72.3941866 },
+      "name": "VeterinariayFerreteriaD&D"
+    },
+    {
+      "id": 9412778790,
+      "geometry": { "lat": 5.3471655, "lon": -72.3995215 },
+      "name": "VeterinariayPetShotLaPradera"
+    },
+    {
+      "id": 9412778791,
+      "geometry": { "lat": 5.3483185, "lon": -72.3992643 },
+      "name": "Agroveterinariaelparadero"
+    },
+    {
+      "id": 9412778792,
+      "geometry": { "lat": 5.3510311, "lon": -72.4007727 },
+      "name": "AnimalClubYopal"
+    },
+    {
+      "id": 9419480344,
+      "geometry": { "lat": 4.3291812, "lon": -74.3848423 },
+      "name": "Plutoygato"
+    },
+    {
+      "id": 9419540220,
+      "geometry": { "lat": 6.9902818, "lon": -73.0456524 },
+      "name": "AsisveVeterinaria&PetShop"
+    },
+    {
+      "id": 9419540917,
+      "geometry": { "lat": 6.9887383, "lon": -73.0440211 },
+      "name": "NiniPet"
+    },
+    {
+      "id": 9521898586,
+      "geometry": { "lat": 4.6737533, "lon": -74.020791 },
+      "name": "CentroVeterinarioCasae'Piedra"
+    },
+    {
+      "id": 9583400218,
+      "geometry": { "lat": 6.245437, "lon": -75.6055626 },
+      "name": "Can&CatsCentroVeterinario"
+    },
+    {
+      "id": 9588641091,
+      "geometry": { "lat": 7.9064291, "lon": -72.4932462 },
+      "name": "CLÍNICAVETERINARIAS.O.S"
+    },
+    {
+      "id": 9590151617,
+      "geometry": { "lat": 6.2439543, "lon": -75.6122491 },
+      "name": "PremiumVet"
+    },
+    {
+      "id": 9602205579,
+      "geometry": { "lat": 7.0852393, "lon": -73.1113911 },
+      "name": "Veterinarialadralo.com"
+    },
+    {
+      "id": 9604597093,
+      "geometry": { "lat": 6.1491003, "lon": -75.6168944 },
+      "name": "CanisVet"
+    },
+    {
+      "id": 9631680894,
+      "geometry": { "lat": 7.9249791, "lon": -72.5208596 },
+      "name": "juanitta"
+    },
+    {
+      "id": 9712282985,
+      "geometry": { "lat": 5.1013761, "lon": -73.050735 },
+      "name": "PuertoLópez"
+    },
+    {
+      "id": 9716277397,
+      "geometry": { "lat": 5.5129364, "lon": -73.2455023 },
+      "name": "Veterinaria"
+    },
+    {
+      "id": 9728023885,
+      "geometry": { "lat": 5.6208787, "lon": -73.8123335 },
+      "name": "veterinariomundoanimal"
+    },
+    {
+      "id": 9820634019,
+      "geometry": { "lat": 6.2460797, "lon": -75.6039118 },
+      "name": "CentroVeterinarioE.V.A."
+    },
+    {
+      "id": "9846761868",
+      "geometry": { "lat": 4.5312951, "lon": -75.6412047 },
+      "name": "Fundavet"
+    }
+  ],
+  "petshops": [
+    {
+      "id": 4892458100,
+      "geometry": { "lat": 4.6214899, "lon": -74.0905309 },
+      "name": "Animal's House"
+    },
+    {
+      "id": 5003941923,
+      "geometry": { "lat": 4.644499, "lon": -74.1131769 },
+      "name": "Nutriestars"
+    },
+    {
+      "id": 5040011948,
+      "geometry": { "lat": 6.5553241, "lon": -73.1347204 },
+      "name": "Catdog"
+    },
+    {
+      "id": 5040022640,
+      "geometry": { "lat": 6.5557634, "lon": -73.1344446 },
+      "name": "Peluqueria Canina"
+    },
+    {
+      "id": 5118028048,
+      "geometry": { "lat": 4.7548213, "lon": -74.0495044 },
+
+      "name": "Uptown Pets"
+    },
+    {
+      "id": 5118169667,
+      "geometry": { "lat": 4.7504315, "lon": -74.0638897 },
+      "name": "Mimadog"
+    },
+    {
+      "id": 5118215982,
+      "geometry": { "lat": 4.7491054, "lon": -74.0641057 },
+      "name": "Togo"
+    },
+    {
+      "id": 5120929005,
+      "geometry": { "lat": 4.8432809, "lon": -74.0585365 },
+
+      "fixme": "name"
+    },
+    {
+      "id": 5122448466,
+      "geometry": { "lat": 4.7453335, "lon": -74.0631075 },
+      "name": "Nubia Vanegas"
+    },
+    {
+      "id": 5123029572,
+      "geometry": { "lat": 4.731487, "lon": -74.0444799 },
+      "name": "Doggy"
+    },
+    {
+      "id": 5124660701,
+      "geometry": { "lat": 4.6602711, "lon": -74.1189463 },
+      "name": "Animal's"
+    },
+    {
+      "id": 5128252202,
+      "geometry": { "lat": 4.7617374, "lon": -74.0370971 },
+      "name": "The Animal's World"
+    },
+    {
+      "id": 5129547796,
+      "geometry": { "lat": 4.7346731, "lon": -74.0440401 },
+      "name": "Lassie"
+    },
+    {
+      "id": 5129622546,
+      "geometry": { "lat": 4.8635396, "lon": -74.048121 },
+      "name": "Dido"
+    },
+    {
+      "id": 5131162290,
+      "geometry": { "lat": 4.7429574, "lon": -74.0312568 },
+      "name": "Mayo Pet Shop"
+    },
+    {
+      "id": 5131259189,
+      "geometry": { "lat": 4.7544883, "lon": -74.0549143 },
+      "name": "Parche del Perro"
+    },
+    {
+      "id": 5131986854,
+      "geometry": { "lat": 4.7326727, "lon": -74.031112 },
+      "name": "Amascotas"
+    },
+    {
+      "id": 5133525353,
+      "geometry": { "lat": 4.6538234, "lon": -74.0626533 },
+      "name": "Mr. Dog"
+    },
+    {
+      "id": 5133911107,
+      "geometry": { "lat": 4.6982511, "lon": -74.0772226 },
+      "name": "Peluquería Canina y Felina"
+    },
+    {
+      "id": 5134125909,
+      "geometry": { "lat": 4.6276649, "lon": -74.0727468 },
+      "name": "Mascotizate"
+    },
+    {
+      "id": 5135905237,
+      "geometry": { "lat": 4.7016847, "lon": -74.0475763 },
+      "name": "Mellows"
+    },
+    {
+      "id": 5135979334,
+      "geometry": { "lat": 4.701262, "lon": -74.0445265 },
+      "name": "Country & Can"
+    },
+    {
+      "id": 5137907457,
+      "geometry": { "lat": 4.6853727, "lon": -74.0908084 },
+      "name": "Amigo Fiel"
+    },
+    {
+      "id": 5138288698,
+      "geometry": { "lat": 4.6993584, "lon": -74.0496065 },
+      "name": "Animal's Pet Shop"
+    },
+    {
+      "id": 5138291349,
+      "geometry": { "lat": 4.6882045, "lon": -74.0928609 },
+      "name": "Grooming Profesional"
+    },
+    {
+      "id": 5138362331,
+      "geometry": { "lat": 4.6715574, "lon": -74.0983767 },
+      "name": "Animal Planet"
+    },
+    {
+      "id": 5138618121,
+      "geometry": { "lat": 4.673117, "lon": -74.0944143 },
+      "name": "American Pet Shop"
+    },
+    {
+      "id": 5138645885,
+      "geometry": { "lat": 4.6791215, "lon": -74.0879657 },
+      "name": "Vatro Patas"
+    },
+    {
+      "id": 5141560458,
+      "geometry": { "lat": 4.5980046, "lon": -74.1225382 },
+      "name": "ROCKY-SMART"
+    },
+    {
+      "id": 5141560463,
+      "geometry": { "lat": 4.5980935, "lon": -74.1226187 },
+      "name": "PELUQUERIA CANINA"
+    },
+    {
+      "id": 5141811767,
+      "geometry": { "lat": 4.7512291, "lon": -74.0896377 },
+      "name": "Don Waoo"
+    },
+    {
+      "id": 5141811772,
+      "geometry": { "lat": 4.7511957, "lon": -74.0896457 },
+      "name": "Kanes"
+    },
+    {
+      "id": 5141828577,
+      "geometry": { "lat": 4.7197564, "lon": -74.1249367 },
+      "name": "Pet Barber"
+    },
+    {
+      "id": 5141911277,
+      "geometry": { "lat": 4.6143471, "lon": -74.1093931 },
+      "name": "La tienda de mascotas consentidas."
+    },
+    {
+      "id": 5141968087,
+      "geometry": { "lat": 4.696317, "lon": -74.1118027 },
+      "name": "Comida para Mascotas"
+    },
+    {
+      "id": 5142099580,
+      "geometry": { "lat": 4.6333894, "lon": -74.0730425 },
+      "name": "Pet mile"
+    },
+    {
+      "id": 5143573073,
+      "geometry": { "lat": 4.6534973, "lon": -74.0670925 },
+      "name": "Pet Shop Variedades La 65"
+    },
+    {
+      "id": 5143643208,
+      "geometry": { "lat": 4.7049686, "lon": -74.0553156 },
+      "name": "Pet Life"
+    },
+    {
+      "id": 5143900876,
+      "geometry": { "lat": 4.6614725, "lon": -74.0628484 },
+      "name": "Dispet"
+    },
+    {
+      "id": 5147894487,
+      "geometry": { "lat": 4.6847008, "lon": -74.0912667 },
+      "name": "Amigo Fiel"
+    },
+    {
+      "id": 5148032830,
+      "geometry": { "lat": 4.723482, "lon": -74.071486 },
+      "name": "Pets Unto"
+    },
+    {
+      "id": 5148320454,
+      "geometry": { "lat": 4.6772618, "lon": -74.0949706 },
+      "name": "La Mascoteca"
+    },
+    {
+      "id": 5148622761,
+      "geometry": { "lat": 4.6687904, "lon": -74.0667705 },
+      "name": "Pet 2 Litrosa 2000"
+    },
+    {
+      "id": 5149591921,
+      "geometry": { "lat": 6.5567287, "lon": -75.8286886 },
+      "name": "Agropecuaría Biofinca"
+    },
+    {
+      "id": 5150162074,
+      "geometry": { "lat": 4.6664291, "lon": -74.1096143 },
+      "name": "Pets"
+    },
+    {
+      "id": 5150727783,
+      "geometry": { "lat": 4.7168253, "lon": -74.043715 },
+      "name": "Body Dog"
+    },
+    {
+      "id": 5151955021,
+      "geometry": { "lat": 4.7441234, "lon": -74.0425938 },
+      "name": "Todo para su Mascota"
+    },
+    {
+      "id": 5152047191,
+      "geometry": { "lat": 4.7088473, "lon": -74.0934334 },
+      "name": "Togo y Balto"
+    },
+    {
+      "id": 5152058751,
+      "geometry": { "lat": 4.7073529, "lon": -74.0928519 },
+      "name": "Pet's Apetite"
+    },
+    {
+      "id": 5152076706,
+      "geometry": { "lat": 4.7061443, "lon": -74.0970035 },
+      "name": "De Todo un Poquitos"
+    },
+    {
+      "id": 5152396397,
+      "geometry": { "lat": 4.7014831, "lon": -74.091767 },
+      "name": "Pet Store"
+    },
+    {
+      "id": 5157785514,
+      "geometry": { "lat": 4.6914007, "lon": -74.099988 },
+      "name": "Mundo Mascota"
+    },
+    {
+      "id": 5157864064,
+      "geometry": { "lat": 4.7460629, "lon": -74.0382709 },
+      "name": "Petipets"
+    },
+    {
+      "id": 5158085545,
+      "geometry": { "lat": 4.6825413, "lon": -74.0653516 },
+      "name": "Todo para tu Mascota"
+    },
+    {
+      "id": 5159142034,
+      "geometry": { "lat": 7.1640109, "lon": -75.4387287 },
+      "name": "Agrocolanta"
+    },
+    {
+      "id": 5159338735,
+      "geometry": { "lat": 4.7257174, "lon": -74.0380872 },
+      "name": "Masco Salud"
+    },
+    {
+      "id": 5159493371,
+      "geometry": { "lat": 4.7251658, "lon": -74.056692 },
+      "name": "Spa Peluquería Canina y Felina"
+    },
+    {
+      "id": 5159632677,
+      "geometry": { "lat": 4.6858988, "lon": -74.0647552 },
+      "name": "Pet Shop"
+    },
+    {
+      "id": 5159745926,
+      "geometry": { "lat": 4.6939202, "lon": -74.100345 },
+      "name": "Super Mascotas Tabora"
+    },
+    {
+      "id": 5159887235,
+      "geometry": { "lat": 4.6978821, "lon": -74.0989471 },
+      "name": "Perros & Gatos"
+    },
+    {
+      "id": 5161038400,
+      "geometry": { "lat": 4.7279888, "lon": -74.0529456 },
+      "name": "Bigotes y Colmillos"
+    },
+    {
+      "id": 5161106290,
+      "geometry": { "lat": 4.6996959, "lon": -74.097589 },
+      "name": "Mundo Mascotas"
+    },
+    {
+      "id": 5161116921,
+      "geometry": { "lat": 4.7022448, "lon": -74.09731 },
+      "name": "Mascotas el Parvenir"
+    },
+    {
+      "id": 5161583827,
+      "geometry": { "lat": 4.720358, "lon": -74.052536 },
+      "name": "Pet Fans Club"
+    },
+    {
+      "id": 5161632188,
+      "geometry": { "lat": 4.722076, "lon": -74.0521196 },
+      "fixme": "name"
+    },
+    {
+      "id": 5163361773,
+      "geometry": { "lat": 4.7201652, "lon": -74.1025616 },
+      "name": "Pet Shop"
+    },
+    {
+      "id": 5163527729,
+      "geometry": { "lat": 4.7132662, "lon": -74.1009935 },
+      "name": "Mascotag"
+    },
+    {
+      "id": 5163650971,
+      "geometry": { "lat": 4.6946053, "lon": -74.112116 },
+      "name": "The Loyal Friend"
+    },
+    {
+      "id": 5163956790,
+      "geometry": { "lat": 4.7044628, "lon": -74.1090549 },
+      "name": "The Animal World"
+    }
+  ],
+  "animaltraining": [
+    {
+      "id": "",
+      "geometry": { "lat": "", "lon": "" },
+      "name": "no data"
     }
   ]
 }
