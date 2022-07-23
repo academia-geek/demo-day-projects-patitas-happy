@@ -32,8 +32,6 @@ const DondeEncontrar = () => {
     iconSize: [25, 35],
   });
   const { veterinaries, petshops, animaltraining } = data;
-  const error = "Ups! no se encontró información cerca de tu ubicación";
-
   return (
     <Grid margin="80px 0">
       <Grid paddingBottom="50px" textAlign="center">
