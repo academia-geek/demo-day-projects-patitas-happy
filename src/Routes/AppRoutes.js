@@ -20,7 +20,7 @@ const AppRoutes = () => {
 
   const [cheking, setCheking] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
-  const { authenticated } = useSelector(store => store.loginStore);
+  const { authenticated } = useSelector(store => store.UserStore);
 
   const auth = localStorage.getItem("auth") ? JSON.parse(localStorage.getItem("auth")) : false;
 

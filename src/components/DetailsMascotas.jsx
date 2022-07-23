@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, ButtonGroup, Grid } from '@mui/material'
 import { Tag, Spin } from 'antd';
 import Footer from "./Footer";
-import { Item, TitleDog } from '../Styles/StylesDetalle';
+import { ButtonMa, Item, TitleDog } from '../Styles/StylesDetalle';
 import SchedulingForm from './SchedulingForm';
 import { addRequestAsync, errorSync, fillSolicitudesUsuarioAsync } from '../Redux/actions/actionsRequest';
 import Swal from 'sweetalert2';
@@ -20,8 +20,17 @@ const DetailsMascotas = () => {
 
   const { firestoreId } = useParams();
   const dispatch = useDispatch();
-  const { mascota } = useSelector(store => store.mascotasStore);
-  const { id } = useSelector(store => store.loginStore);
+  const { mascotas } = useSelector(store => store.mascotasStore);
+  const { id } = useSelector(store => store.UserStore);
+ 
+
+  const [showTimeForm, setShowTimeForm] = useState(true);
+
+  const mascota = mascotas.find(m => m.firestoreId === firestoreId);
+  
+  // const others1 = mascota.condiciones ? mascota.condiciones.some(condition => condition === "otros") : null;
+  // const condiciones1 = others ? mascota.condiciones.filter(c => c !== "otros") : mascota.condiciones;
+  
   const { error, solicitudesUsuario } = useSelector(store => store.solicitudesStore);
 
   useEffect(() => {

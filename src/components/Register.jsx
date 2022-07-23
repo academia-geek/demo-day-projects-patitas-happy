@@ -1,12 +1,13 @@
 import React from 'react';
-import { Div1, Div2, TitleR } from '../Styles/Styles';
+import { Button, Div1, Div2, Span, TitleR } from '../Styles/Styles';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup'
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { registerUserAsync } from '../Redux/actions/actionsUser';
+// import { registerUserAsync } from '../Redux/actions/actionsRegister';
 import Swal from "sweetalert2";
 import { useNavigate } from 'react-router-dom';
+import { registerUserAsync } from '../Redux/actions/actionsLogin';
 
 
 const SignupSchema = Yup.object().shape({
@@ -21,7 +22,7 @@ const SignupSchema = Yup.object().shape({
 const Register = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { error: registerError } = useSelector(store => store.userStore);
+    const { error: registerError } = useSelector(store => store.UserStore);
 
 
     //--Función para cantidad de caracteres digitados para número celular
@@ -91,34 +92,36 @@ const Register = () => {
                     {({ errors, touched }) => (
 
                         <Form style={{ display: 'flex', flexDirection: 'column' }}>
-                            <Field type="texto" placeholder="Name" name="fullname" style={{ margin: "4% 0", width: '220px', height: '45px', paddingLeft: '10px' }} />
+                            <Field type="texto" placeholder="Name" name="fullname" style={{ margin: "2% 0", width: '220px', height: '45px', paddingLeft: '10px', border:'1px solid #8492A6', borderRadius:'5px'  }} />
                             {errors.fullname && touched.fullname ?
                                 (<div>{errors.fullname}</div>) : null}
 
-                            <Field type="email" placeholder="Email" name="email" style={{ margin: "4% 0", width: '220px', height: '45px', paddingLeft: '10px' }} />
+                            <Field type="email" placeholder="Email" name="email" style={{ margin: "2% 0", width: '220px', height: '45px', paddingLeft: '10px', border:'1px solid #8492A6', borderRadius:'5px'  }} />
                             {errors.email && touched.email ?
                                 (<div>{errors.email}</div>) : null}
 
-                            <Field type="date" placeholder="Fecha Nacimiento" name="fecha" style={{ margin: "4% 0", width: '220px', height: '45px', paddingLeft: '10px' }} />
+                            <Field type="date" placeholder="Fecha Nacimiento" name="fecha" style={{ margin: "2% 0", width: '220px', height: '45px', paddingLeft: '10px', border:'1px solid #8492A6', borderRadius:'5px'  }} />
                             {errors.fecha && touched.fecha ?
                                 (<div>{errors.fecha}</div>) : null}
 
-                            <Field type="texto" placeholder="Telefono/Celular" name="phoneNumber" style={{ margin: "4% 0", width: '220px', height: '45px', paddingLeft: '10px' }} />
+                            <Field type="texto" placeholder="Telefono/Celular" name="phoneNumber" style={{ margin: "2% 0", width: '220px', height: '45px', paddingLeft: '10px', border:'1px solid #8492A6', borderRadius:'5px'  }} />
                             {errors.phoneNumber && touched.phoneNumber ?
                                 (<div>{errors.phoneNumber}</div>) : null}
 
-                            <Field type="password" placeholder="Password 1" name="password" style={{ margin: "4% 0", width: '220px', height: '45px', paddingLeft: '10px' }} />
+                            <Field type="password" placeholder="Password 1" name="password" style={{ margin: "2% 0", width: '220px', height: '45px', paddingLeft: '10px', border:'1px solid #8492A6', borderRadius:'5px' }} />
                             {errors.password && touched.password ?
                                 (<div>{errors.password}</div>) : null}
 
-                            <Field type="password" placeholder="Password 2" name="pass2" style={{ margin: "4% 0", width: '220px', height: '45px', paddingLeft: '10px' }} />
+                            <Field type="password" placeholder="Password 2" name="pass2" style={{ margin: "2% 0", width: '220px', height: '45px', paddingLeft: '10px',border:'1px solid #8492A6', borderRadius:'5px'  }} />
                             {errors.pass2 && touched.pass2 ?
                                 (<div>{errors.password}</div>) : null}
+                            <div style={{margin:' 10px auto'}}>
 
-                            <button type="submit" style={{ margin: "2%" }}>
+                            
+                            <Button type="submit" style={{ margin: "2%" }}>
                                 Registrar
-                            </button>
-
+                            </Button>
+                            </div>
 
                         </Form>
                     )}
@@ -126,7 +129,7 @@ const Register = () => {
                 </Formik>
 
 
-                <span>¿Ya tienes cuenta? <Link to="/login">Ingresa aquí.</Link></span>
+                <Span>¿Ya tienes cuenta? <Link to="/login">Ingresa aquí.</Link></Span>
             </Div2>
         </Div1>
     );

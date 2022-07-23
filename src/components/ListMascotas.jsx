@@ -15,7 +15,9 @@ const { Option } = Select;
 const ListMascotas = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { admin } = useSelector(store => store.loginStore);
+    const { admin } = useSelector(store => store.UserStore);
+    
+ 
     const { mascotas, filters, selectedFilters, appliedFilters } = useSelector((store) => store.mascotasStore);
     const [isModalVisible, setIsModalVisible] = useState(false);
 

@@ -26,8 +26,8 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { error: loginError } = useSelector(store => store.loginStore);
-  const { errorGoF } = useSelector(store => store.loginStore);
+  const { error: loginError } = useSelector(store => store.UserStore);
+  const { errorGoF } = useSelector(store => store.UserStore);
 
   const onSubmit = values => {
     const { email, password } = values;
@@ -91,13 +91,17 @@ const Login = () => {
           {({ errors, touched }) => (
             <Form className="formik-form">
               <h2>Login</h2>
-              <h3>Inicia sesión para poder adoptar una mascota.</h3>
+              <h3 className="h3">Inicia sesión para poder adoptar una mascota.</h3>
 
-              <Field name="email" type="email" placeholder="Email" />
+              <Field name="email" type="email" placeholder="Email"
+              style={{border:'1px solid #8492A6', borderRadius:'5px', width: '250px', height: '45px',paddingLeft: '10px', margin:'10px auto'}}
+              />
               {errors.email && touched.email ? (
                 <div className="errors">{errors.email}</div>
               ) : null}
-              <Field name="password" type="password" placeholder="Password" />
+              <Field name="password" type="password" placeholder="Password"
+              style={{border:'1px solid #8492A6', borderRadius:'5px', width: '250px', height: '45px',paddingLeft: '10px',  margin:'10px auto'}}
+              />
               {errors.password && touched.password ? (
                 <div className="errors">{errors.password}</div>
               ) : null}
