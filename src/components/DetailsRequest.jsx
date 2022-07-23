@@ -78,11 +78,11 @@ const DetailsRequest = () => {
                     <div style={{ margin: '1em' }}>
                         <h2>{user.fullname || user.displayName} </h2>
                         <span>Agendó una visita para estar con {mascota.nombre}</span>
-                        <div style={{ marginTop: 5 }}>
+                        <div style={{ marginTop: 10, marginBottom: 10 }}>
                             <Tag color={tipoDeSolicitud.color}>{tipoDeSolicitud.label}</Tag>
                             <Tag icon={statusSolicitud.icon} color={statusSolicitud.color}>{statusSolicitud.label}</Tag>
-                            <span>{solicitud.fechaCreacion ? moment(solicitud.fechaCreacion) : ''}</span>
                         </div>
+                        <span><strong>Fecha creación:</strong> {solicitud.fechaCreacion ? moment(solicitud.fechaCreacion).format('LLL') : ''}</span>
                     </div>
                 </div>
                 <div>

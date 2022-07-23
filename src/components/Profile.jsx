@@ -19,9 +19,10 @@ const Profile = () => {
         displayName: user.displayName ? user.displayName : user.fullname,
         fullname: user.displayName ? user.displayName : user.fullname,
         email: user.email,
+        password: user.password ? user.password : '',
         phoneNumber: user.phoneNumber,
         fecha: user.fecha,
-        
+
 
     })
 

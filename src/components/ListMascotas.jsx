@@ -1,27 +1,109 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { Button, Card, Tooltip, Empty, Affix } from 'antd';
-import { DeleteOutlined, EditOutlined, PlusCircleOutlined } from '@ant-design/icons';
+import { Button, Card, Tooltip, Empty, Affix, Input, Modal, Form, Select, Tag } from 'antd';
+import { DeleteOutlined, EditOutlined, FilterOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteMascotaAsync, fillMascotasAsync } from '../Redux/actions/actionsMascota';
+import { deleteMascotaAsync, fillMascotasAsync, selectedFilter, appliedFilters as appliedFiltersAction } from '../Redux/actions/actionsMascota';
 import { divCards, divListMascotas, styleNombreMascota, stylesBtnCards, stylesDivDescriptions, stylesImgesCards, stytlesiconos } from '../Styles/StylesAddMascotas';
 import { pastel, ubicacion } from '../assets/iconos';
 import Swal from 'sweetalert2';
 
 const { Meta } = Card;
+const { Search } = Input;
+const { Option } = Select;
 
 const ListMascotas = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { admin } = useSelector(store => store.loginStore);
-    const { mascotas } = useSelector((store) => store.mascotasStore);
+    const { mascotas, filters, selectedFilters, appliedFilters } = useSelector((store) => store.mascotasStore);
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const [form] = Form.useForm();
 
     useEffect(() => {
         dispatch(fillMascotasAsync());
     }, [dispatch]);
 
+    const onSearch = (value) => {
+    }
+
+    const handleCategoryChange = (value) => {
+        form.setFieldsValue({
+            filtros: []
+        });
+        dispatch(selectedFilter({ category: value }));
+    }
+
+    const handleFilterChange = (selectedValue) => {
+        dispatch(appliedFiltersAction({ category: selectedFilters.key, selectedValue }));
+    }
+
+    const renderAppliedFilters = (list) => {
+        if (!list || list.length === 0) return null;
+
+        return list.map((item) => {
+            const key = Object.keys(item)[0];
+            const values = item[key].values;
+            const color = item[key].color;
+            return values.map((value, index) => <Tag color={color} style={{ marginTop: 10 }} key={index} closable>{value}</Tag>)
+        });
+    }
+
     return (
         <div style={divListMascotas}>
+            <div style={{ display: 'flex', gap: 20, margin: '3em' }}>
+                <Search
+                    placeholder="Search"
+                    allowClear
+                    onSearch={onSearch}
+                    style={{
+                        width: '50%',
+                    }}
+                />
+                <Button onClick={() => setIsModalVisible(true)} icon={<FilterOutlined />} shape="circle" size="large" />
+            </div>
+            <div>
+                <Modal title="Filtrar" visible={isModalVisible} onOk={() => setIsModalVisible(false)} onCancel={() => setIsModalVisible(false)}>
+                    <Form
+                        form={form}
+                        name="filtrar"
+                        layout="horizontal"
+                        size={'default'}
+                    >
+                        <Form.Item
+                            label="Categorias"
+                            name="categorias"
+                        >
+                            <Select
+                                style={{
+                                    width: '100%',
+                                }}
+                                onChange={handleCategoryChange}
+                                placeholder="Por favor seleccione"
+                            >{filters && Object.keys(filters).map((item) => (<Option key={item}>{item}</Option>))}
+                            </Select>
+                        </Form.Item>
+                        <Form.Item
+                            label="Filtros"
+                            name="filtros"
+                        >
+                            <Select
+                                mode={selectedFilters && selectedFilters.isMultiple ? "multiple" : ""}
+                                style={{
+                                    width: '100%',
+                                }}
+                                onChange={handleFilterChange}
+                                placeholder="Por favor seleccione"
+                            >{selectedFilters && selectedFilters.values.map((item) => (<Option key={item}>{item}</Option>))}
+                            </Select>
+                        </Form.Item>
+                    </Form>
+                    <div>
+                        {renderAppliedFilters(appliedFilters)}
+                    </div>
+                </Modal>
+            </div>
             <div style={divCards}>
                 {
                     mascotas && mascotas.length ? (
@@ -33,7 +115,7 @@ const ListMascotas = () => {
                                     width: 240,
                                 }}
                                 cover={<img alt="example" src={item.imagen} style={stylesImgesCards} />}
-                                actions={!admin ? []: [
+                                actions={!admin ? [] : [
                                     <EditOutlined key={'edit'} onClick={() => navigate(`/mascotas/${item.firestoreId}/edit`)} />,
                                     <DeleteOutlined
                                         onClick={() => {
@@ -78,7 +160,7 @@ const ListMascotas = () => {
 
             </div>
             {admin && (
-                <Affix offsetBottom={50} 
+                <Affix offsetBottom={50}
                 // onChange={affixed => console.log(affixed)}
                 >
                     <Tooltip title="Agrega nueva mascota">

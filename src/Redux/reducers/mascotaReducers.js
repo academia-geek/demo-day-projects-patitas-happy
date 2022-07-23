@@ -1,7 +1,15 @@
 import { typesMascotas } from "../types/types";
+import { sizesMascotas, personalidadMascotas, tipoMascotas, generoMascotas } from '../../assets/DatosMascotas';
 
 const initialState = {
-    mascotas: []
+    mascotas: [],
+    filters: {
+        'Género': { color: 'cyan', values: generoMascotas },
+        'Tipo': { color: 'cyan', values: tipoMascotas },
+        'Tamaño': { color: 'cyan', values: sizesMascotas },
+        'Personalidades': { isMultiple: true, color: 'cyan', values: personalidadMascotas }
+    },
+    appliedFilters: []
 }
 
 export const mascotasReducers = (state = initialState, action) => {
@@ -71,6 +79,46 @@ export const mascotasReducers = (state = initialState, action) => {
             return {
                 ...state,
                 error: action.payload.error
+            }
+        case typesMascotas.selectedFilter:
+            return {
+                ...state,
+                selectedFilters: { key: action.payload.category, ...state.filters[action.payload.category] }
+            }
+        case typesMascotas.appliedFilters:
+            const category = action.payload.category;
+            const alreadyApplied = state.appliedFilters.some(af => Object.keys(af)[0] === category);
+
+            let newFilterApplied = [];
+            if (alreadyApplied) {
+                newFilterApplied = state.appliedFilters.map(af => {
+                    let current = af;
+                    const key = Object.keys(af)[0];
+                    if (key === category) {
+                        const values = af[key].isMultiple ? [...action.payload.selectedValue] : [action.payload.selectedValue];
+                        current = {
+                            [category]: {
+                                ...af[key],
+                                values
+                            }
+                        }
+                    }
+
+                    return current;
+                });
+            } else {
+                // console.log(action.payload.selectedValue);
+                newFilterApplied = [...state.appliedFilters, {
+                    [category]: {
+                        ...state.filters[category],
+                        values: [action.payload.selectedValue]
+                    }
+                }];
+            }
+
+            return {
+                ...state,
+                appliedFilters: newFilterApplied
             }
         default:
             return state;

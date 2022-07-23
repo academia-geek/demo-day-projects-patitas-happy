@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Form, Radio, Input, InputNumber, DatePicker, Select, Button } from 'antd';
-import { vacunasPerro, condiciones, optionsMascotas, vacunasGatos } from '../assets/DatosMascotas';
+import { vacunasPerro, condiciones, optionsMascotas, vacunasGatos, sizesMascotas, personalidadMascotas } from '../assets/DatosMascotas';
 import UploadImage from './UploadImage';
 import { addMascotaAsync, errorSync, fillMascotasAsync, updateMascotaAsync } from "../Redux/actions/actionsMascota";
 import { divForm, radioButtons, submitButton, titleForm } from '../Styles/StylesAddMascotas';
@@ -31,13 +31,16 @@ const FormMascotas = () => {
         if (firestoreId) {
             const mascota = mascotas.find(mascota => mascota.firestoreId === firestoreId);
             if (mascota) {
+                const showConditions = mascota.condiciones && mascota.condiciones.some(value => value === "otros");
                 form.setFieldsValue({
                     mascota: mascota.tipo,
                     nombre: mascota.nombre,
                     edad: mascota.edad,
+                    tamano: mascota.tamano,
                     rescate: moment(mascota.fechaRescate, dateFormat),
                     nacimiento: moment(mascota.fechaNacimiento, dateFormat),
                     genero: mascota.genero,
+                    personalidad: mascota.personalidad,
                     vacunas: mascota.vacunas,
                     desparasitacion: moment(mascota.ultimaDesparasitacion, dateFormat),
                     ciudad: mascota.ciudad,
@@ -55,6 +58,7 @@ const FormMascotas = () => {
                     setChildren(vacunasPerro);
                 }
 
+                setShowMoreConditions(showConditions);
                 setTitleFor(`Puede editar los datos de ${mascota.nombre}`)
 
                 setUrl(mascota.imagen);
@@ -83,9 +87,11 @@ const FormMascotas = () => {
             tipo: values.mascota,
             nombre: values.nombre,
             edad: values.edad,
+            tamano: values.tamano,
             fechaRescate: values.rescate.format(dateFormat),
             fechaNacimiento: values.nacimiento ? values.nacimiento.format(dateFormat) : null,
             genero: values.genero,
+            personalidad: values.personalidad,
             vacunas: values.vacunas,
             ultimaDesparasitacion: values.desparasitacion ? values.desparasitacion.format(dateFormat) : null,
             ciudad: values.ciudad,
@@ -208,6 +214,25 @@ const FormMascotas = () => {
                     <InputNumber />
                 </Form.Item>
                 <Form.Item
+                    label="Tamaño"
+                    name="tamano"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Por favor indique el tamaño de la mascota',
+                        },
+                    ]}
+                >
+                    <Select
+                        allowClear
+                        style={{
+                            width: '100%',
+                        }}
+                        placeholder="Por favor seleccione"
+                    >{sizesMascotas.map((item) => (<Option key={item}>{item}</Option>))}
+                    </Select>
+                </Form.Item>
+                <Form.Item
                     label="Fecha de rescate"
                     name="rescate"
                     rules={[
@@ -236,6 +261,26 @@ const FormMascotas = () => {
                     <Select placeholder="Por favor seleccione">
                         <Select.Option value="masculino">Masculino</Select.Option>
                         <Select.Option value="femenino">Femenino</Select.Option>
+                    </Select>
+                </Form.Item>
+                <Form.Item
+                    label="Personalidad"
+                    name="personalidad"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Por favor indique las caracteristicas o gustos de la mascota',
+                        },
+                    ]}
+                >
+                    <Select
+                        mode="multiple"
+                        allowClear
+                        style={{
+                            width: '100%',
+                        }}
+                        placeholder="Por favor seleccione"
+                    >{personalidadMascotas.map((item) => (<Option key={item}>{item}</Option>))}
                     </Select>
                 </Form.Item>
                 <Form.Item

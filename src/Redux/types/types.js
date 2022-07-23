@@ -16,7 +16,9 @@ export const typesMascotas = {
     deleteMascota: '[mascotas] deleteMascota',
     updateMascota: '[mascotas] updateMascota',
     fillMascota: '[mascotas] fillMascota',
-    throwError: '[mascotas] throwError'
+    throwError: '[mascotas] throwError',
+    selectedFilter: '[mascotas] selectedFilter',
+    appliedFilters: '[mascotas] appliedFilters'
 }
 
 export const typesUser = {
@@ -35,6 +37,7 @@ export const typesAdopcion = {
 export const typesApadrinar = {
   add : '[apadrinar] add'
 }
+
 export const typesRequest ={
   addRequest: '[Request] addRequest',
   throwErrorRequest: '[Request] throwErrorRequest',

@@ -118,3 +118,29 @@ export const statusSolicitudes = [
         value: 'rechazada'
     },
 ];
+
+// Filtros Mascotas
+export const sizesMascotas = [
+    'Pequeño',
+    'Mediano',
+    'Grande'
+];
+
+export const personalidadMascotas = [
+    'Activo',
+    'Le gusta correr en espacios amplios',
+    'Calmado',
+    'Dormilon',
+    'Cariñoso',
+    'Entrenado'
+];
+
+export const generoMascotas = [
+    'Masculino',
+    'Femenino'
+];
+
+export const tipoMascotas = [
+    'Perro',
+    'Gato'
+]
