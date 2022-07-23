@@ -18,9 +18,9 @@ export const actionLoginAsync = (email, password) => {
         const user = await signInWithEmailAndPassword(authentication, email, password);
         const userData = await getUserFromDatabase(email);
         const {photoURL, displayName, accessToken } = user.user;
-        const { id, phoneNumber, fullname, admin, fecha } = userData;
+        const { id, phoneNumber, fullname, admin, fecha, provider } = userData;
 
-        dispatch(actionLoginSync({ id, email, password, displayName, accessToken, phoneNumber, fullname, admin, fecha, error: false, photoURL }));
+        dispatch(actionLoginSync({ id, email, password, displayName, accessToken, phoneNumber, fullname, admin, fecha, error: false, photoURL, provider }));
     }
 }
 
@@ -33,7 +33,7 @@ export const actionAuthenticatedSync = (item) => {
 }
 
 
-export const actionLoginSync = ({ id, email, password, displayName, accessToken,  phoneNumber, fullname, admin, fecha, error, photoURL }) => {
+export const actionLoginSync = ({ id, email, password, displayName, accessToken,  phoneNumber, fullname, admin, fecha, error, photoURL, provider }) => {
     return {
         type: typesUser.login,
         payload: { id, email, password, displayName, accessToken,  phoneNumber, fullname, admin, fecha, error, photoURL }
@@ -90,12 +90,12 @@ export const loginGoogle = () => {
                 const userFound = await getUserFromDatabase(email);
 
                 if (Object.keys(userFound).length) {
-                    dispatch(actionLoginGoogleAndFacebookSync({ id: userFound.id, email: userFound.email, displayName, accessToken, photoURL, phoneNumber, admin: userFound.admin }, false));
+                    dispatch(actionLoginGoogleAndFacebookSync({ id: userFound.id, email: userFound.email, displayName, accessToken, photoURL, phoneNumber, admin: userFound.admin, provider: userFound.provider }, false));
                     
                     console.log(user, 'Usuario Autorizado, Bienvenido')
                 } else {
-                    const docRef = await addDoc(collection(dataBase, "users"), { email, displayName, accessToken, photoURL, phoneNumber, admin: false });
-                    dispatch(actionLoginGoogleAndFacebookSync({ id: docRef.id, email, displayName, accessToken, photoURL, phoneNumber, admin: false }, false));
+                    const docRef = await addDoc(collection(dataBase, "users"), { email, displayName, accessToken, photoURL, phoneNumber, admin: false, provider: 'googleFacebook' });
+                    dispatch(actionLoginGoogleAndFacebookSync({ id: docRef.id, email, displayName, accessToken, photoURL, phoneNumber, admin: false, provider: 'googleFacebook' }, false));
                     
                     console.log(user, 'Usuario Autorizado, Bienvenido')
                 }
@@ -118,12 +118,12 @@ export const loginFacebook = () => {
                 const userFound = await getUserFromDatabase(email);
 
                 if (Object.keys(userFound).length) {
-                    dispatch(actionLoginGoogleAndFacebookSync({ id: userFound.id, email: userFound.email, displayName, accessToken, photoURL, phoneNumber, admin: userFound.admin }, false));
+                    dispatch(actionLoginGoogleAndFacebookSync({ id: userFound.id, email: userFound.email, displayName, accessToken, photoURL, phoneNumber, admin: userFound.admin, provider: userFound.provider }, false));
                     
                     console.log(user, 'Usuario Autorizado, Bienvenido')
                 } else {
-                    const docRef = await addDoc(collection(dataBase, "users"), { email, displayName, accessToken, photoURL, phoneNumber, admin: false });
-                    dispatch(actionLoginGoogleAndFacebookSync({ id: docRef.id, email, displayName, accessToken, photoURL, phoneNumber, admin: false }, false));
+                    const docRef = await addDoc(collection(dataBase, "users"), { email, displayName, accessToken, photoURL, phoneNumber, admin: false, provider: 'googleFacebook' });
+                    dispatch(actionLoginGoogleAndFacebookSync({ id: docRef.id, email, displayName, accessToken, photoURL, phoneNumber, admin: false, provider: 'googleFacebook' }, false));
                     
                     console.log(user, 'Usuario Autorizado, Bienvenido')
                 }
@@ -136,7 +136,7 @@ export const loginFacebook = () => {
     }
 }
 
-export const actionLoginGoogleAndFacebookSync = ({ id, email, displayName, accessToken, photoURL, phoneNumber, admin }, error) => {
+export const actionLoginGoogleAndFacebookSync = ({ id, email, displayName, accessToken, photoURL, phoneNumber, admin, provider }, error) => {
     return {
         type: typesUser.loginGoogleAndFacebook,
         payload: { id, email, displayName, accessToken, photoURL, phoneNumber, admin, error }
@@ -148,19 +148,19 @@ export const actionLoginGoogleAndFacebookSync = ({ id, email, displayName, acces
 export const actionUserDataLoadAsync = (email) => {
     return (dispatch) => {
         getUserFromDatabase(email).then(dataUser => {
-            const { id, email, password, fullName, accessToken, photoURL, phoneNumber, admin } = dataUser;
+            const { id, email, password, fullname, accessToken, photoURL, phoneNumber, fecha, admin, provider } = dataUser;
 
-            dispatch(actionUserDataLoadSync({ id, email, password, fullName, accessToken, photoURL, phoneNumber, admin }))
+            dispatch(actionUserDataLoadSync({ id, email, password, fullname, accessToken, photoURL, phoneNumber, fecha, admin, provider }))
         }).catch(error => {
             console.log(error);
         });
     }
 };
 
-export const actionUserDataLoadSync = ({ id, email, password, fullName, accessToken, photoURL, phoneNumber, admin }) => {
+export const actionUserDataLoadSync = ({ id, email, password, fullname, accessToken, photoURL, phoneNumber, fecha, admin, provider }) => {
     return {
         type: typesUser.load,
-        payload: { id, email, password, fullName, accessToken, photoURL, phoneNumber, admin }
+        payload: { id, email, password, accessToken, fullname, photoURL, phoneNumber, admin }
     }
 };
 

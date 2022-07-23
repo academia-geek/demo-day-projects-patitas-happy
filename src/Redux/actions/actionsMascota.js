@@ -1,5 +1,5 @@
 import { typesMascotas } from "../types/types";
-import { collection, addDoc, query, getDocs, deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { collection, addDoc, query, getDocs, deleteDoc, doc, updateDoc, getDoc } from "firebase/firestore";
 import { dataBase } from "../../Firebase/firebaseConfig"
 
 const collectionName = "mascotas";
@@ -45,15 +45,15 @@ export const updateMascotaAsync = (mascota) => {
         try {
             const docRef = doc(dataBase, collectionName, mascota.firestoreId);
             updateDoc(docRef, mascota)
-              .then(() => {
-                dispatch(updateMascotaSync({ firestoreId: docRef.id, ...mascota }));
-                dispatch(errorSync({ error: false }));
-              })
-              .catch(error => {
-                console.log(error);
-                dispatch(errorSync({ error: true }));
-              });
-           
+                .then(() => {
+                    dispatch(updateMascotaSync({ firestoreId: docRef.id, ...mascota }));
+                    dispatch(errorSync({ error: false }));
+                })
+                .catch(error => {
+                    console.log(error);
+                    dispatch(errorSync({ error: true }));
+                });
+
         } catch (error) {
             console.log(error);
             dispatch(errorSync({ error: true }));
@@ -149,3 +149,51 @@ export const deleteMascotaSync = (params) => {
         }
     }
 }
+
+export const fillMascotaAsync = (firestoreId) => {
+    return (dispatch) => {
+        const docRef = doc(dataBase, collectionName, firestoreId);
+        getDoc(docRef).then(docSnapshot => {
+            if (docSnapshot.exists()) {
+                // console.log("Document data:", docSnapshot.data());
+                dispatch(fillMascotaSync(docSnapshot.data(), false));
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        }).catch(error => {
+            console.log(error);
+            dispatch(fillMascotaSync({}, false));
+        });
+    }
+}
+
+export const fillMascotaSync = (mascota, error) => {
+    return {
+        type: typesMascotas.fillMascota,
+        payload: {
+            mascota,
+            error: error
+        }
+    }
+}
+
+export const selectedFilter = (params) => {
+    return {
+        type: typesMascotas.selectedFilter,
+        payload: {
+            category: params.category
+        }
+    }
+}
+
+export const appliedFilters = (params) => {
+    return {
+        type: typesMascotas.appliedFilters,
+        payload: {
+            category: params.category,
+            selectedValue: params.selectedValue
+        }
+    }
+}
+

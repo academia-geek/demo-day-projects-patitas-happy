@@ -3,10 +3,8 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import { ButtonLogout, ImgProfile } from "../Styles/StyleNav";
 import { useDispatch, useSelector } from "react-redux";
-// import { actionLogoutAsyn } from "../Redux/actions/actionsLogin";
 import { Link, NavLink } from "react-router-dom";
 import { actionClearRegisterAsync, actionLogoutAsyn } from "../Redux/actions/actionsLogin";
-// import { actionClearRegisterAsync } from "../Redux/actions/actionsRegister";
 
 const NavBars = () => {
   const dispatch = useDispatch();
@@ -18,9 +16,6 @@ const NavBars = () => {
     dispatch(actionClearRegisterAsync());
     localStorage.clear();
   };
-
-  
-
 
 
   return (
@@ -44,34 +39,39 @@ const NavBars = () => {
             className="justify-content-end">
 
             <Nav className="justify-content-end">
-
               <NavLink to="/home" className="mx-3 my-auto nav-item nav-link"
                 activeclassname='active'
-                >
+              >
                 HOME
               </NavLink>
 
               <NavLink to="/mascotas" className="mx-3 my-auto nav-item nav-link"
                 activeclassname='active'
-                >
+              >
                 MASCOTAS
               </NavLink>
 
               <NavLink to="/donar" className="mx-3 my-auto nav-item nav-link"
                 activeclassname='active'
-                >
+              >
                 DONAR
               </NavLink>
 
               <NavLink to="/info" className="mx-3 my-auto nav-item nav-link"
                 activeclassname='active'
-                >
+              >
                 INFORMACIÓN
+              </NavLink>
+
+              <NavLink to="/solicitudes" className="mx-3 my-auto nav-item nav-link"
+                activeclassname='active'
+              >
+                SOLICITUDES
               </NavLink>
 
               <NavLink to="/contactanos" className="mx-3 my-auto nav-item nav-link"
                 activeclassname='active'
-                >
+              >
                 CONTACTANOS
               </NavLink>
 
@@ -79,7 +79,6 @@ const NavBars = () => {
                 // console.log(user.photoURL)
                 <Link to="/profile">
                   <ImgProfile
-                   
                     src={user.photoURL}
                     alt=""
                   />

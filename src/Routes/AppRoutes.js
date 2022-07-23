@@ -43,7 +43,7 @@ const AppRoutes = () => {
       setCheking(false);
     }, 1500);
 
-  }, [authenticated, auth, setIsLoggedIn, setCheking]);
+  }, [dispatch, authenticated, auth, setIsLoggedIn, setCheking]);
 
   if (cheking) {
     return <Spinner />;

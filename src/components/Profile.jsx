@@ -13,15 +13,18 @@ import { editUserAsync } from '../Redux/actions/actionsLogin';
 
 const Profile = () => {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+
 
     const user = useSelector(store => store.UserStore)
     console.log(user)
 
     const [formValue, handleInputChange] = useForm({
-        photoURL: user.photoURL,
-        displayName: user.displayName,
+
+        displayName: user.displayName ? user.displayName : user.fullname,
+        fullname: user.displayName ? user.displayName : user.fullname,
         email: user.email,
+        password: user.password ? user.password : '',
         phoneNumber: user.phoneNumber,
         fecha: user.fecha,
         password: user.password
@@ -35,6 +38,7 @@ const Profile = () => {
         dispatch(editUserAsync(displayName, email, photoURL, phoneNumber, fecha, password))
 
     }
+
 
     const handleFileChange = (e) => {
         const file = e.target.files[0]
