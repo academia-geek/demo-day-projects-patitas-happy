@@ -106,7 +106,7 @@ export const fillMascotasAsync = () => {
                         ...document.data(),
                     });
                 });
-                console.log(data)
+
                 dispatch(
                     fillMascotasSync({
                         mascotas: data

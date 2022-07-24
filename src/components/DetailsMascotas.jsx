@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, ButtonGroup, Grid } from '@mui/material'
 import { Tag, Spin } from 'antd';
 import Footer from "./Footer";
-import { ButtonMa, Item, TitleDog } from '../Styles/StylesDetalle';
+import { Item, TitleDog } from '../Styles/StylesDetalle';
 import SchedulingForm from './SchedulingForm';
 import { addRequestAsync, errorSync, fillSolicitudesUsuarioAsync } from '../Redux/actions/actionsRequest';
 import Swal from 'sweetalert2';
@@ -16,22 +16,11 @@ import { statusVisitas, tipoSolicitudes } from '../assets/DatosMascotas';
 
 
 const DetailsMascotas = () => {
-
   const navigate = useNavigate()
-
   const { firestoreId } = useParams();
   const dispatch = useDispatch();
-  const { mascotas } = useSelector(store => store.mascotasStore);
-  const { id } = useSelector(store => store.UserStore);
- 
-
-  const [showTimeForm, setShowTimeForm] = useState(true);
-
-  const mascota = mascotas.find(m => m.firestoreId === firestoreId);
-  
-  // const others1 = mascota.condiciones ? mascota.condiciones.some(condition => condition === "otros") : null;
-  // const condiciones1 = others ? mascota.condiciones.filter(c => c !== "otros") : mascota.condiciones;
-  
+  const { mascota } = useSelector(store => store.mascotasStore);
+  const { id } = useSelector(store => store.userStore);
   const { error, solicitudesUsuario } = useSelector(store => store.solicitudesStore);
 
   useEffect(() => {

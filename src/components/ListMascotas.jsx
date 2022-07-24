@@ -14,7 +14,7 @@ const { Option } = Select;
 const ListMascotas = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { admin } = useSelector(store => store.UserStore);
+    const { admin } = useSelector(store => store.userStore);
     
  
     const { mascotas, filters, selectedFilters, appliedFilters } = useSelector((store) => store.mascotasStore);

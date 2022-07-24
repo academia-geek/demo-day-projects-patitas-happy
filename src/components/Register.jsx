@@ -22,7 +22,7 @@ const SignupSchema = Yup.object().shape({
 const Register = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { error: registerError } = useSelector(store => store.UserStore);
+    const { error: registerError } = useSelector(store => store.userStore);
 
 
     //--Función para cantidad de caracteres digitados para número celular
