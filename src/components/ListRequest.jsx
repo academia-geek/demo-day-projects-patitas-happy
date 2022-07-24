@@ -12,8 +12,7 @@ import moment from 'moment';
 const ListRequest = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { admin, photoURL } = useSelector(store => store.UserStore);
-  const { users } = useSelector(store => store.UserStore);
+  const { users, admin, photoURL } = useSelector(store => store.userStore);
   const { solicitudes } = useSelector(store => store.solicitudesStore);
   const { mascotas } = useSelector(store => store.mascotasStore);
   const [orders, setOrders] = useState([]);
@@ -25,7 +24,7 @@ const ListRequest = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (users.length && solicitudes.length && mascotas.length) {
+    if (users && users.length && solicitudes && solicitudes.length && mascotas && mascotas.length) {
       const source = buildList(users, solicitudes, mascotas, { admin, photoURL });
       const data = source.map(({ usuario, mascota, solicitud }) => {
         const tipoDeSolicitud = tipoSolicitudes.find(ts => ts.value === solicitud.tipoSolicitud);
@@ -46,14 +45,14 @@ const ListRequest = () => {
             </div>
           ),
           content: (
-            <div style={{ display: 'flex', justifyContent: 'space-between',  marginTop: 50, flexWrap: 'wrap', gap: 10  }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 50, flexWrap: 'wrap', gap: 10 }}>
               <span>{`Quiere ${tipoDeSolicitud.accion} ${mascota.nombre} en ${moment(new Date(`${solicitud.fecha} ${solicitud.hora}`)).format('LLL')}`}</span>
               <Button onClick={() => {
-                  navigate(`/solicitudes/${solicitud.idSolicitud}`)
-                }} type='primary'>Ver detalle</Button>
+                navigate(`/solicitudes/${solicitud.idSolicitud}`)
+              }} type='primary'>Ver detalle</Button>
             </div>
           )
-          
+
         }
       });
 

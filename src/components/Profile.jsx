@@ -16,7 +16,7 @@ const Profile = () => {
     const dispatch = useDispatch();
 
 
-    const user = useSelector(store => store.UserStore)
+    const user = useSelector(store => store.userStore)
     console.log(user)
 
     const [formValue, handleInputChange] = useForm({

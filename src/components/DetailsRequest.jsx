@@ -33,6 +33,7 @@ const DetailsRequest = () => {
 
     if (!solicitud || !user || !mascota) return <>Loading...</>;
 
+
     const tipoDeSolicitud = tipoSolicitudes.find(ts => ts.value === solicitud.tipoSolicitud);
     const statusVisita = statusVisitas.find(ss => ss.value === solicitud.status);
 

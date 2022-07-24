@@ -8,7 +8,7 @@ import { actionClearRegisterAsync, actionLogoutAsyn } from "../Redux/actions/act
 
 const NavBars = () => {
   const dispatch = useDispatch();
-  const user = useSelector(store => store.UserStore);
+  const user = useSelector(store => store.userStore);
   
 
   const onClick = () => {

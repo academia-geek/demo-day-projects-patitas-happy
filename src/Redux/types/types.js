@@ -28,7 +28,8 @@ export const typesUser = {
 
   list: '[user-list] list',
   edit: '[user-edit] edit',
-  delete: '[user-delete] delete'
+  delete: '[user-delete] delete',
+  fillUser: '[user] fillUser'
 }
 
 export const typesAdopcion = {
