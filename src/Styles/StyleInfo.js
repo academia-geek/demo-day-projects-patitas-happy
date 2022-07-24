@@ -16,11 +16,11 @@ export const DivN = styled.div`
   text-align: center;
   background-color: #969faa;
   width: 441px;
-  height: 171px;
+  height: 141px;
   padding: 30px;
   opacity: 85%;
   position: absolute;
-  left: 950px;
+  left: 900px;
   top: 430px;
   @media screen and (max-width: 430px) {
     position: relative;
