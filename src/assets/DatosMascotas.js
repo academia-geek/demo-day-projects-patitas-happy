@@ -119,6 +119,27 @@ export const statusSolicitudes = [
     },
 ];
 
+export const statusVisitas = [
+    {
+        label: 'Agendada',
+        value: 'Agendada',
+        color: 'blue',
+        icon: <ClockCircleOutlined />
+    },
+    {
+        label: 'Cancelada',
+        value: 'Cancelada',
+        color: 'red',
+        icon: <ClockCircleOutlined />
+    },
+    {
+        label: 'Cumplida',
+        value: 'Cumplida',
+        color: 'green',
+        icon: <ClockCircleOutlined />
+    }
+];
+
 // Filtros Mascotas
 export const sizesMascotas = [
     'Pequeño',
@@ -128,11 +149,16 @@ export const sizesMascotas = [
 
 export const personalidadMascotas = [
     'Activo',
-    'Le gusta correr en espacios amplios',
+    'Ansioso',
+    'Enérgetico',
     'Calmado',
     'Dormilon',
     'Cariñoso',
-    'Entrenado'
+    'Jugueton',
+    'Entrenado',
+    'Protector',
+    'Cuidador',
+    'Tranquilo',
 ];
 
 export const generoMascotas = [
@@ -143,4 +169,16 @@ export const generoMascotas = [
 export const tipoMascotas = [
     'Perro',
     'Gato'
-]
+];
+
+export const tipoVivienda = [
+    'Apartamento',
+    'Casa mediana',
+    'Casa grande',
+    'Finca'
+];
+
+export const cuidadoEspecial = [
+    'Niños',
+    'Discapacitados'
+];
