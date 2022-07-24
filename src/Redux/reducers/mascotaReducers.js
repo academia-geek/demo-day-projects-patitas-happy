@@ -1,5 +1,5 @@
 import { typesMascotas } from "../types/types";
-import { sizesMascotas, personalidadMascotas, tipoMascotas, generoMascotas } from '../../assets/DatosMascotas';
+import { sizesMascotas, personalidadMascotas, tipoMascotas, generoMascotas, tipoVivienda, cuidadoEspecial } from '../../assets/DatosMascotas';
 
 const initialState = {
     mascotas: [],
@@ -7,6 +7,8 @@ const initialState = {
         'Género': { color: 'cyan', values: generoMascotas },
         'Tipo': { color: 'cyan', values: tipoMascotas },
         'Tamaño': { color: 'cyan', values: sizesMascotas },
+        'Vivienda': { color: 'cyan', values: tipoVivienda },
+        'Apto para': { color: 'cyan', values: cuidadoEspecial },
         'Personalidades': { isMultiple: true, color: 'cyan', values: personalidadMascotas }
     },
     appliedFilters: []
@@ -119,6 +121,21 @@ export const mascotasReducers = (state = initialState, action) => {
             return {
                 ...state,
                 appliedFilters: newFilterApplied
+            }
+        case typesMascotas.removeAppliedFilter:
+            const newAppliedFilters = [];
+            const filter = action.payload.filter;
+            if (!filter.isMultiple) {
+                for (let index = 0; index < state.appliedFilters.length; index++) {
+                    const appliedFilter = state.appliedFilters[index];
+                    if (Object.keys(appliedFilter)[0] === filter.key) continue;
+                    newAppliedFilters.push(appliedFilter);
+                }
+            }
+
+            return {
+                ...state,
+                appliedFilters: newAppliedFilters
             }
         default:
             return state;

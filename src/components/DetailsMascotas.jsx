@@ -12,6 +12,7 @@ import BtnFloat from './BtnFloat';
 import { ClockCircleOutlined } from '@ant-design/icons';
 import { fillMascotaAsync } from '../Redux/actions/actionsMascota';
 import moment from 'moment';
+import { statusVisitas, tipoSolicitudes } from '../assets/DatosMascotas';
 
 
 const DetailsMascotas = () => {
@@ -34,15 +35,16 @@ const DetailsMascotas = () => {
   }, [dispatch, firestoreId, id]);
 
   const onFinish = (fieldsValue, idMascota, idUser) => {
-    // Should format date value before submit.
+    const statusVisita = statusVisitas.find(sv => sv.label === "Agendada");
+    const tipoSolicitud = tipoSolicitudes.find(sv => sv.label === "Visita");
 
     const solicitud = {
       idUser: idUser,
       idMascota: idMascota,
       fecha: fieldsValue['fecha'].format('YYYY-MM-DD'),
       hora: fieldsValue['hora'].format('HH:mm:ss'),
-      tipoSolicitud: 'visita',
-      status: 'pendienteRevision',
+      tipoSolicitud: tipoSolicitud.value,
+      status: statusVisita.value,
       fechaCreacion: moment().format('YYYY-MM-DD')
     };
     console.log('Received values of form: ', solicitud);
@@ -80,7 +82,39 @@ const DetailsMascotas = () => {
   const others = mascota && mascota.condiciones ? mascota.condiciones.some(condition => condition === "otros") : [];
   const condiciones = others && mascota ? mascota.condiciones.filter(c => c !== "otros") : [];
 
-  if (!mascota) return <><Spin /></>;
+  if (!mascota || Object.keys(mascota).length === 0) return <><Spin /></>;
+
+
+  const renderFloatButton = (solicitudesUsuario, firestoreId, id) => {
+    if (!solicitudesUsuario || solicitudesUsuario.length === 0) {
+      return (
+        <SchedulingForm onFinish={(fieldsValue) => {
+          onFinish(fieldsValue, firestoreId, id)
+        }} />
+      );
+    }
+
+    const current = solicitudesUsuario.find(su => su.status === 'Agendada');
+
+    if (current) {
+      return (
+        <BtnFloat
+          screenHeight={200}
+          iconBtn={<ClockCircleOutlined />}
+          onClick={() => { navigate(`/solicitudes/${current.idSolicitudes}`) }}
+          titletooltip={`Visita agendada para ${current.fecha} ${current.hora}`}
+          btnStyle={{ borderColor: '#1ed0d0', color: '#25a2a2', backgroundColor: '#ceffff' }}
+          affixStyle={{ marginLeft: '100%' }}
+        />
+      )
+    } else {
+      return (
+        <SchedulingForm onFinish={(fieldsValue) => {
+          onFinish(fieldsValue, firestoreId, id)
+        }} />
+      );
+    }
+  }
 
   return (
     <>
@@ -90,7 +124,7 @@ const DetailsMascotas = () => {
         <Grid
           padding='30px'
         >
-          <div style={{ width: '540px', height: '580px'}}>
+          <div style={{ width: '540px', height: '580px' }}>
             <img style={{ width: '100%', height: '100%', objectFit: 'cover' }} src={mascota.imagen} alt={mascota.nombre} />
           </div>
         </Grid>
@@ -120,8 +154,8 @@ const DetailsMascotas = () => {
 
                 <Item>Ciudad:</Item>
                 <Item>Dirección:</Item>
-                <Item>Personalidad:</Item>
-                <Item>Vacunas</Item>
+                {mascota.personalidad && (<Item>Personalidad:</Item>)}
+                {mascota.vacunas && (<Item>Vacunas</Item>)}
                 {
                   condiciones.length ? (
                     <Item>Condiciones físicas</Item>
@@ -137,9 +171,9 @@ const DetailsMascotas = () => {
                 <Item>{mascota.tipo}</Item>
                 <Item>{mascota.genero}</Item>
                 <Item>{mascota.edad} años</Item>
-                <Item>{mascota && Object.keys(mascota).length && (
+                <Item>{mascota.tamano ? (
                   <Tag color="orange">{mascota.tamano}</Tag>
-                )}
+                ) : '-'}
                 </Item>
                 <Item>{mascota.enfermedad}</Item>
                 {
@@ -154,11 +188,11 @@ const DetailsMascotas = () => {
                 }
                 <Item>{mascota.ciudad}</Item>
                 <Item>{mascota.ubicacion}</Item>
-                <Item>{mascota && Object.keys(mascota).length && mascota.personalidad.map((item, index) => (
+                <Item>{mascota.personalidad && mascota.personalidad.map((item, index) => (
                   <Tag color="lime" key={index}>{item}</Tag>
                 ))}
                 </Item>
-                <Item>{mascota && Object.keys(mascota).length && mascota.vacunas.map((item, index) => (
+                <Item>{mascota.vacunas && mascota.vacunas.map((item, index) => (
                   <Tag color="cyan" key={index}>{item}</Tag>
                 ))}
                 </Item>
@@ -197,24 +231,7 @@ const DetailsMascotas = () => {
             </ButtonGroup>
           </div>
           <div>
-
-            {
-              !solicitudesUsuario || solicitudesUsuario.length === 0 ? (
-                <SchedulingForm onFinish={(fieldsValue) => {
-                  onFinish(fieldsValue, firestoreId, id)
-                }} />
-              ) : (
-                <BtnFloat
-                  screenHeight={200}
-                  iconBtn={<ClockCircleOutlined />}
-                  onClick={() => { }}
-                  titletooltip={`Visita agendada para ${solicitudesUsuario[0].fecha} ${solicitudesUsuario[0].hora}`}
-                  btnStyle={{ borderColor: '#1ed0d0', color: '#25a2a2', backgroundColor: '#ceffff' }}
-                  affixStyle={{ marginLeft: '100%' }}
-                />
-              )
-            }
-
+            {renderFloatButton(solicitudesUsuario, firestoreId, id)}
           </div>
         </Grid>
         <Footer />

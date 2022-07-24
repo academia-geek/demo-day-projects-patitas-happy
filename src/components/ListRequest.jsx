@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fillRequestsAsync } from '../Redux/actions/actionsRequest';
 import { fillUsersAsync } from '../Redux/actions/actionsUser';
 import { fillMascotasAsync } from '../Redux/actions/actionsMascota';
-import { tipoSolicitudes, statusSolicitudes } from '../assets/DatosMascotas';
+import { tipoSolicitudes, statusVisitas } from '../assets/DatosMascotas';
 import moment from 'moment';
 
 const ListRequest = () => {
@@ -29,7 +29,7 @@ const ListRequest = () => {
       const source = buildList(users, solicitudes, mascotas, { admin, photoURL });
       const data = source.map(({ usuario, mascota, solicitud }) => {
         const tipoDeSolicitud = tipoSolicitudes.find(ts => ts.value === solicitud.tipoSolicitud);
-        const statusSolicitud = statusSolicitudes.find(ss => ss.value === solicitud.status);
+        const statusVisita = statusVisitas.find(ss => ss.value === solicitud.status);
 
         return {
           key: solicitud.idSolicitud,
@@ -41,7 +41,7 @@ const ListRequest = () => {
               <span>{`Solicitud generada en ${moment(new Date(solicitud.fechaCreacion)).format('LLL')}`}</span>
               <div>
                 <Tag color={tipoDeSolicitud.color}>{tipoDeSolicitud.label}</Tag>
-                <Tag icon={statusSolicitud.icon} color={statusSolicitud.color}>{statusSolicitud.label}</Tag>
+                <Tag icon={statusVisita.icon} color={statusVisita.color}>{statusVisita.label}</Tag>
               </div>
             </div>
           ),

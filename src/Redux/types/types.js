@@ -18,7 +18,9 @@ export const typesMascotas = {
     fillMascota: '[mascotas] fillMascota',
     throwError: '[mascotas] throwError',
     selectedFilter: '[mascotas] selectedFilter',
-    appliedFilters: '[mascotas] appliedFilters'
+    appliedFilters: '[mascotas] appliedFilters',
+    filterMascotas: '[mascotas] filterMascotas',
+    removeAppliedFilter: '[mascotas] removeAppliedFilter' 
 }
 
 export const typesUser = {
@@ -43,5 +45,6 @@ export const typesRequest ={
   throwErrorRequest: '[Request] throwErrorRequest',
   fillUserRequests: '[Request] fillUserRequests',
   fillRequests: '[Request] fillRequests',
-  fillRequest: '[Request] fillRequest'
+  fillRequest: '[Request] fillRequest',
+  updateRequest: '[Request] updateRequest'
 }

@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, getDoc, getDocs, query, where } from "@firebase/firestore";
+import { addDoc, collection, doc, getDoc, getDocs, query, updateDoc, where } from "@firebase/firestore";
 import { dataBase } from "../../Firebase/firebaseConfig";
 import { typesRequest } from "../types/types";
 
@@ -33,7 +33,8 @@ export const errorSync = (params) => {
     return {
         type: typesRequest.throwErrorRequest,
         payload: {
-            error: params.error
+            error: params.error,
+            message: params.message
         }
     }
 }
@@ -142,6 +143,31 @@ export const fillRequestSync = (params) => {
         type: typesRequest.fillRequest,
         payload: {
             solicitud: params.solicitud
+        }
+    }
+}
+
+export const updateRequestAsync = (request) => {
+    return (dispatch) => {
+        const docRef = doc(dataBase, collectionName, request.firestoreId);
+        updateDoc(docRef, request)
+            .then(() => {
+                dispatch(updateRequestSync({ status: request.status, causasCancelacion: request.causasCancelacion }));
+                dispatch(errorSync({ error: false, message: 'Has actualizado el status correctamente!' }));
+            })
+            .catch(error => {
+                console.log(error);
+                dispatch(errorSync({ error: true, message: error.message }));
+            });
+    }
+}
+
+export const updateRequestSync = (request) => {
+    return {
+        type: typesRequest.updateRequest,
+        payload: {
+            status: request.status,
+            causasCancelacion: request.causasCancelacion
         }
     }
 }
