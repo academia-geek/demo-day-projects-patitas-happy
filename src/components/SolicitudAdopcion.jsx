@@ -1,33 +1,70 @@
 import React from 'react';
-import { FormControl, Grid, InputLabel, MenuItem } from '@mui/material';
+import { useParams } from 'react-router-dom';
+import { Grid } from '@mui/material';
 import { TitleC } from '../Styles/StyleInfo';
 import { ParrafoAdop } from '../Styles/StyleDonar';
 import Footer from './Footer';
-import useForm from '../hooks/useForm';
-import { useDispatch } from 'react-redux';
-import { addAdopcionSync } from '../Redux/actions/actionsSolicitudes';
-import { Form, Input, Button, Select } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
+import { Form, Input, Button, Select, Radio } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
+import { opciones, presupuestoMascota, statusAdopciones, tipoSolicitudes, tipoVivienda } from '../assets/DatosMascotas';
+import moment from 'moment';
+import { addRequestAsync, errorSync } from '../Redux/actions/actionsRequest';
+import Swal from 'sweetalert2';
 
 
 const { Option } = Select;
 
 const SolicitudAdopcion = () => {
+    const [form] = Form.useForm();
+    const dispatch = useDispatch();
+    const { firestoreId } = useParams();
 
-    const dispatch = useDispatch()
+    const { id } = useSelector(store => store.userStore);
+    const { error } = useSelector(store => store.solicitudesStore);
 
-    const [formValue, handleInputChange] = useForm({
-        ciudad: '',
-        direccion: '',
-        genero: '',
-        estabilidad: '',
-        descripcion: ''
-    })
 
-    const handleSubmit = () => {
+    const handleSubmit = (values, idUser, idMascota) => {
+        const statusAdopcion = statusAdopciones.find(sv => sv.value === "solicitada");
+        const tipoSolicitud = tipoSolicitudes.find(sv => sv.value === "adopcion");
 
-        console.log(formValue)
-        dispatch(addAdopcionSync(formValue))
+        const solicitud = {
+            idUser: idUser,
+            idMascota: idMascota,
+            fechaCreacion: moment().format('YYYY-MM-DD'),
+            ciudad: values.ciudad,
+            direccion: values.direccion,
+            vivienda: values.vivienda,
+            ninos: values.ninos,
+            discapacitado: values.discapacitado,
+            presupuesto: values.presupuesto,
+            entrenamiento: values.entrenamiento,
+            motivos: values.motivos,
+            tipoSolicitud: tipoSolicitud.value,
+            status: statusAdopcion.value
+        }
+        dispatch(addRequestAsync(solicitud))
+    }
+
+    if (error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Por favor verifique que todos los campos esten debidamente diligenciados",
+        }).then(() => {
+            dispatch(errorSync({ error: undefined }));
+        });
+    } else {
+        if (error === false) {
+            Swal.fire({
+                icon: "success",
+                title: "Excelente.",
+                text: "¡Ha enviado la solicitud de adopción correctamente!",
+            }).then(() => {
+                form.resetFields();
+                dispatch(errorSync({ error: undefined }));
+            });
+        }
     }
 
     return (
@@ -40,13 +77,15 @@ const SolicitudAdopcion = () => {
                     Por favor llena todos los campos para comenzar la solicitud de adopción.
                 </ParrafoAdop>
 
-                <Form onFinish={handleSubmit}
-                    name="basic"
+                <Form
+                    form={form}
+                    onFinish={(values) => { handleSubmit(values, id, firestoreId) }}
+                    name="adopcion"
                     labelCol={{
-                        span: 8,
+                        span: 14,
                     }}
                     wrapperCol={{
-                        span: 16,
+                        span: 15,
                     }}
                 >
                     <Form.Item
@@ -55,119 +94,152 @@ const SolicitudAdopcion = () => {
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your username!',
+                                message: 'Por favor ingrese la ciudad donde se encuentra',
                             },
                         ]}
                     >
                         <Input
-                            name="ciudad"
-                            value={formValue.ciudad}
-                            onChange={handleInputChange}
+                            placeholder={'Ingrese la ciudad en donde se encuentra'}
                         />
                     </Form.Item>
 
                     <Form.Item
-                        label="Direccion"
-
+                        label="Dirección"
+                        name="direccion"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your username!',
+                                message: 'Por favor ingrese su dirección completa',
                             },
                         ]}
                     >
                         <Input
-                            name="direccion"
-                            value={formValue.direccion}
-                            onChange={handleInputChange}
+                            placeholder='Ingrese su dirección completa'
                         />
                     </Form.Item>
 
                     <Form.Item
-                        label="Genero"
-                        name="genero"
-                        value={formValue.genero}
-                        onChange={handleInputChange}
+                        label="Tipo de vivienda"
+                        name="vivienda"
                         rules={[
                             {
-                                required: false,
-                                message: 'Please input your username!',
+                                required: true,
+                                message: 'Por favor indique el tipo de vivienda que habita',
                             },
                         ]}
                     >
-                        <Select placeholder="Por favor seleccione"
-
-                            value={formValue.genero}
-                            onChange={handleInputChange}
-                        >
-                            <Option value='masculino'>Masculino</Option>
-                            <Option value='femenino'>Femenino</Option>
+                        <Select
+                            style={{
+                                width: '100%',
+                            }}
+                            placeholder="Por favor seleccione"
+                        >{tipoVivienda.map((item) => (<Option key={item}>{item}</Option>))}
                         </Select>
                     </Form.Item>
 
                     <Form.Item
-                        label="Estabilidad"
-                        name="estabilidad"
-
+                        label='¿Cuenta con niños?'
+                        name="ninos"
                         rules={[
                             {
-                                required: false,
-                                message: 'Please input your username!',
+                                required: true,
+                                message: 'Por favor indique tipo de mascota',
                             },
                         ]}
                     >
-                        <Select placeholder="Por favor seleccione"
+                        <Radio.Group
+                            optionType="button"
+                            buttonStyle="solid"
+                            danger
+                            size='large'>
+                            {
+                                opciones.map((item, index) => (
+                                    <Radio.Button key={index} value={item}>{item}</Radio.Button>
+                                ))
+                            }
+                        </Radio.Group>
+                    </Form.Item>
 
-                            value={formValue.estabilidad}
-                            onChange={handleInputChange}
-                        >
-                            <Option value='masculino'>Masculino</Option>
-                            <Option value='femenino'>Femenino</Option>
+                    <Form.Item
+                        label='¿Presenta o tiene a su cargo persona(s) con discapacidad?'
+                        name="discapacitado"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Por favor indique tipo de mascota',
+                            },
+                        ]}
+                    >
+                        <Radio.Group
+                            optionType="button"
+                            buttonStyle="solid"
+                            danger
+                            size='large'>
+                            {
+                                opciones.map((item, index) => (
+                                    <Radio.Button key={index} value={item}>{item}</Radio.Button>
+                                ))
+                            }
+                        </Radio.Group>
+                    </Form.Item>
+
+
+                    <Form.Item
+                        label="Presupuesto mensual para la mascota"
+                        name="presupuesto"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Por favor indique el rango de presupuesto disponible para mantener a su mascota',
+                            },
+                        ]}
+                    >
+                        <Select
+                            style={{
+                                width: '100%',
+                            }}
+                            placeholder="Por favor seleccione"
+                        >{presupuestoMascota.map((item) => (<Option key={item}>{item}</Option>))}
                         </Select>
                     </Form.Item>
 
-                    {/* <section style={{ display: 'flex' }}>
-                        <h3 style={{ width: '50%' }}>¿Cuentas con estabilidad econimica?</h3>
-                        <FormControl sx={{ my: 1, minWidth: 120 }}>
-                            <InputLabel id="demo-simple-select-label">Selecciona</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                name="estabilidad"
-                                value={formValue.estabilidad}
-                                onChange={handleInputChange}
-                                label="Selecciona"
-                            >
-                                <MenuItem value='si'>Si</MenuItem>
-                                <MenuItem value='no'>No</MenuItem>
+                    <Form.Item
+                        label="¿Cómo entrenará o educará a su mascota?"
+                        name="entrenamiento"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Por favor indique el plan de educación para su mascota',
+                            },
+                        ]}
+                    >
+                        <TextArea rows={4}
+                            placeholder="Describa como educará a su mascota"
+                        />
 
-                            </Select>
-                        </FormControl>
-                    </section> */}
+                    </Form.Item>
 
                     <Form.Item
                         label="¿Por qué quieres adoptar?"
-
+                        name="motivos"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input your username!',
+                                message: 'Por favor indique sus motivaciones para adoptar',
                             },
                         ]}
                     >
-                        <TextArea rows={4} placeholder="Describelo aquí"
-                            name="descripcion"
-                            value={formValue.descripcion}
-                            onChange={handleInputChange}
+                        <TextArea rows={4}
+                            placeholder="Describa sus motivaciones para adoptar"
                         />
 
                     </Form.Item>
 
                     <Form.Item
-                    style={{width:'100%', alignItems:'center', textAlign:'center', justifyContent:'center', justifyItems:'center'}}
+                        style={{ width: '100%', alignItems: 'center', textAlign: 'center', justifyContent: 'center', justifyItems: 'center' }}
                     >
                         <Button type="primary" htmlType="submit" size='large'
-                        
+
                         >
                             Solicitar
                         </Button>

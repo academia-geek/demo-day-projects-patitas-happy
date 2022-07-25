@@ -101,6 +101,8 @@ const ListRequest = () => {
           extra={
             <img
               width={272}
+              height={215}
+              style={{objectFit:'cover'}}
               alt="logo"
               src={item.pet}
             />
