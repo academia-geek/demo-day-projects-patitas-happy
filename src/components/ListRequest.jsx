@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Avatar, List, Tag, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { fillRequestsAsync } from '../Redux/actions/actionsRequest';
-// import { fillUsersAsync } from '../Redux/actions/actionsUser';
+import { fillUsersAsync } from '../Redux/actions/actionsUser';
 import { fillMascotasAsync } from '../Redux/actions/actionsMascota';
 import { tipoSolicitudes, statusVisitas } from '../assets/DatosMascotas';
 import moment from 'moment';
@@ -19,7 +19,7 @@ const ListRequest = () => {
 
   useEffect(() => {
     dispatch(fillRequestsAsync());
-//     dispatch(fillUsersAsync());
+    dispatch(fillUsersAsync());
     dispatch(fillMascotasAsync());
   }, [dispatch]);
 
