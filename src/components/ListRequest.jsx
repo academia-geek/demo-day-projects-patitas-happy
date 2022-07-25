@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Avatar, List, Tag, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { fillRequestsAsync } from '../Redux/actions/actionsRequest';
-import { fillUsersAsync } from '../Redux/actions/actionsUser';
+// import { fillUsersAsync } from '../Redux/actions/actionsUser';
 import { fillMascotasAsync } from '../Redux/actions/actionsMascota';
 import { tipoSolicitudes, statusSolicitudes } from '../assets/DatosMascotas';
 import moment from 'moment';
@@ -12,15 +12,15 @@ import moment from 'moment';
 const ListRequest = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { admin, photoURL } = useSelector(store => store.loginStore);
-  const { users } = useSelector(store => store.userStore);
+  const { admin, photoURL } = useSelector(store => store.UserStore);
+  const { users } = useSelector(store => store.UserStore);
   const { solicitudes } = useSelector(store => store.solicitudesStore);
   const { mascotas } = useSelector(store => store.mascotasStore);
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     dispatch(fillRequestsAsync());
-    dispatch(fillUsersAsync());
+    // dispatch(fillUsersAsync());
     dispatch(fillMascotasAsync());
   }, [dispatch]);
 
