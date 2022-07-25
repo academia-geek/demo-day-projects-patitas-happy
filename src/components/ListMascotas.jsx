@@ -1,34 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { Button, Card, Tooltip, Empty, Affix, Input, Modal, Form, Select, Tag } from 'antd';
+import { Button, Card, Tooltip, Empty, Affix, Modal, Form, Select, Tag, Badge } from 'antd';
 import { DeleteOutlined, EditOutlined, FilterOutlined, PlusCircleOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteMascotaAsync, fillMascotasAsync, selectedFilter, appliedFilters as appliedFiltersAction } from '../Redux/actions/actionsMascota';
+import { deleteMascotaAsync, fillMascotasAsync, selectedFilter, appliedFilters as appliedFiltersAction, filterMascotasAsync, removeAppliedFilter } from '../Redux/actions/actionsMascota';
 import { divCards, divListMascotas, styleNombreMascota, stylesBtnCards, stylesDivDescriptions, stylesImgesCards, stytlesiconos } from '../Styles/StylesAddMascotas';
 import { pastel, ubicacion } from '../assets/iconos';
 import Swal from 'sweetalert2';
 
 const { Meta } = Card;
-const { Search } = Input;
 const { Option } = Select;
 
 const ListMascotas = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { admin } = useSelector(store => store.UserStore);
+    const { admin } = useSelector(store => store.userStore);
     
  
     const { mascotas, filters, selectedFilters, appliedFilters } = useSelector((store) => store.mascotasStore);
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [badgeCount, setBadgeCount] = useState(0);
 
     const [form] = Form.useForm();
 
     useEffect(() => {
         dispatch(fillMascotasAsync());
     }, [dispatch]);
-
-    const onSearch = (value) => {
-    }
 
     const handleCategoryChange = (value) => {
         form.setFieldsValue({
@@ -41,32 +38,57 @@ const ListMascotas = () => {
         dispatch(appliedFiltersAction({ category: selectedFilters.key, selectedValue }));
     }
 
-    const renderAppliedFilters = (list) => {
-        if (!list || list.length === 0) return null;
-
+    const mapAppliedFilters = (list) => {
+        if (!list || list.length === 0) return [];
         return list.map((item) => {
             const key = Object.keys(item)[0];
             const values = item[key].values;
             const color = item[key].color;
-            return values.map((value, index) => <Tag color={color} style={{ marginTop: 10 }} key={index} closable>{value}</Tag>)
+            const isMultiple = !!item[key].isMultiple
+            return {
+                key,
+                values,
+                color,
+                isMultiple
+            }
+        });
+    }
+
+    const renderAppliedFilters = (list) => {
+        if (!list || list.length === 0) return null;
+        const items = mapAppliedFilters(list);
+
+        return items.map(({ key, values, color, isMultiple }) => {
+            return values.map((value) => <Tag color={color} style={{ marginTop: 10 }} onClose={() => {
+                dispatch(removeAppliedFilter({ filter: { key, value, isMultiple } }));
+            }} key={value} closable={!isMultiple}>{value}</Tag>)
         });
     }
 
     return (
         <div style={divListMascotas}>
-            <div style={{ display: 'flex', gap: 20, margin: '3em' }}>
-                <Search
-                    placeholder="Search"
-                    allowClear
-                    onSearch={onSearch}
-                    style={{
-                        width: '50%',
-                    }}
-                />
-                <Button onClick={() => setIsModalVisible(true)} icon={<FilterOutlined />} shape="circle" size="large" />
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 20, margin: '3em' }}>
+                <Badge count={badgeCount}>
+                    <Tooltip title="Filtrar">
+                        <Button onClick={() => {
+                            if (badgeCount === 0) {
+                                form.resetFields();
+                            }
+                            setIsModalVisible(true)
+                        }} icon={<FilterOutlined />} shape="circle" size="large" />
+                    </Tooltip>
+                </Badge>
             </div>
             <div>
-                <Modal title="Filtrar" visible={isModalVisible} onOk={() => setIsModalVisible(false)} onCancel={() => setIsModalVisible(false)}>
+                <Modal title="Filtrar" visible={isModalVisible}
+                    onOk={() => {
+                        const items = mapAppliedFilters(appliedFilters);
+                        const counter = items.filter(af => af.values.length).length;
+                        dispatch(filterMascotasAsync({ filters: items }));
+                        setBadgeCount(counter);
+                        setIsModalVisible(false);
+                    }}
+                    onCancel={() => setIsModalVisible(false)}>
                     <Form
                         form={form}
                         name="filtrar"

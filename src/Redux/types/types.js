@@ -4,14 +4,16 @@ export const typesForm = {
 };
 
 export const typesMascotas = {
-  addMascota: '[mascotas] addMascota',
-  fillMascotas: '[mascotas] fillMascotas',
-  deleteMascota: '[mascotas] deleteMascota',
-  updateMascota: '[mascotas] updateMascota',
-  fillMascota: '[mascotas] fillMascota',
-  throwError: '[mascotas] throwError',
-  selectedFilter: '[mascotas] selectedFilter',
-  appliedFilters: '[mascotas] appliedFilters'
+    addMascota: '[mascotas] addMascota',
+    fillMascotas: '[mascotas] fillMascotas',
+    deleteMascota: '[mascotas] deleteMascota',
+    updateMascota: '[mascotas] updateMascota',
+    fillMascota: '[mascotas] fillMascota',
+    throwError: '[mascotas] throwError',
+    selectedFilter: '[mascotas] selectedFilter',
+    appliedFilters: '[mascotas] appliedFilters',
+    filterMascotas: '[mascotas] filterMascotas',
+    removeAppliedFilter: '[mascotas] removeAppliedFilter' 
 }
 
 export const typesUser = {
@@ -26,7 +28,8 @@ export const typesUser = {
 
   list: '[user-list] list',
   edit: '[user-edit] edit',
-  delete: '[user-delete] delete'
+  delete: '[user-delete] delete',
+  fillUser: '[user] fillUser'
 }
 
 export const typesAdopcion = {
@@ -42,5 +45,6 @@ export const typesRequest ={
   throwErrorRequest: '[Request] throwErrorRequest',
   fillUserRequests: '[Request] fillUserRequests',
   fillRequests: '[Request] fillRequests',
-  fillRequest: '[Request] fillRequest'
+  fillRequest: '[Request] fillRequest',
+  updateRequest: '[Request] updateRequest'
 }

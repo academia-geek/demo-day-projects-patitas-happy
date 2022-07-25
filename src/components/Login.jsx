@@ -26,8 +26,7 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { error: loginError } = useSelector(store => store.UserStore);
-  const { errorGoF } = useSelector(store => store.UserStore);
+  const { error: loginError, errorGoF } = useSelector(store => store.userStore);
 
   const onSubmit = values => {
     const { email, password } = values;

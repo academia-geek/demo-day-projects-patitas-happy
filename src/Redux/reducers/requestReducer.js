@@ -4,6 +4,7 @@ import { typesRequest } from "../types/types";
 const initialState = {
     solicitudesUsuario: [],
     solicitudes: [],
+    solicitud: null
 }
 
 export const requestReducer = (state = initialState, action) => {
@@ -18,7 +19,8 @@ export const requestReducer = (state = initialState, action) => {
         case typesRequest.throwErrorRequest:
             return {
                 ...state,
-                error: action.payload.error
+                error: action.payload.error,
+                message: action.payload.message
             }
         case typesRequest.fillUserRequests:
             return {
@@ -34,6 +36,15 @@ export const requestReducer = (state = initialState, action) => {
             return {
                 ...state,
                 solicitud: action.payload.solicitud
+            }
+        case typesRequest.updateRequest:
+            return {
+                ...state,
+                solicitud: {
+                    ...state.solicitud,
+                    status: action.payload.status,
+                    causasCancelacion: action.payload.causasCancelacion
+                }
             }
         default:
             return state

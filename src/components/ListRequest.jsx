@@ -4,32 +4,31 @@ import { useNavigate } from 'react-router-dom';
 import { Avatar, List, Tag, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { fillRequestsAsync } from '../Redux/actions/actionsRequest';
-// import { fillUsersAsync } from '../Redux/actions/actionsUser';
+import { fillUsersAsync } from '../Redux/actions/actionsUser';
 import { fillMascotasAsync } from '../Redux/actions/actionsMascota';
-import { tipoSolicitudes, statusSolicitudes } from '../assets/DatosMascotas';
+import { tipoSolicitudes, statusVisitas } from '../assets/DatosMascotas';
 import moment from 'moment';
 
 const ListRequest = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { admin, photoURL } = useSelector(store => store.UserStore);
-  const { users } = useSelector(store => store.UserStore);
+  const { users, admin, photoURL } = useSelector(store => store.userStore);
   const { solicitudes } = useSelector(store => store.solicitudesStore);
   const { mascotas } = useSelector(store => store.mascotasStore);
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     dispatch(fillRequestsAsync());
-    // dispatch(fillUsersAsync());
+    dispatch(fillUsersAsync());
     dispatch(fillMascotasAsync());
   }, [dispatch]);
 
   useEffect(() => {
-    if (users.length && solicitudes.length && mascotas.length) {
+    if (users && users.length && solicitudes && solicitudes.length && mascotas && mascotas.length) {
       const source = buildList(users, solicitudes, mascotas, { admin, photoURL });
       const data = source.map(({ usuario, mascota, solicitud }) => {
         const tipoDeSolicitud = tipoSolicitudes.find(ts => ts.value === solicitud.tipoSolicitud);
-        const statusSolicitud = statusSolicitudes.find(ss => ss.value === solicitud.status);
+        const statusVisita = statusVisitas.find(ss => ss.value === solicitud.status);
 
         return {
           key: solicitud.idSolicitud,
@@ -41,19 +40,19 @@ const ListRequest = () => {
               <span>{`Solicitud generada en ${moment(new Date(solicitud.fechaCreacion)).format('LLL')}`}</span>
               <div>
                 <Tag color={tipoDeSolicitud.color}>{tipoDeSolicitud.label}</Tag>
-                <Tag icon={statusSolicitud.icon} color={statusSolicitud.color}>{statusSolicitud.label}</Tag>
+                <Tag icon={statusVisita.icon} color={statusVisita.color}>{statusVisita.label}</Tag>
               </div>
             </div>
           ),
           content: (
-            <div style={{ display: 'flex', justifyContent: 'space-between',  marginTop: 50, flexWrap: 'wrap', gap: 10  }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 50, flexWrap: 'wrap', gap: 10 }}>
               <span>{`Quiere ${tipoDeSolicitud.accion} ${mascota.nombre} en ${moment(new Date(`${solicitud.fecha} ${solicitud.hora}`)).format('LLL')}`}</span>
               <Button onClick={() => {
-                  navigate(`/solicitudes/${solicitud.idSolicitud}`)
-                }} type='primary'>Ver detalle</Button>
+                navigate(`/solicitudes/${solicitud.idSolicitud}`)
+              }} type='primary'>Ver detalle</Button>
             </div>
           )
-          
+
         }
       });
 

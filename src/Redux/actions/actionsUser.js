@@ -1,11 +1,11 @@
-// import { typesUser } from "../types/types"
-// import { createUserWithEmailAndPassword, signOut, updatePassword, updateProfile } from "firebase/auth"
-// import { collection, addDoc, updateDoc, doc, query, getDocs, getDoc } from "firebase/firestore";
-// import { authentication, dataBase } from "../../Firebase/firebaseConfig"
-// import Swal from "sweetalert2";
-// import { actionLogoutSyn } from "./actionsLogin";
+import { typesUser } from "../types/types"
+import { createUserWithEmailAndPassword, signOut, updatePassword, updateProfile } from "firebase/auth"
+import { collection, addDoc, updateDoc, doc, query, getDocs, getDoc } from "firebase/firestore";
+import { authentication, dataBase } from "../../Firebase/firebaseConfig"
+import Swal from "sweetalert2";
+import { actionLogoutSyn } from "./actionsLogin";
 
-// const collectionName = "users";
+const collectionName = "users";
 
 // export const editUserAsync = (usuario) => {
 //     return (dispatch) => {
@@ -156,67 +156,67 @@
 // }
 
 
-// export const fillUsersAsync = () => {
-//     return (dispatch) => {
-//         const collectionUsers = collection(dataBase, collectionName);
-//         const querySnapshot = query(collectionUsers);
-//         getDocs(querySnapshot)
-//             .then((documents) => {
-//                 const data = [];
-//                 documents.forEach((document) => {
-//                     data.push({
-//                         idUser: document.id,
-//                         ...document.data(),
-//                     });
-//                 });
+export const fillUsersAsync = () => {
+    return (dispatch) => {
+        const collectionUsers = collection(dataBase, collectionName);
+        const querySnapshot = query(collectionUsers);
+        getDocs(querySnapshot)
+            .then((documents) => {
+                const data = [];
+                documents.forEach((document) => {
+                    data.push({
+                        idUser: document.id,
+                        ...document.data(),
+                    });
+                });
 
-//                 dispatch(
-//                     fillUsersSync({
-//                         users: data
-//                     })
-//                 );
-//             })
-//             .catch((error) => {
-//                 console.log(error);
-//                 // dispatch(errorSync({ error: true }));
-//             });
-//     }
-// }
-
-
-// export const fillUsersSync = (params) => {
-//     return {
-//         type: typesUser.list,
-//         payload: {
-//             users: params.users
-//         }
-//     }
-// }
+                dispatch(
+                    fillUsersSync({
+                        users: data
+                    })
+                );
+            })
+            .catch((error) => {
+                console.log(error);
+                // dispatch(errorSync({ error: true }));
+            });
+    }
+}
 
 
-// export const fillUserAsync = (idUser) => {
-//     return (dispatch) => {
-//         const docRef = doc(dataBase, collectionName, idUser);
-//         getDoc(docRef).then(docSnapshot => {
-//             if (docSnapshot.exists()) {
-//                 // console.log("Document data:", docSnapshot.data());
-//                 dispatch(fillUserSync({ user: docSnapshot.data() }));
-//             } else {
-//                 // doc.data() will be undefined in this case
-//                 console.log("No such document!");
-//             }
-//         }).catch(error => {
-//             console.log(error);
-//         });
-//     }
-// }
+export const fillUsersSync = (params) => {
+    return {
+        type: typesUser.list,
+        payload: {
+            users: params.users
+        }
+    }
+}
 
 
-// export const fillUserSync = (params) => {
-//     return {
-//         type: typesUser.fillUser,
-//         payload: {
-//             user: params.user
-//         }
-//     }
-// }
+export const fillUserAsync = (idUser) => {
+    return (dispatch) => {
+        const docRef = doc(dataBase, collectionName, idUser);
+        getDoc(docRef).then(docSnapshot => {
+            if (docSnapshot.exists()) {
+                // console.log("Document data:", docSnapshot.data());
+                dispatch(fillUserSync({ user: docSnapshot.data() }));
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+}
+
+
+export const fillUserSync = (params) => {
+    return {
+        type: typesUser.fillUser,
+        payload: {
+            user: params.user
+        }
+    }
+}

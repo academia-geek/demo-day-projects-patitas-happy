@@ -106,16 +106,16 @@ export const fillMascotasAsync = () => {
                         ...document.data(),
                     });
                 });
-                console.log(data)
+
                 dispatch(
                     fillMascotasSync({
                         mascotas: data
-                    }, false)
+                    })
                 );
             })
             .catch((error) => {
                 console.log(error);
-                dispatch(fillMascotasSync({}, true));
+                dispatch(fillMascotasSync({ mascotas: [] }));
             });
     }
 }
@@ -197,3 +197,91 @@ export const appliedFilters = (params) => {
     }
 }
 
+export const filterMascotasAsync = (params) => {
+    return (dispatch) => {
+        const collectionMascotas = collection(dataBase, collectionName);
+        const querySnapshot = query(collectionMascotas);
+        getDocs(querySnapshot)
+            .then((documents) => {
+                let mascotas = [];
+                documents.forEach((document) => {
+                    mascotas.push({
+                        firestoreId: document.id,
+                        ...document.data(),
+                    });
+                });
+
+                const filters = params.filters;
+                let filterToApply = filters.find(filter => filter.key === "Género")
+                if (filterToApply) {
+                    mascotas = mascotas.filter(item => item['genero'] && item['genero'].toLowerCase() === filterToApply.values[0].toLowerCase());
+                }
+
+                filterToApply = filters.find(f => f.key === "Tipo");
+                if (filterToApply) {
+                    mascotas = mascotas.filter(item => item['tipo'] && item['tipo'].toLowerCase() === filterToApply.values[0].toLowerCase());
+                }
+
+                filterToApply = filters.find(f => f.key === "Tamaño");
+                if (filterToApply) {
+                    mascotas = mascotas.filter(item => item['tamano'] && item['tamano'].toLowerCase() === filterToApply.values[0].toLowerCase());
+                }
+
+                filterToApply = filters.find(f => f.key === "Vivienda");
+                if (filterToApply) {
+                    if (filterToApply.values[0] === 'Apartamento') {
+                        mascotas = mascotas.filter(item => item['tamano'] && item['tamano'].toLowerCase() === "pequeño");
+                    } else {
+                        mascotas = mascotas.filter(item => item['tamano'] && item['tamano'].toLowerCase() !== "pequeño");
+                    }
+                }
+
+                filterToApply = filters.find(f => f.key === "Apto para");
+                if (filterToApply) {
+                    const value = filterToApply.values[0];
+                    let correspondencia = [];
+
+                    if (value === 'Niños') {
+                        correspondencia = [
+                            'Cariñoso',
+                            'Protector',
+                            'Jugueton',
+                            'Cuidador'
+                        ];
+                    }
+
+                    if (value === 'Discapacitados') {
+                        correspondencia = [
+                            'Entrenado',
+                            'Protector',
+                            'Cuidador',
+                            'Tranquilo',
+                        ];
+                    }
+
+                    mascotas = mascotas.filter(item => item['personalidad'] && item['personalidad'].every(personalidad => correspondencia.includes(personalidad)));
+                }
+
+                filterToApply = filters.find(f => f.key === "Personalidades");
+                if (filterToApply && filterToApply.values && filterToApply.values.length) {
+                    filterToApply.values = filterToApply.values.map(item => item.toString());
+                    mascotas = mascotas.filter(item => item['personalidad'] && item['personalidad'].some(personalidad => filterToApply.values.includes(personalidad)));
+                }
+
+                dispatch(fillMascotasSync({ mascotas }));
+            })
+            .catch((error) => {
+                console.log(error);
+                dispatch(fillMascotasSync({ mascotas: [] }));
+            });
+    }
+}
+
+export const removeAppliedFilter = (params) => {
+    return {
+        type: typesMascotas.removeAppliedFilter,
+        payload: {
+            filter: params.filter
+        }
+    }
+}
