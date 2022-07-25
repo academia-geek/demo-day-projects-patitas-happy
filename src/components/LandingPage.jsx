@@ -43,6 +43,15 @@ const Landing = () => (
                 <img src={logo} alt="logo" className="logo" />
               </Typography>
               <Box sx={{ display: { xs: "none", sm: "block" } }}>
+              <Button sx={{ color: "#000000" }}>
+                  <Link
+                    to="/hallazgo"
+                    style={{ textDecoration: "none", color: "#343f4b" }}
+                  >
+                    {" "}
+                    HALLAZGOS
+                  </Link>
+                </Button>
                 <Button sx={{ color: "#000000" }}>
                   <Link
                     to="/login"
@@ -60,6 +69,7 @@ const Landing = () => (
                     REGISTER
                   </Link>
                 </Button>
+
               </Box>
             </Toolbar>
           </AppBar>

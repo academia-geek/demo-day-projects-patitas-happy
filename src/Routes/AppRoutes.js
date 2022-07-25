@@ -12,6 +12,7 @@ import Spinner from "../components/Spinner";
 import '../Styles/stylesAntdD.css';
 import Landing from "../components/LandingPage";
 import { actionUserDataLoadAsync } from "../Redux/actions/actionsLogin";
+import Hallazgo from "../components/Hallazgo";
 
 
 const AppRoutes = () => {
@@ -75,6 +76,15 @@ const AppRoutes = () => {
           element={
             <PublicRouters isAutentication={isLoggedIn}>
               <Register />
+            </PublicRouters>
+          }
+        />
+
+        <Route
+          path="/hallazgo"
+          element={
+            <PublicRouters isAutentication={isLoggedIn}>
+              <Hallazgo />
             </PublicRouters>
           }
         />
