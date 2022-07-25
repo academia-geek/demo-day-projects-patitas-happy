@@ -8,23 +8,23 @@ Patitas Happy es un proyecto que consiste en una página web que tiene el objeti
 
 
 ## Este proyecto fue desarrollado con:
-* JavaScript: 
-* ReactJs:  
-* Ant-Design: 
+
+* ReactJs
+* Ant-Design
 * MaterialUI
 * React Bootstrap 
-* Firebase: Provedor de Autenticación con correo y contraseña, Google y Facebook
-* Firestore: Se utilizó para almacenar diferentes formularios y datos.
-* Formik y Yup:
-* Moment: Se utilizó para manejar las fechas
 * Styled Components
+* Firebase
+* Firestore
+* Formik y Yup
+* Moment
 * sweetalert2
 * React Router Dom
 * React-Redux
 
 
 
-## Instalacion
+## Instalación
 
 ### Clonar repositorio:
 
@@ -39,3 +39,7 @@ Patitas Happy es un proyecto que consiste en una página web que tiene el objeti
 
 ## Sitio Web
 [Patitas Happy](https://patitas-happy.vercel.app/)
+
+## Autores
+
+*Kelly Liliana Camayo Pulido* - *Whitney Jhoana Stevenson Seña* - *Geiler David Prada Salas*
