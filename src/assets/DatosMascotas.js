@@ -1,4 +1,4 @@
-import { ClockCircleOutlined } from "@ant-design/icons";
+import { CheckCircleOutlined, ClockCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 
 export const vacunasPerro = [
     'Parvovirosis (45 días)',
@@ -98,16 +98,20 @@ export const tipoSolicitudes = [
     }
 ];
 
-export const statusSolicitudes = [
+export const statusAdopciones = [
     {
-        label: 'Pendiente por revisión',
-        value: 'pendienteRevision',
+        label: 'Solicitud generada',
+        value: 'solicitada',
         color: 'default',
         icon: <ClockCircleOutlined />
     },
     {
-        label: 'En gestión',
-        value: 'gestionando'
+        label: 'En revisión',
+        value: 'revision'
+    },
+    {
+        label: 'Visita domiciliaria agendada',
+        value: 'visita'
     },
     {
         label: 'Aceptada',
@@ -116,27 +120,27 @@ export const statusSolicitudes = [
     {
         label: 'Rechazada',
         value: 'rechazada'
-    },
+    }
 ];
 
 export const statusVisitas = [
     {
         label: 'Agendada',
         value: 'Agendada',
-        color: 'blue',
+        color: 'processing',
         icon: <ClockCircleOutlined />
     },
     {
         label: 'Cancelada',
         value: 'Cancelada',
-        color: 'red',
-        icon: <ClockCircleOutlined />
+        color: 'error',
+        icon: <CloseCircleOutlined />
     },
     {
         label: 'Cumplida',
         value: 'Cumplida',
-        color: 'green',
-        icon: <ClockCircleOutlined />
+        color: 'success',
+        icon: <CheckCircleOutlined />
     }
 ];
 
@@ -181,4 +185,17 @@ export const tipoVivienda = [
 export const cuidadoEspecial = [
     'Niños',
     'Discapacitados'
+];
+
+export const presupuestoMascota =[
+    'no tiene presupuesto',
+    'menos del 0.1 SMLV',
+    'entre el 0.1 y 0.5 SMLV',
+    'entre el 0.6 y 1 SMLV',
+    'más de un SMLV'
+];
+
+export const opciones =[
+    'Si',
+    'No'
 ];

@@ -32,7 +32,7 @@ const DashboardRoutes = () => {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/info" element={<InfoMascotas/>}/>
                 <Route path="/donar" element={<Donar/>}/>
-                <Route path='/adopcion' element={<SolicitudAdopcion/>}/>
+                <Route path='/adopcion/:firestoreId' element={<SolicitudAdopcion/>}/>
                 <Route path='/apadrinar' element={<SolicitudApadrinamiento/>}/>
                 <Route path="/solicitudes" element={<ListRequest />} />
             </Routes>

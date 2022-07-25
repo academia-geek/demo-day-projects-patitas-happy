@@ -19,13 +19,11 @@ export const typesMascotas = {
 export const typesUser = {
   register: "[user-register] register",
   clear: "[user-clear] clear",
-
   login: "login",
   authenticated: "[login] authenticated",
   logout: "logout",
   loginGoogleAndFacebook: "[Login] loginGoogleAndFacebook",
   load: "[login] load",
-
   list: '[user-list] list',
   edit: '[user-edit] edit',
   delete: '[user-delete] delete',
