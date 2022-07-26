@@ -1,11 +1,6 @@
-import { Layout, Col, Row, Card } from "antd";
-import Toolbar from "@mui/material/Toolbar";
+import { Layout, Card } from "antd";
 import React from "react";
-import Box from "@mui/material/Box";
-import AppBar from "@mui/material/AppBar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import logo from "../assets/logo.png";
+import AppBarLanding from "./AppBar";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import Swal from "sweetalert2";
@@ -31,51 +26,7 @@ const { Content } = Layout;
 const Landing = () => (
   <>
     <Layout style={{ background: "white" }}>
-      <Row>
-        <Col span={24}>
-          <AppBar component="nav">
-            <Toolbar>
-              <Typography
-                variant="h6"
-                component="div"
-                sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-              >
-                <img src={logo} alt="logo" className="logo" />
-              </Typography>
-              <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              <Button sx={{ color: "#000000" }}>
-                  <Link
-                    to="/hallazgo"
-                    style={{ textDecoration: "none", color: "#343f4b" }}
-                  >
-                    {" "}
-                    HALLAZGOS
-                  </Link>
-                </Button>
-                <Button sx={{ color: "#000000" }}>
-                  <Link
-                    to="/login"
-                    style={{ textDecoration: "none", color: "#343f4b" }}
-                  >
-                    LOGIN IN{" "}
-                  </Link>
-                </Button>
-                <Button sx={{ color: "#000000" }}>
-                  <Link
-                    to="/register"
-                    style={{ textDecoration: "none", color: "#343f4b" }}
-                  >
-                    {" "}
-                    REGISTER
-                  </Link>
-                </Button>
-
-              </Box>
-            </Toolbar>
-          </AppBar>
-        </Col>
-      </Row>
-
+      <AppBarLanding />
       <Content className="content-top">
         <p>Adoptar una mascota nunca fue más facil, rápido y seguro.</p>
         <h3>
@@ -100,7 +51,7 @@ const Landing = () => (
             hoverable
             style={{
               width: "240px",
-              margin: '0 30px'
+              margin: "0 30px",
             }}
             cover={<div className="cover1" />}
           >
@@ -114,7 +65,7 @@ const Landing = () => (
             hoverable
             style={{
               width: "240px",
-              margin: '0 30px'
+              margin: "0 30px",
             }}
             cover={<div className="cover2" />}
           >
@@ -129,7 +80,7 @@ const Landing = () => (
             hoverable
             style={{
               width: "240px",
-              margin: '0 30px'
+              margin: "0 30px",
             }}
             cover={<div className="cover3" />}
           >
@@ -139,6 +90,7 @@ const Landing = () => (
           </Card>
         </div>
       </Content>
+
       <div className="info">
         <h2 style={{ margin: "3% 0 0 10%", color: "#47525e" }}>
           ENCUENTRA INFORMACIÓN DE INTERÉS,

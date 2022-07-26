@@ -9,32 +9,33 @@ import { useDispatch, useSelector } from "react-redux";
 import { authentication } from "../Firebase/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 import Spinner from "../components/Spinner";
-import '../Styles/stylesAntdD.css';
+import "../Styles/stylesAntdD.css";
 import Landing from "../components/LandingPage";
 import { actionUserDataLoadAsync } from "../Redux/actions/actionsLogin";
 import Hallazgo from "../components/Hallazgo";
-
+import AppBarLanding from "../components/AppBar";
 
 const AppRoutes = () => {
-
   const dispatch = useDispatch();
 
   const [cheking, setCheking] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
   const { authenticated } = useSelector(store => store.userStore);
 
-  const auth = localStorage.getItem("auth") ? JSON.parse(localStorage.getItem("auth")) : false;
+  const auth = localStorage.getItem("auth")
+    ? JSON.parse(localStorage.getItem("auth"))
+    : false;
 
   useEffect(() => {
     onAuthStateChanged(authentication, user => {
-      if (user?.uid && (auth)) {
+      if (user?.uid && auth) {
         setIsLoggedIn(true);
 
         if (!authenticated) {
           dispatch(actionUserDataLoadAsync(user.email));
         }
 
-        user.getIdToken().then(token => { });
+        user.getIdToken().then(token => {});
       } else {
         setIsLoggedIn(false);
       }
@@ -43,13 +44,11 @@ const AppRoutes = () => {
     setTimeout(() => {
       setCheking(false);
     }, 1500);
-
   }, [dispatch, authenticated, auth, setIsLoggedIn, setCheking]);
 
   if (cheking) {
     return <Spinner />;
   }
-
 
   return (
     <BrowserRouter>
@@ -84,6 +83,7 @@ const AppRoutes = () => {
           path="/hallazgo"
           element={
             <PublicRouters isAutentication={isLoggedIn}>
+              <AppBarLanding />
               <Hallazgo />
             </PublicRouters>
           }
