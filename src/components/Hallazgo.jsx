@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDataHallazgosAsync } from "../Redux/actions/actionsHallazgos";
 import "../Styles/HallazgoStyles.css";
 import "../Styles/LandingPage.css";
+import Footer from "./Footer";
 const { Meta } = Card;
 const Hallazgo = ({ data }) => {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ const Hallazgo = ({ data }) => {
           </Row>
         </Col>
       </Row>
+      <Footer/>
     </div>
   );
 };

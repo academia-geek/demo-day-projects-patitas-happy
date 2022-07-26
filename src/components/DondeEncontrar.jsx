@@ -33,11 +33,16 @@ const DondeEncontrar = () => {
   });
   const { veterinaries, petshops, animaltraining } = data;
   return (
-    <Grid margin="80px 0">
+    <Grid margin="80px 0"
+    justifyContent='center'
+    alignItems='center'
+    >
       <Grid paddingBottom="50px" textAlign="center">
         <TitleC>Donde Encontrar...</TitleC>
       </Grid>
-      <Grid container columns={{ xs: 4, sm: 8, md: 12 }}>
+      <Grid container columns={{ xs: 4, sm: 8, md: 12 }}
+      justifyContent='center'
+      >
         <Grid
           display="flex"
           flexDirection="column"
@@ -76,7 +81,9 @@ const DondeEncontrar = () => {
           </Button>
         </Grid>
         <Grid>
-          <Grid sx={6}>
+          <Grid sx={6}
+          style={{background:'red', width:'100%'}}
+          >
             {location.loaded ? (
               <MapContainer center={location.coordinates} zoom={12}>
                 <TileLayer

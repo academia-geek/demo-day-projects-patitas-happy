@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import "../Styles/LandingPage.css";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
+import { PatitasHappy, TitleAdoptar } from "../Styles/StyleLadingPage";
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -28,10 +29,10 @@ const Landing = () => (
     <Layout style={{ background: "white" }}>
       <AppBarLanding />
       <Content className="content-top">
-        <p>Adoptar una mascota nunca fue más facil, rápido y seguro.</p>
-        <h3>
+        <TitleAdoptar>Adoptar una mascota nunca fue más facil, rápido y seguro.</TitleAdoptar>
+        <PatitasHappy>
           En Patitas Happy estamos para ayudarte a hacerlo, descubre como:
-        </h3>
+        </PatitasHappy>
         <button>
           {" "}
           <Link
