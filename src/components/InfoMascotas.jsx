@@ -39,9 +39,10 @@ const InfoMascotas = () => {
       </Grid>
       <Grid
         container
-        columns={{ xs: 4, sm: 8, md: 12 }}
+        columns={{ xs: 4, sm: 8, md: 16}}
         justifyContent="center"
         textAlign="center"
+       
       >
         <Grid item xs={6}>
           <Paff>
@@ -59,7 +60,7 @@ const InfoMascotas = () => {
             <ButtonNegro>¡Quiero Adoptar!</ButtonNegro>
           </Link>
         </Grid>
-        <Grid item xs={5} textAlign="center">
+        <Grid item xs={6} textAlign="center">
           <Img1
             src="https://res.cloudinary.com/kellycamayo/image/upload/v1658183336/imagenesDemoday/image_em0g68.png"
             alt=""
@@ -72,9 +73,10 @@ const InfoMascotas = () => {
       </Grid>
       <Grid
         container
-        columns={{ xs: 4, sm: 8, md: 12 }}
+        columns={{ xs: 4, sm: 8, md: 16 }}
         justifyContent="center"
         textAlign="center"
+        padding='0 30px'
       >
         <Grid item xs={6} paddingLeft="20px">
           <Img2
@@ -92,7 +94,7 @@ const InfoMascotas = () => {
             adopción por una familia. Si quieres tener una mascota y no puedes,
             esta es tu oportunidad ¡Anímate!.
           </Paff>
-          <Link to="/donar">
+          <Link to="/mascotas">
             <ButtonNegro>¡Quiero Apadrinar!</ButtonNegro>
           </Link>
         </Grid>
@@ -103,11 +105,13 @@ const InfoMascotas = () => {
       </Grid>
       <Grid
         container
-        columns={{ xs: 4, sm: 8, md: 12 }}
+        columns={{ xs: 4, sm: 8, md: 16 }}
         justifyContent="center"
         textAlign="center"
+        padding='0 30px'
+
       >
-        <Grid item xs={4}>
+        <Grid item xs={6}>
           <Paff>
             Puedes donar insumos desde alimentos y medicinas hasta cobijas o
             tejas para la adecuación del espacio de la fundación. También puedes
@@ -118,7 +122,7 @@ const InfoMascotas = () => {
             <ButtonNegro>¡Quiero Donar!</ButtonNegro>
           </Link>
         </Grid>
-        <Grid item xs={5} textAlign="center">
+        <Grid item xs={6} textAlign="center">
           <Img3
             src="https://res.cloudinary.com/kellycamayo/image/upload/v1658242356/imagenesDemoday/image_2_dhiflt.png"
             alt=""

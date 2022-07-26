@@ -20,14 +20,14 @@ const NavBars = () => {
 
   return (
     <div>
-      <Navbar className="m-0" expand="lg">
+      <Navbar className="m-0" expand="xl">
         <Container>
           <Navbar.Brand>
             <Link to="/home">
               <img
                 src={logo}
-                width="124"
-                height="124"
+                width="90"
+                height="90"
                 className="d-inline-block align-top"
                 alt="React Bootstrap logo"
               />

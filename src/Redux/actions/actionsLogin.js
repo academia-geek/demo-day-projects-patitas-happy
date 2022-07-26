@@ -201,6 +201,7 @@ export const editUserAsync = (displayName, email, photoURL, phoneNumber, fecha, 
             displayName: displayName, photoURL: photoURL, email: email
             
         })
+        
         await updateEmail(authentication.currentUser, email)
 
         await updatePassword(authentication.currentUser, password)
@@ -234,6 +235,7 @@ export const editUserAsync = (displayName, email, photoURL, phoneNumber, fecha, 
             
             
           }).catch((error) => {
+            alert('por favor, vuelve a iniciar sesion')
             console.log(error, 'perfil no fue actualizado')
           });
 

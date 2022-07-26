@@ -97,6 +97,7 @@ const Profile = () => {
               <PhotoCamera />
             </IconButton>
           </SectionImg>
+          <p><span style={{color: 'red'}}> Nota Importante: </span>  Antes de actualizar la información, por favor cerrar sesión e iniciar sesión nuevamente.</p>
 
           <SectionE>
             <TitleYour>Nombre</TitleYour>

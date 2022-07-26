@@ -24,11 +24,25 @@ export const DivN = styled.div`
   top: 430px;
   @media screen and (max-width: 430px) {
     position: relative;
-    left: 190px;
+    left: 240px !important;
     width: 170px;
     padding: 15px;
     height: 70px;
     top: 150px;
+   
+  }
+  @media screen and (max-width: 375px){
+    position: relative;
+    left:200px !important;
+  }
+  @media screen and (max-width:1024px){
+    position: relative;
+    left:550px;
+  }
+  @media screen and (max-width:768px) {
+    position: relative;
+    left: 300px;
+    
   }
 `;
 
@@ -87,7 +101,7 @@ export const Paff = styled.p`
   color: #47525e;
   font-size: 28px;
   line-height: 36px;
-  width: 689px;
+  width: 100%;
   text-align: justify;
   align-items: center;
   @media screen and (max-width: 430px) {
@@ -102,7 +116,7 @@ export const Paff = styled.p`
 export const ButtonNegro = styled.button`
   background-color: #47525e;
   border-radius: 5px;
-  width: 396px;
+  width: 100%;
   height: 85px;
   color: #ffffff;
   border: none;
@@ -115,23 +129,37 @@ export const ButtonNegro = styled.button`
   }
 `;
 export const Img1 = styled.img`
-  @media screen and (max-width: 1024px) {
+width: 100%;
+padding:0 20px;
+
+  /* @media screen and (max-width: 1024px) {
     width: 300px;
-  }
+  } */
 `;
 export const Img2 = styled.img`
-  @media screen and (max-width: 425px) {
+width:100%;
+padding:0 20px;
+  /* @media screen and (max-width: 425px) {
     width: 290px;
   }
   @media screen and (width: 1024px) {
     width: 450px;
-  }
+  } */
 `;
 export const Img3 = styled.img`
-  @media screen and (max-width: 425px) {
+width:100%;
+padding:0 20px;
+align-items: center;
+justify-items: center;
+text-align: center;
+  /* @media screen and (max-width: 425px) {
     width: 300px;
   }
   @media screen and (width: 1024px) {
-    width: 400px;
+    width: 100%;
+    
   }
+  @media screen and (width: 768px){
+
+  } */
 `;

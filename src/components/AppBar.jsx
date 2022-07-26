@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { Col, Row } from "antd";
+
 const AppBarLanding = () => {
   return (
     <Row>
@@ -18,33 +19,35 @@ const AppBarLanding = () => {
               component="div"
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
+              <Link to="/home">
               <img src={logo} alt="logo" className="logo" />
+              </Link>
             </Typography>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              <Button sx={{ color: "#000000" }}>
+              
                 <Link
                   to="/hallazgo"
                   style={{ textDecoration: "none", color: "#343f4b" }}
                 >
                   {" "}
-                  HALLAZGOS
+                  Encuentra aquí a tu mascota perdida
                 </Link>
-              </Button>
-              <Button sx={{ color: "#000000" }}>
+             
+              <Button sx={{ color: "#000000", textTransform: 'none', width:'100px' }}>
                 <Link
                   to="/login"
                   style={{ textDecoration: "none", color: "#343f4b" }}
                 >
-                  LOGIN IN{" "}
+                  Login in{" "}
                 </Link>
               </Button>
-              <Button sx={{ color: "#000000" }}>
+              <Button sx={{ color: "#000000", textTransform: 'none', width:'100px' }}>
                 <Link
                   to="/register"
                   style={{ textDecoration: "none", color: "#343f4b" }}
                 >
                   {" "}
-                  REGISTER
+                  Register
                 </Link>
               </Button>
             </Box>

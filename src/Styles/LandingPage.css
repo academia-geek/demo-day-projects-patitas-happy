@@ -7,7 +7,7 @@
 
 nav {
   background-color: #ffffff !important;
-  margin: 5% 0;
+  margin: 3% 0;
   box-shadow: none !important;
   position: initial !important;
 }
@@ -32,11 +32,11 @@ nav button:hover {
 
 .content-top button {
   background-color: #f5b7b1;
-  border-radius: 20px;
+  border-radius: 5px;
   border: none;
   font-size: 18px;
-  line-height: 62px;
   width: 193px;
+  height: 50px;
   text-align: center;
   color: #343f4b;
   margin: 35px 0;

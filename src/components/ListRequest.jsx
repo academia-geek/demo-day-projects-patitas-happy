@@ -8,6 +8,8 @@ import { fillUsersAsync } from '../Redux/actions/actionsUser';
 import { fillMascotasAsync } from '../Redux/actions/actionsMascota';
 import { tiposSolicitudes, tipoSolicitudes } from '../assets/DatosMascotas';
 import moment from 'moment';
+import { ButtonR, DivList } from '../Styles/StyleListRequest';
+import Footer from './Footer';
 
 const ListRequest = () => {
   const dispatch = useDispatch();
@@ -16,6 +18,8 @@ const ListRequest = () => {
   const { solicitudes } = useSelector(store => store.solicitudesStore);
   const { mascotas } = useSelector(store => store.mascotasStore);
   const [orders, setOrders] = useState([]);
+
+
 
   useEffect(() => {
     dispatch(fillRequestsAsync());
@@ -48,7 +52,7 @@ const ListRequest = () => {
           ),
           content: (
             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 50, flexWrap: 'wrap', gap: 10 }}>
-              <span>{tipoDeSolicitud.value === tipoSolicitudes.VISITA ? `Quiere ${tipoDeSolicitud.accion} ${mascota.nombre} en ${moment(new Date(`${solicitud.fecha} ${solicitud.hora}`)).format('LLL')}`: `Quiere ${tipoDeSolicitud.accion} ${mascota.nombre}`}</span>
+              <span>{tipoDeSolicitud.value === tipoSolicitudes.VISITA ? `Quiere ${tipoDeSolicitud.accion} ${mascota.nombre} en ${moment(new Date(`${solicitud.fecha} ${solicitud.hora}`)).format('LLL')}` : `Quiere ${tipoDeSolicitud.accion} ${mascota.nombre}`}</span>
               <Button onClick={() => {
                 navigate(`/solicitudes/${solicitud.idSolicitud}`)
               }} type='primary'>Ver detalle</Button>
@@ -78,7 +82,7 @@ const ListRequest = () => {
         }
       });
     }
-
+  
     return list;
   }
 
@@ -90,43 +94,52 @@ const ListRequest = () => {
   // );
 
   return (
-    <List
-      itemLayout="vertical"
-      size="large"
-      pagination={{
-        onChange: (page) => {
-          // console.log(page);
-        },
-        pageSize: 3,
-      }}
-      dataSource={orders}
-      renderItem={(item) => (
-        <List.Item
-          key={item.key}
-          // actions={[
-          //   <IconText icon={StarOutlined} text="156" key="list-vertical-star-o" />,
-          //   <IconText icon={LikeOutlined} text="156" key="list-vertical-like-o" />,
-          //   <IconText icon={MessageOutlined} text="2" key="list-vertical-message" />,
-          // ]}
-          extra={
-            <img
-              width={272}
-              height={215}
-              style={{ objectFit: 'cover' }}
-              alt="logo"
-              src={item.pet}
+    <>
+      <DivList>
+        <ButtonR >Visitas Agendadas</ButtonR>
+        <ButtonR>Solicitudes de Adopción</ButtonR>
+        <ButtonR>Adopciones </ButtonR>
+      </DivList>
+      <List
+      style={{margin:'20px 0'}}
+        itemLayout="vertical"
+        size="large"
+        pagination={{
+          onChange: (page) => {
+            // console.log(page);
+          },
+          pageSize: 3,
+        }}
+        dataSource={orders}
+        renderItem={(item) => (
+          <List.Item
+            key={item.key}
+            // actions={[
+            //   <IconText icon={StarOutlined} text="156" key="list-vertical-star-o" />,
+            //   <IconText icon={LikeOutlined} text="156" key="list-vertical-like-o" />,
+            //   <IconText icon={MessageOutlined} text="2" key="list-vertical-message" />,
+            // ]}
+            extra={
+              <img
+                width={272}
+                height={215}
+                style={{ objectFit: 'cover' }}
+                alt="logo"
+                src={item.pet}
+              />
+            }
+          >
+            <List.Item.Meta
+              avatar={<Avatar src={item.avatar} />}
+              title={item.title}
+              description={item.description}
             />
-          }
-        >
-          <List.Item.Meta
-            avatar={<Avatar src={item.avatar} />}
-            title={item.title}
-            description={item.description}
-          />
-          {item.content}
-        </List.Item>
-      )}
-    />
+            {item.content}
+          </List.Item>
+        )}
+      />
+      <Footer/>
+    </>
   )
 };
 

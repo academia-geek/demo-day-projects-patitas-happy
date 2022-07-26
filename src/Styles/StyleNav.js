@@ -5,8 +5,8 @@ export const ButtonLogout = styled.button`
     border: 1px solid #F5CEC7 ;
     border-radius: 5px;
     width: 104px;
-    height: 45px;
-    font-size: 18px;
+    height: 35px;
+    font-size: 14px;
 `
 export const ImgProfile = styled.img`
     width: 46px;
