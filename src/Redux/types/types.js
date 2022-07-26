@@ -4,16 +4,16 @@ export const typesForm = {
 };
 
 export const typesMascotas = {
-    addMascota: '[mascotas] addMascota',
-    fillMascotas: '[mascotas] fillMascotas',
-    deleteMascota: '[mascotas] deleteMascota',
-    updateMascota: '[mascotas] updateMascota',
-    fillMascota: '[mascotas] fillMascota',
-    throwError: '[mascotas] throwError',
-    selectedFilter: '[mascotas] selectedFilter',
-    appliedFilters: '[mascotas] appliedFilters',
-    filterMascotas: '[mascotas] filterMascotas',
-    removeAppliedFilter: '[mascotas] removeAppliedFilter' 
+  addMascota: '[mascotas] addMascota',
+  fillMascotas: '[mascotas] fillMascotas',
+  deleteMascota: '[mascotas] deleteMascota',
+  updateMascota: '[mascotas] updateMascota',
+  fillMascota: '[mascotas] fillMascota',
+  throwError: '[mascotas] throwError',
+  selectedFilter: '[mascotas] selectedFilter',
+  appliedFilters: '[mascotas] appliedFilters',
+  filterMascotas: '[mascotas] filterMascotas',
+  removeAppliedFilter: '[mascotas] removeAppliedFilter'
 }
 
 export const typesUser = {
@@ -38,11 +38,17 @@ export const typesApadrinar = {
   add: '[apadrinar] add'
 }
 
-export const typesRequest ={
+export const typesRequest = {
   addRequest: '[Request] addRequest',
   throwErrorRequest: '[Request] throwErrorRequest',
   fillUserRequests: '[Request] fillUserRequests',
   fillRequests: '[Request] fillRequests',
   fillRequest: '[Request] fillRequest',
   updateRequest: '[Request] updateRequest'
+}
+
+export const typesCommentRequest = {
+  addCommentRequest: '[CommentRequest] addCommentRequest',
+  fillCommentRequests: '[CommentRequest] fillCommentRequests',
+  throwErrorRequest: '[CommentRequest] throwErrorRequest',
 }

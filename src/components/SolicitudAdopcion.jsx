@@ -25,9 +25,6 @@ const SolicitudAdopcion = () => {
 
 
     const handleSubmit = (values, idUser, idMascota) => {
-        const statusAdopcion = statusAdopciones.find(sv => sv.value === "solicitada");
-        const tipoSolicitud = tipoSolicitudes.find(sv => sv.value === "adopcion");
-
         const solicitud = {
             idUser: idUser,
             idMascota: idMascota,
@@ -40,8 +37,8 @@ const SolicitudAdopcion = () => {
             presupuesto: values.presupuesto,
             entrenamiento: values.entrenamiento,
             motivos: values.motivos,
-            tipoSolicitud: tipoSolicitud.value,
-            status: statusAdopcion.value
+            tipoSolicitud: tipoSolicitudes.ADOPCION,
+            status: statusAdopciones.SOLICITADA
         }
         dispatch(addRequestAsync(solicitud))
     }

@@ -43,7 +43,8 @@ export const requestReducer = (state = initialState, action) => {
                 solicitud: {
                     ...state.solicitud,
                     status: action.payload.status,
-                    causasCancelacion: action.payload.causasCancelacion
+                    causasCancelacion: action.payload.causasCancelacion,
+                    canceledBy: action.payload.canceledBy
                 }
             }
         default:

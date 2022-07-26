@@ -6,6 +6,7 @@ import { mascotasReducers } from "../reducers/mascotaReducers";
 import { solicitudesReducers } from "../reducers/solicitudesReducer";
 import { apadrinarReducers } from "../reducers/apadrinarReducers";
 import { requestReducer } from "../reducers/requestReducer";
+import { requestCommentReducer } from "../reducers/requestCommentReducer";
 
 
 const composeEnhancers =
@@ -17,6 +18,7 @@ const reducers = combineReducers({
   userStore: userReducers, 
   mascotasStore: mascotasReducers,
   solicitudesStore: requestReducer,
+  comentariosSolicitudesStore: requestCommentReducer,
   formStore: formReducers,
   solicitudAdopStore: solicitudesReducers,
   apadrinarStore: apadrinarReducers
