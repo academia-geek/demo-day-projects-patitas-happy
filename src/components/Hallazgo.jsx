@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDataHallazgosAsync } from "../Redux/actions/actionsHallazgos";
 import "../Styles/HallazgoStyles.css";
+import "../Styles/LandingPage.css";
 const { Meta } = Card;
 const Hallazgo = ({ data }) => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Hallazgo = ({ data }) => {
       <h1 style={{ margin: "15px auto" }}>Mascotas Encontradas</h1>
       <Row>
         <Col span={24}>
-          <Row justify="space-evenly">
+          <Row justify="space-evenly" className="section">
             {form.map((hgz, i) => (
               <Col span={4} key={i}>
                 <Card
@@ -38,7 +39,11 @@ const Hallazgo = ({ data }) => {
                     />
                   }
                 >
-                  <Meta title={hgz.fecha} description={hgz.location} />
+                  <Meta
+                    title={hgz.fecha}
+                    description={hgz.location}
+                    details="hola"
+                  />
                 </Card>
               </Col>
             ))}
