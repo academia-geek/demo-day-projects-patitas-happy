@@ -152,7 +152,7 @@ export const updateRequestAsync = (request) => {
         const docRef = doc(dataBase, collectionName, request.firestoreId);
         updateDoc(docRef, request)
             .then(() => {
-                dispatch(updateRequestSync({ status: request.status, causasCancelacion: request.causasCancelacion }));
+                dispatch(updateRequestSync({ status: request.status, causasCancelacion: request.causasCancelacion, canceledBy: request.canceledBy }));
                 dispatch(errorSync({ error: false, message: 'Has actualizado el status correctamente!' }));
             })
             .catch(error => {
@@ -167,7 +167,8 @@ export const updateRequestSync = (request) => {
         type: typesRequest.updateRequest,
         payload: {
             status: request.status,
-            causasCancelacion: request.causasCancelacion
+            causasCancelacion: request.causasCancelacion,
+            canceledBy: request.canceledBy
         }
     }
 }

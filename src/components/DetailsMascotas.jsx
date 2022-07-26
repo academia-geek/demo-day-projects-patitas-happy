@@ -12,7 +12,7 @@ import BtnFloat from './BtnFloat';
 import { ClockCircleOutlined } from '@ant-design/icons';
 import { fillMascotaAsync } from '../Redux/actions/actionsMascota';
 import moment from 'moment';
-import { statusVisitas, tipoSolicitudes } from '../assets/DatosMascotas';
+import { statusVisita, tipoSolicitudes } from '../assets/DatosMascotas';
 
 
 const DetailsMascotas = () => {
@@ -33,16 +33,14 @@ const DetailsMascotas = () => {
   }, [dispatch, firestoreId, id]);
 
   const onFinish = (fieldsValue, idMascota, idUser) => {
-    const statusVisita = statusVisitas.find(sv => sv.label === "Agendada");
-    const tipoSolicitud = tipoSolicitudes.find(sv => sv.label === "Visita");
 
     const solicitud = {
       idUser: idUser,
       idMascota: idMascota,
       fecha: fieldsValue['fecha'].format('YYYY-MM-DD'),
       hora: fieldsValue['hora'].format('HH:mm:ss'),
-      tipoSolicitud: tipoSolicitud.value,
-      status: statusVisita.value,
+      tipoSolicitud: tipoSolicitudes.VISITA,
+      status: statusVisita.AGENDADA,
       fechaCreacion: moment().format('YYYY-MM-DD')
     };
     console.log('Received values of form: ', solicitud);

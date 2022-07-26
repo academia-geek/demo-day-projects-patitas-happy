@@ -1,4 +1,4 @@
-import { CheckCircleOutlined, ClockCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
+import { CheckCircleOutlined, ClockCircleOutlined, CloseCircleOutlined, ExclamationCircleOutlined, SyncOutlined } from "@ant-design/icons";
 
 export const vacunasPerro = [
     'Parvovirosis (45 días)',
@@ -59,88 +59,145 @@ export const optionsMascotas = [
     }
 ];
 
-export const tipoSolicitudes = [
-    {
-        label: 'Adopción',
-        value: 'adopcion',
-        color: 'lime',
-        accion: 'adoptar a'
-    },
-    {
-        label: 'Apadrinamiento',
-        value: 'apadrinamiento',
-        color: 'geekblue',
-        accion: 'apadrinar a'
-    },
-    {
-        label: 'Visita',
-        value: 'visita',
-        color: 'blue',
-        accion: 'visitar a'
-    },
-    {
-        label: 'Dar en adopción',
-        value: 'darAdopcion',
-        color: 'orange',
-        accion: 'dar en adopción a'
-    },
-    {
-        label: 'Atención de hallazgo',
-        value: 'atencionHallazgo',
-        color: 'red',
-        accion: 'notificar el hallazgo de'
-    },
-    {
-        label: 'Donación',
-        value: 'donación',
-        color: 'purple',
-        accion: 'donar en'
-    }
-];
+export const statusAdopciones = {
+    SOLICITADA: 'solicitada',
+    REVISION: 'revision',
+    VISITA: 'visita',
+    ACEPTADA: 'aceptada',
+    RECHAZADA: 'rechazada',
+    CANCELADA: 'cancelada',
+    PREPARANDO_MASCOTA: 'Preparando tu mascota',
+    ENTREGADA: 'Entregada'
+}
 
-export const statusAdopciones = [
+export const statusesAdopciones = [
     {
         label: 'Solicitud generada',
-        value: 'solicitada',
-        color: 'default',
-        icon: <ClockCircleOutlined />
+        value: statusAdopciones.SOLICITADA,
+        color: 'purple',
+        icon: <CheckCircleOutlined />
     },
     {
         label: 'En revisión',
-        value: 'revision'
+        value: statusAdopciones.REVISION,
+        color: 'processing',
+        icon: <SyncOutlined />
     },
     {
         label: 'Visita domiciliaria agendada',
-        value: 'visita'
+        value: statusAdopciones.VISITA,
+        color: 'gold',
+        icon: <ClockCircleOutlined />
     },
     {
         label: 'Aceptada',
-        value: 'aceptada'
+        value: statusAdopciones.ACEPTADA,
+        color: 'success',
+        icon: <CheckCircleOutlined />
     },
     {
         label: 'Rechazada',
-        value: 'rechazada'
+        value: statusAdopciones.RECHAZADA,
+        color: 'error',
+        icon: <CloseCircleOutlined />
+    },
+    {
+        label: 'Cancelada',
+        value: statusAdopciones.CANCELADA,
+        color: 'warning',
+        icon: <ExclamationCircleOutlined />
+    },
+    {
+        label: 'Preparando tu mascota',
+        value: statusAdopciones.PREPARANDO_MASCOTA,
+        color: 'success',
+        icon: <ClockCircleOutlined />
+    },
+    {
+        label: 'Entregada',
+        value: statusAdopciones.ENTREGADA,
+        color: 'success',
+        icon: <CheckCircleOutlined />
     }
 ];
 
-export const statusVisitas = [
+export const statusVisita = {
+    AGENDADA: 'Agendada',
+    CANCELADA: 'Cancelada',
+    CUMPLIDA: 'Cumplida'
+}
+
+export const statusesVisitas = [
     {
         label: 'Agendada',
-        value: 'Agendada',
+        value: statusVisita.AGENDADA,
         color: 'processing',
         icon: <ClockCircleOutlined />
     },
     {
         label: 'Cancelada',
-        value: 'Cancelada',
+        value: statusVisita.CANCELADA,
         color: 'error',
         icon: <CloseCircleOutlined />
     },
     {
         label: 'Cumplida',
-        value: 'Cumplida',
+        value: statusVisita.CUMPLIDA,
         color: 'success',
         icon: <CheckCircleOutlined />
+    }
+];
+
+
+export const tipoSolicitudes = {
+    ADOPCION: 'adopcion',
+    APADRINAMIENTO: 'apadrinamiento',
+    VISITA: 'visita',
+    DAR_ADOPCION: 'darAdopcion',
+    ATENCION_HALLAZGO: 'atencionHallazgo',
+    DONACION: 'donación'
+}
+
+export const tiposSolicitudes = [
+    {
+        label: 'Adopción',
+        value: tipoSolicitudes.ADOPCION,
+        color: 'lime',
+        accion: 'adoptar a',
+        statuses: statusesAdopciones,
+        description: (title) => `Solicitó la adopción de ${title}`
+    },
+    {
+        label: 'Apadrinamiento',
+        value: tipoSolicitudes.APADRINAMIENTO,
+        color: 'geekblue',
+        accion: 'apadrinar a'
+    },
+    {
+        label: 'Visita',
+        value: tipoSolicitudes.VISITA,
+        color: 'blue',
+        accion: 'visitar a',
+        statuses: statusesVisitas,
+        description: (title) => `Agendó una visita para estar con ${title}`
+    },
+    {
+        label: 'Dar en adopción',
+        value: tipoSolicitudes.DAR_ADOPCION,
+        color: 'orange',
+        accion: 'dar en adopción a'
+    },
+    {
+        label: 'Atención de hallazgo',
+        value: tipoSolicitudes.ATENCION_HALLAZGO,
+        color: 'red',
+        accion: 'notificar el hallazgo de'
+    },
+    {
+        label: 'Donación',
+        value: tipoSolicitudes.DONACION,
+        color: 'purple',
+        accion: 'donar en'
     }
 ];
 
@@ -189,10 +246,11 @@ export const cuidadoEspecial = [
 
 export const presupuestoMascota =[
     'no tiene presupuesto',
-    'menos del 0.1 SMLV',
-    'entre el 0.1 y 0.5 SMLV',
-    'entre el 0.6 y 1 SMLV',
-    'más de un SMLV'
+    'menos del 1% SMLV',
+    'entre el 1% y 5% de un SMLV',
+    'entre el 6% y 10% de un SMLV',
+    'entre el 11% y 50% de un SMLV',
+    'más del 50% de un SMLV'
 ];
 
 export const opciones =[

@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
-import { Avatar, List, Tag, Button } from 'antd';
+import { Avatar, List, Tag, Button, Space } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { fillRequestsAsync } from '../Redux/actions/actionsRequest';
 import { fillUsersAsync } from '../Redux/actions/actionsUser';
 import { fillMascotasAsync } from '../Redux/actions/actionsMascota';
-import { tipoSolicitudes, statusVisitas } from '../assets/DatosMascotas';
+import { tiposSolicitudes, tipoSolicitudes } from '../assets/DatosMascotas';
 import moment from 'moment';
 
 const ListRequest = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { users, admin, photoURL } = useSelector(store => store.userStore);
+  const { users, id, admin, photoURL } = useSelector(store => store.userStore);
   const { solicitudes } = useSelector(store => store.solicitudesStore);
   const { mascotas } = useSelector(store => store.mascotasStore);
   const [orders, setOrders] = useState([]);
@@ -25,10 +25,10 @@ const ListRequest = () => {
 
   useEffect(() => {
     if (users && users.length && solicitudes && solicitudes.length && mascotas && mascotas.length) {
-      const source = buildList(users, solicitudes, mascotas, { admin, photoURL });
+      const source = buildList(users, solicitudes, mascotas, { id, admin, photoURL });
       const data = source.map(({ usuario, mascota, solicitud }) => {
-        const tipoDeSolicitud = tipoSolicitudes.find(ts => ts.value === solicitud.tipoSolicitud);
-        const statusVisita = statusVisitas.find(ss => ss.value === solicitud.status);
+        const tipoDeSolicitud = tiposSolicitudes.find(ts => ts.value === solicitud.tipoSolicitud);
+        const status = tipoDeSolicitud && tipoDeSolicitud.statuses ? tipoDeSolicitud.statuses.find(status => status.value === solicitud.status) : null;
 
         return {
           key: solicitud.idSolicitud,
@@ -40,13 +40,15 @@ const ListRequest = () => {
               <span>{`Solicitud generada en ${moment(new Date(solicitud.fechaCreacion)).format('LLL')}`}</span>
               <div>
                 <Tag color={tipoDeSolicitud.color}>{tipoDeSolicitud.label}</Tag>
-                <Tag icon={statusVisita.icon} color={statusVisita.color}>{statusVisita.label}</Tag>
+                {status && (
+                  <Tag icon={status.icon} color={status.color}>{status.label}</Tag>
+                )}
               </div>
             </div>
           ),
           content: (
             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 50, flexWrap: 'wrap', gap: 10 }}>
-              <span>{`Quiere ${tipoDeSolicitud.accion} ${mascota.nombre} en ${moment(new Date(`${solicitud.fecha} ${solicitud.hora}`)).format('LLL')}`}</span>
+              <span>{tipoDeSolicitud.value === tipoSolicitudes.VISITA ? `Quiere ${tipoDeSolicitud.accion} ${mascota.nombre} en ${moment(new Date(`${solicitud.fecha} ${solicitud.hora}`)).format('LLL')}`: `Quiere ${tipoDeSolicitud.accion} ${mascota.nombre}`}</span>
               <Button onClick={() => {
                 navigate(`/solicitudes/${solicitud.idSolicitud}`)
               }} type='primary'>Ver detalle</Button>
@@ -58,13 +60,14 @@ const ListRequest = () => {
 
       setOrders(data);
     }
-  }, [solicitudes, mascotas, users, admin, photoURL, navigate]);
+  }, [solicitudes, mascotas, users, id, admin, photoURL, navigate]);
 
-  const buildList = (users, solicitudes, mascotas, userParam) => {
+  const buildList = (users, solicitudes, mascotas, loggedUser) => {
     const list = [];
-    for (const solicitud of solicitudes) {
+    const filteredByUser = !loggedUser.admin ? solicitudes.filter(solicitud => solicitud.idUser === loggedUser.id) : solicitudes;
+    for (const solicitud of filteredByUser) {
       const mascota = mascotas.find(m => m.firestoreId === solicitud.idMascota);
-      const user = userParam.admin ? users.find(u => u.idUser === solicitud.idUser) : { photoURL: userParam.photoURL };
+      const user = users.find(u => u.idUser === solicitud.idUser);
       list.push({
         solicitud,
         mascota,
@@ -79,13 +82,20 @@ const ListRequest = () => {
     return list;
   }
 
+  // const IconText = ({ icon, text }) => (
+  //   <Space>
+  //     {React.createElement(icon)}
+  //     {text}
+  //   </Space>
+  // );
+
   return (
     <List
       itemLayout="vertical"
       size="large"
       pagination={{
         onChange: (page) => {
-          console.log(page);
+          // console.log(page);
         },
         pageSize: 3,
       }}
@@ -102,7 +112,7 @@ const ListRequest = () => {
             <img
               width={272}
               height={215}
-              style={{objectFit:'cover'}}
+              style={{ objectFit: 'cover' }}
               alt="logo"
               src={item.pet}
             />
