@@ -14,6 +14,10 @@ export const formReducers = (state = initialState, action) => {
       return {
         encontrado: [action.payload],
       };
+    case typesForm.encontradoget:
+      return {
+        form: [...action.payload],
+      };
     default:
       return state;
   }

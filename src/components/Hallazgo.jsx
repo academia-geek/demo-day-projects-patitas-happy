@@ -1,155 +1,48 @@
-import { Col, Row, Card, Avatar } from "antd";
+import { Col, Row, Card } from "antd";
 
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getDataHallazgosAsync } from "../Redux/actions/actionsHallazgos";
 import "../Styles/HallazgoStyles.css";
 const { Meta } = Card;
-const Hallazgo = () => {
+const Hallazgo = ({ data }) => {
+  const dispatch = useDispatch();
+
+  const { form } = useSelector(store => store.formStore);
+
+  useEffect(() => {
+    dispatch(getDataHallazgosAsync());
+  }, [dispatch]);
   return (
-    <div>
-      <h1>Mascotas Encontradas</h1>
-      <Row justify="space-evenly">
-        <Col span={4}>
-          <div className="site-card-wrapper section details"></div>
-        </Col>
-        <Col span={4}>
-          <Card
-            style={{
-              width: 180,
-              height: 180,
-            }}
-            cover={
-              <img
-                alt="example"
-                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-              />
-            }
-          >
-            <Meta
-              avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-              title="Card title"
-              description="This is the description"
-            />
-          </Card>
-        </Col>
-        <Col span={4}>
-          <Card
-            style={{
-              width: 180,
-              height: 180,
-            }}
-            cover={
-              <img
-                alt="example"
-                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-              />
-            }
-          >
-            <Meta
-              avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-              title="Card title"
-              description="This is the description"
-            />
-          </Card>
-        </Col>
-        <Col span={4}>
-          <Card
-            style={{
-              width: 180,
-              height: 180,
-            }}
-            cover={
-              <img
-                alt="example"
-                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-              />
-            }
-          >
-            <Meta
-              avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-              title="Card title"
-              description="This is the description"
-            />
-          </Card>
-        </Col>
-        <Col span={4}>
-          <Card
-            style={{
-              width: 180,
-              height: 180,
-            }}
-            cover={
-              <img
-                alt="example"
-                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-              />
-            }
-          >
-            <Meta
-              avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-              title="Card title"
-              description="This is the description"
-            />
-          </Card>
-        </Col>
-        <Col span={4}>
-          <Card
-            style={{
-              width: 180,
-              height: 180,
-            }}
-            cover={
-              <img
-                alt="example"
-                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-              />
-            }
-          >
-            <Meta
-              avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-              title="Card title"
-              description="This is the description"
-            />
-          </Card>
-        </Col>
-        <Col span={4}>
-          <Card
-            style={{
-              width: 180,
-              height: 180,
-            }}
-            cover={
-              <img
-                alt="example"
-                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-              />
-            }
-          >
-            <Meta
-              avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-              title="Card title"
-              description="This is the description"
-            />
-          </Card>
-        </Col>
-        <Col span={4}>
-          <Card
-            style={{
-              width: 180,
-              height: 180,
-            }}
-            cover={
-              <img
-                alt="example"
-                src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-              />
-            }
-          >
-            <Meta
-              avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-              title="Card title"
-              description="This is the description"
-            />
-          </Card>
+    <div className="cover">
+      <h1 style={{ margin: "15px auto" }}>Mascotas Encontradas</h1>
+      <Row>
+        <Col span={24}>
+          <Row justify="space-evenly">
+            {form.map((hgz, i) => (
+              <Col span={4} key={i}>
+                <Card
+                  style={{
+                    width: 210,
+                    height: 300,
+                  }}
+                  hoverable
+                  cover={
+                    <img
+                      alt="hglz"
+                      src={hgz.imagen}
+                      style={{
+                        maxWidth: 210,
+                        maxHeight: 220,
+                      }}
+                    />
+                  }
+                >
+                  <Meta title={hgz.fecha} description={hgz.location} />
+                </Card>
+              </Col>
+            ))}
+          </Row>
         </Col>
       </Row>
     </div>
