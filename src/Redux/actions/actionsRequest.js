@@ -172,3 +172,46 @@ export const updateRequestSync = (request) => {
         }
     }
 }
+
+export const appliedFilter = (params) => {
+    return {
+        type: typesRequest.appliedFilter,
+        payload: {
+            tipoSolicitud: params.tipoSolicitud
+        }
+    }
+}
+
+export const removeAppliedFilter = () => {
+    return {
+        type: typesRequest.removeAppliedFilter
+    }
+}
+
+export const filterRequestsAsync = (params) => {
+    return (dispatch) => {
+        const collectionRequests = collection(dataBase, collectionName);
+        const querySnapshot = query(collectionRequests);
+        getDocs(querySnapshot)
+            .then((documents) => {
+                let solicitudes = [];
+                documents.forEach((document) => {
+                    solicitudes.push({
+                        firestoreId: document.id,
+                        ...document.data(),
+                    });
+                });
+
+                const filter = params.filter;
+                if (filter) {
+                    solicitudes = solicitudes.filter(item => item.tipoSolicitud === filter);
+                }
+
+                dispatch(fillRequestsSync({ solicitudes }));
+            })
+            .catch((error) => {
+                console.log(error);
+                dispatch(fillRequestsSync({ solicitudes: [] }));
+            });
+    }
+}

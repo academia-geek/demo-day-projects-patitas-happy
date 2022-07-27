@@ -217,12 +217,12 @@ export const editUserAsync = (displayName, email, photoURL, phoneNumber, fecha, 
         const docRef = doc(dataBase, "users", id)
 
         await updateDoc(docRef, {
-            displayName, email, phoneNumber, fecha,  password
+            displayName, email, phoneNumber, fecha,  password, photoURL
         })
 
 
            .then(() => {
-            dispatch(editUserSync(displayName,photoURL, email, phoneNumber, fecha, password ))
+            dispatch(editUserSync(displayName, photoURL, email, phoneNumber, fecha, password ))
             console.log('yeeeh, perfil actualizado')
             console.log(displayName,photoURL, email, phoneNumber,fecha, password)
             dispatch(listUserSync({displayName, email, phoneNumber,fecha, photoURL, password}))

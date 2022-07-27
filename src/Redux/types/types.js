@@ -13,7 +13,6 @@ export const typesMascotas = {
   throwError: '[mascotas] throwError',
   selectedFilter: '[mascotas] selectedFilter',
   appliedFilters: '[mascotas] appliedFilters',
-  filterMascotas: '[mascotas] filterMascotas',
   removeAppliedFilter: '[mascotas] removeAppliedFilter'
 }
 
@@ -45,7 +44,10 @@ export const typesRequest = {
   fillUserRequests: '[Request] fillUserRequests',
   fillRequests: '[Request] fillRequests',
   fillRequest: '[Request] fillRequest',
-  updateRequest: '[Request] updateRequest'
+  updateRequest: '[Request] updateRequest',
+  selectedFilter: '[Request] selectedFilter',
+  appliedFilter: '[Request] appliedFilter',
+  removeAppliedFilter: '[Request] removeAppliedFilter'
 }
 
 export const typesCommentRequest = {

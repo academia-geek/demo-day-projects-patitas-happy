@@ -1,20 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Avatar, List, Tag, Button } from 'antd';
+import { Avatar, List, Tag, Button, Badge, Tooltip, Form, Select, Modal } from 'antd';
+import { FilterOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { fillRequestsAsync } from '../Redux/actions/actionsRequest';
+import { fillRequestsAsync, appliedFilter as appliedFilterAction, filterRequestsAsync, removeAppliedFilter } from '../Redux/actions/actionsRequest';
 import { fillUsersAsync } from '../Redux/actions/actionsUser';
 import { fillMascotasAsync } from '../Redux/actions/actionsMascota';
 import { tiposSolicitudes, tipoSolicitudes } from '../assets/DatosMascotas';
 import moment from 'moment';
 
+const { Option } = Select;
+
 const ListRequest = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { users, id, admin, photoURL } = useSelector(store => store.userStore);
-  const { solicitudes } = useSelector(store => store.solicitudesStore);
+  const { solicitudes, appliedFilter } = useSelector(store => store.solicitudesStore);
   const { mascotas } = useSelector(store => store.mascotasStore);
   const [orders, setOrders] = useState([]);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [badgeCount, setBadgeCount] = useState(0);
+
+  const [form] = Form.useForm();
+  const filters = tiposSolicitudes.filter(f => ![
+    tipoSolicitudes.ATENCION_HALLAZGO,
+    tipoSolicitudes.DONACION
+  ].includes(f.value)).map(f => ({ label: f.label, value: f.value }));
 
   useEffect(() => {
     dispatch(fillRequestsAsync());
@@ -83,40 +94,96 @@ const ListRequest = () => {
     return list;
   }
 
+  const handleFilterChange = (value) => {
+    console.log(value);
+    dispatch(appliedFilterAction({ tipoSolicitud: value }));
+    // form.setFieldsValue({
+    //   filtro: []
+    // });
+    // dispatch(selectedFilter({ category: value }));
+  }
 
   return (
-    <List
-      itemLayout="vertical"
-      size="large"
-      pagination={{
-        onChange: (page) => {
-          // console.log(page);
-        },
-        pageSize: 3,
-      }}
-      dataSource={orders}
-      renderItem={(item) => (
-        <List.Item
-          key={item.key}
-          extra={
-            <img
-              width={272}
-              height={215}
-              style={{ objectFit: 'cover' }}
-              alt="logo"
-              src={item.pet}
+    <div>
+      <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 20, margin: '3em' }}>
+        <Badge dot={badgeCount}>
+          <Tooltip title="Filtrar">
+            <Button onClick={() => {
+              if (badgeCount === 0) {
+                form.resetFields();
+              }
+              setIsModalVisible(true)
+            }} icon={<FilterOutlined />} shape="circle" size="large" />
+          </Tooltip>
+        </Badge>
+      </div>
+      <div>
+        <Modal title="Filtrar" visible={isModalVisible}
+          onOk={() => {
+            dispatch(filterRequestsAsync({ filter: appliedFilter }));
+            setBadgeCount(!!appliedFilter);
+            setIsModalVisible(false);
+          }}
+          onCancel={() => setIsModalVisible(false)}>
+          <Form
+            form={form}
+            name="filtrar"
+            layout="horizontal"
+            size={'default'}
+          >
+            <Form.Item
+              label="Filtros"
+              name="filtro"
+            >
+              <Select
+                allowClear
+                style={{
+                  width: '100%',
+                }}
+                onClear={() => {
+                  dispatch(removeAppliedFilter());
+                }}
+                onSelect={handleFilterChange}
+                placeholder="Por favor seleccione"
+              >{filters && filters.map((item) => (<Option key={item.value}>{item.label}</Option>))}
+              </Select>
+            </Form.Item>
+          </Form>
+        </Modal>
+      </div>
+      <List
+        itemLayout="vertical"
+        size="large"
+        pagination={{
+          onChange: (page) => {
+            // console.log(page);
+          },
+          pageSize: 3,
+        }}
+        dataSource={orders}
+        renderItem={(item) => (
+          <List.Item
+            key={item.key}
+            extra={
+              <img
+                width={272}
+                height={215}
+                style={{ objectFit: 'cover' }}
+                alt="logo"
+                src={item.pet}
+              />
+            }
+          >
+            <List.Item.Meta
+              avatar={<Avatar src={item.avatar} />}
+              title={item.title}
+              description={item.description}
             />
-          }
-        >
-          <List.Item.Meta
-            avatar={<Avatar src={item.avatar} />}
-            title={item.title}
-            description={item.description}
-          />
-          {item.content}
-        </List.Item>
-      )}
-    />
+            {item.content}
+          </List.Item>
+        )}
+      />
+    </div>
   )
 };
 

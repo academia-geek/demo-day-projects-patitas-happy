@@ -49,7 +49,7 @@ const SolicitudApadrinamiento = () => {
             Swal.fire({
                 icon: "success",
                 title: "Excelente.",
-                text: "¡Ha enviado la solicitud de adopción correctamente!",
+                text: "¡Ha enviado la solicitud de apadrinamiento correctamente!",
             }).then(() => {
                 form.resetFields();
                 dispatch(errorSync({ error: undefined }));
