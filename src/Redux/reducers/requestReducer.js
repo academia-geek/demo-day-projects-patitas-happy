@@ -4,7 +4,8 @@ import { typesRequest } from "../types/types";
 const initialState = {
     solicitudesUsuario: [],
     solicitudes: [],
-    solicitud: null
+    solicitud: null,
+    appliedFilter: null
 }
 
 export const requestReducer = (state = initialState, action) => {
@@ -46,6 +47,16 @@ export const requestReducer = (state = initialState, action) => {
                     causasCancelacion: action.payload.causasCancelacion,
                     canceledBy: action.payload.canceledBy
                 }
+            }
+        case typesRequest.appliedFilter:
+            return {
+                ...state,
+                appliedFilter: action.payload.tipoSolicitud
+            }
+        case typesRequest.removeAppliedFilter:
+            return {
+                ...state,
+                appliedFilter: null
             }
         default:
             return state

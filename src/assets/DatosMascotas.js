@@ -316,7 +316,7 @@ export const tiposSolicitudes = [
         color: 'orange',
         accion: 'dar en adopción a',
         statuses: statusesDarEnAdopcion,
-        description: (title) => `Ha postulado a su mascota para encontrarle un nuevo hogar ${title}`
+        description: (title) => `Ha postulado a su mascota ${title} para encontrarle un nuevo hogar`
     },
     {
         label: 'Atención de hallazgo',
