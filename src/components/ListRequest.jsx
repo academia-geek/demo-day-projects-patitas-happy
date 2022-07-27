@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { LikeOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
-import { Avatar, List, Tag, Button, Space } from 'antd';
+import { Avatar, List, Tag, Button } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { fillRequestsAsync } from '../Redux/actions/actionsRequest';
 import { fillUsersAsync } from '../Redux/actions/actionsUser';
@@ -48,7 +47,7 @@ const ListRequest = () => {
           ),
           content: (
             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 50, flexWrap: 'wrap', gap: 10 }}>
-              <span>{tipoDeSolicitud.value === tipoSolicitudes.VISITA ? `Quiere ${tipoDeSolicitud.accion} ${mascota.nombre} en ${moment(new Date(`${solicitud.fecha} ${solicitud.hora}`)).format('LLL')}`: `Quiere ${tipoDeSolicitud.accion} ${mascota.nombre}`}</span>
+              <span>{tipoDeSolicitud.value === tipoSolicitudes.VISITA ? `Quiere ${tipoDeSolicitud.accion} ${mascota.nombre} en ${moment(new Date(`${solicitud.fecha} ${solicitud.hora}`)).format('LLL')}` : `Quiere ${tipoDeSolicitud.accion} ${mascota.nombre}`}</span>
               <Button onClick={() => {
                 navigate(`/solicitudes/${solicitud.idSolicitud}`)
               }} type='primary'>Ver detalle</Button>
@@ -66,28 +65,24 @@ const ListRequest = () => {
     const list = [];
     const filteredByUser = !loggedUser.admin ? solicitudes.filter(solicitud => solicitud.idUser === loggedUser.id) : solicitudes;
     for (const solicitud of filteredByUser) {
-      const mascota = mascotas.find(m => m.firestoreId === solicitud.idMascota);
-      const user = users.find(u => u.idUser === solicitud.idUser);
+      let mascota = {};
+      if (solicitud.tipoSolicitud === tipoSolicitudes.DAR_ADOPCION) {
+        mascota = solicitud.mascota;
+      } else {
+        mascota = mascotas.find(m => m.firestoreId === solicitud.idMascota);
+      }
+
+      const usuario = users.find(u => u.idUser === solicitud.idUser);
       list.push({
         solicitud,
         mascota,
-        usuario: {
-          fullname: user.fullname,
-          displayName: user.displayName,
-          photoURL: user.photoURL
-        }
+        usuario
       });
     }
 
     return list;
   }
 
-  // const IconText = ({ icon, text }) => (
-  //   <Space>
-  //     {React.createElement(icon)}
-  //     {text}
-  //   </Space>
-  // );
 
   return (
     <List
@@ -103,11 +98,6 @@ const ListRequest = () => {
       renderItem={(item) => (
         <List.Item
           key={item.key}
-          // actions={[
-          //   <IconText icon={StarOutlined} text="156" key="list-vertical-star-o" />,
-          //   <IconText icon={LikeOutlined} text="156" key="list-vertical-like-o" />,
-          //   <IconText icon={MessageOutlined} text="2" key="list-vertical-message" />,
-          // ]}
           extra={
             <img
               width={272}

@@ -51,8 +51,8 @@ const DetailsMascotas = () => {
   const handleAdopcion = (firestoreId) => {
     navigate(`/adopcion/${firestoreId}`)
   }
-  const handleApadrinar = () => {
-    navigate('/apadrinar')
+  const handleApadrinar = (firestoreId) => {
+    navigate(`/apadrinar/${firestoreId}`)
   }
 
   if (error) {
@@ -222,7 +222,7 @@ const DetailsMascotas = () => {
                 onClick={() => { handleAdopcion(firestoreId) }}
               >ADOPTAR</Button>
               <Button sx={{ background: '#F5CEC7', border: '2px solid #47525E', borderRadius: '5px', color: '#47525E' }}
-                onClick={handleApadrinar}
+                onClick={() => { handleApadrinar(firestoreId) }}
               >APADRINAR</Button>
             </ButtonGroup>
           </div>

@@ -1,13 +1,17 @@
 import React from "react";
 import Swal from "sweetalert2";
 import { Button, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { FileUpload } from "../helpers/FileUpload";
 import useForm from "../hooks/useForm";
-import { AddAdopcionAsync } from "../Redux/actions/actionsForm";
+import { statusDarEnAdopcion, tipoSolicitudes } from "../assets/DatosMascotas";
+import { addRequestAsync } from "../Redux/actions/actionsRequest";
+import moment from 'moment';
 
 const FormDarenAdopcion = () => {
   const dispatch = useDispatch();
+
+  const { id } = useSelector(store => store.userStore);
   const [formValue, handleInputChange, reset] = useForm({
     nombre: "",
     edad: "",
@@ -33,11 +37,28 @@ const FormDarenAdopcion = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(AddAdopcionAsync(formValue)).then(() => {
+    const solicitud = {
+      idUser: id,
+      fechaCreacion: moment().format('YYYY-MM-DD'),
+      mascota: {
+        nombre: formValue.nombre,
+        edad: formValue.edad,
+        genero: formValue.sexo,
+        vacunas: formValue.vacunas,
+        ciudad: formValue.location,
+        enfermedad: formValue.enfermedad,
+        condiciones: formValue.condicion,
+        imagen: formValue.imagen,
+      },
+      tipoSolicitud: tipoSolicitudes.DAR_ADOPCION,
+      status: statusDarEnAdopcion.POSTULADA
+    }
+
+    dispatch(addRequestAsync(solicitud)).then(() => {
       Swal.fire({
         icon: "success",
         title: "Congratulations.",
-        text: "Información registrada, te llamaremos!",
+        text: "Información registrada, te contactaremos!",
       });
     });
     reset();
