@@ -90,11 +90,7 @@ const ListRequest = () => {
 
   return (
     <>
-      <DivList>
-        <ButtonR >Visitas Agendadas</ButtonR>
-        <ButtonR>Solicitudes de Adopción</ButtonR>
-        <ButtonR>Adopciones </ButtonR>
-      </DivList>
+      
       <List
       style={{margin:'20px 0'}}
         itemLayout="vertical"
