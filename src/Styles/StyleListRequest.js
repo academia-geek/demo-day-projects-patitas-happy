@@ -7,6 +7,9 @@ export const DivList = styled.div`
     margin: 40px 0;
     @media screen and (max-width:425px) {
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
 
     }
 `
@@ -17,4 +20,5 @@ export const ButtonR = styled.button`
     color:white;
     width: 180px;
     height: 40px;
+    margin: 5px 0;
 `
