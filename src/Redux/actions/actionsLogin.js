@@ -15,12 +15,23 @@ import Swal from "sweetalert2";
 //----1.1 Acción asícrona
 export const actionLoginAsync = (email, password) => {
     return async (dispatch) => {
-        const user = await signInWithEmailAndPassword(authentication, email, password);
-        const userData = await getUserFromDatabase(email);
-        const {photoURL, displayName, accessToken } = user.user;
-        const { id, phoneNumber, fullname, admin, fecha, provider } = userData;
-
-        dispatch(actionLoginSync({ id, email, password, displayName, accessToken, phoneNumber, fullname, admin, fecha, error: false, photoURL, provider }));
+       
+        try {
+            const user = await signInWithEmailAndPassword(authentication, email, password);
+            const userData = await getUserFromDatabase(email);
+            const {photoURL, displayName, accessToken } = user.user;
+            const { id, phoneNumber, fullname, admin, fecha, provider } = userData;
+    
+            dispatch(actionLoginSync({ id, email, password, displayName, accessToken, phoneNumber, fullname, admin, fecha, error: false, photoURL, provider }));
+        } catch (error) {
+            console.log(error, 'error')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'La contraseña o el correo electronico que ingresaste son incorrectos.',
+               
+              })
+        }
     }
 }
 
