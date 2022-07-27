@@ -32,11 +32,11 @@ const Notas = ({ idSolicitud }) => {
 
     useEffect(() => {
         dispatch(fillComentarioSolicitudesAsync(idSolicitud));
-    }, [idSolicitud]);
+    }, [dispatch, idSolicitud]);
 
     useEffect(() => {
         form.resetFields();
-    }, [comentarioSolicitudes.length]);
+    }, [form, comentarioSolicitudes.length]);
 
     const handleSubmit = (values) => {
         if (!values) return;

@@ -1,9 +1,7 @@
 import { typesUser } from "../types/types"
-import { createUserWithEmailAndPassword, signOut, updatePassword, updateProfile } from "firebase/auth"
-import { collection, addDoc, updateDoc, doc, query, getDocs, getDoc } from "firebase/firestore";
-import { authentication, dataBase } from "../../Firebase/firebaseConfig"
-import Swal from "sweetalert2";
-import { actionLogoutSyn } from "./actionsLogin";
+import { collection, doc, query, getDocs, getDoc } from "firebase/firestore";
+import { dataBase } from "../../Firebase/firebaseConfig"
+
 
 const collectionName = "users";
 

@@ -1,26 +1,60 @@
-import { FormControlLabel, Grid, Radio, RadioGroup } from '@mui/material';
 import React from 'react';
-import useForm from '../hooks/useForm';
-import { addApadrinarSync } from '../Redux/actions/actionsSolicitudes';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Grid } from '@mui/material';
+import { Form, Radio, Button } from 'antd';
 import { Paff, TitleC } from '../Styles/StyleInfo';
 import Footer from './Footer';
-import { useDispatch } from 'react-redux';
+import { opcionesApadrinamiento, statusApadrinamiento, tipoSolicitudes } from '../assets/DatosMascotas';
+import moment from 'moment';
+import { addRequestAsync, errorSync } from '../Redux/actions/actionsRequest';
+import Swal from 'sweetalert2';
 
 
 
 const SolicitudApadrinamiento = () => {
 
-    const dispatch = useDispatch()
+    const [form] = Form.useForm();
+    const dispatch = useDispatch();
+    const { firestoreId } = useParams();
 
-    const [formValue, handleInputChange] = useForm({
-        opcion: ''
-    })
+    const { id } = useSelector(store => store.userStore);
+    const { error } = useSelector(store => store.solicitudesStore);
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log(formValue)
-        dispatch(addApadrinarSync(formValue))
+    const onFinish =(values, idUser, idMascota)=>{
+        
+        const solicitud ={
+            idUser: idUser,
+            idMascota: idMascota,
+            fechaCreacion: moment().format('YYYY-MM-DD'),
+            tipoSolicitud: tipoSolicitudes.APADRINAMIENTO,
+            opcionApadrinamiento: values.opciones,
+            status: statusApadrinamiento.SOLICITADA
+        }
 
+        console.log(solicitud)
+        dispatch(addRequestAsync(solicitud))
+    }
+
+    if (error) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Por favor verifique que todos los campos esten debidamente diligenciados",
+        }).then(() => {
+            dispatch(errorSync({ error: undefined }));
+        });
+    } else {
+        if (error === false) {
+            Swal.fire({
+                icon: "success",
+                title: "Excelente.",
+                text: "¡Ha enviado la solicitud de adopción correctamente!",
+            }).then(() => {
+                form.resetFields();
+                dispatch(errorSync({ error: undefined }));
+            });
+        }
     }
 
     return (
@@ -40,21 +74,46 @@ const SolicitudApadrinamiento = () => {
             <Grid container columns={{ xs: 4, sm: 8, md: 12 }} justifyContent='center' >
                 <Grid>
                     <h1>¿Como deseas patrocinar a la mascota?</h1>
-                    <form onSubmit={handleSubmit}>
-                        <RadioGroup
-                            style={{ justifyContent: 'center', margin: '20px 0' }}
-                            row
-                            aria-labelledby="demo-row-radio-buttons-group-label"
-                            name="opcion"
-                            value={formValue.opcion}
-                            onChange={handleInputChange}
+                    <Form
+                        form={form}
+                        name='apadrimaniento'
+                        onFinish={(values)=>{onFinish(values, id, firestoreId )}}
+                    >
+                        <Form.Item
+                            label='Con '
+                            tooltip='Por favor seleccione una opción'
+                            name="opciones"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Por favor indique de qué forma apadrinará a nuestra mascota',
+                                },
+                            ]}
                         >
-                            <FormControlLabel value="materiales" control={<Radio />} label="Materiales" />
-                            <FormControlLabel value="dinero" control={<Radio />} label="Dinero" />
-                            <FormControlLabel value="otro" control={<Radio />} label="Otro" />
-                        </RadioGroup>
-                        <button type='submit'>Enviar</button>
-                    </form>
+                            <Radio.Group
+                                optionType="button"
+                                buttonStyle="solid"
+                                danger
+                                size='large'>
+                                {
+                                    opcionesApadrinamiento.map((item, index) => (
+                                        <Radio.Button key={index} value={item}>{item}</Radio.Button>
+                                    ))
+                                }
+                            </Radio.Group>
+                        </Form.Item>
+                        <Form.Item
+                            style={{ width: '100%', alignItems: 'center', textAlign: 'center', justifyContent: 'center', justifyItems: 'center' }}
+                        >
+                            <Button type="primary" htmlType="submit" size='large'
+
+                            >
+                                Solicitar
+                            </Button>
+                        </Form.Item>
+
+                    </Form>
+                  
                 </Grid>
             </Grid>
             <Footer />
