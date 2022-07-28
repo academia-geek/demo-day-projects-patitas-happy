@@ -59,7 +59,9 @@ const SolicitudApadrinamiento = () => {
 
     return (
         <Grid container columns={{ xs: 4, sm: 8, md: 12 }}
-            justifyContent="center">
+            justifyContent="center"
+            
+            >
             <Grid>
                 <img width='600px' src="https://res.cloudinary.com/kellycamayo/image/upload/v1658272239/imagenesDemoday/_92169543_thinkstockphotos-492735396_tncy3i.jpg" alt="" />
             </Grid>

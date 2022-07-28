@@ -4,12 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Button, ButtonGroup, Grid } from '@mui/material'
 import { Tag, Spin } from 'antd';
 import Footer from "./Footer";
-import { Item, TitleDog } from '../Styles/StylesDetalle';
+import { Item, TitleDog, ButtonMa } from '../Styles/StylesDetalle';
 import SchedulingForm from './SchedulingForm';
 import { addRequestAsync, errorSync, fillSolicitudesUsuarioAsync } from '../Redux/actions/actionsRequest';
 import Swal from 'sweetalert2';
 import BtnFloat from './BtnFloat';
-import { ClockCircleOutlined } from '@ant-design/icons';
+import { ClockCircleOutlined, RedditOutlined } from '@ant-design/icons';
 import { fillMascotaAsync } from '../Redux/actions/actionsMascota';
 import moment from 'moment';
 import { statusVisita, tipoSolicitudes } from '../assets/DatosMascotas';
@@ -216,14 +216,14 @@ const DetailsMascotas = () => {
 
               }
 
-              }
+              }//F95F62                  F5CEC7 clarito
             >
-              <Button sx={{ background: '#F5CEC7', border: '2px solid #47525E', borderRadius: '5px', color: '#47525E' }}
+              <ButtonMa sx={{ background: '#F95F62', border: 'none', borderRadius: '3px', color: 'white' }}
                 onClick={() => { handleAdopcion(firestoreId) }}
-              >ADOPTAR</Button>
-              <Button sx={{ background: '#F5CEC7', border: '2px solid #47525E', borderRadius: '5px', color: '#47525E' }}
+              >Adoptar</ButtonMa>
+              <ButtonMa sx={{ background: '#F95F62', border: 'none', borderRadius: '3px', color: 'white', hover:'background:red' }}
                 onClick={() => { handleApadrinar(firestoreId) }}
-              >APADRINAR</Button>
+              >Apadrinar</ButtonMa>
             </ButtonGroup>
           </div>
           <div>

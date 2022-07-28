@@ -28,11 +28,11 @@ const Donar = () => {
                 <TitleC>Necesitamos de ti</TitleC>
             </Grid>
             <Grid container columns={{ xs: 4, sm: 8, md: 12 }} justifyContent='center' textAlign='center'>
-                <Grid item xs={6}>
+                <Grid item xs={5}>
                     <Paff>Con tu ayuda podemos cambiar la vida de miles de animales en Colombia que han sufrido maltrato, abandono e indiferencia. Cada aporte cuenta para sus procesos de rescate, traslado, recuperación, tratamientos veterinarios, transportes, medicamentos, recuperación de traumas y terapias de conducta. Alimentación, esterilizaciones, insumos médicos, servicios de guardería, empleados, manutención en sus hogares de paso e impresión de materiales de difusión.
                     </Paff>
                 </Grid>
-                <Grid item xs={5} textAlign='center'>
+                <Grid item xs={6} textAlign='center'>
                     <img src="https://res.cloudinary.com/kellycamayo/image/upload/v1658262446/imagenesDemoday/3_iniciar_la_convivencia_desde_la_primera_etapa_de_vida_7407_2_600_wn2d8z.jpg" alt="" />
                 </Grid>
             </Grid>
