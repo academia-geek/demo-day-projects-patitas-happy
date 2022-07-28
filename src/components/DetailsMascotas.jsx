@@ -118,15 +118,15 @@ const DetailsMascotas = () => {
         justifyContent='center'
       >
         <Grid
-          padding='30px'
+          padding='30px '
         >
           <div style={{ width: '540px', height: '580px' }}>
-            <img style={{ width: '100%', height: '100%', objectFit: 'cover' }} src={mascota.imagen} alt={mascota.nombre} />
+            <img style={{ width: '90%', height: '90%', objectFit: 'cover' }} src={mascota.imagen} alt={mascota.nombre} />
           </div>
         </Grid>
         <Grid
           textTransform='capitalize'
-          padding='30px'
+          padding='10px'
         >
           <TitleDog>{mascota.nombre}</TitleDog>
           <div style={{ display: 'flex' }}>
