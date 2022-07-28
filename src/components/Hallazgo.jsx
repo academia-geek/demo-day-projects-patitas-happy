@@ -1,4 +1,4 @@
-import { Col, Row, Card } from "antd";
+import { Col, Row, Card ,Image } from "antd";
 
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,7 +33,7 @@ const Hallazgo = ({ data }) => {
                   }}
                   hoverable
                   cover={
-                    <img
+                    <Image
                       alt="hglz"
                       src={hgz.imagen}
                       style={{
