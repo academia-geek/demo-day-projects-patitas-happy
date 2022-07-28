@@ -17,15 +17,18 @@ const Hallazgo = ({ data }) => {
   }, [dispatch]);
   return (
     <div className="cover">
-      <h1 style={{ margin: "15px auto" }}>Mascotas Encontradas</h1>
+      <h1 style={{ margin: "35px auto" }}>Mascotas Encontradas</h1>
       <Row>
         <Col span={24}>
-          <Row justify="space-evenly" className="section">
+          <Row justify="space-evenly" className="section"
+            style={{margin:'50px 0'}}
+            
+          >
             {form.map((hgz, i) => (
               <Col span={4} key={i}>
                 <Card
                   style={{
-                    width: 210,
+                    width: 220,
                     height: 300,
                   }}
                   hoverable
@@ -34,8 +37,8 @@ const Hallazgo = ({ data }) => {
                       alt="hglz"
                       src={hgz.imagen}
                       style={{
-                        maxWidth: 210,
-                        maxHeight: 220,
+                        width: 220,
+                        height: 220,
                       }}
                     />
                   }
