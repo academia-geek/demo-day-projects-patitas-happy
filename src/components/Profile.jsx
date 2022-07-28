@@ -34,6 +34,7 @@ const Profile = () => {
     password: user.password ? user.password : "",
     phoneNumber: user.phoneNumber,
     fecha: user.fecha,
+    photoURL: user.photoURL
   });
 
   const { displayName, email, photoURL, phoneNumber, fecha, password } =
