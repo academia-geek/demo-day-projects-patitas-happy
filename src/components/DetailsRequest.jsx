@@ -372,7 +372,7 @@ const DetailsRequest = () => {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: 'flex', justifyContent:'center' }}>
                 <div>
                     <input id='statusValue' type='hidden' />
                     <div>
